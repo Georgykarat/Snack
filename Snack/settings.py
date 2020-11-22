@@ -25,7 +25,7 @@ SECRET_KEY = '(k=s+tj5zhjt*gpcdxr)&!*=b21=wj+dj)bhrwlb9(ixfxf*z-'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['snack-industry.azurewebsites.net', 'localhost']
 
 
 # Application definition
@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'feed',
     'login',
     'path',
+    'static',
 ]
 
 MIDDLEWARE = [
@@ -122,6 +123,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
+STATIC_ROOT = ''
 STATIC_URL = '/static/'
 
 LOGIN_REDIRECT_URL = '/feed'

@@ -1,0 +1,183 @@
+body, html {
+	margin: 0;
+	padding: 0;
+	width: 100%;
+	min-width: 1400px;
+	max-width: 100%;
+	z-index: 0;
+}
+
+
+
+@font-face{
+	font-family: Lemon Milk Pro Medium;
+	src: url('Lemon Milk Pro Medium.otf');
+}
+
+@font-face{
+	font-family: Lemon Milk Pro Ultra Light;
+	src: url('Lemon Milk Pro Ultra Light.otf');
+}
+
+nav {
+	margin-left: 100px;
+	
+	display: inline-block;
+}
+
+ul {
+	display: inline-block;
+	padding-top: 8px;
+	padding-bottom: 8px;
+	font-family: Lemon Milk Pro Ultra Light;
+}
+
+li {
+	text-decoration: none;
+	display: inline-block;
+	margin-right: 150px;
+	font-size: 14px;
+}
+header {
+	display: block;
+	border-bottom: 0.2px solid lightgray;
+}
+
+.nav {
+	text-decoration: none;
+	color: black;
+}
+.login {
+	display: inline-block;
+	margin-top: 20px;
+	margin-left: 60px;
+	margin-right: 0px;
+	padding: 7px 24px;
+	background-color: #27cf7f;
+	font-family: Lemon Milk Pro Ultra Light;
+	font-size: 12px;
+	border-style: none;
+	color: white;
+	cursor: pointer;
+}
+main {
+	display: block;
+	width: 100%;
+
+}
+
+.center {
+	width: 650px;
+	
+	margin-top: 100px;
+	margin-left: 140px;
+	position: absolute;
+	left: 0px;
+}
+
+h1 {
+	font-family: Lemon Milk Pro Medium;
+	font-size: 56px;
+	float: left;
+}
+.grey {
+	color: #455064;
+}
+.green {
+	color: #27cf7f;
+}
+.text {
+	font-family: Lemon Milk Pro Ultra Light;
+	font-size: 26px;
+	color: #455064;
+}
+.start {
+
+	display: block;
+	margin: 40px auto;
+	padding: 20px 30px;
+	background-color: #27cf7f;
+	border-radius: 25px;
+	font-size: 22px;
+	font-family: Lemon Milk Pro Ultra Light;
+	font-size: 12px;
+	border-style: none;
+	color: white;
+	cursor: pointer;
+}
+.href {
+	text-decoration: none;
+}
+.option {
+	display: inline-block;
+	margin-top: 29px;
+	margin-left: 100px;
+
+	padding: 10px 10px;
+	background-image: url('settings.png');
+	background-repeat: no-repeat;
+	background-size: 80%;
+	border-style: none;
+	color: white;
+	cursor: pointer;
+	z-index: 0;
+	background-color: white;
+	position: relative;
+}
+.option:active {
+	outline: none;
+}
+.option:focus {
+	outline: none;
+}
+.opttheme {
+	display: none;
+	z-index: 7;
+	position: relative;
+	background-color: rgb(237,235,238);
+	background-size: 100%;
+	top: 30px;
+	left: -195px;
+	border-color: lightgray;
+	border-width: 1px;
+	border-style: solid;
+	padding-bottom: 10px;
+	padding-right: 4px;
+	border-radius: 10px;
+
+
+}
+.greent {
+	padding: 10px 10px;
+	background-image: url('Greetick.png');
+	background-repeat: no-repeat;
+	background-size: 100%;
+	border-style: none;
+	display: inline-block;
+	margin-top: 30px;
+	margin-left: 5px;
+	z-index: 8;
+	cursor: pointer;
+}
+.greent:active {
+	outline: none;
+}
+.greent:focus {
+	outline: none;
+}
+.redt {
+	padding: 10px 10px;
+	background-color: rgb(222,86,96);
+	z-index: 8;
+	border-style: none;
+	display: inline-block;
+	margin-top: 30px;
+	margin-left: 0px;
+	cursor: pointer;
+}
+.redt:active {
+	outline: none;
+}
+.redt:focus {
+	outline: none;
+}
