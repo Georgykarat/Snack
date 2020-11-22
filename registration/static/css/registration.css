@@ -1,0 +1,941 @@
+html, body {
+	font-family: "Lemon Milk Pro";
+	margin: 0;
+	padding: 0;
+	min-width: 320px;
+	max-width: 100%;
+
+}
+main {
+	margin: 0;
+	padding: 0;
+	min-width: 320px;
+	max-width: 100%;
+	height: 800px;
+	background-color: #f5f6f8;
+}
+.header {
+	height: 70px;
+	background-color: black;
+	top: 0;
+
+	border: 1px solid black;
+}
+.header__central-cnt {
+	max-width: 1200px;
+	min-width: 320px;
+	margin: 0 auto;
+}
+h1 {
+	font-size: 34px;
+	color: white;
+	font-style: bold;
+	margin: 10px 0 0 0;
+	font-family: "Lemon Milk Pro b";
+	transition: 3s;
+}
+h1:hover {
+	color: #27cf7f;
+	transition: 1s;
+}
+.central-cnt {
+	width: 100%;
+	min-width: 320px;
+	min-height: 100%;
+	margin: 0 auto;
+	padding: 0;
+	display: flex;
+	justify-content: space-between;
+	overflow: hidden;
+}
+#left-cnt {
+	min-width: 38%;
+	max-width: 38%;
+	display: inline-block;
+	max-height: 800px;
+	/*
+	background-image: url('img/misterx.gif');
+	background-size: cover;
+	background-position: auto 100%;
+	background-repeat: no-repeat;*/
+
+}
+.swiper-container {
+	min-width: 38%;
+	max-width: 38%;
+	display: inline-block;
+	max-height: 800px;
+}
+
+
+#right-cnt {
+	max-width: 70%;
+	min-width: 64%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background-color: #f5f6f8;
+}
+#right-cnt-align {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin: 0% 0;
+	max-height: 800px;
+	width: 540px;
+	min-width: 320px;
+}
+#right-central-cnt {
+	margin: 0 auto;
+	height: 620px;
+	display: inline-block;
+	width: 540px;
+	min-width: 320px;
+}
+.h1 {
+	font-size: 30px;
+	font-style: bold;
+	text-align: center;
+	font-family: "Lemon Milk Pro b";
+	display: block;
+	color: #465262;
+	margin-bottom: 15px;
+}
+.register-bonus {
+	font-size: 20px;
+	font-style: bold;
+	display: block;
+	color: #465262;
+	min-width: 320px;
+	max-width: 100%;
+}
+#text-cnt {
+	display: block;
+	min-width: 320px;
+}
+.form-cnt {
+	display: block;
+	min-width: 320px;
+	margin: 0 69px;
+}
+.scale {
+	display: block;
+	margin-bottom: 30px;
+	min-width: 320px;
+}
+.one {
+	font-style: bold;
+	font-weight: bold;
+	font-family: "Lemon Milk Pro b";
+	font-size: 18px;
+	fill: #f5f6f8; 
+}
+.two {
+	font-style: bold;
+	font-weight: bold;
+	font-family: "Lemon Milk Pro b";
+	font-size: 18px;
+	fill: #f5f6f8;
+	display: none;
+}
+.three {
+	font-style: bold;
+	font-weight: bold;
+	font-family: "Lemon Milk Pro b";
+	font-size: 18px;
+	fill: #f5f6f8;
+	display: none;
+}
+.first-circle {
+	display: inline;
+}
+.second-circle-t {
+	display: none;
+}
+.third-circle-t {
+	display: none;
+}
+.first-line {
+	stroke: #cbcdcc;
+}
+.second-line {
+	stroke: #cbcdcc;
+}
+.tick-2 {
+	display: none;
+}
+.tick-3 {
+	display: none;
+}
+.reg-form1 {
+	display: block;
+	min-width: 320px;
+	margin-top: 60px;
+}
+.mail-f {
+	font-size: 18px;
+	padding: 30px 25px 10px 25px;
+	width: 350px;
+	font-family: "Lemon Milk Pro";
+	font-style: normal;
+	border-radius: 10px;
+	border: 1px solid #cbcdcc;
+	outline: none;
+	outline-color: none;
+	display: block;
+	margin: 0;
+	box-shadow: none;
+}
+.mail-f:focus {
+	border-color: red;
+	border-width: 1px;
+}
+.mail-f::placeholder {
+	color: transparent;
+	position: relative;
+	top: -10px;
+}
+.pass-f:focus {
+	border-color: none;
+	border-width: 1px;
+}
+.pass-f::placeholder {
+	color: transparent;
+	position: relative;
+	top: -10px;
+}
+.pass-f {
+	margin: 0px;
+	font-size: 18px;
+	padding: 30px 40px 10px 25px;
+	width: 335px;
+	font-family: "Lemon Milk Pro";
+	font-style: normal;
+	border-radius: 10px;
+	border: 1px solid #cbcdcc;
+	outline: none;
+	box-shadow: none;
+	display: block;
+	box-shadow: none;
+	text-shadow: none;
+}
+.mail-text {
+	position: relative;
+	font-weight: bold;
+	font-style: bold;
+	font-family: "Lemon Milk Pro b";
+	font-size: 16px;
+	color: #465262;
+	top: -60px;
+	left: 25px;
+}
+.pass-text {
+	position: relative;
+	font-weight: bold;
+	font-style: bold;
+	font-family: "Lemon Milk Pro b";
+	font-size: 16px;
+	color: #465262;
+	top: -60px;
+	left: 0px;
+	user-select: none;
+}
+#password-check-att-general-cnt {
+	height: 60px;
+	display: block;
+	min-width: 400px;
+}
+.confirm-password {
+	height: 65px;
+	width: 400px;
+	background-color: white;
+	border-radius: 10px;
+	font-family: "Lemon Milk Pro";
+	font-style: normal;
+	font-weight: normal;
+	font-size: 16px;
+	color: #465262;
+	outline: none;
+	display: block;
+	cursor: pointer;
+	border: 1px solid #cbcdcc;
+}
+.confirm-password2 {
+	height: 61px;
+	width: 358px;
+	padding-left: 20px;
+	padding-right: 20px;
+	background-color: white;
+	border-radius: 10px;
+	font-family: "Lemon Milk Pro";
+	font-style: normal;
+	font-weight: normal;
+	font-size: 16px;
+	color: #465262;
+	outline: none;
+	display: none;
+	cursor: text;
+	border: 1px solid #cbcdcc;
+}
+.tick-pass {
+	display: none;
+	position: relative;
+	top: -37px;
+	right: 30px;
+	float: right;
+	z-index: 10;
+}
+.create-acc-password {
+	height: 65px;
+	width: 400px;
+	background-color: lightgrey;
+	border-radius: 10px;
+	font-family: "Lemon Milk Pro";
+	font-style: normal;
+	font-weight: normal;
+	font-size: 16px;
+	color: white;
+	outline: none;
+	display: block;
+	margin-top: 10px;
+	cursor: pointer;
+	border: 1px solid lightgrey;
+}
+.password-check-att-general-cnt-first-row {
+	display: flex;
+	min-width: 320px;
+	flex-wrap: wrap;
+}
+.password-check-att-general-cnt-second-row {
+	display: flex;
+	min-width: 320px;
+	flex-wrap: wrap;
+}
+.att-text-1 {
+	font-size: 12px;
+	font-family: "Lemon Milk Pro";
+	font-style: normal;
+	font-weight: normal;
+}
+.svg2 {
+	margin-left: 40px; 
+}
+.svg3 {
+	margin-left: 44px; 
+}
+.tick-one {
+	display: none;
+}
+.tick-two {
+	display: none;
+}
+.tick-three {
+	display: none;
+}
+.tick-four {
+	display: none;
+}
+.tick-1 {
+	display: none;
+}
+.text-cnt2 {
+	display: none;
+	min-width: 320px;
+}
+.basic-info-text {
+	display: block;
+	font-size: 23px;
+	font-family: "Lemon Milk Pro";
+	font-style: normal;
+	font-weight: normal;
+	text-align: center;
+
+}
+.form2 {
+	display: none;
+	min-width: 320px;
+	margin-top: 30px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.name-reg-cnt {
+	min-width: 320px;
+	width: 450px;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-around;
+}
+.first-name {
+	font-size: 18px;
+	padding: 30px 25px 10px 25px;
+	width: 164px;
+	font-family: "Lemon Milk Pro";
+	font-style: normal;
+	border-radius: 10px;
+	border: 1px solid #cbcdcc;
+	outline: none;
+	outline-color: none;
+	display: inline-flex;
+	margin-right: 5px;
+}
+.second-name {
+	font-size: 18px;
+	padding: 30px 25px 10px 20px;
+	width: 164px;
+	font-family: "Lemon Milk Pro";
+	font-style: normal;
+	border-radius: 10px;
+	border: 1px solid #cbcdcc;
+	outline: none;
+	outline-color: none;
+	display: inline-block;
+	margin-left: 15px;
+}
+.country {
+	font-size: 18px;
+	padding-left: 30px;
+	padding-right: 25px;
+	width: 350px;
+	height: 60px;
+	font-family: "Lemon Milk Pro";
+	font-style: normal;
+	border-radius: 10px;
+	border: 1px solid #cbcdcc;
+	outline: none;
+	outline-color: none;
+	display: block;
+	margin: 0px 0 0 0;
+}
+.activity {
+	font-size: 18px;
+	padding-left: 30px;
+	padding-right: 25px;
+	width: 390px;
+	height: 60px;
+	font-family: "Lemon Milk Pro";
+	font-style: normal;
+	border-radius: 10px;
+	border: 1px solid #cbcdcc;
+	outline: none;
+	outline-color: none;
+	display: block;
+	margin: 0px 0 0 0;
+}
+.dropdown {
+	font-size: 18px;
+	padding-left: 30px;
+	padding-right: 25px;
+	width: 390px;
+	height: 60px;
+	font-family: "Lemon Milk Pro";
+	font-style: normal;
+	border-radius: 10px 0 0  10px;
+	border: 1px solid #cbcdcc;
+	outline: none;
+	outline-color: none;
+	display: inline-block;
+	margin: 10px 0 0 0;
+	color:rgb(116, 116, 116);
+	background-color: white;
+}
+select {
+	-webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+.select-cnt {
+	max-height: 60px;
+	display: flex;
+}
+.select-cnt__flag {
+	width: 56px;
+	border-top-right-radius: 10px;
+	border-bottom-right-radius: 10px;
+	border-top: 1px solid #cbcdcc;
+	border-right: 1px solid#cbcdcc;
+	border-bottom: 1px solid#cbcdcc;
+	height: 58px;
+	display: inline-block;
+	margin-top: 10px;
+	background-color: white;
+	background-image: none;
+	background-size: 150%;
+	background-repeat: no-repeat;
+	background-position: center;
+}
+/*.jq-selectbox__select {
+	font-size: 18px;
+	padding-left: 30px;
+	padding-right: 25px;
+	width: 350px;
+	height: 60px;
+	font-family: "Lemon Milk Pro";
+	font-style: normal;
+	border-radius: 10px;
+	border: 1px solid #cbcdcc;
+	outline: none;
+	outline-color: none;
+	display: block;
+	margin: 10px 0 0 0;
+}
+.jq-selectbox__select-text {
+	position: relative;
+	top: 18px;
+}
+.jq-selectbox__dropdown {
+	height: 100px;
+	overflow-x: scroll;
+	left: -40px;
+	top: 55px;
+	width: auto;
+
+	
+}
+.jq-selectbox__trigger
+.jq-selectbox__dropdown ul {
+	max-height: 100px;
+	height: 100px;
+	border-radius: 10px;
+	border: 1px solid black;
+}
+.jq-selectbox__dropdown li {
+	font-size: 16px;
+	padding-left: 30px;
+	padding-right: 25px;
+	width: 200px;
+	height: 20px;
+	font-family: "Lemon Milk Pro";
+	font-style: normal;
+
+	border: 1px solid #cbcdcc;
+	outline: none;
+	outline-color: none;
+	display: flex;
+	align-items: center;
+	background-color: white;
+}*/
+
+.mail-confirm {
+	display: none;
+	font-size: 18px;
+	font-family: "Lemon Milk Pro b";
+	font-style: normal;
+	font-weight: bold;
+	text-align: left;
+	margin-top: 15px;
+	color: #465262;
+}
+.mail-confirm-f {
+	font-size: 18px;
+	padding-left: 30px;
+	padding-right: 25px;
+	width: 390px;
+	height: 60px;
+	font-family: "Lemon Milk Pro";
+	font-style: normal;
+	border-radius: 10px;
+	border: 1px solid #cbcdcc;
+	outline: none;
+	outline-color: none;
+	display: none;
+	margin: 10px 0 0 0;
+}
+#rights {
+	display: inline-block;
+	height: 10px;
+	width: 10px;
+}
+
+.checkbox-cnt {
+	display: inline-block;
+	min-width: 320px;
+	max-width: 450px;
+}
+
+.rights-text {
+	display: inline-block;
+	font-size: 12px;
+	padding-top: 20px;
+	font-family: "Lemon Milk Pro";
+	font-style: normal;
+	font-weight: normal;
+	text-align: left;
+	color: #465262;
+	position: relative;
+	top: 3px;
+}
+.rights-warn {
+	display: block;
+	font-size: 10px;
+	font-family: "Lemon Milk Pro";
+	font-style: normal;
+	font-weight: normal;
+	text-align: left;
+	color: #465262;
+	margin-top: 10px;
+	padding-bottom: 10px;
+}
+.create-acc-password2 {
+	height: 65px;
+	width: 450px;
+	background-color: #27cf7f;
+	border-radius: 10px;
+	border: 1px solid transparent;
+	font-family: "Lemon Milk Pro";
+	font-style: normal;
+	font-weight: normal;
+	font-size: 16px;
+	color: white;
+	outline: none;
+	display: none;
+	margin-top: 0px;
+	cursor: pointer;
+	margin-left: 0;
+	margin-right: 0px;
+}
+.First-name-text {
+	position: relative;
+	font-weight: bold;
+	font-style: bold;
+	font-family: "Lemon Milk Pro b";
+	font-size: 14px;
+	color: #465262;
+	top: -60px;
+	left: -115px;
+	display: inline;
+	padding-bottom: 0;
+	height: 15px;
+}
+.Last-name-text {
+	position: relative;
+	font-weight: bold;
+	font-style: bold;
+	font-family: "Lemon Milk Pro b";
+	font-size: 14px;
+	color: #465262;
+	top: -60px;
+	left: 40px;
+	display: inline;
+	padding-bottom: 0;
+	height: 15px;
+}
+.form2__name-surname-cnt {
+	float: none;
+}
+.popup-cnt {
+	position: fixed;
+	background-image: url('img/Back.png');
+	height: 100%;
+	width: 100%;
+	display: none;
+	z-index: 5;
+	justify-content: center;
+	align-items: center;
+}
+.popup-window {
+	background-color: white;
+	border: none;
+	box-shadow: 0 0 15px grey;
+	border-radius: 15px;
+	height: 50%;
+	width: 30%;
+	width: 420px;
+	z-index: 6;
+	opacity: 1;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	flex-wrap: wrap;
+}
+.verification-text {
+	display: block;
+	font-size: 20px;
+	font-family: "Lemon Milk Pro b";
+	font-style: normal;
+	font-weight: bold;
+	text-align: center;
+	margin-top: 20px;
+	color: #465262;
+
+}
+.verification-text2 {
+	display: block;
+	font-size: 12px;
+	font-family: "Lemon Milk Pro";
+	font-style: normal;
+	font-weight: normal;
+	text-align: center;
+	margin-top: 10px;
+	color: #465262;
+}
+.popup-text {
+	display: block;
+	min-width: 320px;
+	padding-left: 50px;
+	padding-right: 50px;
+}
+.cnt-for-numbers {
+	display: inline-block;
+	margin: 0 auto;
+}
+.number-box {
+	display: inline-block;
+	font-size: 45px;
+	font-family: "Lemon Milk Pro b";
+	font-style: normal;
+	font-weight: normal;
+	text-align: center;
+	background-color: #f5f6f8;
+	color: #465262;
+	width: 70px;
+	height: 100px;
+	outline: none;
+	border: 1px solid transparent;
+}
+#timer-cnt {
+	display: block;
+	margin-left: 135px;
+
+
+}
+.code-expires-text {
+	display: inline-block;
+	font-size: 12px;
+	font-family: "Lemon Milk Pro";
+	font-style: normal;
+	font-weight: normal;
+	text-align: left;
+	margin-top: 10px;
+	color: #465262;
+}
+.minutes {
+	display: inline-block;
+	font-size: 12px;
+	font-family: "Lemon Milk Pro b";
+	font-style: normal;
+	font-weight: bold;
+	text-align: left;
+	margin-top: 10px;
+	color: red;
+}
+.separator {
+	display: inline-block;
+	font-size: 12px;
+	font-family: "Lemon Milk Pro b";
+	font-style: normal;
+	font-weight: bold;
+	text-align: left;
+	margin-top: 10px;
+	color: red;
+}
+.seconds {
+	display: inline-block;
+	font-size: 12px;
+	font-family: "Lemon Milk Pro b";
+	font-style: normal;
+	font-weight: bold;
+	text-align: left;
+	margin-top: 10px;
+	color: red;
+}
+.button-cnt {
+	display: block;
+}
+.central-cnt-2 {
+	display: flex;
+	justify-content: center;
+	flex-wrap: wrap;
+}
+.confirm-button-code {
+	display: inline-block;
+	padding: 16px 20px;
+	text-align: center;
+	width: 350px;
+	margin: 0 15px;
+	font-family: "Lemon Milk Pro";
+	font-style: normal;
+	font-weight: normal;
+	border: none;
+	border-radius: 20px;
+	background-color: #27cf7f;
+	color: white;
+
+}
+.svg-fadein {
+	display: none;
+}
+.confirm-button-code2 {
+	display: none;
+	padding: 16px 20px;
+	text-align: center;
+	width: 350px;
+	margin: 0 15px;
+	font-family: "Lemon Milk Pro";
+	font-style: normal;
+	font-weight: normal;
+	border: none;
+	border-radius: 10px;
+	background-color: #27cf7f;
+	color: white;
+}
+.Success-text {
+	display: none;
+	font-size: 24px;
+	font-family: "Lemon Milk Pro b";
+	font-style: normal;
+	font-weight: bold;
+	text-align: center;
+	padding-left: 157px;
+	color: #465262;
+	padding-bottom: 30px;
+}
+.Verified {
+	display: none;
+	font-size: 18px;
+	font-family: "Lemon Milk Pro";
+	font-style: normal;
+	font-weight: normal;
+	text-align: center;
+	color: #465262;
+	text-align: center;
+	padding-left: 50px;
+}
+.Enjoy {
+	display: none;
+	font-size: 18px;
+	font-family: "Lemon Milk Pro";
+	font-style: normal;
+	font-weight: normal;
+	text-align: center;
+	color: #465262;
+	text-align: center;
+	padding-left: 155px;
+}
+.enjoy-cnt {
+	display: block;
+}
+.visible {
+	height: 20px;
+	width: 20px;
+	background-repeat: no-repeat;
+	background-image: url('../img/eye.png');
+	background-color: transparent;
+	background-position: center;
+	border: none;
+	position: relative;
+	top: -43px;
+	right: -360px;
+	display: inline-block;
+
+}
+.unvisible {
+	height: 20px;
+	width: 20px;
+	background-repeat: no-repeat;
+	background-image: url('../img/eye.png');
+	background-color: transparent;
+	background-position: center;
+	border: none;
+	position: relative;
+	top: -43px;
+	right: -360px;
+	display: none;
+}
+.pass-f::-ms-reveal {
+    display: none;
+    visibility: hidden;
+    pointer-events: none;
+    position: absolute;
+    right: 0;
+}
+.pass-f::-ms-clear {
+    display: none;
+    visibility: hidden;
+    pointer-events: none;
+    position: absolute;
+    right: 0;
+}
+.confirm-password2::-ms-reveal {
+	display: none;
+	visibility: hidden;
+    pointer-events: none;
+    position: absolute;
+    right: 0;
+}
+.confirm-password2::-ms-clear {
+	display: none;
+	visibility: hidden;
+    pointer-events: none;
+    position: absolute;
+    right: 0;
+}
+.confirm-password2::-webkit-contacts-auto-fill-button {
+	visibility: hidden;
+    pointer-events: none;
+    position: absolute;
+    right: 0;
+}
+.confirm-password2::-webkit-credentials-auto-fill-button {
+	visibility: hidden;
+	display: none;
+    pointer-events: none;
+    position: absolute;
+    right: 0;
+}
+.pass-f::-webkit-credentials-auto-fill-button {
+	visibility: hidden;
+	display: none;
+    pointer-events: none;
+    position: absolute;
+    right: 0;
+}
+#rus-flag {
+	position: relative;
+	top: -50px;
+	right: -360px;
+	display: none;
+	margin-bottom: 0px;
+	padding-bottom: 0px;
+}
+.footer{
+	background-color: #27cf7f;
+}
+.footer-central-cnt {
+	width: 400px;
+	min-width: 320px;
+
+	margin: 0 auto;
+	padding: 15px 0;
+	overflow: hidden;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	align-items: center;
+}
+.footer__rights_icons {
+	color:rgba(255, 255, 255, 0.4);
+	font-size: 14px;
+	text-align: center;
+	transition: 0.5s;
+}
+.footer__rights_icons:hover {
+	color:rgba(255, 255, 255, 1);
+	font-size: 14px;
+	text-align: center;
+	transition: 0.5s;
+}
+.footer__rights {
+	color: white;
+	font-size: 14px;
+	text-align: center;
+}
+.footer__rights::after {
+	content: "2020";
+}
+:root {
+    --swiper-theme-color: #27cf7f;
+}
+.swiper-pagination-bullet {
+	height: 10px;
+	width: 10px;
+}

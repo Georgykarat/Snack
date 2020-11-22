@@ -1,0 +1,254 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Snack</title>
+    <link rel="stylesheet" href="{% static 'css/font.css' %}">
+    <!--<link rel="stylesheet" href="{% static 'css/lesson.css' %}">-->
+    <script src="{% static 'js/jQueryv3.4.1.min.js' %}"></script>
+    <script src="{% static 'js/lesson.js' %}"></script>
+    <style>
+        * {
+    font-family: "Lemon Milk Pro";
+	margin: 0;
+    padding: 0;
+    text-decoration: none;
+    list-style: none;
+}
+
+body, html {
+    margin: 0;
+    height: 0;
+    max-width: 100%;
+    width: 100%;
+}
+.header {
+    width: 100%;
+    min-width: 320px;
+    background-color: #fff;
+    position: fixed;
+    z-index: 50;
+    overflow-x: hidden;
+    overflow-y: hidden;
+}
+.header-central-cnt {
+    max-width: 1700px;
+    width: 90%;
+    min-width: 320px;
+    margin: 0 auto;
+    display: flex;
+    background-color: transparent;
+    justify-content: space-between;
+}
+.header__logo {
+    display: inline-block;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+.header__options {
+    display: inline-block;
+    width: 200px;
+}
+.header__profile-name {
+    color: darkgrey;
+    font-size: 10px;
+    padding-top: 40px;
+    padding-right: 20px;
+    max-width: 130px;
+    display: inline-block;
+    transition: 0.5s;
+}
+.header__profile-name:hover {
+    color: grey;
+    transition: 0.5s;
+}
+.header__open-options {
+    width: 20px;
+    height: 20px;
+    background-image: url('../img/next.svg');
+    background-position: center;
+    background-size: 10px 10px;
+    background-color: transparent;
+    border: none;
+    display: inline-block;
+    background-repeat: no-repeat;
+    transform: rotate(90deg);
+    position: relative;
+    top: 5px;
+    margin-right: 3px;
+}
+.header__profile-icon {
+    background-image: url({{begin_path}}{{photo}});
+    height: 40px;
+    width: 40px;
+    background-position: center;
+    background-size: cover;
+    display: inline-block;
+    position: relative;
+    top: 15px;
+    border-radius: 25px;
+    border: 2px solid transparent;
+    transition: 0.5s;
+    filter: opacity(100%);
+}
+.header__profile-icon:hover {
+    border: 2px solid black;
+    transition: 0.5s;
+    filter: opacity(50%);
+}
+.h1 {
+    font-style: bold;
+    font-family: Lemon Milk Pro b;
+    color: #27cf7f;
+    transition: 1s;
+    padding-right: 30px;
+}
+.h1:hover {
+    font-style: bold;
+    font-family: Lemon Milk Pro b;
+    color: cyan;
+    transition: 1s;
+}
+.nav {
+    display: inline-block;
+    padding-top: 35px;
+}
+.nav ul {
+    list-style: none;
+}
+.nav li {
+    display: inline-block;
+    margin-right: 50px;
+    padding-bottom: 5px;
+    font-weight: bold;
+    font-size: 14px;
+    border-bottom: 1px solid transparent;
+    transition: 0.5s;
+    user-select: none;
+}
+.nav li:hover {
+    border-bottom: 1px solid #27cf7f;
+    transition: 0.5s;
+}
+.nav a {
+    color: gray;
+    transition: 0.5s;
+}
+.nav a:hover {
+    color: #27cf7f;
+    transition: 0.5s;
+}
+.main__left-column {
+    background-color: white;
+    height: 1500px;
+    float: left;
+    width: 65%;
+    margin-top: 100px;
+}
+.main__right-column {
+    background-color: grey;
+    height: 1500px;
+    float: right;
+    width: 30%;
+    margin-top: 100px;
+}
+h3 {
+    font-size: 16px;
+    color: lightgrey;
+}
+h2 {
+    margin-top: 15px;
+    margin-bottom: 20px;
+    font-size: 30px;
+    font-style: bold;
+    font-family: 'Lemon Milk Pro b';
+}
+.main__nav-panel {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 30px;
+    margin-bottom: 10px;
+    border-bottom:#27cf7f 2px solid;
+    padding: 0px 0;
+    cursor: pointer;
+}
+.main__nav-panel_item {
+    padding: 10px 30px;
+}
+.main__nav-panel_item-active {
+    border-left: #27cf7f 2px solid;
+    border-top: #27cf7f 2px solid;
+    border-right: #27cf7f 2px solid;
+    border-bottom: transparent 2px solid;
+    background-color: #27cf7f;
+    border-top-right-radius: 20px;
+    border-top-left-radius: 20px;
+    color: white;
+    transition: 0s;
+}
+.main__nav-panel_item-active:hover {
+    background-color: transparent;
+    color: black;
+    transition: 0s;
+}
+.main_lesson {
+    display: block;
+}
+    </style>
+</head>
+<body>
+    {% if request.user.is_authenticated %}
+    <header class="header">
+        <div class="header-central-cnt">
+            <div class="header__logo">
+                <h1 class="h1">Snack</h1>
+            </div>
+            <nav class="nav">
+                <ul>
+                    {% if access == 2 %}
+                    <li><a href="../../../admin">Admin</a></li>
+                    {% endif %}
+                    <li><a href="../../../feed/">My profile</a></li>
+                    <li class="active-tab"><a class="active-tab" href="../../">Courses</a></li>
+                    <li><a href="#">Features</a></li>
+                    <li><a href="#">Contact us</a></li>
+                    <li><a href="../logout/">Exit</a></li>
+                </ul>
+            </nav>
+            <div class="header__options">
+                <div class="header__profile-name">{{name}} {{last_name}}</div>
+                <button class="header__open-options"></button>
+                <div class="header__profile-icon"></div>
+            </div>
+        </div>
+    </header>
+    <main>
+        <div class="header-central-cnt">
+            <div class="main__left-column">
+                <h3>Python Basics</h3>
+                <h2>01. Introduction</h2>
+                <div class="main__nav-panel">
+                    <div class="main__nav-panel_item main__nav-panel_item-active tab_1">Lesson</div>
+                    <div class="main__nav-panel_item tab_2">Script</div>
+                    <div class="main__nav-panel_item tab_3">Quiz</div>
+                    <div class="main__nav-panel_item tab_4">Exercise</div>
+                    <div class="main__nav-panel_item tab_5">Questions</div>
+                </div>
+                <div class="main__lesson">
+                    <video width="100%" controls="controls" poster="">
+                        <source src="{{begin_path}}video/0000/videoplayback.mp4" type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"'>
+                        <source src="{{begin_path}}video/0000/01.webm" type='video/webm; codecs="vp8, vorbis"'>
+                            
+                    </video>
+                </div>
+            </div>
+            <div class="main__right-column">
+
+            </div>
+        </div>
+    </main>
+    {% endif %}
+</body>

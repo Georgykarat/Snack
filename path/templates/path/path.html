@@ -1,0 +1,164 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Snack Courses</title>
+    <link rel="stylesheet" href="{% static 'css/font.css' %}">
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <script src="{% static 'js/jQueryv3.4.1.min.js' %}"></script>
+    <script src="{% static 'js/script.js' %}"></script>
+    <style>
+        .header__profile-icon {
+            background-image: url({{begin_path}}{{photo}});
+            height: 40px;
+            width: 40px;
+            background-position: center;
+            background-size: cover;
+            display: inline-block;
+            position: relative;
+            top: 15px;
+            border-radius: 25px;
+            border: 2px solid transparent;
+            transition: 0.5s;
+            filter: opacity(100%);
+        }
+        .main-central-cnt-section {
+    max-width: 1700px;
+    width: 90%;
+    min-width: 320px;
+    margin: 0 auto;
+    display: block;
+    background-color: transparent;
+    justify-content: space-between;
+}
+.main__map-zone {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+}
+.main__map-zone > div {
+    display: inline-block;
+}
+.mapzone__start {
+    height: 60px;
+    width: 60px;
+    opacity: 1;
+    transition: 1s;
+    transform: translate(110px, 400px);
+}
+.mapzone__start:hover + span {
+    opacity: 1;
+    transition: 0.5s;
+}
+.span__start {
+    transform: translate(56px, 415px);
+    opacity: 0;
+    transition: 0.5s;
+    font-size: 12px;
+    display: inline-block;
+}
+
+.mapzone__python-basics {
+    height: 60px;
+    width: 60px;
+    opacity: 1;
+    transition: 1s;
+    transition: 1s;
+    transform: translate(145px, 340px);
+    position: relative;
+    right: 20px;
+}
+.mapzone__python-basics:hover + span {
+    opacity: 1;
+    transition: 0.5s;
+}
+.span__pythonb {
+    transform: translate(45px, 360px);
+    opacity: 0;
+    transition: 0.5s;
+    font-size: 12px;
+    display: inline-block;
+}
+
+.theme-unavaliable {
+    filter: grayscale(100);
+    cursor: not-allowed;
+    transition: 1s;
+}
+.opacity-animation:hover {
+    opacity: 0.5;
+    transition: 1s;
+    height: 70px;
+    width: 70px;
+}
+.mapzone__python-adv {
+    height: 60px;
+    width: 60px;
+    opacity: 0.7;
+    transition: 1s;
+    transform: translate(175px, 260px);
+}
+.mapzone__html {
+    height: 60px;
+    width: 60px;
+    opacity: 0.7;
+    transition: 1s;
+    transform: translate(165px, 280px);
+    position: relative;
+    right: 40px;
+}
+.cur-pointer {
+    cursor: pointer;
+}
+.cur-ban {
+    cursor: not-allowed;
+}
+
+    </style>
+</head>
+<body>
+    {% if request.user.is_authenticated %}
+    <header class="header">
+        <div class="header-central-cnt">
+            <div class="header__logo">
+                <h1 class="h1">Snack</h1>
+            </div>
+            <nav class="nav">
+                <ul>
+                    {% if access == 2 %}
+                    <li><a href="../admin">Admin</a></li>
+                    {% endif %}
+                    <li><a href="../feed/">My profile</a></li>
+                    <li class="active-tab"><a class="active-tab" href="#">Courses</a></li>
+                    <li><a href="#">Features</a></li>
+                    <li><a href="#">Contact us</a></li>
+                    <li><a href="logout/">Exit</a></li>
+                </ul>
+            </nav>
+            <div class="header__options">
+                <div class="header__profile-name">{{name}} {{last_name}}</div>
+                <button class="header__open-options"></button>
+                <div class="header__profile-icon"></div>
+            </div>
+        </div>
+    </header>
+    <main class="main">
+        <div class="main__map-zone">
+            <div>
+                <img src="{{begin_path}}lessonicons/power.svg" alt="Start" aria-label="Start" class="mapzone__start opacity-animation cur-pointer">
+                <span class="span__start">Start</span>
+            </div>
+            <img src="{{begin_path}}lessonicons/html.svg" alt="Html" aria-label="HTML" class="mapzone__html theme-unavaliable cur-ban">
+            <div>
+                <a href="0/"><img src="{{begin_path}}lessonicons/python.svg" alt="Python Basics" aria-label="Python Basics" class="mapzone__python-basics opacity-animation cur-pointer"></a>
+                <span class="span__pythonb">Python Basics</span>
+            </div>
+            <img src="{{begin_path}}lessonicons/pythonadv.svg" alt="Python Advanced" aria-label="Python Advanced" class="mapzone__python-adv theme-unavaliable cur-ban">
+        </div>
+    </main>
+    {% endif %}
+</body>
+</html>

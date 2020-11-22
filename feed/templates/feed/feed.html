@@ -1,0 +1,232 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Snack</title>
+    <link rel="stylesheet" href="{% static 'css/font.css' %}">
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <link rel="stylesheet" href="{% static 'css/Chart.min.css' %}">
+    <script src="{% static 'js/jQueryv3.4.1.min.js' %}"></script>
+    <script src="{% static 'js/Chart.min.js' %}"></script>
+    <script src="{% static 'js/script.js' %}"></script>
+    <style>
+        .header__profile-icon {
+            background-image: url({{begin_path}}{{photo}});
+            height: 40px;
+            width: 40px;
+            background-position: center;
+            background-size: cover;
+            display: inline-block;
+            position: relative;
+            top: 15px;
+            border-radius: 25px;
+            border: 2px solid transparent;
+            transition: 0.5s;
+            filter: opacity(100%);
+        }
+        .main__profile-photo {
+            height: 140px;
+            width: 140px;
+            display: inline-block;
+            background-image: url({{begin_path}}{{photo}});
+            background-position: center;
+            background-size: cover;
+            border-radius: 80px;
+            border: 1px solid #27cf7f;
+            margin-right: 20px;
+            transition: 0.5s;
+            filter: opacity(100%);
+        }
+        .add-item {
+    height: 20px;
+    width: 20px;
+    background-image: url('../static/png/add.svg');
+    background-size: cover;
+    background-position: center;
+    border: none;
+    background-color: transparent;
+    position: relative;
+    left: -40%;
+    top: 20%;
+    padding-top: 20px;
+    opacity: 0;
+    cursor: pointer;
+    z-index: 9;
+
+}
+.add-item-btn {
+    height: 30px;
+    width: 30px;
+    background-image: url('../static/png/add.svg');
+    background-size: cover;
+    background-position: center;
+    border: none;
+    background-color: transparent;
+    position: relative;
+    left: -60%;
+    top: 30%;
+    padding-top: 20px;
+    cursor: pointer;
+    opacity: 0;
+}
+    </style>
+</head>
+<body>
+    {% if request.user.is_authenticated %}
+    <header class="header">
+        <div class="header-central-cnt">
+            <div class="header__logo">
+                <h1 class="h1">Snack</h1>
+            </div>
+            <nav class="nav">
+                <ul>
+                    {% if access == 2 %}
+                    <li><a href="../admin">Admin</a></li>
+                    {% endif %}
+                    <li class="active-tab"><a class="active-tab" href="#">My profile</a></li>
+                    <li><a href="../path/">Courses</a></li>
+                    <li><a href="#">Features</a></li>
+                    <li><a href="#">Contact us</a></li>
+                    <li><a href="logout/">Exit</a></li>
+                </ul>
+            </nav>
+            <div class="header__options">
+                <div class="header__profile-name">{{name}} {{last_name}}</div>
+                <button class="header__open-options"></button>
+                <div class="header__profile-icon"></div>
+            </div>
+        </div>
+    </header>
+    <div class="statistics-section">
+        <div class="main-central-cnt-section">
+            <h4 class="h4">Analytics</h4>
+            <div class="stat__first-row">
+                <div class="stat__first-row-left">
+                    <canvas id="date_points" width="280" height="110"></canvas>
+                </div>
+                <div class="stat__first-row-right">
+                    <br>
+                    <canvas id="date_scale" width="50" height="50"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+    <main class="main">
+        <div class="main-central-cnt">
+            <div class="main-left-cnt">
+                <div class="main__profile-photo"></div>
+                <div class="main__profile-main-info">
+                    <h2 class="h2">{{name}} {{last_name}}</h2>
+                    <div class="main__profile-main-info_city">{{country}}</div>
+                    <a href="settings/"><div class="main__profile-main-info_edit">Edit Profile</div></a>
+                    <input type="file" class="add-item" value=""></input>
+                    <button class="add-item-btn"></button>
+                </div>
+            </div>
+            <div class="main-right-cnt">
+                <div class="main__rank">
+                    <span class="main__rank_text">L{{level_num}} {{material}}<br>{{level}}</span>
+                    <img src="{{level_pic}}" alt="" class="main__rank_img">
+                </div>
+                <div class="main-right-cnt-2">
+                <svg width="150" height="150" viewBox="0 0 42 42" class="donut">
+                    <circle class="donut-hole" cx="20" cy="20" r="16" fill="#fff"></circle>
+                    <circle class="donut-ring" cx="20" cy="20" r="16" fill="transparent" stroke="#d2d3d4" stroke-width="0.5"></circle>
+                    <circle class="donut-segment" cx="20" cy="20" r="16" fill="transparent" stroke="{{ color }}" stroke-width="1" stroke-dasharray="{{ percent }} {{ left_percent }}" stroke-dashoffset="0"></circle>
+                    <g class="chart-text">
+                        <text x="{{xcord}}" y="20" class="chart-number" style= "font-size: 10px;">
+                          {{ percent }}
+                        </text>
+                        <text x="18" y="28" class="chart-number" style= "font-size: 6px;">
+                            %
+                          </text>
+                    </g>
+                </svg>
+                </div>
+            </div>
+            
+        </div>
+        <div class="main-central-cnt2">
+            <div class="main-left-cnt2">
+                <ul>
+                    <li>
+                        <img src="{% static 'png/university.svg' %}" width="20" height="20" alt="">
+                        <span>Education</span>
+                    </li>
+                    <li>
+                        <img src="{% static 'png/university.svg' %}" width="20" height="20" alt="">
+                        <span>Quizes</span>
+                    </li>
+                    <li>
+                        <img src="{% static 'png/university.svg' %}" width="20" height="20" alt="">
+                        <span>Ratings</span>
+                    </li>
+                    <li>
+                        <img src="{% static 'png/university.svg' %}" width="20" height="20" alt="">
+                        <span>Help & Support</span>
+                    </li>
+                </ul>
+            </div>
+            <section class="main__section">
+                <div class="last-course-block orange-bg">
+                    <div class="last-course__blur">
+                        <h3 class="h3">{{last_course}}</h3>
+                        <div class="h3__next-step">Next step:</div>
+                        <span class="h3__next-lesson">#</span>
+                        <span class="h3__next-lesson-number">{{last_lesson}}.</span>
+                        <span class="h3__next-lesson-name">{{last_lesson_name}}</span>
+                    </div>   
+                </div>
+                <div class="statistics-block">
+                    <div class="last-course__blur2">
+                        <h3 class="h3">Analytics:</h3>
+                        <div class="statistics-block__graphics">    
+                            <canvas styles="" id="myChart" width="330" height="150"></canvas>
+                        </div>    
+                    </div>
+                </div>
+                <div class="last-course-block blue-bg">
+                    <div class="last-course__blur">
+                        <h3 class="h3">Random Quiz</h3>
+                        <div class="h3__next-step">Complexity:</div>
+                        <span class="h3__next-lesson">#</span>
+                        <span class="h3__next-lesson-number">3/5</span>
+                        <span class="h3__next-lesson-name"></span>
+                    </div>   
+                </div>
+                <div class="last-course-block purple-bg">
+                    <div class="last-course__blur">
+                        <h3 class="h3">Shop</h3>
+                        <div class="h3__next-step">Pro license expired:</div>
+                        <span class="h3__next-lesson">#</span>
+                        <span class="h3__next-lesson-number">in 25 days</span>
+                        <span class="h3__next-lesson-name"></span>
+                    </div>   
+                </div>
+                <div class="last-course-block">
+                    <div class="last-course__blur">
+                        <h3 class="h3">Achievments</h3>
+                        <div class="h3__next-step">You gained:</div>
+                        <span class="h3__next-lesson"></span>
+                        <span class="h3__next-lesson-number">0/200</span>
+                        <span class="h3__next-lesson-name"></span>
+                    </div>   
+                </div>
+                <div class="last-course-block">
+                    <div class="last-course__blur">
+                        <h3 class="h3">Feedback</h3>
+                        <div class="h3__next-step">Please contact or leave feedback</div>
+                        <span class="h3__next-lesson"></span>
+                        <span class="h3__next-lesson-number"></span>
+                        <span class="h3__next-lesson-name"></span>
+                    </div>   
+                </div>
+            </section>
+        </div>
+    </main>
+    {% endif %}
+</body>
+</html>

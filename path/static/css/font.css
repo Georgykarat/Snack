@@ -1,0 +1,15 @@
+/* Lemon milk pro */
+
+
+@font-face{
+  font-family: Lemon Milk Pro;
+  font-style: normal;
+  src: url('../../Lemon Milk Pro Ultra Light.otf');
+}
+
+@font-face{
+  font-family: Lemon Milk Pro b;
+  font-style: bold;
+  src: url('../../Lemon Milk Pro Medium.otf');
+}
+

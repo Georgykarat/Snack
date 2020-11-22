@@ -1,0 +1,423 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<!--<link rel="stylesheet" href="Styles/jquery.formstyler.css">-->
+	<link rel="stylesheet" type="text/css" href="{% static 'css/registration.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'css/font.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'css/swiper-5.4.2/package/css/swiper.min.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'css/media.css' %}">
+	<script src="{% static 'js/jQueryv3.4.1.min.js' %}"></script>
+	<script src="{% static 'js/jquery.validate.min.js' %}"></script>
+	<script src="{% static 'js/registration.js' %}" defer="defer"></script>
+	<!--<script src="../../jquery.formstyler.min.js"></script>-->
+	<title>Snack registration</title>
+</head>
+<body>
+	<form method="post" action="/registration/">
+		{% csrf_token %}
+	<!--popup cnt-->
+	<div class="popup-cnt">
+		<div class="popup-window">
+			<div class="popup-text">
+				<span class="verification-text">Verification</span>
+				<span class="verification-text2">Enter the four digit code we sent you via your mail</span>
+			</div>
+			<div class="cnt-for-numbers">
+				<input type="text" name="" placeholder="X" class="number-box" id="number-box-one" maxlength="1" pattern="\d [0-9]" tabindex="1">
+				<input type="text" name="" placeholder="X" class="number-box" id="number-box-two" maxlength="1" pattern="\d [0-9]" tabindex="1">
+				<input type="text" name="" placeholder="X" class="number-box" id="number-box-three" maxlength="1" pattern="\d [0-9]" tabindex="1">
+				<input type="text" name="" placeholder="X" class="number-box" id="number-box-four" maxlength="1" pattern="\d [0-9]" tabindex="1">
+			</div>
+			<div id="timer-cnt">
+				<span class="code-expires-text">Code expires in</span>
+				<span class="minutes" id="timer">00</span>
+				<span class="separator">:</span>
+				<span class="seconds" id="seconds">50</span>
+			</div>
+			<svg class="svg-fadein" width="420" height="90">
+				<circle cx="210" cy="45" r="30" stroke="none" fill="#27cf7f" />
+				<polyline points="195,45 210,55 225,30" stroke-width="2" stroke="white" fill="none"/>
+			</svg>
+			<div class="enjoy-cnt">
+				<span class="Success-text">Success!</span><br><br>
+				<span class="Verified">Your brand new account is verified.</span><br>
+				<span class="Enjoy">Enjoy Snack!</span>	
+			</div>
+			<div class="confirm-button-code">Send me again</div>
+			<a href="../feed"><button type="submit" class="confirm-button-code2" onClick='location.href="../feed"'>Start learning</button></a>
+		</div>
+	</div>
+	<!--popup cnt-->
+	<header class="header">
+		<div class="header__central-cnt">
+			<h1>Snack registration</h1>
+		</div>
+	</header>
+	<main>
+		<section class="central-cnt">
+
+				<div class="swiper-container">
+					<!-- Additional required wrapper -->
+					<div class="swiper-wrapper">
+						<!-- Slides -->
+						<div class="swiper-slide">
+							<img src="{% static 'img/misterx.gif' %}" alt="Mister X">
+						</div>
+						<div class="swiper-slide">
+							<img src="{% static 'img/guys.jpeg' %}" alt="Mister X" height="1000">
+						</div>
+						<div class="swiper-slide">
+							<img src="{% static 'img/Fire.png' %}" alt="Mister X" height="1200">
+						</div>
+					</div>
+					<!-- If we need pagination -->
+					<div class="swiper-pagination"></div>
+					<!-- If we need scrollbar -->
+					<div class="swiper-scrollbar"></div>
+				</div>
+
+			<div id="right-cnt">
+				<div id="right-cnt-align">
+					<div id="right-central-cnt">
+						<svg height="70" width="540" class="scale">
+							<line class="first-line" x1="100" y1="35" x2="270" y2="35" stroke-width="2" />
+							<line class="second-line" x1="270" y1="35" x2="440" y2="35" stroke-width="2" />
+							<circle class="first-circle" cx="100" cy="35" r="20" fill="#27cf7f" stroke="#27cf7f" stroke-width="0" />
+							<polyline class="tick-1" points="90,35 98,43 110,27" stroke="#f5f6f8" stroke-width="2" fill="none" />
+							<circle class="second-circle" cx="270" cy="35" r="15" fill="#cbcdcc" stroke="#27cf7f" stroke-width="0" />
+							<circle class="second-circle-t" cx="270" cy="35" r="20" fill="#27cf7f" stroke="#27cf7f" stroke-width="0" />
+							<polyline class="tick-2" points="260,35 268,43 280,27" stroke="#f5f6f8" stroke-width="2" fill="none" />
+							<circle class="third-circle" cx="440" cy="35" r="15" fill="#cbcdcc" stroke="#27cf7f" stroke-width="0" />
+							<circle class="third-circle-t" cx="440" cy="35" r="20" fill="#27cf7f" stroke="#27cf7f" stroke-width="0" />
+							<polyline class="tick-3" points="430,35 438,43 450,27" stroke="#f5f6f8" stroke-width="2" fill="none" />
+							<text class="one" x="97" y="42">1</text>
+							<text class="two" x="264" y="42">2</text>
+							<text class="three" x="434" y="42">3</text>
+						</svg>
+						<div id="text-cnt">
+							<h2 class="h1">Let's learn some with Snack!</h2>
+							<span class="register-bonus">Start your 7-day free trial by registering down below</span>
+						</div>
+						<div class="form-cnt">	
+							<div class="reg-form1">
+								<input type="text" name="mail" id="id_mail" class="mail-f" placeholder="Email">
+								<span class="mail-text">Email</span>
+								<input type="password" name="password" class="pass-f" id="id_password" autocomplete="none" placeholder="Password">
+								<div class="visible"></div>
+								<div class="unvisible"></div>
+								<span class="pass-text">Password</span>
+								<div id="password-check-att-general-cnt">
+									<div class="password-check-att-general-cnt-first-row">
+										<div class="first-att">
+											<svg width="20" height="20">
+												<circle cx="10" cy="15" r="3" fill="#cbcdcc"  class="check-one"/>
+												<polyline points="7,14 10,19 16,9" stroke="#27cf7f" stroke-width="2" fill="none" class="tick-one" />
+											</svg>
+											<span class="att-text-1">One uppercase character</span>
+										</div>
+										<div class="second-att">
+											<svg width="20" height="20" class="svg2">
+												<circle cx="10" cy="15" r="3" fill="#cbcdcc" class="check-two"/>
+												<polyline points="7,14 10,19 16,9" stroke="#27cf7f" stroke-width="2" fill="none" class="tick-two" />
+											</svg>
+											<span class="att-text-1">One number</span>
+										</div>
+									</div>
+									<div class="password-check-att-general-cnt-second-row">
+										<div class="first-att">
+											<svg width="20" height="20">
+												<circle cx="10" cy="15" r="3" fill="#cbcdcc" class="check-three"/>
+												<polyline points="7,14 10,19 16,9" stroke="#27cf7f" stroke-width="2" fill="none" class="tick-three" />
+											</svg>
+											<span class="att-text-1">One lowercase character</span>
+										</div>
+										<div class="second-att">
+											<svg width="20" height="20" class="svg3">
+												<circle cx="10" cy="15" r="3" fill="#cbcdcc" class="check-four" />
+												<polyline points="7,14 10,19 16,9" stroke="#27cf7f" stroke-width="2" fill="none" class="tick-four" />
+											</svg>
+											<span class="att-text-1">8 characters min.</span>
+										</div>							
+									</div>
+								</div>
+							</div>
+							<input type="password" class="confirm-password2" placeholder="Confirm your password" name="" autocomplete="none">
+							<button type="button" class="confirm-password">Confirm Password</button>
+							<svg width="30" height="10"  class="tick-pass">
+								<polyline points="6,6 10,9 17,1" stroke="#27cf7f" stroke-width="1" fill="none" />
+							</svg>
+							<button type="button" class="create-acc-password" id="create-acc-password" disabled="disabled">Create an account</button>
+						</div>
+						<div class="central-cnt-2">
+							<div class="text-cnt2">
+								<span class="basic-info-text">Just some basic information about you</span>
+							</div>
+							
+							<div class="form2" id="form_2">
+								<div class="name-reg-cnt">
+									<input type="text" name="first_name" id="id_first_name" class="first-name">
+									<input type="text" name="last_name" id="id_last_name" class="second-name">
+								</div>
+								<div class="form2__name-surname-cnt">
+									<span class="First-name-text">First name<sup>*</sup></span>
+									<span class="Last-name-text">Last name<sup>*</sup></span>
+								</div>
+								<!--<input type="text" name="country" class="country" placeholder="Where are you from?">-->
+								<input type="text" name="activity" class="activity" id="id_activity" placeholder="Your current activity">
+								<div class="select-cnt">
+									<select class="dropdown" id="id_country" name="country">
+										<option value="Where are you from?">Where are you from?</option>
+										<option value="Afghanistan">Afghanistan</option>
+										<option value="Albania">Albania</option>
+										<option value="Algeria">Algeria</option>
+										<option value="Andorra">Andorra</option>
+										<option value="Angola">Angola</option>
+										<option value="Antigua and Barbuda">Antigua and Barbuda</option>
+										<option value="Argentina">Argentina</option>
+										<option value="Armenia">Armenia</option>
+										<option value="Australia">Australia</option>
+										<option value="Austria">Austria</option>
+										<option value="Azerbaijan">Azerbaijan</option>
+										<option value="Bahamas">Bahamas</option>
+										<option value="Bahrain">Bahrain</option>
+										<option value="Bangladesh">Bangladesh</option>
+										<option value="Barbados">Barbados</option>
+										<option value="Belarus">Belarus</option>
+										<option value="Belgium">Belgium</option>
+										<option value="Belize">Belize</option>
+										<option value="Benin">Benin</option>
+										<option value="Bhutan">Bhutan</option>
+										<option value="Bolivia">Bolivia</option>
+										<option value="Bosnia and Herzegovina">Bosnia and Herzegovina</option>
+										<option value="Botswana">Botswana</option>
+										<option value="Brazil">Brazil</option>
+										<option value="Brunei Darussalam">Brunei Darussalam</option>
+										<option value="Bulgaria">Bulgaria</option>
+										<option value="Burkina Faso">Burkina Faso</option>
+										<option value="Burundi">Burundi</option>
+										<option value="Cabo Verde">Cabo Verde</option>
+										<option value="California">California</option>
+										<option value="Cambodia">Cambodia</option>
+										<option value="Cameroon">Cameroon</option>
+										<option value="Canada">Canada</option>
+										<option value="Central African Republic">Central African Republic</option>
+										<option value="Chad">Chad</option>
+										<option value="Chile">Chile</option>
+										<option value="China">China</option>
+										<option value="Colombia">Colombia</option>
+										<option value="Comoros">Comoros</option>
+										<option value="Congo">Congo</option> 
+										<option value="Congo, The Democratic Republic of The">Congo, The Democratic Republic of The</option> 
+										<option value="Cook Islands">Cook Islands</option> 
+										<option value="Costa Rica">Costa Rica</option> 
+										<option value="Cote D'ivoire">Cote D'ivoire</option> 
+										<option value="Croatia">Croatia</option> 
+										<option value="Cuba">Cuba</option> 
+										<option value="Cyprus">Cyprus</option> 
+										<option value="Czech Republic">Czech Republic</option> 
+										<option value="Denmark">Denmark</option> 
+										<option value="Djibouti">Djibouti</option> 
+										<option value="Dominica">Dominica</option> 
+										<option value="Dominican Republic">Dominican Republic</option> 
+										<option value="Ecuador">Ecuador</option> 
+										<option value="Egypt">Egypt</option> 
+										<option value="El Salvador">El Salvador</option> 
+										<option value="Equatorial Guinea">Equatorial Guinea</option> 
+										<option value="Eritrea">Eritrea</option> 
+										<option value="Estonia">Estonia</option> 
+										<option value="Ethiopia">Ethiopia</option> 
+										<option value="Falkland Islands (Malvinas)">Falkland Islands (Malvinas)</option> 
+										<option value="Faroe Islands">Faroe Islands</option> 
+										<option value="Fiji">Fiji</option> 
+										<option value="Finland">Finland</option> 
+										<option value="France">France</option> 
+										<option value="French Guiana">French Guiana</option> 
+										<option value="French Polynesia">French Polynesia</option> 
+										<option value="Gabon">Gabon</option> 
+										<option value="Gambia">Gambia</option> 
+										<option value="Georgia">Georgia</option> 
+										<option value="Germany">Germany</option> 
+										<option value="Ghana">Ghana</option> 
+										<option value="Gibraltar">Gibraltar</option> 
+										<option value="Greece">Greece</option> 
+										<option value="Greenland">Greenland</option> 
+										<option value="Grenada">Grenada</option> 
+										<option value="Guadeloupe">Guadeloupe</option> 
+										<option value="Guam">Guam</option> 
+										<option value="Guatemala">Guatemala</option> 
+										<option value="Guinea">Guinea</option> 
+										<option value="Guinea-bissau">Guinea-bissau</option> 
+										<option value="Guyana">Guyana</option> 
+										<option value="Haiti">Haiti</option> 
+										<option value="Holy See (Vatican City State)">Holy See (Vatican City State)</option> 
+										<option value="Honduras">Honduras</option> 
+										<option value="Hong Kong">Hong Kong</option> 
+										<option value="Hungary">Hungary</option> 
+										<option value="Iceland">Iceland</option> 
+										<option value="India">India</option> 
+										<option value="Indonesia">Indonesia</option> 
+										<option value="Iran, Islamic Republic of">Iran, Islamic Republic of</option> 
+										<option value="Iraq">Iraq</option> 
+										<option value="Ireland">Ireland</option> 
+										<option value="Israel">Israel</option> 
+										<option value="Italy">Italy</option> 
+										<option value="Jamaica">Jamaica</option> 
+										<option value="Japan">Japan</option> 
+										<option value="Jordan">Jordan</option> 
+										<option value="Kazakhstan">Kazakhstan</option> 
+										<option value="Kenya">Kenya</option> 
+										<option value="Kiribati">Kiribati</option> 
+										<option value="Korea, Democratic People's Republic of">Korea, Democratic People's Republic of</option> 
+										<option value="Korea, Republic of">Korea, Republic of</option> 
+										<option value="Kuwait">Kuwait</option> 
+										<option value="Kyrgyzstan">Kyrgyzstan</option> 
+										<option value="Lao People's Democratic Republic">Lao People's Democratic Republic</option> 
+										<option value="Latvia">Latvia</option> 
+										<option value="Lebanon">Lebanon</option> 
+										<option value="Lesotho">Lesotho</option> 
+										<option value="Liberia">Liberia</option> 
+										<option value="Libyan Arab Jamahiriya">Libyan Arab Jamahiriya</option> 
+										<option value="Liechtenstein">Liechtenstein</option> 
+										<option value="Lithuania">Lithuania</option> 
+										<option value="Luxembourg">Luxembourg</option> 
+										<option value="Macao">Macao</option> 
+										<option value="North Macedonia">North Macedonia</option> 
+										<option value="Madagascar">Madagascar</option> 
+										<option value="Malawi">Malawi</option> 
+										<option value="Malaysia">Malaysia</option> 
+										<option value="Maldives">Maldives</option> 
+										<option value="Mali">Mali</option> 
+										<option value="Malta">Malta</option> 
+										<option value="Marshall Islands">Marshall Islands</option> 
+										<option value="Martinique">Martinique</option> 
+										<option value="Mauritania">Mauritania</option> 
+										<option value="Mauritius">Mauritius</option>  
+										<option value="Mexico">Mexico</option> 
+										<option value="Micronesia, Federated States of">Micronesia, Federated States of</option> 
+										<option value="Moldova, Republic of">Moldova, Republic of</option> 
+										<option value="Monaco">Monaco</option> 
+										<option value="Mongolia">Mongolia</option> 
+										<option value="Montserrat">Montserrat</option> 
+										<option value="Morocco">Morocco</option> 
+										<option value="Mozambique">Mozambique</option> 
+										<option value="Myanmar">Myanmar</option> 
+										<option value="Namibia">Namibia</option> 
+										<option value="Nauru">Nauru</option> 
+										<option value="Nepal">Nepal</option> 
+										<option value="Netherlands">Netherlands</option> 
+										<option value="Netherlands Antilles">Netherlands Antilles</option> 
+										<option value="New Zealand">New Zealand</option> 
+										<option value="Nicaragua">Nicaragua</option> 
+										<option value="Niger">Niger</option> 
+										<option value="Nigeria">Nigeria</option> 
+										<option value="Niue">Niue</option> 
+										<option value="Norfolk Island">Norfolk Island</option> 
+										<option value="Northern Mariana Islands">Northern Mariana Islands</option> 
+										<option value="Norway">Norway</option> 
+										<option value="Oman">Oman</option> 
+										<option value="Pakistan">Pakistan</option> 
+										<option value="Palau">Palau</option> 
+										<option value="Palestinian Territory, Occupied">Palestinian Territory, Occupied</option> 
+										<option value="Panama">Panama</option> 
+										<option value="Papua New Guinea">Papua New Guinea</option> 
+										<option value="Paraguay">Paraguay</option> 
+										<option value="Peru">Peru</option> 
+										<option value="Philippines">Philippines</option> 
+										<option value="Pitcairn">Pitcairn</option> 
+										<option value="Poland">Poland</option> 
+										<option value="Portugal">Portugal</option> 
+										<option value="Puerto Rico">Puerto Rico</option> 
+										<option value="Qatar">Qatar</option> 
+										<option value="Romania">Romania</option> 
+										<option value="Russian Federation">Russian Federation</option> 
+										<option value="Rwanda">Rwanda</option> 
+										<option value="Saint Kitts and Nevis">Saint Kitts and Nevis</option> 
+										<option value="Saint Lucia">Saint Lucia</option> 
+										<option value="Saint Pierre and Miquelon">Saint Pierre and Miquelon</option> 
+										<option value="Saint Vincent and The Grenadines">Saint Vincent and The Grenadines</option> 
+										<option value="Samoa">Samoa</option> 
+										<option value="San Marino">San Marino</option> 
+										<option value="Sao Tome and Principe">Sao Tome and Principe</option> 
+										<option value="Saudi Arabia">Saudi Arabia</option>
+										<option value="Sealand">Sealand</option> 
+										<option value="Senegal">Senegal</option> 
+										<option value="Serbia and Montenegro">Serbia and Montenegro</option> 
+										<option value="Seychelles">Seychelles</option> 
+										<option value="Sierra Leone">Sierra Leone</option> 
+										<option value="Singapore">Singapore</option> 
+										<option value="Slovakia">Slovakia</option> 
+										<option value="Slovenia">Slovenia</option> 
+										<option value="Solomon Islands">Solomon Islands</option> 
+										<option value="Somalia">Somalia</option> 
+										<option value="South Africa">South Africa</option>
+										<option value="Sudan">South Sudan</option> 
+										<option value="Spain">Spain</option> 
+										<option value="Sri Lanka">Sri Lanka</option> 
+										<option value="Sudan">Sudan</option> 
+										<option value="Suriname">Suriname</option> 
+										<option value="Swaziland">Swaziland</option> 
+										<option value="Sweden">Sweden</option> 
+										<option value="Switzerland">Switzerland</option> 
+										<option value="Syrian Arab Republic">Syrian Arab Republic</option> 
+										<option value="Taiwan, Province of China">Taiwan, Province of China</option> 
+										<option value="Tajikistan">Tajikistan</option> 
+										<option value="Tanzania, United Republic of">Tanzania, United Republic of</option> 
+										<option value="Thailand">Thailand</option> 
+										<option value="Timor-leste">Timor-leste</option> 
+										<option value="Togo">Togo</option> 
+										<option value="Tokelau">Tokelau</option> 
+										<option value="Tonga">Tonga</option> 
+										<option value="Trinidad and Tobago">Trinidad and Tobago</option> 
+										<option value="Tunisia">Tunisia</option> 
+										<option value="Turkey">Turkey</option> 
+										<option value="Turkmenistan">Turkmenistan</option>
+										<option value="Tuvalu">Tuvalu</option> 
+										<option value="Uganda">Uganda</option> 
+										<option value="Ukraine">Ukraine</option> 
+										<option value="United Arab Emirates">United Arab Emirates</option> 
+										<option value="United Kingdom">United Kingdom</option> 
+										<option value="United States">United States</option> 
+										<option value="Uruguay">Uruguay</option> 
+										<option value="Uzbekistan">Uzbekistan</option> 
+										<option value="Vanuatu">Vanuatu</option> 
+										<option value="Venezuela">Venezuela</option> 
+										<option value="Viet Nam">Viet Nam</option> 
+										<option value="Virgin Islands, British">Virgin Islands, British</option>
+										<option value="Yemen">Yemen</option> 
+										<option value="Zambia">Zambia</option> 
+										<option value="Zimbabwe">Zimbabwe</option>
+									</select>
+									<div class="select-cnt__flag"></div>
+								</div>
+								<span class="mail-confirm">Your e-mail</span>
+								<input type="text" name="" class="mail-confirm-f" placeholder="Your mail">
+								<div class="checkbox-cnt">
+									<input type="checkbox" name="" id="rights" size="10px">
+									<label for="rights" class="rights-text">I agree to the storage of my personal data</label><br>
+									<span class="rights-warn">Don't worry: your personal data will be hidden and saved strictly following the neccessary safety measures</span>
+								</div>	
+								<input type="submit" class="create-acc-password2" value="Create an account"></input>	
+							</form>
+						</div>					
+					</div>
+				</div>
+			</div>
+		</section>
+	</main>
+	<footer class="footer">
+		<div class="footer-central-cnt">
+			<div class="footer__rights_icons">Icons made by Freepik from www.flaticon.com</div>
+			<div class="footer__rights_icons">Icons made by Roundicons from www.flaticon.com</div>
+			<div class="footer__rights_icons">Icons made by Gregor Cresnar from www.flaticon.com</div>
+			<div class="footer__rights">Snack LLC, All rights reserved, </div>
+		</div>
+	</footer>
+	</form>
+	<script src="{% static 'css/swiper-5.4.2/package/js/swiper.min.js' %}"></script>
+	<script src="{% static 'js/flag-toggle.js' %}"></script>
+</body>
+</html>

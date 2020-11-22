@@ -1,0 +1,574 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Snack Courses</title>
+    <link rel="stylesheet" href="{% static 'css/font.css' %}">
+    <link rel="stylesheet" href="{% static 'css/styles_python_path.css' %}">
+    <style>
+        .header__profile-icon {
+            background-image: url({{begin_path}}{{photo}});
+            height: 40px;
+            width: 40px;
+            background-position: center;
+            background-size: cover;
+            display: inline-block;
+            position: relative;
+            top: 15px;
+            border-radius: 25px;
+            border: 2px solid transparent;
+            transition: 0.5s;
+            filter: opacity(100%);
+        }
+        .main-central-cnt-section {
+    max-width: 1700px;
+    width: 90%;
+    min-width: 320px;
+    margin: 0 auto;
+    display: block;
+    background-color: transparent;
+    justify-content: space-between;
+}
+.main__map-zone {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+}
+.main__map-zone > div {
+    display: inline-block;
+}
+.mapzone__start {
+    height: 60px;
+    width: 60px;
+    opacity: 1;
+    transition: 1s;
+    transform: translate(110px, 400px);
+}
+.mapzone__start:hover + span {
+    opacity: 1;
+    transition: 0.5s;
+}
+.span__start {
+    transform: translate(56px, 415px);
+    opacity: 0;
+    transition: 0.5s;
+    font-size: 12px;
+    display: inline-block;
+}
+
+.mapzone__python-basics {
+    height: 60px;
+    width: 60px;
+    opacity: 1;
+    transition: 1s;
+    transition: 1s;
+    transform: translate(145px, 340px);
+    position: relative;
+    right: 20px;
+}
+.mapzone__python-basics:hover + span {
+    opacity: 1;
+    transition: 0.5s;
+}
+.span__pythonb {
+    transform: translate(45px, 360px);
+    opacity: 0;
+    transition: 0.5s;
+    font-size: 12px;
+    display: inline-block;
+}
+
+.theme-unavaliable {
+    filter: grayscale(100);
+    cursor: not-allowed;
+    transition: 1s;
+}
+.opacity-animation:hover {
+    opacity: 0.5;
+    transition: 1s;
+    height: 70px;
+    width: 70px;
+}
+.mapzone__python-adv {
+    height: 60px;
+    width: 60px;
+    opacity: 0.7;
+    transition: 1s;
+    transform: translate(175px, 260px);
+}
+.mapzone__html {
+    height: 60px;
+    width: 60px;
+    opacity: 0.7;
+    transition: 1s;
+    transform: translate(165px, 280px);
+    position: relative;
+    right: 40px;
+}
+.cur-pointer {
+    cursor: pointer;
+}
+.cur-ban {
+    cursor: not-allowed;
+}
+
+
+    </style>
+</head>
+<body>
+    {% if request.user.is_authenticated %}
+    <header class="header">
+        <div class="header-central-cnt">
+            <div class="header__logo">
+                <h1 class="h1">Snack</h1>
+            </div>
+            <nav class="nav">
+                <ul>
+                    {% if access == 2 %}
+                    <li><a href="../../admin">Admin</a></li>
+                    {% endif %}
+                    <li><a href="../../feed">My profile</a></li>
+                    <li><a href="..">Courses</a></li>
+                    <li><a href="#">Features</a></li>
+                    <li><a href="#">Contact us</a></li>
+                </ul>
+            </nav>
+            <div class="header__options">
+                <div class="header__profile-name">{{name}} {{last_name}}</div>
+                <button class="header__open-options"></button>
+                <div class="header__profile-icon"></div>
+            </div>
+        </div>
+    </header>
+    <div class="statistics-section">
+        <div class="main-central-cnt-section">
+            <h4 class="h4">Analytics</h4>
+            <div class="stat__first-row">
+                <div class="stat__first-row-left">
+                    <canvas id="date_points" width="280" height="110"></canvas>
+                </div>
+                <div class="stat__first-row-right">
+                    <br>
+                    <canvas id="date_scale" width="50" height="50"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+    <main class="main">
+        <div class="main__central-cnt">
+            <div class="main__left-col">
+                <div class=main__left-col_top> 
+                    <div class="main__left-col_imgcnt">
+                        <img src="{{begin_path}}python.svg" alt="Python Basics" class="course-img">
+                    </div>
+                    <h2>Python Basics</h2>
+                    <div class="main__left-col_ratings">
+                        <span>Progress: 0/41</span>
+                    </div>
+                    <div class="main__left-col__training">
+
+                    </div>
+                    <div class="main__left-col_btncnt">
+                        <button class="exam-btn">Take an exam</button>
+                    </div>
+                </div>
+                <div class="main__left-col_bottom">
+                    <img src="{{begin_path}}dumbell.svg" alt="Excercise" class="Excercise-img">
+                </div>
+            </div>
+            <div class="main__right-col">
+                <div class="main__right-col_cnt">
+                    <div class="main__right-col_row">
+                        <a href="1">
+                        <div class="main__right-col_row-object">
+                            <div class="python_1">
+                                <img class="python_1-sub" src="{{begin_path}}book.svg">
+                                    
+                                </img>
+                            </div>
+                            <span>01. Introduction</span>
+                        </div>
+                        </a>
+                        <div class="main__right-col_row-object">
+                            <div class="python_0">
+                                <div class="python_0-sub">
+                                    <div class="python_sub-row">
+                                        <img src="{{begin_path}}apple.svg" alt="python for apple" class="triple_img">
+                                    </div>
+                                    <div class="python_sub-row">
+                                        <img src="{{begin_path}}microsoft.svg" alt="python for windows" class="triple_img">
+                                        <img src="{{begin_path}}linux.svg" alt="python for linux" class="triple_img">
+                                    </div>
+                                </div>
+                            </div>
+                            <span>02. Installation</span>
+                        </div>
+                    </div>
+                    <div class="main__right-col_row">
+                        <div class="main__right-col_row-object dis_course">
+                            <div class="python_2" style="background-color: #8CF9F9;">
+                                <img class="python_2-sub" src="{{begin_path}}start.svg">
+                                    
+                                </img>
+                            </div>
+                            <span>03. Syntax</span>
+                        </div>
+                        <div class="main__right-col_row-object dis_course">
+                            <div class="python_2" style="background-color: #8CF9F9;">
+                                <img class="python_2-sub" src="{{begin_path}}start.svg">
+                                    
+                                </img>
+                            </div>
+                            <span>04. Print</span>
+                        </div>
+                        <div class="main__right-col_row-object dis_course">
+                            <div class="python_2" style="background-color: #8CF9F9;">
+                                <img class="python_2-sub" src="{{begin_path}}start.svg">
+                                    
+                                </img>
+                            </div>
+                            <span>05. Input</span>
+                        </div>
+                    </div>
+                    <div class="main__right-col_row">
+                        <div class="main__right-col_row-object dis_course">
+                            <div class="python_2" style="background-color: #8CF9F9;">
+                                <img class="python_2-sub" src="{{begin_path}}start.svg">
+                                    
+                                </img>
+                            </div>
+                            <span>06. .format</span>
+                        </div>
+                    </div>
+                    <div class="main__right-col_row">
+                        <div class="main__right-col_row-object dis_course">
+                            <div class="python_3">
+                                <img class="python_3-sub" src="{{begin_path}}tag.svg">
+                                    
+                                </img>
+                            </div>
+                            <span>07. Variables: integer, float. Delete</span>
+                        </div>
+                        <div class="main__right-col_row-object dis_course">
+                            <div class="python_4">
+                                <img class="python_4-sub" src="{{begin_path}}tag(1).svg">
+                                    
+                                </img>
+                            </div>
+                            <span>08. Variables: string, boolean. None</span>
+                        </div>
+                        <div class="main__right-col_row-object dis_course">
+                            <div class="python_2" style="background-color: #BB8CFF;">
+                                <img class="python_2-sub" src="{{begin_path}}gear.svg">
+                                    
+                                </img>
+                            </div>
+                            <span>09. Dynamic typing</span>
+                        </div>
+                    </div>
+                    <div class="main__right-col_row">
+                        <div class="main__right-col_row-object dis_course">
+                            <div class="python_2" style="background-color: #27cf7f;">
+                                <img class="python_2-sub" src="{{begin_path}}box.svg">
+                                    
+                                </img>
+                            </div>
+                            <span>10. Lists</span>
+                        </div>
+                        <div class="main__right-col_row-object dis_course">
+                            <div class="python_2" style="background-color: #F7CE6E;">
+                                <img class="python_2-sub" src="{{begin_path}}knife.svg">
+                                    
+                                </img>
+                            </div>
+                            <span>11. Slices</span>
+                        </div>
+                    </div>
+                    <div class="main__right-col_row">
+                        <div class="main__right-col_row-object dis_course">
+                            <div class="python_2" style="background-color: #6EB0F7;">
+                                <img class="python_2-sub" src="{{begin_path}}knife copy.svg">
+                                    
+                                </img>
+                            </div>
+                            <span>12. Slices 2</span>
+                        </div>
+                    </div>
+                    <div class="main__right-col_row">
+                        <div class="main__right-col_row-object dis_course">
+                            <div class="python_2" style="background-color: #BAC8D3;">
+                                <img class="python_2-sub" src="{{begin_path}}book copy.svg">
+                                    
+                                </img>
+                            </div>
+                            <span>13. Dictionary</span>
+                        </div>
+                        <div class="main__right-col_row-object dis_course">
+                            <div class="python_2" style="background-color: #8CF9F9;">
+                                <img class="python_2-sub" src="{{begin_path}}box copy.svg">
+                                    
+                                </img>
+                            </div>
+                            <span>14. Tuple</span>
+                        </div>
+                        <div class="main__right-col_row-object dis_course">
+                            <div class="python_2" style="background-color: #091414;">
+                                <img class="python_2-sub" src="{{begin_path}}billiards.svg">
+                                    
+                                </img>
+                            </div>
+                            <span>15. Set</span>
+                        </div>
+                    </div>
+                    <div class="main__right-col_row">
+                        <div class="main__right-col_row-object dis_course">
+                            <div class="python_2" style="background-color: #BAC8D3;">
+                                <img class="python_2-sub" src="{{begin_path}}book copy.svg">
+                                    
+                                </img>
+                            </div>
+                            <span>16. Operators</span>
+                        </div>
+                        <div class="main__right-col_row-object dis_course">
+                            <div class="python_2" style="background-color: #83C4E3;">
+                                <img class="python_2-sub" src="{{begin_path}}left-quote.svg">
+                                    
+                                </img>
+                            </div>
+                            <span>17. Escaping</span>
+                        </div>
+                    </div>
+                    <div class="main__right-col_row">
+                        <div class="main__right-col_row-object dis_course">
+                            <div class="python_2" style="background-color: #BAC8D3;">
+                                <img class="python_2-sub" src="{{begin_path}}book copy.svg">
+                                    
+                                </img>
+                            </div>
+                            <span>18. Set operators</span>
+                        </div>
+                    </div>
+                    <div class="main__right-col_row">
+                        <div class="main__right-col_row-object dis_course">
+                            <div class="python_2" style="background-color: #BAC8D3;">
+                                <img class="python_2-sub" src="{{begin_path}}book copy.svg">
+                                    
+                                </img>
+                            </div>
+                            <span>19. Comparison operators</span>
+                        </div>
+                        <div class="main__right-col_row-object dis_course">
+                            <div class="python_2" style="background-color: #83C4E3;">
+                                <img class="python_2-sub" src="{{begin_path}}left-quote.svg">
+                                    
+                                </img>
+                            </div>
+                            <span>20. Logic operators</span>
+                        </div>
+                        <div class="main__right-col_row-object dis_course">
+                            <div class="python_2" style="background-color: #83C4E3;">
+                                <img class="python_2-sub" src="{{begin_path}}left-quote.svg">
+                                    
+                                </img>
+                            </div>
+                            <span>21. Pass</span>
+                        </div>
+                    </div>
+                    <div class="main__right-col_row">
+                        <div class="main__right-col_row-object dis_course">
+                            <div class="python_2" style="background-color: #BAC8D3;">
+                                <img class="python_2-sub" src="{{begin_path}}book copy.svg">
+                                    
+                                </img>
+                            </div>
+                            <span>22. Functions</span>
+                        </div>
+                        <div class="main__right-col_row-object dis_course">
+                            <div class="python_2" style="background-color: #83C4E3;">
+                                <img class="python_2-sub" src="{{begin_path}}book copy.svg">
+                                    
+                                </img>
+                            </div>
+                            <span>23. Standarts and styles</span>
+                        </div>
+                    </div>
+                    <div class="main__right-col_row">
+                        <div class="main__right-col_row-object dis_course">
+                            <div class="python_2" style="background-color: #BAC8D3;">
+                                <img class="python_2-sub" src="{{begin_path}}book copy.svg">
+                                    
+                                </img>
+                            </div>
+                            <span>24. Functions 2</span>
+                        </div>
+                        <div class="main__right-col_row-object dis_course">
+                            <div class="python_2" style="background-color: #BAC8D3;">
+                                <img class="python_2-sub" src="{{begin_path}}book copy.svg">
+                                    
+                                </img>
+                            </div>
+                            <span>25. Return</span>
+                        </div>
+                    </div>
+                    <div class="main__right-col_row">
+                        <div class="main__right-col_row-object dis_course">
+                            <div class="python_2" style="background-color: #BAC8D3;">
+                                <img class="python_2-sub" src="{{begin_path}}book copy.svg">
+                                    
+                                </img>
+                            </div>
+                            <span>26. For</span>
+                        </div>
+                        <div class="main__right-col_row-object dis_course">
+                            <div class="python_2" style="background-color: #BAC8D3;">
+                                <img class="python_2-sub" src="{{begin_path}}book copy.svg">
+                                    
+                                </img>
+                            </div>
+                            <span>27. While</span>
+                        </div>
+                    </div>
+                    <div class="main__right-col_row">
+                        <div class="main__right-col_row-object dis_course">
+                            <div class="python_2" style="background-color: #BAC8D3;">
+                                <img class="python_2-sub" src="{{begin_path}}book copy.svg">
+                                    
+                                </img>
+                            </div>
+                            <span>28. Break</span>
+                        </div>
+                        <div class="main__right-col_row-object dis_course">
+                            <div class="python_2" style="background-color: #BAC8D3;">
+                                <img class="python_2-sub" src="{{begin_path}}book copy.svg">
+                                    
+                                </img>
+                            </div>
+                            <span>29. Continue</span>
+                        </div>
+                        <div class="main__right-col_row-object dis_course">
+                            <div class="python_2" style="background-color: #BAC8D3;">
+                                <img class="python_2-sub" src="{{begin_path}}book copy.svg">
+                                    
+                                </img>
+                            </div>
+                            <span>30. Recursion</span>
+                        </div>
+                    </div>
+                    <div class="main__right-col_row">
+                        <div class="main__right-col_row-object dis_course">
+                            <div class="python_2" style="background-color: #BAC8D3;">
+                                <img class="python_2-sub" src="{{begin_path}}book copy.svg">
+                                    
+                                </img>
+                            </div>
+                            <span>31. Scope</span>
+                        </div>
+                        <div class="main__right-col_row-object dis_course">
+                            <div class="python_2" style="background-color: #BAC8D3;">
+                                <img class="python_2-sub" src="{{begin_path}}book copy.svg">
+                                    
+                                </img>
+                            </div>
+                            <span>32. Function parameters, *</span>
+                        </div>
+                    </div>
+                    <div class="main__right-col_row">
+                        <div class="main__right-col_row-object dis_course">
+                            <div class="python_2" style="background-color: #BAC8D3;">
+                                <img class="python_2-sub" src="{{begin_path}}book copy.svg">
+                                    
+                                </img>
+                            </div>
+                            <span>33. Unpaking</span>
+                        </div>
+                        <div class="main__right-col_row-object dis_course">
+                            <div class="python_2" style="background-color: #BAC8D3;">
+                                <img class="python_2-sub" src="{{begin_path}}book copy.svg">
+                                    
+                                </img>
+                            </div>
+                            <span>34. *args</span>
+                        </div>
+                    </div>
+                    <div class="main__right-col_row">
+                        <div class="main__right-col_row-object dis_course">
+                            <div class="python_2" style="background-color: #BAC8D3;">
+                                <img class="python_2-sub" src="{{begin_path}}book copy.svg">
+                                    
+                                </img>
+                            </div>
+                            <span>35. **kwargs</span>
+                        </div>
+                    </div>
+                    <div class="main__right-col_row">
+                        <div class="main__right-col_row-object dis_course">
+                            <div class="python_2" style="background-color: #BAC8D3;">
+                                <img class="python_2-sub" src="{{begin_path}}book copy.svg">
+                                    
+                                </img>
+                            </div>
+                            <span>36. Moduls and packages</span>
+                        </div>
+                        <div class="main__right-col_row-object dis_course">
+                            <div class="python_2" style="background-color: #BAC8D3;">
+                                <img class="python_2-sub" src="{{begin_path}}book copy.svg">
+                                    
+                                </img>
+                            </div>
+                            <span>37. Unicode</span>
+                        </div>
+                    </div>
+                    <div class="main__right-col_row">
+                        <div class="main__right-col_row-object dis_course">
+                            <div class="python_2" style="background-color: #BAC8D3;">
+                                <img class="python_2-sub" src="{{begin_path}}book copy.svg">
+                                    
+                                </img>
+                            </div>
+                            <span>38. Scope 2</span>
+                        </div>
+                        <div class="main__right-col_row-object dis_course">
+                            <div class="python_2" style="background-color: #BAC8D3;">
+                                <img class="python_2-sub" src="{{begin_path}}book copy.svg">
+                                    
+                                </img>
+                            </div>
+                            <span>39. .pyc</span>
+                        </div>
+                        <div class="main__right-col_row-object dis_course">
+                            <div class="python_2" style="background-color: #BAC8D3;">
+                                <img class="python_2-sub" src="{{begin_path}}book copy.svg">
+                                    
+                                </img>
+                            </div>
+                            <span>40. Moduls and packages 2</span>
+                        </div>
+                    </div>
+                    <div class="main__right-col_row">
+                        <div class="main__right-col_row-object dis_course">
+                            <div class="python_2" style="background-color: #BAC8D3;">
+                                <img class="python_2-sub" src="{{begin_path}}book copy.svg">
+                                    
+                                </img>
+                            </div>
+                            <span>41. Documentation</span>
+                        </div>
+                        <div class="main__right-col_row-object dis_course">
+                            <div class="python_2" style="background-color: #BAC8D3;">
+                                <img class="python_2-sub" src="{{begin_path}}book copy.svg">
+                                    
+                                </img>
+                            </div>
+                            <span>42. UTF-8</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    {% endif %}
+</body>
+</html>
