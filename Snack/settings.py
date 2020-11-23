@@ -25,7 +25,7 @@ SECRET_KEY = '(k=s+tj5zhjt*gpcdxr)&!*=b21=wj+dj)bhrwlb9(ixfxf*z-'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['snack-industry.azurewebsites.net', 'localhost']
+ALLOWED_HOSTS = ['snack-industry.azurewebsites.net', '20.40.209.76', 'localhost']
 
 
 # Application definition
