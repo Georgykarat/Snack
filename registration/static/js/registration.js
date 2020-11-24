@@ -141,6 +141,7 @@ $(function(){
 		}
 	});
 /* focus trigger in boxes with numbers */
+	/*
 	$('#number-box-one').on('keyup', function(event){
 		if (event.which == 8) {
 			return false;
@@ -190,6 +191,7 @@ $(function(){
 			}
 		}
 	});
+	*/
 	/*Escape 27 which event off popup */
 
 	$('body').on('keyup', function(event){
@@ -212,7 +214,7 @@ $(function(){
 		$('.seconds').text('0');
 		$('.seconds').text('1');
 	});
-
+/*
 	const Congrats = function() {
 		$('.confirm-button-code').val('Confirm');
 		$('.popup-text').fadeOut(10);
@@ -225,6 +227,7 @@ $(function(){
 		$('.Verified').fadeIn(400);
 		$('.Enjoy').fadeIn(400);
 	};
+*/
 /* Colors border of name field in red in case of symbol absence */
 	$('.first-name').on('keyup', function(){
 		if ($('first-name').val() != "") {
