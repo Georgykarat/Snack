@@ -32,7 +32,7 @@ def send_email(addr_to, msg_subj, msg_text):
     msg.attach(MIMEText(body, 'plain'))
 
     #Mail provider settings
-    server = smtplib.SMTP_SSL('smtp.mail.ru', 465)
+    server = smtplib.SMTP_SSL('smtp.gmail.com', 587)
     server.starttls()
     server.login(addr_from, password)
     server.send_message(msg)
