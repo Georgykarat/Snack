@@ -26,8 +26,8 @@ class Registration(View):
         if user_form.is_valid():
             # business logic add to database
             Feed.objects.create(**user_form.cleaned_data)
-            username = request.POST['mail']
-            password = (request.POST['password']).lower()
+            username = (request.POST['mail']).lower()
+            password = request.POST['password']
             varhash = make_password(password, None, 'md5')
             newuser = User(username=username, password=varhash)
             newuser.save()
