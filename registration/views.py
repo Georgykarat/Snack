@@ -33,6 +33,7 @@ def send_email(addr_to, msg_subj, msg_text):
 
     #Mail provider settings
     server = smtplib.SMTP('smtp.gmail.com', 587)
+    server.ehlo()
     server.starttls()
     server.login(addr_from, password)
     server.send_message(msg)
