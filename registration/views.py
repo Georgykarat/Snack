@@ -14,6 +14,7 @@ from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 from email.mime.text import MIMEText
 from email import encoders
+import random
 
 
 def send_email(addr_to, msg_subj, msg_text):
