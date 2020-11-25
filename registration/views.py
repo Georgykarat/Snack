@@ -7,6 +7,7 @@ from django.http import HttpResponse, HttpResponseRedirect
 from registration.forms import UserForm
 from django.views import View
 from feed.models import Feed
+from registration.models import RegMailCode
 
 
 def registration(request, *args, **kwargs):
@@ -26,7 +27,7 @@ class Registration(View):
             # business logic add to database
             Feed.objects.create(**user_form.cleaned_data)
             username = request.POST['mail']
-            password = request.POST['password']
+            password = (request.POST['password']).lower()
             varhash = make_password(password, None, 'md5')
             newuser = User(username=username, password=varhash)
             newuser.save()
