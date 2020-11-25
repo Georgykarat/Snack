@@ -9,6 +9,36 @@ from django.views import View
 from feed.models import Feed
 from registration.models import RegMailCode
 
+import smtplib
+from email.mime.multipart import MIMEMultipart
+from email.mime.text import MIMEText
+from email.mime.text import MIMEText
+from email import encoders
+
+
+def send_email(addr_to, msg_subj, msg_text):
+    addr_from = "snackinfo80@gmail.com"
+    password = "Snackorg!8080info"
+
+    msg = MIMEMultipart()
+    msg['From'] = addr_from
+    msg['To'] = addr_to
+    msg['Subject'] = msg_subj
+
+    body = msg_text
+    msg.attach(MIMEText(body, 'plain'))
+
+    #Mail provider settings
+    server = smtplib.SMTP_SSL('smtp.mail.ru', 465)
+    server.starttls()
+    server.login(addr_from, password)
+    server.send_message(msg)
+    server.quit()
+
+
+def code_generate(l):
+    return ''.join(random.SystemRandom().choice(string.ascii_uppercase + string.digits) for _ in range(l))
+
 
 def registration(request, *args, **kwargs):
     return render(request, 'registration/registration.html', {})
@@ -28,6 +58,9 @@ class Registration(View):
             Feed.objects.create(**user_form.cleaned_data)
             username = (request.POST['mail']).lower()
             password = request.POST['password']
+            code = code_generate(4)
+            regcode = 'Your code is ' + code
+            send_email(username, 'Registration code', regcode)
             varhash = make_password(password, None, 'md5')
             newuser = User(username=username, password=varhash)
             newuser.save()
