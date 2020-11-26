@@ -375,7 +375,7 @@ $(function(){
 	
 	  });
 
-	  function click() {
+	  function regclick() {
 		  $.ajax({
 			  url: 'regcode/',
 			  success: function() {
