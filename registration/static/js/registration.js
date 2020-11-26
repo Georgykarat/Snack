@@ -375,14 +375,14 @@ $(function(){
 	
 	  });
 
-	  regbtn.on('click', function(){
+	  function click() {
 		  $.ajax({
 			  url: 'regcode/',
 			  success: function() {
 				  alert('AJAX succeed');
 			  }
 		  })
-	  })
+	  }
 
 	
 
