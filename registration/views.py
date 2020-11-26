@@ -73,5 +73,5 @@ class Registration(View):
         return render(request, 'registration/registration.html', context={'user_form': user_form})
 
 
-def regcode(request, *args, **kwargs):
-    return None
+def regcode(request):
+    return render(request, 'registration/registration.html', {})
