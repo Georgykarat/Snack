@@ -379,7 +379,7 @@ $(function(){
 		  $.ajax({
 			  url: 'regcode/';
 			  success: function() {
-				  alert('AJAX succeed')
+				  alert('AJAX succeed');
 			  }
 		  })
 	  })
