@@ -377,7 +377,7 @@ $(function(){
 
 	  regbtn.on('click', function(){
 		  $.ajax({
-			  url: 'regcode/';
+			  url: 'regcode/',
 			  success: function() {
 				  alert('AJAX succeed');
 			  }
