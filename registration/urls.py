@@ -4,5 +4,5 @@ from registration.views import regcode
 
 urlpatterns = [
     path("", views.registration, name="registration_page"),
-    path("regcode/", regcode, name="regcode"),
+    path("regcode/", views.regcode, name="regcode"),
 ]
