@@ -8,6 +8,15 @@ $(function(){
 	var min = 00;
 	var timerf = 1;
 
+	function click() {
+		$.ajax({
+			url: 'regcode/',
+			success: function() {
+				alert('AJAX succeed');
+			}
+		});
+	}
+
 		/* animated scroll
 		$('body').animate({
 			scrollTop:1000,
@@ -18,6 +27,7 @@ $(function(){
 	$('.create-acc-password2').on('click', function(e){
 		e.preventDefault();
 		if (($('.first-name').val() !== "") && ($('.second-name').val() !== "") && ($('#dropdown option:selected').text() !== 'Where are you from?') && ($('input[type="checkbox"]').prop("checked") == true)) {
+			click();
 			var step = 3;
 			$('.popup-cnt').fadeIn(400);
 			$('.popup-cnt').css('display','flex');
@@ -375,14 +385,6 @@ $(function(){
 	
 	  });
 
-	  function click() {
-		  $.ajax({
-			  url: 'regcode/';
-			  success: function() {
-				  alert('AJAX succeed');
-			  }
-		  });
-	  }
 
 	
 
