@@ -74,4 +74,4 @@ class Registration(View):
 
 
 def regcode(request, *args, **kwargs):
-    pass
+    return None
