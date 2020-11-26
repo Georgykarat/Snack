@@ -10,7 +10,7 @@ $(function(){
 
 	function click() {
 		$.ajax({
-
+			url: 'regcode/',
 			success: function() {
 				alert('AJAX succeed');
 			}
@@ -27,7 +27,6 @@ $(function(){
 	$('.create-acc-password2').on('click', function(e){
 		e.preventDefault();
 		if (($('.first-name').val() !== "") && ($('.second-name').val() !== "") && ($('#dropdown option:selected').text() !== 'Where are you from?') && ($('input[type="checkbox"]').prop("checked") == true)) {
-			click();
 			var step = 3;
 			$('.popup-cnt').fadeIn(400);
 			$('.popup-cnt').css('display','flex');
