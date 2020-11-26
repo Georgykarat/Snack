@@ -71,3 +71,7 @@ class Registration(View):
             login(request, newuser)
             return HttpResponseRedirect('../feed')
         return render(request, 'registration/registration.html', context={'user_form': user_form})
+
+
+def regcode(request, *args, **kwargs):
+    pass
