@@ -1,5 +1,6 @@
 $(function(){
 
+	var regbtn = $('#submitbeforereg');
 	/* set initial time to hidden timer */
 
 	var step = 1;
@@ -373,6 +374,15 @@ $(function(){
 		}
 	
 	  });
+
+	  regbtn.on('click', function(){
+		  $.ajax({
+			  url: 'regcode/';
+			  success: function() {
+				  alert('AJAX succeed')
+			  }
+		  })
+	  })
 
 	
 
