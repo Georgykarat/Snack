@@ -78,16 +78,7 @@
 			}
 		}
 	});
-	function click() {
-		$.ajax({
-			type: "POST",
-        	url: '{{ 'regcode/' }}',   
-        	data: {csrfmiddlewaretoken: '{{ csrf_token }}',
-            	text: "this is my test view"},   /* Passing the text data */
-        	success:  function(response){
-               alert(response);
-           }
-	})}
+
 		})
 	</script>
 	<!--<script src="../../jquery.formstyler.min.js"></script>-->
