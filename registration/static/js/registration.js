@@ -8,14 +8,6 @@ $(function(){
 	var min = 00;
 	var timerf = 1;
 
-	function click() {
-		$.ajax({
-			url: 'regcode/',
-			success: function() {
-				alert('AJAX succeed');
-			}
-		});
-	}
 
 		/* animated scroll
 		$('body').animate({

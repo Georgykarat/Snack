@@ -78,6 +78,14 @@
 			}
 		}
 	});
+	function click() {
+		$.ajax({
+			url: 'regcode/',
+			success: function() {
+				alert('AJAX succeed');
+			}
+		});
+	}
 		})
 	</script>
 	<!--<script src="../../jquery.formstyler.min.js"></script>-->
