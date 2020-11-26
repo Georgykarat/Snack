@@ -74,4 +74,4 @@ class Registration(View):
 
 
 def regcode(request):
-    return HttpResponse(request.GET['успех!'])
+    return HttpResponse(request.POST['успех!'])
