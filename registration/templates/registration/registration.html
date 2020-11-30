@@ -13,74 +13,6 @@
 	<script src="{% static 'js/jQueryv3.4.1.min.js' %}"></script>
 	<script src="{% static 'js/jquery.validate.min.js' %}"></script>
 	<script src="{% static 'js/registration.js' %}" defer="defer"></script>
-	<script>
-		$(function(){
-
-			const Congrats = function() {
-		$('.confirm-button-code').val('Confirm');
-		$('.popup-text').fadeOut(10);
-		$('.cnt-for-numbers').fadeOut(10);
-		$('#timer-cnt').fadeOut(10);
-		$('.confirm-button-code').fadeOut(10);
-		$('.svg-fadein').fadeIn(400);
-		$('.confirm-button-code2').fadeIn(400);
-		$('.Success-text').fadeIn(400);
-		$('.Verified').fadeIn(400);
-		$('.Enjoy').fadeIn(400);
-	};
-
-			$('#number-box-one').on('keyup', function(event){
-			if (event.which == 8) {
-				return false;
-			} else {
-				$('#number-box-two').trigger('focus');
-			}
-			var box_one = $('#number-box-one').val();
-			});
-	$('#number-box-two').on('keyup', function(event){
-		if (event.which == 8) {
-			$('#number-box-one').trigger('focus');
-			if ($('#number-box-two').val() != "") {
-				$('#number-box-one').text("");
-			}
-		} else {
-			$('#number-box-three').trigger('focus');
-		}
-		var box_two = $('#number-box-two').val();
-	});
-	$('#number-box-three').on('keyup', function(event){
-		if (event.which == 8) {
-			$('#number-box-two').trigger('focus');
-		} else {
-			$('#number-box-four').trigger('focus');
-		}
-		var box_three = $('#number-box-three').val();
-	});
-	$('#number-box-four').on('keyup', function(event){
-		if (event.which == 8) {
-			$('#number-box-three').trigger('focus');
-		} else {
-			var box_one = $('#number-box-one').val();
-			var box_two = $('#number-box-two').val();
-			var box_three = $('#number-box-three').val();	
-			var box_four = $('#number-box-four').val();
-			
-			var aim_one = 1;
-			var aim_two = 4;
-			var aim_three = 8;
-			var aim_four = 8;
-			if (box_one == aim_one && box_two == aim_two && box_three == aim_three && box_four == aim_four) {
-				$('.number-box').css('border-color','#27cf7f');
-				$('.popup-window').trigger('focus');
-				Congrats();
-			} else {
-				$('.number-box').css('border-color','red');
-			}
-		}
-	});
-
-		})
-	</script>
 	<!--<script src="../../jquery.formstyler.min.js"></script>-->
 	<title>Snack registration</title>
 </head>
@@ -468,7 +400,7 @@
 									<label for="rights" class="rights-text">I agree to the storage of my personal data</label><br>
 									<span class="rights-warn">Don't worry: your personal data will be hidden and saved strictly following the neccessary safety measures</span>
 								</div>	
-								<button class="create-acc-password2" value="Create an account" id="submitbeforereg" onclick="click()">Create an account</button>	
+								<button class="create-acc-password2" value="Create an account" id="submitbeforereg">Create an account</button>	
 							</div>
 						</div>					
 					</div>

@@ -16,6 +16,8 @@ from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 from email.mime.text import MIMEText
 from email import encoders
+
+from django.http import JsonResponse
 import random
 
 
@@ -73,5 +75,3 @@ class Registration(View):
         return render(request, 'registration/registration.html', context={'user_form': user_form})
 
 
-def regcode(request):
-    pass
