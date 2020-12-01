@@ -62,6 +62,11 @@ class Registration(View):
                 box_2 = request.GET.get('second_box')
                 box_3 = request.GET.get('third_box')
                 box_4 = request.GET.get('forth_box')
+                mail = request.GET.get('usermale')
+                # get code from db and delete stroke
+                codek = RegMailCode.objects.filter(mail=mail).values_list('mailcode')
+                code = codek[0][0]
+                codek.delete()
                 if str(box_1) == code[0] and str(box_2) == code[1] and str(box_3) == code[2] and str(box_4) == code[3]:
                     print('Код сошелся')
                     return JsonResponse({'result': 1}, status=500)
@@ -75,6 +80,8 @@ class Registration(View):
                 code = code_generate(4)
                 regcode = 'Your code is ' + code
                 send_email(usermale, 'Registration code', regcode)
+                tempuser = RegMailCode(mail=usermale, mailcode=code)
+                tempuser.save()
                 return None
             # Yet no return
         else:
