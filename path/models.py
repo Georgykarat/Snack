@@ -28,3 +28,24 @@ class CourseBase(models.Model):
 
     def __str__(self):
         return self.course_name + " " + self.lesson_name
+
+
+class QuizBase(models.Model):
+    num = models.CharField(max_length=6)
+    quiztype = models.CharField(max_length=4)
+    question = models.CharField(max_length=1000)
+    question_pic = models.FileField(upload_to='quizpics', blank=True)
+    question_textorcode = models.CharField(max_length=5000, blank=True)
+    option_1 = models.CharField(max_length=5000, blanl=True)
+    option_2 = models.Charfield(max_length=5000, blank=True)
+    option_3 = models.CharField(max_length=5000, blanl=True)
+    option_4 = models.Charfield(max_length=5000, blank=True)
+    answer = models.CharField(max_length=5000)
+    answer_explanation = models.CharField(max_length=5000, blank=True)
+    complexity = models.IntegerField(max_value=5)
+
+    def __str__(self):
+        return self.num + " " + self.quiztype + " " + self.question
+
+
+
