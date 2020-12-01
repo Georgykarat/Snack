@@ -42,7 +42,7 @@ class QuizBase(models.Model):
     option_4 = models.CharField(max_length=5000, blank=True)
     answer = models.CharField(max_length=5000)
     answer_explanation = models.CharField(max_length=5000, blank=True)
-    complexity = models.IntegerField(max_value=5)
+    complexity = models.IntegerField()
 
     def __str__(self):
         return self.num + " " + self.quiztype + " " + self.question
