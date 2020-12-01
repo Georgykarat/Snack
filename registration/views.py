@@ -66,6 +66,7 @@ class Registration(View):
                 # get code from db and delete stroke
                 codek = RegMailCode.objects.filter(mail=mail).values_list('mailcode')
                 code = codek[0][0]
+                codek = RegMailCode.objects.filter(mail=mail)
                 codek.delete()
                 if str(box_1) == code[0] and str(box_2) == code[1] and str(box_3) == code[2] and str(box_4) == code[3]:
                     print('Код сошелся')
