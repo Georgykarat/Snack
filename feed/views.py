@@ -44,7 +44,7 @@ def feed(request, *args, **kwargs):
         else:
             color = '#27cf7f'
         if percent < 9.9:
-            xcord = '20'
+            xcord = '12'
         else:
             xcord = '9'
         return render(request, 'feed/feed.html', {

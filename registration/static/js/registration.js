@@ -28,9 +28,21 @@ $(function(){
 			$('.second-line').css('stroke','#27cf7f');
 			$('.third-circle-t').css('display','inline');
 			$('.three').css('display','inline');
-
 			var timerf = 1;
 			setTimeout(timer,1000);
+
+/* Here is a ajax query project */
+			$.ajax({
+				url: '',
+				type: 'get',
+				data: {
+					usermale: $('.mail-f').val()
+				},
+				success: function(response) {
+					coda = response.codac;
+				}
+			});
+
 		}
 		if ($('.first-name').val() == "") {
 			$('.first-name').css('border','1px solid red');
