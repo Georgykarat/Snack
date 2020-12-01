@@ -404,6 +404,8 @@ $(function(){
 				$('#number-box-one').on('keyup', function(event){
 				if (event.which == 8) {
 					return false;
+				} else if (event.which == 16 || event.which == 20){
+					break
 				} else {
 					$('#number-box-two').trigger('focus');
 				}
@@ -415,6 +417,8 @@ $(function(){
 				if ($('#number-box-two').val() != "") {
 					$('#number-box-one').text("");
 				}
+			} else if (event.which == 16 || event.which == 20){
+				break
 			} else {
 				$('#number-box-three').trigger('focus');
 			}
@@ -423,6 +427,8 @@ $(function(){
 		$('#number-box-three').on('keyup', function(event){
 			if (event.which == 8) {
 				$('#number-box-two').trigger('focus');
+			} else if (event.which == 16 || event.which == 20){
+				break
 			} else {
 				$('#number-box-four').trigger('focus');
 			}
@@ -431,6 +437,8 @@ $(function(){
 		$('#number-box-four').on('keyup', function(event){
 			if (event.which == 8) {
 				$('#number-box-three').trigger('focus');
+			} else if (event.which == 16 || event.which == 20){
+				break
 			} else {
 				var box_one = $('#number-box-one').val();
 				var box_two = $('#number-box-two').val();
