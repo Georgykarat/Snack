@@ -37,10 +37,6 @@ $(function(){
 				type: 'get',
 				data: {
 					usermale: $('.mail-f').val(),
-					first_box: 'f',
-					second_box: 'f',
-					third_box: 'f',
-					forth_box: 'f',
 				},
 				success: function(response) {}
 			});

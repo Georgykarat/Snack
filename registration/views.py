@@ -51,12 +51,13 @@ def registration(request, *args, **kwargs):
 
 
 class Registration(View):
-    
-    code = 0
 
-    def get(self, request, code=code):
+    def __init__(self):
+        self.flag = 0
+
+    def get(self, request):
         if request.is_ajax():
-            if code != 0:
+            if self.flag == 1:
                 box_1 = request.GET.get('first_box')
                 box_2 = request.GET.get('second_box')
                 box_3 = request.GET.get('third_box')
@@ -73,6 +74,7 @@ class Registration(View):
                 code = code_generate(4)
                 regcode = 'Your code is ' + code
                 send_email(usermale, 'Registration code', regcode)
+                self.flag = 1
                 return None
             # Yet no return
         else:
