@@ -405,7 +405,7 @@ $(function(){
 				if (event.which == 8) {
 					return false;
 				} else if (event.which == 16 || event.which == 20){
-					break
+					return false;
 				} else {
 					$('#number-box-two').trigger('focus');
 				}
@@ -418,7 +418,7 @@ $(function(){
 					$('#number-box-one').text("");
 				}
 			} else if (event.which == 16 || event.which == 20){
-				break
+				return false;
 			} else {
 				$('#number-box-three').trigger('focus');
 			}
@@ -428,7 +428,7 @@ $(function(){
 			if (event.which == 8) {
 				$('#number-box-two').trigger('focus');
 			} else if (event.which == 16 || event.which == 20){
-				break
+				return false;
 			} else {
 				$('#number-box-four').trigger('focus');
 			}
@@ -438,7 +438,7 @@ $(function(){
 			if (event.which == 8) {
 				$('#number-box-three').trigger('focus');
 			} else if (event.which == 16 || event.which == 20){
-				break
+				return false;
 			} else {
 				var box_one = $('#number-box-one').val();
 				var box_two = $('#number-box-two').val();
@@ -456,17 +456,16 @@ $(function(){
 						third_box: box_three,
 						forth_box: box_four
 					},
-					success: function(response) {
-						aim_one = response.box1;
-						aim_two = response.box2;
-						aim_three = response.box3;
-						aim_four = response.box4;
-						if (box_one == aim_one && box_two == aim_two && box_three == aim_three && box_four == aim_four) {
+					error: function(response) {
+						resultjsonreg = response.result;
+						if (resultjsonreg == 1) {
 							$('.number-box').css('border-color','#27cf7f');
 							$('.popup-window').trigger('focus');
 							Congrats();
+							alert(resultjsonreg);
 						} else {
 							$('.number-box').css('border-color','red');
+							alert(ошибка);
 						}
 					}
 				});

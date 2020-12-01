@@ -60,10 +60,12 @@ class Registration(View):
                 box_2 = request.GET.get('second_box')
                 box_3 = request.GET.get('third_box')
                 box_4 = request.GET.get('forth_box')
-                if box_1 == code[0] and box_2 == code[1] and box_3 == code[2] and box_4 == code[3]:
+                if str(box_1) == code[0] and str(box_2) == code[1] and str(box_3) == code[2] and str(box_4) == code[3]:
                     return JsonResponse({'result': 1}, status=200)
+                    print('Код сошелся')
                 else:
                     return JsonResponse({'result': 2}, status=200)
+                    print('Код не сошелся')
             usermale = request.GET.get('usermale')
             print(usermale)
             code = code_generate(4)
