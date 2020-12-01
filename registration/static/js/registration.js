@@ -38,9 +38,7 @@ $(function(){
 				data: {
 					usermale: $('.mail-f').val()
 				},
-				success: function(response) {
-					coda = response.codac;
-				}
+				success: function(response) {}
 			});
 
 		}
@@ -439,17 +437,36 @@ $(function(){
 				var box_three = $('#number-box-three').val();	
 				var box_four = $('#number-box-four').val();
 				
-				var aim_one = 1;
+				/* AJAX 2*/
+
+				$.ajax({
+					url: '',
+					type: 'get',
+					data: {
+						first_box: box_one,
+						second_box: box_two,
+						third_box: box_three,
+						forth_box: box_four
+					},
+					success: function(response) {
+						aim_one = response.box1;
+						aim_two = response.box2;
+						aim_three = response.box3;
+						aim_four = response.box4;
+						if (box_one == aim_one && box_two == aim_two && box_three == aim_three && box_four == aim_four) {
+							$('.number-box').css('border-color','#27cf7f');
+							$('.popup-window').trigger('focus');
+							Congrats();
+						} else {
+							$('.number-box').css('border-color','red');
+						}
+					}
+				});
+
+				/*var aim_one = 1;
 				var aim_two = 4;
 				var aim_three = 8;
-				var aim_four = 8;
-				if (box_one == aim_one && box_two == aim_two && box_three == aim_three && box_four == aim_four) {
-					$('.number-box').css('border-color','#27cf7f');
-					$('.popup-window').trigger('focus');
-					Congrats();
-				} else {
-					$('.number-box').css('border-color','red');
-				}
+				var aim_four = 8;*/
 			}
 		});
 

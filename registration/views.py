@@ -54,11 +54,21 @@ class Registration(View):
 
     def get(self, request):
         if request.is_ajax():
+            if code:
+                box_1 = request.GET.get('first_box')
+                box_2 = request.GET.get('second_box')
+                box_3 = request.GET.get('third_box')
+                box_4 = request.GET.get('forth_box')
+                if box_1 == code[0] and box_2 == code[1] and box_3 == code[2] and box_4 == code[3]:
+                    return JsonResponse({'result': 1}, status=200)
+                else:
+                    return JsonResponse({'result': 2}, status=200)
             usermale = request.GET.get('usermale')
             print(usermale)
             code = code_generate(4)
             regcode = 'Your code is ' + code
             send_email(usermale, 'Registration code', regcode)
+            return None
             # Yet no return
         else:
             user_form = UserForm()
