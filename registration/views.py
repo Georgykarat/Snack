@@ -66,6 +66,7 @@ class Registration(View):
                 # get code from db and delete stroke
                 codek = RegMailCode.objects.filter(mail=mail).values_list('mailcode')
                 code = codek[0][0]
+                print(code)
                 codek = RegMailCode.objects.filter(mail=mail)
                 codek.delete()
                 if str(box_1) == code[0] and str(box_2) == code[1] and str(box_3) == code[2] and str(box_4) == code[3]:
@@ -79,6 +80,7 @@ class Registration(View):
                 usermale = request.GET.get('usermale')
                 print(usermale)
                 code = code_generate(4)
+                print(code)
                 regcode = 'Your code is ' + code
                 send_email(usermale, 'Registration code', regcode)
                 tempuser = RegMailCode(mail=usermale, mailcode=code)
