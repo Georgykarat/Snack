@@ -459,7 +459,7 @@ $(function(){
 						usermale: $('.mail-f').val(),
 						flag: 'b',
 					},
-					error: function(response) {
+					success: function(response) {
 						resultjsonreg = response.result;
 						if (resultjsonreg == 1) {
 							$('.number-box').css('border-color','#27cf7f');

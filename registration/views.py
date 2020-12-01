@@ -83,6 +83,9 @@ class Registration(View):
                 print(code)
                 regcode = 'Your code is ' + code
                 send_email(usermale, 'Registration code', regcode)
+                testuser = RegMailCode.objects.filter(mail=usermale)
+                if testuser:
+                    testuser.delete()
                 tempuser = RegMailCode(mail=usermale, mailcode=code)
                 tempuser.save()
                 return None
