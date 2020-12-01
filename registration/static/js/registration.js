@@ -36,7 +36,11 @@ $(function(){
 				url: '',
 				type: 'get',
 				data: {
-					usermale: $('.mail-f').val()
+					usermale: $('.mail-f').val(),
+					first_box: 'f',
+					second_box: 'f',
+					third_box: 'f',
+					forth_box: 'f',
 				},
 				success: function(response) {}
 			});
@@ -454,7 +458,8 @@ $(function(){
 						first_box: box_one,
 						second_box: box_two,
 						third_box: box_three,
-						forth_box: box_four
+						forth_box: box_four,
+						usermale: $('.mail-f').val(),
 					},
 					error: function(response) {
 						resultjsonreg = response.result;
