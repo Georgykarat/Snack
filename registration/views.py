@@ -71,10 +71,10 @@ class Registration(View):
                 codek.delete()
                 if str(box_1) == code[0] and str(box_2) == code[1] and str(box_3) == code[2] and str(box_4) == code[3]:
                     print('Код сошелся')
-                    return JsonResponse({'result': 1}, status=500)
+                    return JsonResponse({'result': 1}, status=200)
                 else:
                     print('Код не сошелся')
-                    return JsonResponse({'result': 2}, status=500)
+                    return JsonResponse({'result': 2}, status=200)
             else:
                 print('Came into a')
                 usermale = request.GET.get('usermale')
