@@ -1,6 +1,6 @@
 from django.contrib import admin
 from feed.models import Feed, AccessLevel, AccountImage
-from path.models import Rating, CourseBase
+from path.models import Rating, CourseBase, QuizBase
 
 # Register your models here.
 class FeedAdmin(admin.ModelAdmin):
@@ -24,8 +24,13 @@ class AccessLevelAdmin(admin.ModelAdmin):
 class AccountImageAdmin(admin.ModelAdmin):
     list_display = ['mail', 'file']
 
+class QuizBaseAdmin(admin.ModelAdmin):
+    list_display = ['id', 'num', 'quiztype', 'question','question_pic', 'question_textorcode', 'option_1', 'option_2', 'option_3', 'option_4', 'answer', 'answer_explanation', 'complexity']
+    search_fields = ['num', 'quiztype', 'question', 'complexity']
+
 admin.site.register(Feed, FeedAdmin)
 admin.site.register(AccessLevel, AccessLevelAdmin)
 admin.site.register(Rating, RatingAdmin)
 admin.site.register(CourseBase, CoursesAdmin)
 admin.site.register(AccountImage, AccountImageAdmin)
+admin.site.register(QuizBase, QuizBaseAdmin)
