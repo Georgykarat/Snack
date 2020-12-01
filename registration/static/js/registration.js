@@ -465,10 +465,8 @@ $(function(){
 							$('.number-box').css('border-color','#27cf7f');
 							$('.popup-window').trigger('focus');
 							Congrats();
-							alert(resultjsonreg);
 						} else {
 							$('.number-box').css('border-color','red');
-							alert(ошибка);
 						}
 					}
 				});

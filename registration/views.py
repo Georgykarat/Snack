@@ -57,7 +57,6 @@ class Registration(View):
         if request.is_ajax():
             flag = request.GET.get('flag')
             if flag == 'b':
-                print('Came into b')
                 box_1 = request.GET.get('first_box')
                 box_2 = request.GET.get('second_box')
                 box_3 = request.GET.get('third_box')
@@ -66,21 +65,15 @@ class Registration(View):
                 # get code from db and delete stroke
                 codek = RegMailCode.objects.filter(mail=mail).values_list('mailcode')
                 code = codek[0][0]
-                print(code)
                 codek = RegMailCode.objects.filter(mail=mail)
                 codek.delete()
                 if str(box_1) == code[0] and str(box_2) == code[1] and str(box_3) == code[2] and str(box_4) == code[3]:
-                    print('Код сошелся')
                     return JsonResponse({'result': 1}, status=200)
                 else:
-                    print('Код не сошелся')
                     return JsonResponse({'result': 2}, status=200)
             else:
-                print('Came into a')
                 usermale = request.GET.get('usermale')
-                print(usermale)
                 code = code_generate(4)
-                print(code)
                 regcode = 'Your code is ' + code
                 send_email(usermale, 'Registration code', regcode)
                 testuser = RegMailCode.objects.filter(mail=usermale)
