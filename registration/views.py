@@ -54,6 +54,7 @@ class Registration(View):
 
     def get(self, request):
         if request.is_ajax():
+            code = None
             if code:
                 box_1 = request.GET.get('first_box')
                 box_2 = request.GET.get('second_box')
