@@ -52,29 +52,29 @@ def registration(request, *args, **kwargs):
 
 class Registration(View):
 
-    def __init__(self):
-        self.flag = 0
 
     def get(self, request):
         if request.is_ajax():
-            if self.flag == 1:
+            flag = request.GET.get('flag')
+            if flag == 'b':
+                print('Came into b')
                 box_1 = request.GET.get('first_box')
                 box_2 = request.GET.get('second_box')
                 box_3 = request.GET.get('third_box')
                 box_4 = request.GET.get('forth_box')
                 if str(box_1) == code[0] and str(box_2) == code[1] and str(box_3) == code[2] and str(box_4) == code[3]:
                     print('Код сошелся')
-                    return JsonResponse({'result': 1}, status=200)
+                    return JsonResponse({'result': 1}, status=500)
                 else:
                     print('Код не сошелся')
-                    return JsonResponse({'result': 2}, status=200)
+                    return JsonResponse({'result': 2}, status=500)
             else:
+                print('Came into a')
                 usermale = request.GET.get('usermale')
                 print(usermale)
                 code = code_generate(4)
                 regcode = 'Your code is ' + code
                 send_email(usermale, 'Registration code', regcode)
-                self.flag = 1
                 return None
             # Yet no return
         else:

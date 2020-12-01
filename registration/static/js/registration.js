@@ -37,6 +37,7 @@ $(function(){
 				type: 'get',
 				data: {
 					usermale: $('.mail-f').val(),
+					flag: 'a',
 				},
 				success: function(response) {}
 			});
@@ -456,6 +457,7 @@ $(function(){
 						third_box: box_three,
 						forth_box: box_four,
 						usermale: $('.mail-f').val(),
+						flag: 'b',
 					},
 					error: function(response) {
 						resultjsonreg = response.result;
