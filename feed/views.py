@@ -47,6 +47,7 @@ def feed(request, *args, **kwargs):
             xcord = '12'
         else:
             xcord = '9'
+        html_education = '<span>{{education}}</span>'
         return render(request, 'feed/feed.html', {
             'access': feed_data[0][0],
             'name': feed_data[0][1],

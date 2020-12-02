@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'login',
     'path',
     'static',
+    'django_cleanup', #deletes unused media files
 ]
 
 MIDDLEWARE = [
