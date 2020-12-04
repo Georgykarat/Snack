@@ -48,4 +48,14 @@ class QuizBase(models.Model):
         return self.num + " " + self.quiztype + " " + self.question
 
 
+class TemporaryExpCounter(models.Model):
+    mail = models.CharField(max_length=500)
+    lessonnum = models.CharField(max_length=6)
+    exp = models.IntegerField()
+
+    def __str__(self):
+        return self.mail + " " + self.lessonnum + " " + self.exp
+
+
+
 
