@@ -67,8 +67,9 @@ class Registration(View):
                 code = codek[0][0]
                 codek = RegMailCode.objects.filter(mail=mail)
                 codek.delete()
+                processedmail = mail.lower()
                 if str(box_1) == code[0] and str(box_2) == code[1] and str(box_3) == code[2] and str(box_4) == code[3]:
-                    return JsonResponse({'result': 1}, status=200)
+                    return JsonResponse({'result': 1, 'new_mail': processedmail}, status=200)
                 else:
                     return JsonResponse({'result': 2}, status=200)
             else:
@@ -95,10 +96,10 @@ class Registration(View):
             Feed.objects.create(**user_form.cleaned_data)
             username = (request.POST['mail']).lower()
             password = request.POST['password']
-
             varhash = make_password(password, None, 'md5')
             newuser = User(username=username, password=varhash)
             newuser.save()
+            Feed.objects.filter(mail=username).update(password=None)
             login(request, newuser)
             return HttpResponseRedirect('../feed')
         return render(request, 'registration/registration.html', context={'user_form': user_form})

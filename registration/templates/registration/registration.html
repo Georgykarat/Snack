@@ -480,6 +480,7 @@ var mySwiper = new Swiper ('.swiper-container', {
 				success: function(response) {
 					resultjsonreg = response.result;
 					if (resultjsonreg == 1) {
+						$('.mail-f').val() = response.new_mail;
 						$('.number-box').css('border-color','#27cf7f');
 						$('.popup-window').trigger('focus');
 						Congrats();
