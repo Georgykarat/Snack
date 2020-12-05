@@ -69,7 +69,7 @@ class Registration(View):
                 codek.delete()
                 processedmail = mail.lower()
                 if str(box_1) == code[0] and str(box_2) == code[1] and str(box_3) == code[2] and str(box_4) == code[3]:
-                    return JsonResponse({'result': 1, 'new_mail': processedmail}, status=200)
+                    return JsonResponse({'result': 1}, status=200)
                 else:
                     return JsonResponse({'result': 2}, status=200)
             else:
