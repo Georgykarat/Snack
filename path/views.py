@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from feed.models import Feed, AccountImage
-from path.models import TemporaryExpCounter
+from path.models import TemporaryExpCounter, CourseBase
 
 
 def path(request, *args, **kwargs):

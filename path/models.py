@@ -52,6 +52,8 @@ class TemporaryExpCounter(models.Model):
     mail = models.CharField(max_length=500)
     lessonnum = models.CharField(max_length=6)
     exp = models.IntegerField()
+    lives = models.IntegerField()
+    counter = models.IntegerField(default=1)
 
     def __str__(self):
         return self.mail + " " + self.lessonnum + " " + self.exp
