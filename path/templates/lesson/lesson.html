@@ -44,13 +44,17 @@
     </style>
 </head>
 <body>
+    {% if request.user.is_authenticated %}
     <header class="header">
         <div class="mobile__header-nav">
             <button class="mobile__close-nav">x</button>
             <div class="nav__ul-mobile-cnt">
                 <ul class="nav__ul-mobile">
-                    <li><a href="#">My profile</a></li>
-                    <li><a href="#">Courses</a></li>
+                    {% if access == 2 %}
+                    <li><a href="../../../admin/">Admin</a></li>
+                    {% endif %}
+                    <li><a href="../../../feed/">My profile</a></li>
+                    <li><a href="../../">Courses</a></li>
                     <li><a href="#">Features</a></li>
                     <li><a href="#">Contact us</a></li>
                 </ul>
@@ -63,8 +67,8 @@
             </div>
             <nav class="nav">
                 <ul class="nav__ul">
-                    <li><a href="#">My profile</a></li>
-                    <li><a href="#">Courses</a></li>
+                    <li><a href="../../../feed/">My profile</a></li>
+                    <li><a href="../../">Courses</a></li>
                     <li><a href="#">Features</a></li>
                     <li><a href="#">Contact us</a></li>
                 </ul>
@@ -81,10 +85,10 @@
             <div class="lesson-itself-cnt">
                 <div class="main__left-column">
                     <div class="main__h3line">
-                        <a href="#"><button class="btn-back"></button></a>
-                        <h3>Python Basics</h3>
+                        <a href="../"><button class="btn-back"></button></a>
+                        <h3>{{coursename}}</h3>
                     </div>
-                    <h2>01. Introduction</h2>
+                    <h2>{{ lessonid }}. {{lessonname}}</h2>
                     <div class="main__nav-panel">
                         <div class="main__nav-panel_item main__nav-panel_item-active tab_1"><img src="{% static 'img/video.svg' %}" alt="Lesson" title="Lesson" height="25"></div>
                         <div class="main__nav-panel_item tab_2"><img src="{% static 'img/dictionary.svg' %}" alt="Dictionary" title="Dictionary" height="25"></div>
@@ -98,7 +102,7 @@
                             <source src="{{begin_path}}video/0000/videoplayback.mp4" type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"'>
                         </video>
                         <div class="main__lesson-desc">
-                            <span class="main__lesson-desc_text"><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. (Lesson short description)</p></span>
+                            <span class="main__lesson-desc_text"><p>{{ desc }}</p></span>
                         </div>
                         <div class="main__lesson-script">
                             <button class="open__script-btn">Script</button>
@@ -301,4 +305,5 @@
             </div>  
         </div>
     </main>
+    {% endif %}
 </body>

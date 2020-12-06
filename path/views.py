@@ -41,7 +41,10 @@ def python_base(request, *args, **kwargs):
 
 def lesson_data(request, *args, **kwargs):
     lesson = kwargs['lesson']
-    print(lesson)
+    course_code = lesson[0:4]
+    lesson_code = lesson[4:]
+    lesson_data_upload = CourseBase.objects.filter(courseid=course_code).filter(lessonid=lesson_code).values_list('lessonid', 'course_name', 'lesson_name', 'icon', 'description', 'video', 'script')
+    print(lesson_data_upload)
     if request.user.is_authenticated == True:    
         target_mail = request.user.username
     feed_data = Feed.objects.filter(mail=target_mail).values_list('accessid', 'first_name', 'last_name')
@@ -55,5 +58,9 @@ def lesson_data(request, *args, **kwargs):
         'begin_path': begin_path,
         'access': feed_data[0][0],
         'name': feed_data[0][1],
-        'last_name': feed_data[0][2]
+        'last_name': feed_data[0][2],
+        'lessonid': lesson_data_upload[0][0],
+        'lessonname': lesson_data_upload[0][2],
+        'coursename': lesson_data_upload[0][1],
+        'desc': lesson_data_upload[0][4]
     })
