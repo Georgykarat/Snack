@@ -40,6 +40,7 @@ def python_base(request, *args, **kwargs):
     })
 
 def lesson_data(request, *args, **kwargs):
+    print(lesson)
     if request.user.is_authenticated == True:    
         target_mail = request.user.username
     feed_data = Feed.objects.filter(mail=target_mail).values_list('accessid', 'first_name', 'last_name')
