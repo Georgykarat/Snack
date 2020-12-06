@@ -1,0 +1,127 @@
+@media (max-width: 1245px) {
+    .main__nav-panel {
+        border-bottom: #27cf7f 3px solid;
+    }
+    .main__nav-panel_item {
+        padding: 10px 30px;
+    }
+    .nav__ul {
+        display: none;
+    }
+    .mobile__nav-open-btn {
+        display: block;
+    }
+    .header-central-cnt {
+        justify-content: space-between;
+    }
+    .header__options {
+
+    }
+}
+@media (max-width: 800px) {
+    .terms-icon-block {
+        flex-wrap: wrap;
+    }
+
+}
+@media (max-width: 730px) {
+    .main__nav-panel {
+        border-bottom: #27cf7f 3px solid;
+    }
+    .main__nav-panel_item {
+        padding: 10px 15px;
+    }
+    .main__right-column {
+        display: none;
+        margin-right: 100px;
+    }
+    .main__left-column {
+        width: 100%;
+    }
+    .header-central-cnt {
+        width: 100%;
+    }
+    body {
+        padding-left: 0px;
+        padding-right: 0px;
+    }
+    .header-central-cnt {
+        width: 100%;
+    }
+    .open__script-btn {
+        border-left: 0px solid #a8dbc3;
+    }
+    .mobile__nav-open-btn {
+        display: block;
+    }
+    .terms__text {
+        min-width: 100px;
+        width: 20%;
+        font-size: 14px;
+    }
+    h2 {
+        padding-left: 20px;
+    }
+    .feedback-text {
+        padding-left: 20px;
+    }
+    .terms-text {
+        padding-left: 20px;
+    }
+    .terms__description {
+        font-size: 14px;
+    }
+}
+@media (max-width: 430px) {
+    .header__profile-name {
+        display: none;
+    }
+    .header__options {
+        width: 150px;
+    }
+    .h1 {
+        font-size: 18px;
+        position: relative;
+        top: 12px;
+    }
+    h2 {
+        font-size: 20px;
+        padding-left: 20px;
+    }
+    .feedback-text {
+        font-size: 20px;
+        padding-left: 20px;
+    }
+    .terms-text {
+        font-size: 14px;
+        padding-left: 20px;
+    }
+    .terms__number {
+        font-size: 14px;
+    }
+    .header__options {
+        width: unset;
+    }
+    .header__profile-icon {
+        margin-top: 10px;
+        margin-right: 10px;
+    }
+    .main__script-zone {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+    .main__lesson-desc {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+    .terms__description {
+        font-size: 12px;
+    }
+    .terms-icon-block {
+        flex-wrap: wrap;
+    }
+    .terms__tags-cnt {
+        display: flex;
+        flex-wrap: wrap;
+    }
+}

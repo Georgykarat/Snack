@@ -6,66 +6,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Snack</title>
-    <link rel="stylesheet" type="text/css" href="{% static 'css/font.css' %}">
-    <!--<link rel="stylesheet" href="{% static 'css/lesson.css' %}">-->
+    <link rel="stylesheet" href="{% static 'css/font.css' %}">
+    <link rel="stylesheet" href="{% static 'css/lesson.css' %}">
     <script src="{% static 'js/jQueryv3.4.1.min.js' %}"></script>
     <script src="{% static 'js/lesson.js' %}"></script>
+    <link rel="stylesheet" href="{% static 'css/lesson-media.css' %}">
     <style>
-        * {
-    font-family: "Lemon Milk Pro";
-	margin: 0;
-    padding: 0;
-    text-decoration: none;
-    list-style: none;
-}
-
-body, html {
-    margin: 0;
-    height: 0;
-    max-width: 100%;
-    width: 100%;
-}
-.header {
-    width: 100%;
-    min-width: 320px;
-    background-color: #fff;
-    position: fixed;
-    z-index: 50;
-    overflow-x: hidden;
-    overflow-y: hidden;
-}
-.header-central-cnt {
-    max-width: 1700px;
-    width: 90%;
-    min-width: 320px;
-    margin: 0 auto;
-    display: flex;
-    background-color: transparent;
-    justify-content: space-between;
-}
-.header__logo {
-    display: inline-block;
-    padding-top: 20px;
-    padding-bottom: 20px;
-}
-.header__options {
-    display: inline-block;
-    width: 200px;
-}
-.header__profile-name {
-    color: darkgrey;
-    font-size: 10px;
-    padding-top: 40px;
-    padding-right: 20px;
-    max-width: 130px;
-    display: inline-block;
-    transition: 0.5s;
-}
-.header__profile-name:hover {
-    color: grey;
-    transition: 0.5s;
-}
-.header__open-options {
+        .header__open-options {
     width: 20px;
     height: 20px;
     background-image: url('../img/next.svg');
@@ -94,132 +41,36 @@ body, html {
     transition: 0.5s;
     filter: opacity(100%);
 }
-.header__profile-icon:hover {
-    border: 2px solid black;
-    transition: 0.5s;
-    filter: opacity(50%);
-}
-.h1 {
-    font-style: bold;
-    font-family: Lemon Milk Pro b;
-    color: #27cf7f;
-    transition: 1s;
-    padding-right: 30px;
-}
-.h1:hover {
-    font-style: bold;
-    font-family: Lemon Milk Pro b;
-    color: cyan;
-    transition: 1s;
-}
-.nav {
-    display: inline-block;
-    padding-top: 35px;
-}
-.nav ul {
-    list-style: none;
-}
-.nav li {
-    display: inline-block;
-    margin-right: 50px;
-    padding-bottom: 5px;
-    font-weight: bold;
-    font-size: 14px;
-    border-bottom: 1px solid transparent;
-    transition: 0.5s;
-    user-select: none;
-}
-.nav li:hover {
-    border-bottom: 1px solid #27cf7f;
-    transition: 0.5s;
-}
-.nav a {
-    color: gray;
-    transition: 0.5s;
-}
-.nav a:hover {
-    color: #27cf7f;
-    transition: 0.5s;
-}
-.main__left-column {
-    background-color: white;
-    height: 1500px;
-    float: left;
-    width: 65%;
-    margin-top: 100px;
-}
-.main__right-column {
-    background-color: grey;
-    height: 1500px;
-    float: right;
-    width: 30%;
-    margin-top: 100px;
-}
-h3 {
-    font-size: 16px;
-    color: lightgrey;
-}
-h2 {
-    margin-top: 15px;
-    margin-bottom: 20px;
-    font-size: 30px;
-    font-style: bold;
-    font-family: 'Lemon Milk Pro b';
-}
-.main__nav-panel {
-    display: flex;
-    justify-content: space-around;
-    margin-top: 30px;
-    margin-bottom: 10px;
-    border-bottom:#27cf7f 2px solid;
-    padding: 0px 0;
-    cursor: pointer;
-}
-.main__nav-panel_item {
-    padding: 10px 30px;
-}
-.main__nav-panel_item-active {
-    border-left: #27cf7f 2px solid;
-    border-top: #27cf7f 2px solid;
-    border-right: #27cf7f 2px solid;
-    border-bottom: transparent 2px solid;
-    background-color: #27cf7f;
-    border-top-right-radius: 20px;
-    border-top-left-radius: 20px;
-    color: white;
-    transition: 0s;
-}
-.main__nav-panel_item-active:hover {
-    background-color: transparent;
-    color: black;
-    transition: 0s;
-}
-.main_lesson {
-    display: block;
-}
     </style>
 </head>
 <body>
-    {% if request.user.is_authenticated %}
     <header class="header">
+        <div class="mobile__header-nav">
+            <button class="mobile__close-nav">x</button>
+            <div class="nav__ul-mobile-cnt">
+                <ul class="nav__ul-mobile">
+                    <li><a href="#">My profile</a></li>
+                    <li><a href="#">Courses</a></li>
+                    <li><a href="#">Features</a></li>
+                    <li><a href="#">Contact us</a></li>
+                </ul>
+            </div>
+        </div>
         <div class="header-central-cnt">
+            <button class="mobile__nav-open-btn">S</button>
             <div class="header__logo">
                 <h1 class="h1">Snack</h1>
             </div>
             <nav class="nav">
-                <ul>
-                    {% if access == 2 %}
-                    <li><a href="../../../admin">Admin</a></li>
-                    {% endif %}
-                    <li><a href="../../../feed/">My profile</a></li>
-                    <li class="active-tab"><a class="active-tab" href="../../">Courses</a></li>
+                <ul class="nav__ul">
+                    <li><a href="#">My profile</a></li>
+                    <li><a href="#">Courses</a></li>
                     <li><a href="#">Features</a></li>
                     <li><a href="#">Contact us</a></li>
-                    <li><a href="../logout/">Exit</a></li>
                 </ul>
             </nav>
             <div class="header__options">
-                <div class="header__profile-name">{{name}} {{last_name}}</div>
+                <div class="header__profile-name">Georgii Karateev</div>
                 <button class="header__open-options"></button>
                 <div class="header__profile-icon"></div>
             </div>
@@ -227,28 +78,227 @@ h2 {
     </header>
     <main>
         <div class="header-central-cnt">
-            <div class="main__left-column">
-                <h3>Python Basics</h3>
-                <h2>01. Introduction</h2>
-                <div class="main__nav-panel">
-                    <div class="main__nav-panel_item main__nav-panel_item-active tab_1">Lesson</div>
-                    <div class="main__nav-panel_item tab_2">Script</div>
-                    <div class="main__nav-panel_item tab_3">Quiz</div>
-                    <div class="main__nav-panel_item tab_4">Exercise</div>
-                    <div class="main__nav-panel_item tab_5">Questions</div>
+            <div class="lesson-itself-cnt">
+                <div class="main__left-column">
+                    <div class="main__h3line">
+                        <a href="#"><button class="btn-back"></button></a>
+                        <h3>Python Basics</h3>
+                    </div>
+                    <h2>01. Introduction</h2>
+                    <div class="main__nav-panel">
+                        <div class="main__nav-panel_item main__nav-panel_item-active tab_1"><img src="{% static 'img/video.svg' %}" alt="Lesson" title="Lesson" height="25"></div>
+                        <div class="main__nav-panel_item tab_2"><img src="{% static 'img/dictionary.svg' %}" alt="Dictionary" title="Dictionary" height="25"></div>
+                        <!--<div class="main__nav-panel_item tab_3">Quiz</div>-->
+                        <div class="main__nav-panel_item tab_4"><img src="{% static 'img/to-do-list.svg' %}" alt="Exercises" title="Exercises" height="25"></div>
+                        <div class="main__nav-panel_item tab_5"><img src="{% static 'img/question.svg' %}" alt="Questions" title="Questions" height="25"></div>
+                        <div class="main__nav-panel_item tab_6"><img src="{% static 'img/keys.svg' %}" alt="Keys" title="Keys" height="25"></div>
+                    </div>
+                    <div class="main__lesson">
+                        <video width="100%" controls="controls" poster="" style="cursor: pointer;">
+                            <source src="{{begin_path}}video/0000/videoplayback.mp4" type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"'>
+                        </video>
+                        <div class="main__lesson-desc">
+                            <span class="main__lesson-desc_text"><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. (Lesson short description)</p></span>
+                        </div>
+                        <div class="main__lesson-script">
+                            <button class="open__script-btn">Script</button>
+                            <div class="open__script-dropdown-cnt">
+                                <div class="main__script-zone">
+                                    <div class="scipt__h">Python Basics</div>
+                                    <button class="min_view">-</button>
+                                    <button class="max_view">+</button>
+                                    <div class="scipt__h2">"Introduction" script</div>
+                                    <p><span class="main__script-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. (Script place)</span></p>
+                                    <p><span class="main__script-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. (Script place)</span></p>
+                                    <p><span class="main__script-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. (Script place)</span></p>
+                                    <p><span class="main__script-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. (Script place)</span></p>
+                                    <p><span class="main__script-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. (Script place)</span></p>
+                                    <p><span class="main__script-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. (Script place)</span></p>
+                                    <p><span class="main__script-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. (Script place)</span></p>
+                                </div>
+                            </div>
+                        </div>
+                        <!--<div class="feedback-text">Timecodes</div>-->
+                        <div class="feedback-text">Please, leave your feedback</div>
+                    </div>
+                    <div class="main__script">
+                        <div class="feedback-text">Dictionary</div>
+                        <div class="terms-text">Terms</div>
+                        <div class="terms-block-cnt">
+                            <div class="terms-icon-block">
+                                <div class="terms__number">1.</div>
+                                <div class="terms__text">Enterpreter</div>
+                                <div class="terms__description">The word "interpreter" can be used in a variety of different ways when discussing Python. Sometimes interpreter refers to the Python REPL, the interactive prompt you get by typing python at the command line. Sometimes people use "the Python interpreter" more or less interchangeably with "Python" to talk about executing Python code from start to finish.</div>
+                                <div class="terms__tags-cnt">
+                                    <div class="terms__tags">Python</div>
+                                    <div class="terms__tags">Python Basics</div>
+                                </div>
+                                <div class="terms__add-btn-cnt">
+                                    <div class="terms__add-btn-cnt-flex">
+                                        <button class="terms__add-btn">+</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="terms-icon-block">
+                                <div class="terms__number">2.</div>
+                                <div class="terms__text">Enterpreter</div>
+                                <div class="terms__description">The word "interpreter" can be used in a variety of different ways when discussing Python. Sometimes interpreter refers to the Python REPL, the interactive prompt you get by typing python at the command line. Sometimes people use "the Python interpreter" more or less interchangeably with "Python" to talk about executing Python code from start to finish.</div>
+                                <div class="terms__tags-cnt">
+                                    <div class="terms__tags">Python</div>
+                                    <div class="terms__tags">Python Basics</div>
+                                </div>
+                                <div class="terms__add-btn-cnt">
+                                    <div class="terms__add-btn-cnt-flex">
+                                        <button class="terms__add-btn">+</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="terms-text">Python</div>
+                    </div>
+                    <div class="main__qa">
+                        <div class="main__qa-firstcnt">  
+                            <div class="main_qa_header">Please, ask questions and find answers:</div> 
+                            <form class="qa_search-form" action="">
+                                <input type="input" placeholder="Search" class="search-qa">
+                                <button type="submit" value="" class="search-btn"></button>
+                            </form>
+                        </div>
+                        <span class="main__qa-total">Total in base now: 3</span>
+                        <a href="#qform"><span class="main__qa-no-quest">Raise your Q</span></a>
+                        <ul class="main__qa-ul">
+                            <li class="main__qa-li">
+                                <div class="main__qa-li_header">Lorem ipsum dolor sit amet?</div>
+                                <div class="main__qa-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</div>
+                            </li>
+                            <li class="main__qa-li">
+                                <div class="main__qa-li_header">Lorem ipsum dolor sit amet?</div>
+                                <div class="main__qa-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</div>
+                            </li>
+                            <li class="main__qa-li">
+                                <div class="main__qa-li_header">Lorem ipsum dolor sit amet?</div>
+                                <div class="main__qa-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</div>
+                            </li>
+                        </ul>
+                        <form action="" id="qform">
+                            <textarea class="main__textarea"></textarea>
+                            <button type="submit" class="main__question-subm-btn">Send your Q.</button>
+                        </form>
+                    </div>
+                    <div class="main__exercise">
+                        <div class="main_qa_header_2">To improve your skills do the following tasks:</div>
+                        <ul class="main__exercise-ul">
+                            <li class="main__exercise-li">
+                                <div class="main__ex-div">
+                                    <div class="main__exerc-num">1</div>
+                                    <div class="main__exerc-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip</div>
+                                </div>
+                                <div class="main-exer-console">a = 3<br>b = 4<br>c = a + b<br>print(c)</div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="main__quiz">
+                        <div class="main__quiz-btn-cnt">
+                            <button class="main__quiz-btn">Start quiz</button>
+                        </div>
+                    </div>
                 </div>
-                <div class="main__lesson">
-                    <video width="100%" controls="controls" poster="">
-                        <source src="{{begin_path}}video/0000/videoplayback.mp4" type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"'>
-                        <source src="{{begin_path}}video/0000/01.webm" type='video/webm; codecs="vp8, vorbis"'>
-                            
-                    </video>
+                <div class="main__right-column">
+                    <!--<div class="right__summary">Lesson summary</div>-->
+                    <div class="right__undersummury-cnt">
+                        <img src="{% static 'img/book.svg' %}" alt="Introduction" class="lesson-logo">
+                    </div>
+                    <div class="main__quiz-btn-cnt">
+                        <button class="main__quiz-btn">Start quiz</button>
+                    </div>
                 </div>
-            </div>
-            <div class="main__right-column">
-
-            </div>
+            </div>  
+            <!-- Quiz window -->
+            <div class="quiz-itself-cnt">
+                <div class="main__h3line quiz__h3line">
+                    <button class="btn-back quiz__go-back"></button>
+                    <h3>Python Basics</h3>
+                </div>
+                <div class="quiz__h2-cnt-large">
+                    <div class="quiz__h2-cnt">
+                        <h2 style="display: block;" class="h2__quiz">01. Introduction</h2>
+                        <div class="quiz__exp-cnt-suc">+ 5 Exp.</div>
+                        <div class="quiz__exp-cnt-fail">- 10 Exp.</div>
+                    </div>
+                </div>
+                <div class="quiz__progress-line">
+                    <div class="quiz__line-layout">
+                        <div class="quiz__line-current-progress line-cur-1"></div>
+                    </div>
+                </div>
+                <div class="question-1">
+                    <div class="quiz__task_1 task_chooser-of-4">
+                        <div class="quiz__task-header">
+                            <span class="quiz__task-header-text">Lorem ipsum dolor sit amen?</span>
+                        </div>
+                        <!-- If img field in base is empty, ignore through django if tags-->
+                        <div class="quiz__task-img">
+                            <div class="quiz__task-img-cnt">
+                                <img src="" alt="Задание">
+                            </div>
+                        </div>
+                        <!-- If code field in base is empty, ignore through django if tags-->
+                        <div class="quiz__task-code">
+                            <div class="quiz__task-code-large-cnt">
+                                <div class="quiz__task-code-cnt">a = 3<br>b = 4<br>c = a + b<br>print(c)</div>
+                            </div>
+                        </div>
+                        <div class="quiz__task1-answers-cnt">
+                            <div class="quiz__task-answers-cnt-firstrow-large">
+                                <div class="quiz__task-answers-cnt-firstrow">
+                                    <div class="quiz__task-answers-firstbtn-cnt">
+                                        <div class="quiz-number">1</div>
+                                        <button class="quiz__task-answers-firstbtn quiz-btn q s p r m a k se op">6</button>
+                                    </div>
+                                    <div class="quiz__task-answers-secondbtn-cnt">
+                                        <div class="quiz-number">2</div>
+                                        <button class="quiz__task-answers-secondbtn quiz-btn q t r l a p ad op">7</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="quiz__task-answers-cnt-secondrow-large">
+                                <div class="quiz__task-answers-cnt-firstrow">
+                                    <div class="quiz__task-answers-firstbtn-cnt">
+                                        <div class="quiz-number">3</div>
+                                        <button class="quiz__task-answers-thirdbtn quiz-btn q s t r w a k se op">Error: inappropriate argument</button>
+                                    </div>
+                                    <div class="quiz__task-answers-secondbtn-cnt">
+                                        <div class="quiz-number">4</div>
+                                        <button class="quiz__task-answers-forthbtn quiz-btn s t r k p ad se op">print(c)</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="quiz__task_1 task_inputer">
+                        <div class="quiz__task-header">
+                            <span class="quiz__task-header-text">Lorem ipsum dolor sit amen?</span>
+                        </div>
+                        <!-- If img field in base is empty, ignore through django if tags-->
+                        <div class="quiz__task-img">
+                            <div class="quiz__task-img-cnt">
+                                <img src="" alt="Задание">
+                            </div>
+                        </div>
+                        <!-- If code field in base is empty, ignore through django if tags-->
+                        <div class="quiz__task-code">
+                            <div class="quiz__task-code-large-cnt">
+                                <div class="quiz__task-code-cnt">a = 3<br>b = 4<br>c = a + b<br>print(c)</div>
+                            </div>
+                        </div>
+                        <div class="quiz__task1-answers-cnt">
+                            <div class="quiz__input-cnt">
+                                <textarea name="" id="quiz-input-textarea"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>  
         </div>
     </main>
-    {% endif %}
 </body>

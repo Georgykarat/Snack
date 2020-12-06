@@ -14,21 +14,74 @@ body, html {
 }
 .header {
     width: 100%;
-    min-width: 320px;
+    min-width: 300px;
     background-color: #fff;
     position: fixed;
     z-index: 50;
     overflow-x: hidden;
     overflow-y: hidden;
+    height: 80px;
+}
+.nav__ul-mobile-cnt {
+    display: inline-block;
+}
+.nav__ul-mobile {
+    display: flex;
+    color: grey;
+    justify-content: space-between;
+    margin-left: 10px;
+}
+.nav__ul-mobile>li {
+    padding-right: 10px;
+    font-size: 10px;
+}
+.nav__ul-mobile>a {
+    color: white;
+}
+.mobile__header-nav {
+    background: #27cf7f;
+    width: 100%;
+    height: 80px;
+    display: block;
+    position: relative;
+    left: -5000px;
+    z-index: 10;
+}
+.mobile__close-nav {
+    height: 30px;
+    width: 30px;
+    margin-top: 25px;
+    margin-left: 25px;
+    border: 0px solid transparent;
+    border-radius: 20px;
+}
+.mobile__nav-open-btn {
+    height: 30px;
+    width: 30px;
+    background-color: #27cf7f;
+    margin-top: 28px;
+    margin-left: 10px;
+    border: 0px solid transparent;
+    border-radius: 25px;
+    font-style: bold;
+    font-family: Lemon Milk Pro b;
+    color: white;
+    text-align: center;
+    cursor: pointer;
+    font-size: 18px;
+    outline: none;
+    display: none;
 }
 .header-central-cnt {
     max-width: 1700px;
     width: 90%;
-    min-width: 320px;
+    min-width: 300px;
     margin: 0 auto;
     display: flex;
     background-color: transparent;
     justify-content: space-between;
+    position: relative;
+    top: -85px;
 }
 .header__logo {
     display: inline-block;
@@ -51,35 +104,6 @@ body, html {
 .header__profile-name:hover {
     color: grey;
     transition: 0.5s;
-}
-.header__open-options {
-    width: 20px;
-    height: 20px;
-    background-image: url('../img/next.svg');
-    background-position: center;
-    background-size: 10px 10px;
-    background-color: transparent;
-    border: none;
-    display: inline-block;
-    background-repeat: no-repeat;
-    transform: rotate(90deg);
-    position: relative;
-    top: 5px;
-    margin-right: 3px;
-}
-.header__profile-icon {
-    background-image: url('../../usimg/guys.jpeg');
-    height: 40px;
-    width: 40px;
-    background-position: center;
-    background-size: cover;
-    display: inline-block;
-    position: relative;
-    top: 15px;
-    border-radius: 25px;
-    border: 2px solid transparent;
-    transition: 0.5s;
-    filter: opacity(100%);
 }
 .header__profile-icon:hover {
     border: 2px solid black;
@@ -128,23 +152,88 @@ body, html {
     color: #27cf7f;
     transition: 0.5s;
 }
+main {
+    position: relative;
+    top: 80px;
+}
 .main__left-column {
     background-color: white;
     height: 1500px;
     float: left;
     width: 65%;
     margin-top: 100px;
+    position: relative;
+    top: -10px;
 }
 .main__right-column {
-    background-color: grey;
+    background-color: #27cf7f;
+    border-bottom: 8px solid #a8dbc3; /* 6EA3F8 */
+    border-left: 8px solid #a8dbc3; /* 6EA3F8 */
+    box-shadow: 0px 0px 5px 0px;
+    border-radius: 30px;
     height: 1500px;
     float: right;
     width: 30%;
     margin-top: 100px;
+    position: relative;
+    transition: 1s;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+}
+.main__right-column:hover {
+    transition: 1s;
+    border-bottom: 2px solid #a8dbc3; /* 6EA3F8 */
+    border-left: 2px solid #a8dbc3; /* 6EA3F8 */
+    top: 6px;
+    left: -6px;
+    box-shadow: 0px 0px 2px 0px;
+}
+.main__right-column-vip {
+    background-color: #FFD700;
+    border-bottom: 8px solid #F0E68C; /* 6EA3F8 */
+    border-left: 8px solid #F0E68C; /* 6EA3F8 */
+    box-shadow: 0px 0px 5px 0px;
+    border-radius: 30px;
+    height: 1500px;
+    float: right;
+    width: 30%;
+    margin-top: 100px;
+    position: relative;
+    transition: 1s;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+}
+.main__right-column-vip:hover {
+    transition: 1s;
+    border-bottom: 2px solid #F0E68C; /* 6EA3F8 */
+    border-left: 2px solid #F0E68C; /* 6EA3F8 */
+    top: 6px;
+    left: -6px;
+    box-shadow: 0px 0px 2px 0px;
 }
 h3 {
     font-size: 16px;
     color: lightgrey;
+    display: inline-block;
+}
+.btn-back {
+    cursor: pointer;
+    height: 40px;
+    width: 40px;
+    background-image: url('../img/right-arrow.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 50%;
+    transform: rotate(180deg);
+    background-color: transparent;
+    border: transparent;
+    position: relative;
+    top: 12px;
+}
+.main__h3line {
+    display: block;
 }
 h2 {
     margin-top: 15px;
@@ -152,6 +241,7 @@ h2 {
     font-size: 30px;
     font-style: bold;
     font-family: 'Lemon Milk Pro b';
+    display: block;
 }
 .main__nav-panel {
     display: flex;
@@ -163,7 +253,41 @@ h2 {
     cursor: pointer;
 }
 .main__nav-panel_item {
-    padding: 10px 30px;
+    padding: 10px 60px;
+}
+.main__lesson-script {
+    display: block;
+    margin-top: 20px;
+}
+.open__script-dropdown-cnt {
+    max-height: unset;
+}
+.open__script-btn {
+    width: 100%;
+    color: white;
+    background-color: #27cf7f;
+    cursor: pointer;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    border-top: 0px solid transparent;
+    border-right: 0px solid transparent;
+    border-left: 5px solid #a8dbc3;
+    border-bottom: 5px solid #a8dbc3;
+    border-top-left-radius: 25px;
+    border-top-right-radius: 25px;
+    display: block;
+    transition: 0.5s;
+    position: relative;
+    top: 0;
+    left: 0;
+    outline: none;
+}
+.open__script-btn:hover {
+    transition: 0.5s;
+    border-bottom: 1px solid #a8dbc3;
+    border-left: 1px solid #a8dbc3;
+    top: 4px;
+    left: -4px;
 }
 .main__nav-panel_item-active {
     border-left: #27cf7f 2px solid;
@@ -181,6 +305,611 @@ h2 {
     color: black;
     transition: 0s;
 }
-.main_lesson {
+.main__lesson {
     display: block;
+}
+.main__script {
+    display: none;
+}
+.main__quiz {
+    display: none;
+}
+.main__exercise {
+    display: none;
+}
+.main__qa {
+    display: none;
+}
+.main__lesson-desc {
+    display: block;
+    margin-top: 20px;
+}
+.main__lesson-desc_text {
+    color: darkgray;
+    font-size: 16px;
+    text-indent: 30px;
+    text-align: justify;
+}
+.feedback-text {
+    font-size: 24px;
+    color: black;
+    font-style: bold;
+    font-family: Lemon Milk Pro b;
+    margin-top: 20px;
+}
+.main__script-zone {
+    background-color: rgb(236, 236, 236);
+    padding: 30px;
+    margin-top: 10px;
+    display: none;
+    height: 0px;
+    transition: 2.5s;
+}
+.main__script-text {
+    color: black;
+    font-size: 18px;
+    padding-bottom: 10px;
+    display: block;
+    text-align: justify;
+    text-indent: 40px;
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none;   /* Chrome/Safari/Opera */
+    -khtml-user-select: none;    /* Konqueror */
+    -moz-user-select: none;      /* Firefox */
+    -ms-user-select: none;       /* Internet Explorer/Edge */
+    user-select: none;   
+}
+.scipt__h {
+    margin: 0 auto;
+    font-size: 20px;
+    color: black;
+    font-style: bold;
+    font-family: Lemon Milk Pro b;
+
+}
+.scipt__h2 {
+    margin: 0 auto;
+    font-size: 18px;
+    color: black;
+    font-style: bold;
+    font-family: Lemon Milk Pro b;
+    padding-bottom: 20px;
+    display: block;
+}
+.min_view {
+    height: 40px;
+    width: 40px;
+    float: right;
+    position: relative;
+    top: -20px;
+    font-size: 18px;
+    color: #27cf7f;
+    font-style: bold;
+    font-family: Lemon Milk Pro b;
+    background-color: transparent;
+    border-radius: 25px;
+    border: 1px solid black;
+    cursor: pointer;
+
+
+}
+.max_view {
+    height: 40px;
+    width: 40px;
+    float: right;
+    position: relative;
+    top: -20px;
+    left: -20px;
+    font-size: 18px;
+    color: #27cf7f;
+    font-style: bold;
+    font-family: Lemon Milk Pro b;
+    background-color: transparent;
+    border-radius: 25px;
+    border: 1px solid black;
+    cursor: pointer;
+}
+.main_qa_header {
+    font-size: 20px;
+    color: black;
+    float: left;
+    text-align: left;
+    padding-top: 7px;
+    font-style: bold;
+    font-family: Lemon Milk Pro b;
+}
+.main_qa_header2 {
+    font-size: 20px;
+    color: black;
+    text-align: left;
+    padding-top: 7px;
+    font-style: bold;
+    font-family: Lemon Milk Pro b;
+}
+.search-qa {
+    width: 300px;
+    height: 30px;
+    font-size: 16px;
+    border: 1px solid #27cf7f;
+    outline: none;
+    display: inline-block;
+    position: relative;
+    right: -20px;
+    top: -3px;
+    z-index: 2;
+    text-indent: 10px;
+}
+.search-btn {
+    display: inline-block;
+    height: 40px;
+    width: 40px;
+    padding: 10px;
+    cursor: pointer;
+    background-image: url('../img/magnifier.png');
+    background-repeat: no-repeat;
+    background-size: 50%;
+    background-color: white;
+    background-position: center;
+    border: 1px solid #27cf7f;
+    border-radius: 25px;
+    position: relative;
+    z-index: 3;
+}
+.qa_seacrh-form {
+    display: flex;
+    flex-wrap: nowrap;
+}
+.main__qa-firstcnt {
+    display: flex;
+    justify-content: space-between;
+}
+.main__qa-ul {
+    display: block;
+    margin: 20px 0;
+}
+.main__qa-li {
+    display: block;
+    border: 1px solid rgb(236, 236, 236);
+    margin: 10px 0;
+    padding: 13px 0;
+    transition: 0.5s;
+    box-shadow: none;
+    background-color: transparent;
+    cursor: pointer;
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none;   /* Chrome/Safari/Opera */
+    -khtml-user-select: none;    /* Konqueror */
+    -moz-user-select: none;      /* Firefox */
+    -ms-user-select: none;       /* Internet Explorer/Edge */
+    user-select: none;   
+
+}
+.main__qa-li:hover {
+    transition: 0.5s;
+    border: 4px solid #27cf7f;
+    box-shadow: grey;
+    padding: 10px 0;
+
+}
+
+.main__qa-li_header {
+    display: block;
+    color: black;
+    border-bottom: 1px solid rgb(236, 236, 236);
+    text-indent: 10px;
+    padding-bottom: 10px;
+}
+.main__qa-text {
+    display: block;
+    color: grey;
+    text-indent: 20px;
+    padding: 10px 10px;
+    text-align: justify;
+}
+.main__qa-total {
+    font-style: bold;
+    font-family: Lemon Milk Pro b;
+    font-size: 16px;
+}
+.main__qa-no-quest {
+    color: #27cf7f;
+    padding-left: 15px;
+    cursor: pointer;
+}
+.main__qa-no-quest:hover {
+    text-decoration: underline;
+}
+.main__textarea {
+    width: 100%;
+    height: 80px;
+    background-color: rgb(236, 236, 236);
+    resize: none;
+    padding: 0px;
+    font-size: 18px;
+    text-indent: 20px;
+    padding: 20px 0;
+    border: none;
+}
+.main__question-subm-btn {
+    height: 40px;
+    width: 100%;
+    background-color: #27cf7f;
+    color: white;
+    font-size: 20px;
+    border: 1px solid transparent;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    transition: 0.5s;
+    cursor: pointer;
+}
+.main__question-subm-btn:hover {
+    transition: 0.5s;
+    background-color: white;
+    color: #27cf7f;
+    border: 1px solid #27cf7f;
+}
+.main__exerc-num {
+    font-style: bold;
+    font-family: Lemon Milk Pro b;
+    font-size: 16px;
+    border: 1px solid #27cf7f;
+    height: 30px;
+    width: 30px;
+    border-radius: 40px;
+    text-align: center;
+    float: left;
+    padding-top: 5px;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+.main__exercise-ul {
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+.main__exerc-text {
+    font-size: 16px;
+    float: left;
+    margin-left: 10px;
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none;   /* Chrome/Safari/Opera */
+    -khtml-user-select: none;    /* Konqueror */
+    -moz-user-select: none;      /* Firefox */
+    -ms-user-select: none;       /* Internet Explorer/Edge */
+    user-select: none;  
+}
+.main__exercise-li {
+    display: flex;
+    flex-wrap: wrap;
+    float: left;
+}
+.main__ex-div {
+    display: flex;
+    flex-wrap: nowrap;
+}
+.main-exer-console {
+    font-family: Menlo;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    padding-left: 20px;
+    margin-left: 40px;
+    margin-top: 10px;
+    background-color: black;
+    border-radius: 30px;
+    color: chartreuse;
+    display: block;
+    width: 100%;
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none;   /* Chrome/Safari/Opera */
+    -khtml-user-select: none;    /* Konqueror */
+    -moz-user-select: none;      /* Firefox */
+    -ms-user-select: none;       /* Internet Explorer/Edge */
+    user-select: none;  
+}
+.right__summary {
+    text-align: center;
+    color: white;
+    font-size: 20px;
+    padding-top: 30px;
+}
+.right__undersummury-cnt {
+    display: flex;
+    justify-content: center;
+}
+.lesson-logo {
+    height: 150px;
+    width: 150px;
+    margin-top: 20px;
+    border: 5px solid white;
+    border-radius: 80px;
+}
+.main__quiz-btn-cnt {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+.main__quiz-btn {
+    height: 120px;
+    width: 120px;
+    border-radius: 90px;
+    margin-top: 30px;
+    background-color: #27cf7f;
+    border: 1px solid transparent;
+    transition: 0.5s;
+    color: white;
+    cursor: pointer;
+    font-size: 20px;
+}
+.main__quiz-btn:hover {
+    transition:  0.5s;
+    background-color: white;
+    color: #27cf7f;
+    border: 1px solid #27cf7f;
+}
+.lesson-itself-cnt {
+    display: block;
+    width: 100%;
+}
+.quiz-itself-cnt {
+    display: none;
+    width: 100%;
+}
+.quiz-itself-cnt {
+    margin-top: 80px;
+    text-align: center;
+    display: none;
+
+}
+.h2__quiz {
+    text-align: left;
+}
+.quiz__line-layout {
+    min-width: 100%;
+    height: 15px;
+    background-color: lightgray;
+    border-radius: 20px;
+    display: flex;
+}
+.quiz__line-current-progress {
+    height: 11px;
+    border-radius: 20px;
+    margin-top: 2px;
+    margin-left: 0.2%;
+    transition: 0.5s;
+}
+.line-cur-1 {
+    width: 88.8%;
+    background-color: greenyellow;
+    transition: 0.5s;
+}
+.quiz__progress-line {
+    width: 90%;
+    display: block;
+    margin: 0 auto;
+}
+.quiz__h3line {
+    text-align: left;
+}
+.quiz__h2-cnt {
+    display: flex;
+    justify-content: space-between;
+}
+.quiz__exp-cnt-suc {
+    font-size: 14px;
+    border: 0px solid #27cf7f;
+    background-image: url('../img/star.svg');
+    background-repeat: no-repeat;
+    background-size: 20%;
+    display: none;
+    height: 20px;
+    position: relative;
+    top: 45px;
+    transition: 0.5s;
+    border-radius: 20px;
+    padding-left: 20px;
+    padding-right: 10px;
+    opacity: 1;
+}
+.quiz__exp-cnt-fail {
+    font-size: 14px;
+    border: 0px solid #27cf7f;
+    background-image: url('../img/star.svg');
+    background-repeat: no-repeat;
+    background-size: 20%;
+    display: inline-block;
+    height: 20px;
+    position: relative;
+    top: 5px;
+    transition: 0.5s;
+    border-radius: 20px;
+    padding-left: 20px;
+    padding-right: 10px;
+    opacity: 1;
+}
+.quiz__task-header-text {
+    text-align: center;
+    font-size: 24px;
+    font-style: bold;
+    font-family: Lemon Milk Pro b;
+}
+.quiz__task-header {
+    margin-top: 50px;
+    margin-bottom: 20px;
+}
+.quiz__task-img-cnt {
+    display: flex;
+    justify-content: center;
+}
+.quiz__task-img {
+    display: none;
+}
+.quiz__task-code-large-cnt {
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+}
+.quiz__task-code-cnt {
+    width: 300px;
+    background-color: black;
+    color: chartreuse;
+    font-family: Menlo;
+    font-size: 18px;
+    padding: 20px;
+    border-radius: 20px;
+    text-align: left;
+}
+.quiz__task1-answers-cnt {
+    margin-top: 50px;
+}
+.quiz__task-answers-cnt-firstrow-large {
+    display: flex;
+    justify-content: center;
+    margin-top: 100px;
+}
+.quiz__task-answers-cnt-secondrow-large {
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+}
+.quiz__task-answers-cnt-firstrow {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: nowrap;
+    max-width: 800px;
+    min-width: 800px;
+}
+.quiz__task-answers-firstbtn-cnt {
+    display: inline-block;
+}
+.quiz__task-answers-secondbtn-cnt {
+    display: inline-block; 
+}
+.quiz-btn {
+    height: 50px;
+    width: 300px;
+    background-color: transparent;
+    font-size: 12px;
+    border: 2px solid lightgrey;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: 0.5s;
+    color: black;
+    display: inline-block;
+}
+.quiz-btn:hover {
+    transition: 0.5s;
+    background-color: lightgray;
+    color: white;
+}
+.quiz-number {
+    display: inline-block;
+    border: 2px solid lightgray;
+    border-radius: 25px;
+    height: 25px;
+    width: 25px;
+    position: relative;
+    right: -45px;
+    top: -1px;
+    text-align: center;
+    font-style: bold;
+    font-family: Lemon Milk Pro b;
+    color: lightgray;
+}
+.task_inputer {
+    display: none;
+}
+.task_chooser-of-4 {
+    display: block;
+}
+.quiz__input-cnt {
+    display: flex;
+    justify-content: center;
+}
+#quiz-input-textarea {
+    height: 500px;
+    width: 100%;
+    background-color: black;
+    color: chartreuse;
+    resize: none;
+    text-align: left;
+    padding: 20px;
+    font-size: 18px;
+    font-family: Menlo;
+}
+.terms-text {
+    font-size: 18px;
+    font-style: bold;
+    font-family: Lemon Milk Pro b;
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+.terms__text {
+    font-size: 16px;
+    color: black;
+    padding-left: 10px;
+    max-width: 25%;
+    min-width: 15%;
+}
+.terms__number {
+    font-size: 16px;
+    font-style: bold;
+    font-family: Lemon Milk Pro b;
+    color: black;
+}
+.terms-icon-block {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    padding-left: 10px;
+    padding-right: 10px;
+    border: 5px solid transparent;
+    transition: 0.5s;
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: left;
+    
+}
+.terms-icon-block:hover {
+    border: 5px solid #27cf7f;
+    transition: 0.5s;
+}
+.terms__description {
+    max-width: 50%;
+    min-width: 50%;
+    color: grey;
+    font-size: 16px;
+    padding-left: 10px;
+    text-align: justify;
+}
+.terms__tags-cnt {
+    display: block;
+    margin-left: 10px;
+    justify-content: left;
+    max-width: 15%;
+    min-width: 15%;
+    flex-wrap: wrap;
+}
+.terms__tags {
+    padding-left: 5px;
+    padding-right: 5px;
+    background-color: lightgray;
+    border: 1px solid grey;
+    border-radius: 20px;
+    display: inline-block;
+    margin: 2px;
+    font-size: 10px;
+}
+.terms__add-btn-cnt {
+    display: block;
+}
+.terms__add-btn-cnt-flex {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.terms__add-btn {
+    height: 30px;
+    width: 30px;
+    cursor: pointer;
+    font-style: bold;
+    font-family: Lemon Milk Pro b;
+    color: black;
 }
