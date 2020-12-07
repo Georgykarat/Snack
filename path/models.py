@@ -47,7 +47,7 @@ class QuizBase(models.Model):
     def __str__(self):
         return self.num + " " + self.quiztype + " " + self.question
 
-
+'''
 class TemporaryExpCounter(models.Model):
     mail = models.CharField(max_length=500)
     lessonnum = models.CharField(max_length=6)
@@ -57,7 +57,7 @@ class TemporaryExpCounter(models.Model):
 
     def __str__(self):
         return self.mail + " " + self.lessonnum + " " + self.exp
-
+'''
 
 
 
