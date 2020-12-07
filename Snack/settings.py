@@ -121,6 +121,15 @@ USE_L10N = True
 USE_TZ = True
 
 
+# Azure Storage credentials
+
+AZURE_ACCOUNT_NAME = 'snackstorage'
+AZURE_ACCOUNT_KEY = 'Ab+9koQk7sGSHDgU0NlKwSwI6UiBPcnECWZmFrWgjyXfBRmjDdhY1k7FOpwX2/MKa3UltE0eqc8OwNztx68fEA=='
+AZURE_CONTAINER = 'bloblessons'
+AZURE_CUSTOM_DOMAIN = f'{AZURE_ACCOUNT_NAME}.blob.core.windows.net'
+AZURE_LOCATION=f'{AZURE_ACCOUNT_NAME}.blob.core.windows.net'
+
+
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
@@ -137,7 +146,8 @@ PASSWORD_HASHERS = (
 )
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
-MEDIA_URL = '/media/'
+#MEDIA_URL = '/media/'
+MEDIA_URL = f'https://{AZURE_CUSTOM_DOMAIN}/{AZURE_CONTAINER}/'
 
 CONTENT_TYPES = ['image', 'video']
 MAX_UPLOAD_SIZE = "5242880"

@@ -52,7 +52,8 @@ def lesson_data(request, *args, **kwargs):
         photo = AccountImage.objects.filter(mail=target_mail).values_list('file')[0][0]
     else:
         photo = "files/guys.jpeg"
-    begin_path = '/media/'
+    #begin_path = '/media/'
+    begin_path = 'https://snackstorage.blob.core.windows.net/bloblessons/'
     return render(request, 'lesson/lesson.html', {
         'photo': photo,
         'begin_path': begin_path,
