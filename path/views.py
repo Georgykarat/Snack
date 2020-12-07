@@ -63,5 +63,6 @@ def lesson_data(request, *args, **kwargs):
         'lessonid': lesson_data_upload[0][0],
         'lessonname': lesson_data_upload[0][2],
         'coursename': lesson_data_upload[0][1],
+        'video': lesson_data_upload[0][5],
         'desc': lesson_data_upload[0][4]
     })

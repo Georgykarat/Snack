@@ -100,7 +100,7 @@
                     <div class="main__lesson">
                         <video width="100%" controls="controls" poster="" style="cursor: pointer;">
                             <!--<source src="{{begin_path}}video/0000/videoplayback.mp4" type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"'>-->
-                            <source src="{{begin_path}}videoplayback.mp4" type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"'>
+                            <source src="{{begin_path}}{{video}}" type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"'>
                         </video>
                         <div class="main__lesson-desc">
                             <span class="main__lesson-desc_text"><p>{{ desc }}</p></span>
@@ -109,10 +109,10 @@
                             <button class="open__script-btn">Script</button>
                             <div class="open__script-dropdown-cnt">
                                 <div class="main__script-zone">
-                                    <div class="scipt__h">Python Basics</div>
+                                    <div class="scipt__h">{{ coursename }}</div>
                                     <button class="min_view">-</button>
                                     <button class="max_view">+</button>
-                                    <div class="scipt__h2">"Introduction" script</div>
+                                    <div class="scipt__h2">"{{ lessonname }}" script</div>
                                     <p><span class="main__script-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. (Script place)</span></p>
                                     <p><span class="main__script-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. (Script place)</span></p>
                                     <p><span class="main__script-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. (Script place)</span></p>
@@ -226,7 +226,7 @@
                 </div>
                 <div class="quiz__h2-cnt-large">
                     <div class="quiz__h2-cnt">
-                        <h2 style="display: block;" class="h2__quiz">01. Introduction</h2>
+                        <h2 style="display: block;" class="h2__quiz">{{lessonid}}. {{lessonname}}</h2>
                         <div class="quiz__exp-cnt-suc">+ 5 Exp.</div>
                         <div class="quiz__exp-cnt-fail">- 10 Exp.</div>
                     </div>
