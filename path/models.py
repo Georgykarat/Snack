@@ -22,7 +22,7 @@ class CourseBase(models.Model):
     lesson_name = models.CharField(max_length=50, blank=True)
     icon = models.FileField(upload_to='lessonicons/')
     description = models.CharField(blank=True, max_length=5000)
-    video = models.FileField(blank=True, upload_to='videos/')
+    video = models.CharField(blank=True, max_length=50)
     script = models.CharField(max_length=10000, blank=True)
 
 

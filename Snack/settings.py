@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'feed',
     'login',
     'path',
+    'useradmin',
     'static',
     'django_cleanup', #deletes unused media files
 ]
