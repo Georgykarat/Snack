@@ -6,5 +6,6 @@ from .import views
 
 urlpatterns = [
     path("", views.choice, name="choice"),
-    path('main/', views.main, name="main"),
+    path('frontend/', views.main, name="main"),
+    path('faq/', views.faq, name="faq"),
 ]
