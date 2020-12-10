@@ -1,11 +1,25 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/font.css' %}">
+    <link rel="stylesheet" href="{% static 'css/useradmin.css' %}">
     <title>Snack</title>
 </head>
 <body>
-    <h1>Admin panel</h1>
+    <main>
+        <div class="main-cnt">
+            <div class="main__cnt-flex">
+                <a href="../feed/"><div class="main__back">Back</div></a>
+                <div class="main__admin-profile">Georgii Karateev</div>
+            </div>
+        </div>
+        <a><div class="main__cnt-usadmin">
+            Frontend admin panel.
+        </div></a>
+    </main>
 </body>
 </html>
