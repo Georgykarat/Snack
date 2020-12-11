@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse, HttpResponseRedirect
 from feed.models import Feed
+from useradmin.models import AdminFaq
 # Create your views here.
 
 def choice(request, *args, **kwargs):
@@ -33,6 +34,20 @@ def faq(request, *args, **kwargs):
         target_mail = request.user.username
         data = Feed.objects.filter(mail=target_mail).values_list('first_name', 'last_name', 'country')
         return render(request, 'faq/faq.html', {
+            'first_name': data[0][0],
+            'last_name': data[0][1],
+            'country': data[0][2],
+        })
+    else:
+        return django.http.HttpResponseNotFound
+
+
+def quiztasktype(request, *args, **kwargs):
+    if request.user.is_authenticated == True:
+        target_mail = request.user.username
+        data = Feed.objects.filter(mail=target_mail).values_list('first_name', 'last_name', 'country')
+        tasksex = AdminFaq.objects.all()
+        return render(request, 'quiztasktype/quiztasktype.html', {
             'first_name': data[0][0],
             'last_name': data[0][1],
             'country': data[0][2],

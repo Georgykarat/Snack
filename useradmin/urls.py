@@ -8,4 +8,5 @@ urlpatterns = [
     path("", views.choice, name="choice"),
     path('frontend/', views.main, name="main"),
     path('faq/', views.faq, name="faq"),
+    path('faq/quiztasktype', views.quiztasktype, name="quiztasktype"),
 ]

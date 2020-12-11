@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{% static 'css/font.css' %}">
-    <link rel="stylesheet" href="{% static 'css/frontend.css' %}">
+    <link rel="stylesheet" href="{% static 'css/faq.css' %}">
     <title>Snack frontend admin</title>
 </head>
 <body>
@@ -19,15 +19,18 @@
                     <div class="top__panel-text">__Private frontend administration panel.</div>
                 </div>
                 <div class="top__panel-name">
+                    FAQ
+                </div>
+                <div class="top__panel-name">
                     {{first_name}} {{last_name}}
                 </div>
             </div>
         </div>
         <div class="main__panel">
-            <div class="main__row">
-                <div class="main__row-flex">
-                    <a href="../faq"><div class="main__wiki-item">Wiki</div></a>
-                    <div class="main__wiki-item">BLM</div>
+            <h2>Q</h2>
+            <div class="main__panel_item">
+                <div class="main__panel_item-flex">
+                    <a href="quiztasktype"><div class="main__panel_item-text">Quiz task type</div></a>
                 </div>
             </div>
         </div>
