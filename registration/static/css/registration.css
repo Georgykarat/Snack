@@ -929,9 +929,7 @@ select {
 	font-size: 14px;
 	text-align: center;
 }
-.footer__rights::after {
-	content: "2020";
-}
+
 :root {
     --swiper-theme-color: #27cf7f;
 }

@@ -22,7 +22,7 @@
                     FAQ__QuizTaskTypes
                 </div>
                 <div class="top__panel-name">
-                    {{first_name}} {{last_name}}
+                    {{first_name}} {{last_name}}, {{country}}
                 </div>
             </div>
         </div>
@@ -33,12 +33,18 @@
                 <div class="main__panel_header d">Description</div>
                 <div class="main__panel_header p">Pic.</div>
             </div>
-            <div class="main__panel_flex">
-                <div class="main__panel_item qtt">Quiz task title</div>
-                <div class="main__panel_item c">Code</div>
-                <div class="main__panel_item d">Description</div>
-                <div class="main__panel_item p">Pic.</div>
-            </div>
+            <ul>
+                {% for line in listdata %}
+                <li>
+                    <div class="main__panel_flex">
+                        <div class="main__panel_item qtt">{{ line.quizname }}</div>
+                        <div class="main__panel_item c">{{ line.quizcode }}</div>
+                        <div class="main__panel_item d">{{ line.quizdesc }}</div>
+                        <div class="main__panel_item p">Pic.</div>
+                    </div>
+                </li>
+                {% endfor %}
+            </ul>
         </div>
     </main>
 </body>

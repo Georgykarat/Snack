@@ -1,7 +1,8 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseNotFound
 from feed.models import Feed, AccountImage
 from path.models import CourseBase
+from django.views import generic
 
 
 def path(request, *args, **kwargs):
@@ -66,3 +67,15 @@ def lesson_data(request, *args, **kwargs):
         'video': lesson_data_upload[0][5],
         'desc': lesson_data_upload[0][4]
     })
+
+class ListView(generic.ListView):
+    template_name = 'lesson/lesson.html'
+    model = None
+    
+
+    def get_context_data(self, *args, **kwargs):
+        request_test = self.request
+        if request_test.user.is_authenticated == True:
+            pass
+        else:
+            return django.http.HttpResponseNotFound
