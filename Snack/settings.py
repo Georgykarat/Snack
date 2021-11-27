@@ -153,3 +153,10 @@ MEDIA_URL = '/media/'
 
 CONTENT_TYPES = ['image', 'video']
 MAX_UPLOAD_SIZE = "10485760"
+
+EMAIL_BACKEND = 'django_smtp_ssl.SSLEmailBackend'
+EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'snackinfo80@gmail.com'
+EMAIL_HOST_PASSWORD = 'Snackorg!8080info'
