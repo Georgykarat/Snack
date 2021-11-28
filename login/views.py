@@ -13,7 +13,7 @@ def login_view(request):
         if auth_form.is_valid():
             mail = auth_form.cleaned_data['mail']
             password = auth_form.cleaned_data['password']
-            user = authenticate(username=mail, password=password)
+            user = authenticate(username=mail.lower(), password=password)
             if user:
                 if user.is_active:
                     login(request, user)
