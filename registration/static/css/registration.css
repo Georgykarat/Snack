@@ -625,8 +625,10 @@ select {
 .popup-cnt {
 	position: fixed;
 	background-image: url('img/Back.png');
+	background-color: #FFFFFF80;
 	height: 100%;
 	width: 100%;
+	min-width: 100%;
 	display: none;
 	z-index: 5;
 	justify-content: center;
