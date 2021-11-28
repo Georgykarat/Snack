@@ -92,18 +92,23 @@ class Registration(View):
         user_form = UserForm(request.POST)
 
         if user_form.is_valid():
+            # check, do we already have the mail in our db
+            mail_check = user_form.cleaned_data['mail']
+            if Feed.objects.filter(mail='mail_check'.lower()):
+                return HttpResponseRedirect('../login')
+            else:
             # business logic add to database
-            Feed.objects.create(**user_form.cleaned_data)
-            username = (request.POST['mail'])
-            password = request.POST['password']
-            varhash = make_password(password, None, 'md5')
-            tempusername = username
-            newuser = User(username=tempusername.lower(), password=varhash)
-            newuser.save()
-            Feed.objects.filter(mail=username).update(password=None)
-            Feed.objects.filter(mail=username).update(mail=username.lower())
-            login(request, newuser)
-            return HttpResponseRedirect('../feed')
+                Feed.objects.create(**user_form.cleaned_data)
+                username = (request.POST['mail'])
+                password = request.POST['password']
+                varhash = make_password(password, None, 'md5')
+                tempusername = username
+                newuser = User(username=tempusername.lower(), password=varhash)
+                newuser.save()
+                Feed.objects.filter(mail=username).update(password=None)
+                Feed.objects.filter(mail=username).update(mail=username.lower())
+                login(request, newuser)
+                return HttpResponseRedirect('../feed')
         return render(request, 'registration/registration.html', context={'user_form': user_form})
 
 
