@@ -21,7 +21,7 @@ class Feed(models.Model):
     created_date = models.DateTimeField(auto_now_add=True)
     language = models.CharField(verbose_name="language", max_length = 2, default="EN")
     theme = models.IntegerField(verbose_name="theme", default=0)
-    image_path = models.CharField(verbose_name="image path", max_length = 1000)
+    image_path = models.CharField(verbose_name="image path", max_length = 1000, blank=True)
     first_name = models.CharField(verbose_name="first name", max_length = 30)
     last_name = models.CharField(verbose_name="last name", max_length = 50)
     city = models.CharField(verbose_name="city", max_length = 50, default="0")
