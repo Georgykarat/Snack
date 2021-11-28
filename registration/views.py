@@ -99,7 +99,7 @@ class Registration(View):
             varhash = make_password(password, None, 'md5')
             newuser = User(username=username, password=varhash)
             newuser.save()
-            Feed.objects.filter(mail=username).update(password=0)
+            Feed.objects.filter(mail=username).update(password=None)
             login(request, newuser)
             return HttpResponseRedirect('../feed')
         return render(request, 'registration/registration.html', context={'user_form': user_form})
