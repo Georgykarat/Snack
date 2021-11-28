@@ -224,7 +224,7 @@ $('#number-box-four').on('keyup', function(event){
 });
 */
 /*Escape 27 which event off popup */
-
+/* Pop-up cnt was tunred off to prevent accident clicks on mobile phone
 $('body').on('keyup', function(event){
 	if (event.which == 27) {
 		$('.number-box').val('');
@@ -236,6 +236,8 @@ $('body').on('keyup', function(event){
 		$('.seconds').text('1');
 	}
 });
+*/
+/*
 $('.popup-cnt').on('click', function(){
 	$('.number-box').val('');
 	$('.number-box').css('border-color','#cbcdcc');
@@ -245,7 +247,9 @@ $('.popup-cnt').on('click', function(){
 	$('.seconds').text('0');
 	$('.seconds').text('1');
 });
+*/
 /*
+
 const Congrats = function() {
 	$('.confirm-button-code').val('Confirm');
 	$('.popup-text').fadeOut(10);
