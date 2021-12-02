@@ -144,7 +144,7 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
 LOGIN_REDIRECT_URL = '/feed'
 
 PASSWORD_HASHERS = (
-#    'django.contrib.auth.hashers.MD5PasswordHasher',
+    'django.contrib.auth.hashers.MD5PasswordHasher',
     'django.contrib.auth.hashers.PBKDF2SHA1PasswordHasher',
 )
 
