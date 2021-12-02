@@ -101,7 +101,7 @@ class Registration(View):
                 Feed.objects.create(**user_form.cleaned_data)
                 username = (request.POST['mail'])
                 password = request.POST['password']
-                varhash = make_password(password, None, 'md5')
+                varhash = make_password(password, None, 'pbkdf2_sha1')
                 tempusername = username
                 newuser = User(username=tempusername.lower(), password=varhash)
                 newuser.save()
