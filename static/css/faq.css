@@ -1,0 +1,82 @@
+* {
+    font-family: "Lemon Milk Pro";
+	margin: 0;
+    padding: 0;
+    text-decoration: none;
+    list-style: none;
+}
+.main__panel {
+    padding-left: 20px;
+}
+.top-panel {
+    display: block;
+    background-color: #27cf7f;
+    padding: 20px;
+    margin-bottom: 30px;
+}
+.top__panel-flex {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: nowrap;
+}
+.top__panel-cnt {
+    display: flex;
+}
+h1 {
+    font-style: bold;
+    font-family: Lemon Milk Pro b;
+    font-size: 24px;
+    color: white;
+}
+.top__panel-text {
+    font-size: 18px;
+    color: white;
+    position: relative;
+    top: 8px;
+}
+.top__panel-name {
+    font-size: 18px;
+    color: white;
+}
+.top__panel-back {
+    font-size: 28px;
+    color: white;
+    font-style: bold;
+    font-family: Lemon Milk Pro b;
+    position: relative;
+    top: -3px;
+    padding-right: 10px;
+    margin-right: 10px;
+    border: 1px solid white;
+    border-radius: 30px;
+    padding-left: 10px;
+    cursor: pointer;
+    transition: 0.5s;
+}
+.top__panel-back:hover {
+    color: #27cf7f;
+    background-color: white;
+}
+.main__panel {
+    display: block;
+}
+.main__panel_item {
+    display: block;
+}
+h2 {
+    font-size: 28px;
+    color: #27cf7f;
+    font-style: bold;
+    font-family: Lemon Milk Pro b;
+    padding: 10px 0;
+}
+.main__panel_item-flex {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.main__panel_item-text {
+    color: black;
+    font-size: 20px;
+}
