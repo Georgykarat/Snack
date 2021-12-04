@@ -238,6 +238,8 @@ $('body').on('keyup', function(event){
 	}
 });
 
+/* Seems, the following code is responsible for display none after out of the block clicking. If disabled = reg doesnt work */
+
 $('.popup-cnt').on('click', function(){
 	$('.number-box').val('');
 	$('.number-box').css('border-color','#cbcdcc');
@@ -545,7 +547,7 @@ var mySwiper = new Swiper ('.swiper-container', {
 				<span class="Enjoy">Enjoy Snack!</span>	
 			</div>
 			<div class="confirm-button-code">Send me again</div>
-			<a href="../feed"><button type="submit" class="confirm-button-code2" onClick='location.href="../feed"'>Start learning</button></a>
+			<!--<a href="../feed">--><button type="submit" class="confirm-button-code2" onClick='location.href="../feed"'>Start learning</button><!--</a>-->
 		</div>
 	</div>
 	<!--popup cnt-->
