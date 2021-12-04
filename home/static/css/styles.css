@@ -23,19 +23,19 @@ body {
 @font-face{
   font-family: Lemon Milk Pro;
   font-style: normal;
-  src: url('../../Lemon Milk Pro Ultra Light.otf');
+  src: url('Lemon Milk Pro Ultra Light.otf');
 }
 
 @font-face{
   font-family: Lemon Milk Pro b;
   font-style: bold;
-  src: url('../../Lemon Milk Pro Medium.otf');
+  src: url('Lemon Milk Pro Medium.otf');
 }
 
 @font-face{
   font-family: Lemon Milk Regular;
   font-style: bold;
-  src: url('../../Lemon Milk Pro Regular.otf');
+  src: url('Lemon Milk Pro Regular.otf');
 }
 @font-face{
   font-family: Lemon Milk Pro bb;
