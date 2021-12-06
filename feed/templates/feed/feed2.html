@@ -1,0 +1,730 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Snack</title>
+    <link rel="stylesheet" href="{% static 'css/font.css' %}">
+    <link rel="stylesheet" href="{% static 'css/feed.css' %}">
+    <link rel="stylesheet" href="{% static 'css/Chart.min.css' %}">
+    <script src="{% static 'js/jQueryv3.4.1.min.js' %}"></script>
+    <script src="{% static 'js/Chart.min.js' %}"></script>
+    <script src="{% static 'js/feed.js' %}"></script>
+    <style>
+        .header__profile-icon {
+            background-image: url({{begin_path}}{{photo}});
+            height: 40px;
+            width: 40px;
+            background-position: center;
+            background-size: cover;
+            display: inline-block;
+            position: relative;
+            top: 15px;
+            border-radius: 25px;
+            border: 2px solid transparent;
+            transition: 0.5s;
+            filter: opacity(100%);
+        }
+        .main__profile-photo {
+            height: 140px;
+            width: 140px;
+            display: inline-block;
+            background-image: url({{begin_path}}{{photo}});
+            background-position: center;
+            background-size: cover;
+            border-radius: 80px;
+            border: 1px solid #27cf7f;
+            margin-right: 20px;
+            transition: 0.5s;
+            filter: opacity(100%);
+        }
+        .add-item {
+    height: 20px;
+    width: 20px;
+    background-image: url('../static/png/add.svg');
+    background-size: cover;
+    background-position: center;
+    border: none;
+    background-color: transparent;
+    position: relative;
+    left: -40%;
+    top: 20%;
+    padding-top: 20px;
+    opacity: 0;
+    cursor: pointer;
+    z-index: 9;
+
+}
+.add-item-btn {
+    height: 30px;
+    width: 30px;
+    background-image: url('../static/png/add.svg');
+    background-size: cover;
+    background-position: center;
+    border: none;
+    background-color: transparent;
+    position: relative;
+    left: -60%;
+    top: 30%;
+    padding-top: 20px;
+    cursor: pointer;
+    opacity: 0;
+}
+* {
+    font-family: "Lemon Milk Pro";
+	margin: 0;
+    padding: 0;
+    text-decoration: none;
+    list-style: none;
+}
+a {
+    text-decoration: none;
+}
+
+body, html {
+    margin: 0;
+    height: 0;
+    max-width: 100%;
+    width: 100%;
+}
+.header {
+    width: 100%;
+    min-width: 320px;
+    background-color: #fff;
+    position: fixed;
+    z-index: 50;
+    
+}
+.header-central-cnt {
+    max-width: 1700px;
+    width: 90%;
+    min-width: 320px;
+    margin: 0 auto;
+    display: flex;
+    background-color: transparent;
+    justify-content: space-between;
+}
+.header__logo {
+    display: inline-block;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+.header__options {
+    display: inline-block;
+    width: 200px;
+}
+.header__profile-name {
+    color: darkgrey;
+    font-size: 10px;
+    padding-top: 40px;
+    padding-right: 20px;
+    max-width: 130px;
+    display: inline-block;
+    transition: 0.5s;
+}
+.header__profile-name:hover {
+    color: grey;
+    transition: 0.5s;
+}
+.header__open-options {
+    width: 20px;
+    height: 20px;
+    background-image: url('../static/png/next.svg');
+    background-position: center;
+    background-size: 10px 10px;
+    background-color: transparent;
+    border: none;
+    display: inline-block;
+    background-repeat: no-repeat;
+    transform: rotate(90deg);
+    position: relative;
+    top: 5px;
+    margin-right: 3px;
+}
+
+.header__profile-icon:hover {
+    border: 2px solid black;
+    transition: 0.5s;
+    filter: opacity(50%);
+}
+.h1 {
+    font-style: bold;
+    font-family: Lemon Milk Pro b;
+    color: #27cf7f;
+    transition: 1s;
+    padding-right: 30px;
+}
+.h1:hover {
+    font-style: bold;
+    font-family: Lemon Milk Pro b;
+    color: cyan;
+    transition: 1s;
+}
+.nav {
+    display: inline-block;
+    padding-top: 35px;
+}
+.nav ul {
+    list-style: none;
+}
+.nav li {
+    display: inline-block;
+    margin-right: 50px;
+    padding-bottom: 5px;
+    font-weight: bold;
+    font-size: 14px;
+    border-bottom: 1px solid transparent;
+    transition: 0.5s;
+    user-select: none;
+}
+.nav li:hover {
+    border-bottom: 1px solid #27cf7f;
+    transition: 0.5s;
+}
+.nav a {
+    color: gray;
+    transition: 0.5s;
+}
+.nav a:hover {
+    color: #27cf7f;
+    transition: 0.5s;
+}
+.main {
+    background-color: rgb(247, 247, 247);
+    width: 100%;
+    height: 4000px;
+}
+.main-central-cnt {
+    max-width: 1700px;
+    width: 90%;
+    min-width: 320px;
+    margin: 0 auto;
+    padding-top: 140px;
+    display: flex;
+    background-color: transparent;
+    justify-content: space-between;
+}
+.main-left-cnt {
+    height: 150px;
+    width: 25%;
+    min-width: 350px;
+    background-color: transparent;
+    z-index: 25;
+}
+.main__profile-photo:hover {
+    transition: 0.5s;
+    filter: opacity(70%);
+}
+.main__profile-main-info {
+    height: 140px;
+    display: inline-block;
+    background-color: transparent;
+    margin: 0 auto;
+    position: relative;
+    top: 0px;
+
+}
+.main-right-cnt {
+    height: 150px;
+    width: 70%;
+    background-color: #fff;
+    display: flex;
+}
+.main__rank {
+    display: inline-block;
+    border-right: 1px solid white;
+    background-color: transparent;
+    transition: 0.5s;
+}
+.main__rank:hover > .main__rank_text {
+    color: white;
+    transition: 0.5s;
+}
+.main__rank:hover {
+    background-color: #27cf7f;
+    transition: 0.5s;
+}
+.main__rank_img {
+    height: 50px;
+    position: relative;
+    top: 40px;
+    left: 0px;
+    display: block;
+    padding-left: 40px;
+    padding-right: 40px;
+
+}
+.main__rank_text {
+    font-size: 12px;
+    display: block;
+    position: relative;
+    top: 20px;
+    right: -25px;
+    color: black;
+    transition: 0.5s;
+}
+.h2 {
+    font-style: bold;
+    font-family: Lemon Milk Pro;
+    font-size: 14px;
+    padding-bottom: 10px;
+    color: rgb(54, 54, 54);
+}
+.main__profile-main-info_city {
+    display: block;
+    font-size: 12px;
+    padding-bottom: 10px;
+
+    padding-left: 20px;
+}
+.main__profile-main-info_edit {
+    color: #27cf7f;
+    font-weight: 900;
+    font-size: 12px;
+}
+.main-central-cnt2 {
+    max-width: 1700px;
+    width: 90%;
+    min-width: 320px;
+    margin: 0 auto;
+    padding-top: 60px;
+    display: flex;
+    background-color: transparent;
+    justify-content: space-between;
+}
+.main-left-cnt2 {
+    width: 25%;
+    height: 410px;
+    background-color: white;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    z-index: 25;
+}
+.main-left-cnt2 ul {
+    margin-left: 50px;
+}
+.main-left-cnt2 li {
+    padding-bottom: 40px;
+}
+.main-left-cnt2 li:first-child {
+    padding-top: 40px;
+}
+.main-left-cnt2 span {
+    color: grey;
+    font-size: 18px;
+    transition: 0.5s;
+    text-decoration: none;
+    user-select: none;
+    cursor: pointer;
+
+}
+.main-left-cnt2 span:hover {
+    color: #27cf7f;
+    font-size: 18px;
+    transition: 0.5s;
+    text-decoration: underline;
+}
+.main-left-cnt2 img {
+    color: grey;
+    position: relative;
+    top: 5px;
+    padding-right: 15px;
+}
+
+.add-item-btn {
+    height: 30px;
+    width: 30px;
+    background-image: url('../static/png/add.svg');
+    background-size: cover;
+    background-position: center;
+    border: none;
+    background-color: transparent;
+    position: relative;
+    left: -60%;
+    top: 30%;
+    padding-top: 20px;
+    cursor: pointer;
+    opacity: 1;
+}
+.main__section {
+    width: 70%;
+    background-color: transparent;
+    display: flex;
+    justify-content: space-between;
+    align-content: flex-start;
+    flex-wrap: wrap;
+}
+.last-course-block {
+    width: 48%;
+    height: 60%;
+    border-bottom: 20px solid transparent;
+    border-radius: 25px;
+    transition: 0.5s;
+    background-size: cover;
+    background-position: center;
+    margin-bottom: 4%;
+}
+.last-course-block:hover {
+    border-bottom: 20px solid #27cf7f;
+    transition: 0.5s;
+}
+.last-course__blur {
+    background-color: rgba(255, 255, 255, 0);
+    height: 100%;
+    width: 100%;
+    transition: 1s;
+    cursor: pointer;
+}
+.last-course__blur:hover {
+    background-color: rgba(255, 255, 255, 0.7);
+    transition: 1s;
+}
+.last-course__blur2 {
+    background-color: #27cf7fFF;
+    height: 100%;
+    width: 100%;
+    transition: 1s;
+    cursor: pointer;
+}
+.last-course__blur2:hover {
+    background-color: #27cf7f00;
+    transition: 1s;
+}
+.last-course__blur:hover > .h3 {
+    color: rgb(54, 54, 54);
+    transition: 1s;
+    top: 70px;
+}
+.last-course__blur2:hover > .h3 {
+    color: #27cf7f;
+    transition: 1s;
+    top: 70px;
+}
+.last-course-block {
+    transition: 0.5s;
+    
+}
+.statistics-block {
+    width: 48%;
+    height: 60%;
+    border-bottom: 20px solid transparent;
+    border-radius: 25px;
+    background-color: white;
+    transition: 0.5s;
+}
+.statistics-block:hover {
+    border-bottom: 20px solid #27cf7f;
+    transition: 0.5s;
+    border-radius: 25px;
+}
+
+.h3 {
+    font-style: bold;
+    font-family: Lemon Milk Pro b;
+    color: white;
+    transition: 1s;
+    padding-top: 10px;
+    padding-left: 20px;
+    font-size: 40px;
+    position: relative;
+    top: 0;
+}
+.h3__next-step {
+    font-size: 23px;
+    position: relative;
+    top: 70px;
+    padding-left: 20px;
+    opacity: 0;
+    transition: 0.5s;
+}
+.h3__next-lesson {
+    font-size: 20px;
+    position: relative;
+    top: 70px;
+    padding-left: 20px;
+    opacity: 0;
+    transition: 0.5s;
+}
+.h3__next-lesson-number {
+    font-size: 20px;
+    position: relative;
+    top: 70px;
+    opacity: 0;
+    transition: 0.5s;
+}
+.h3__next-lesson-name {
+    font-size: 20px;
+    position: relative;
+    top: 70px;
+    opacity: 0;
+    transition: 0.5s;
+}
+.last-course__blur:hover > .h3__next-step {
+    opacity: 1;
+    transition: 1s;
+}
+.last-course__blur:hover > .h3__next-lesson {
+    opacity: 1;
+    transition: 1s;
+}
+.last-course__blur:hover > .h3__next-lesson-number {
+    opacity: 1;
+    transition: 1s;
+}
+.last-course__blur:hover > .h3__next-lesson-name {
+    opacity: 1;
+    transition: 1s;
+}
+.statistics-block__graphics {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+}
+.statistics-section {
+    background-color: rgb(247, 247, 247);
+    display: none;
+    z-index: 20;
+    width: 100%;
+    height: 1000px;
+}
+.statistics__right-cnt {
+    background-color: transparent;
+    height: 100%;
+    width: 100%;
+    display: flex;
+}
+.h4 {
+    font-style: bold;
+    font-family: Lemon Milk Pro b;
+    color: #27cf7f;
+    transition: 1s;
+    padding-top: 100px;
+    padding-left: 0px;
+    padding-bottom: 20px;
+    font-size: 40px;
+    position: relative;
+    top: 0;
+}
+.h4:hover {
+    color: black;
+    transition: 1s;
+}
+.main-central-cnt-section {
+    max-width: 1700px;
+    width: 90%;
+    min-width: 320px;
+    margin: 0 auto;
+    display: block;
+    background-color: transparent;
+    justify-content: space-between;
+}
+.stat__first-row {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+.stat__first-row-left {
+    width: 70%;
+    height: 400px;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+.stat__first-row-right {
+    width: 28%;
+    height: 400px;
+    background-color: #fff;
+}
+#date_points {
+
+}
+.orange-bg {
+    background-color: #E4B210;
+}
+.blue-bg {
+    background-color: #55DEF1;
+}
+.purple-bg {
+    background-color: #F683DD;
+}
+.active-tab {
+    font-weight: bold;
+    padding-bottom: 6px;
+    border-bottom: 1px solid #27cf7f;
+    color: #27cf7f;
+}
+.donut {
+    padding-left: 25px;
+    padding-right: 20px;
+    position: relative;
+    top: 3px;
+    display: inline-block;
+}
+.main-right-cnt-2 {
+    border-right: 1px solid lightgrey;
+}
+.main-right-cnt-2:hover {
+    background-color: #27cf7f;
+}
+    </style>
+</head>
+<body>
+    {% if request.user.is_authenticated %}
+    <header class="header">
+        <div class="header-central-cnt">
+            <div class="header__logo">
+                <h1 class="h1">Snack</h1>
+            </div>
+            <nav class="nav">
+                <ul>
+                    {% if access == 2 %}
+                    <li><a href="../useradmin">Admin</a></li>
+                    {% endif %}
+                    <li class="active-tab"><a class="active-tab" href="#">My profile</a></li>
+                    <li><a href="../path/">Courses</a></li>
+                    <li><a href="#">Features</a></li>
+                    <li><a href="#">Contact us</a></li>
+                    <li><a href="logout/">Exit</a></li>
+                </ul>
+            </nav>
+            <div class="header__options">
+                <div class="header__profile-name">{{name}} {{last_name}}</div>
+                <button class="header__open-options"></button>
+                <div class="header__profile-icon"></div>
+            </div>
+        </div>
+    </header>
+    <div class="statistics-section">
+        <div class="main-central-cnt-section">
+            <h4 class="h4">Analytics</h4>
+            <div class="stat__first-row">
+                <div class="stat__first-row-left">
+                    <canvas id="date_points" width="280" height="110"></canvas>
+                </div>
+                <div class="stat__first-row-right">
+                    <br>
+                    <canvas id="date_scale" width="50" height="50"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+    <main class="main">
+        <div class="main-central-cnt">
+            <div class="main-left-cnt">
+                <div class="main__profile-photo"></div>
+                <div class="main__profile-main-info">
+                    <h2 class="h2">{{name}} {{last_name}}</h2>
+                    <div class="main__profile-main-info_city">{{country}}</div>
+                    <a href="settings/"><div class="main__profile-main-info_edit">Edit Profile</div></a>
+                    <input type="file" class="add-item" value=""></input>
+                    <button class="add-item-btn"></button>
+                </div>
+            </div>
+            <div class="main-right-cnt">
+                <div class="main__rank">
+                    <span class="main__rank_text">L{{level_num}} {{material}}<br>{{level}}</span>
+                    <img src="{{level_pic}}" alt="" class="main__rank_img">
+                </div>
+                <div class="main-right-cnt-2">
+                <svg width="150" height="150" viewBox="0 0 42 42" class="donut">
+                    <circle class="donut-hole" cx="20" cy="20" r="16" fill="#fff"></circle>
+                    <circle class="donut-ring" cx="20" cy="20" r="16" fill="transparent" stroke="#d2d3d4" stroke-width="0.5"></circle>
+                    <circle class="donut-segment" cx="20" cy="20" r="16" fill="transparent" stroke="{{ color }}" stroke-width="1" stroke-dasharray="{{ percent }} {{ left_percent }}" stroke-dashoffset="0"></circle>
+                    <g class="chart-text">
+                        <text x="{{xcord}}" y="20" class="chart-number" style= "font-size: 10px;">
+                          {{ percent }}
+                        </text>
+                        <text x="18" y="28" class="chart-number" style= "font-size: 6px;">
+                            %
+                          </text>
+                    </g>
+                </svg>
+                </div>
+            </div>
+            
+        </div>
+        <div class="main-central-cnt2">
+            <div class="main-left-cnt2">
+                <ul>
+                    <li>
+                        <img src="{% static 'png/university.svg' %}" width="20" height="20" alt="">
+                        <span>Education</span>
+                    </li>
+                    <li>
+                        <img src="{% static 'png/university.svg' %}" width="20" height="20" alt="">
+                        <span>Quizes</span>
+                    </li>
+                    <li>
+                        <img src="{% static 'png/university.svg' %}" width="20" height="20" alt="">
+                        <span>Ratings</span>
+                    </li>
+                    <li>
+                        <img src="{% static 'png/university.svg' %}" width="20" height="20" alt="">
+                        <span>Help & Support</span>
+                    </li>
+                </ul>
+            </div>
+            <section class="main__section">
+                <div class="last-course-block orange-bg">
+                    <div class="last-course__blur">
+                        <h3 class="h3">{{last_course}}</h3>
+                        <div class="h3__next-step">Next step:</div>
+                        <span class="h3__next-lesson">#</span>
+                        <span class="h3__next-lesson-number">{{last_lesson}}.</span>
+                        <span class="h3__next-lesson-name">{{last_lesson_name}}</span>
+                    </div>   
+                </div>
+                <div class="statistics-block">
+                    <div class="last-course__blur2">
+                        <h3 class="h3">Analytics:</h3>
+                        <div class="statistics-block__graphics">    
+                            <canvas styles="" id="myChart" width="330" height="150"></canvas>
+                        </div>    
+                    </div>
+                </div>
+                <div class="last-course-block blue-bg">
+                    <div class="last-course__blur">
+                        <h3 class="h3">Random Quiz</h3>
+                        <div class="h3__next-step">Complexity:</div>
+                        <span class="h3__next-lesson">#</span>
+                        <span class="h3__next-lesson-number">3/5</span>
+                        <span class="h3__next-lesson-name"></span>
+                    </div>   
+                </div>
+                <div class="last-course-block purple-bg">
+                    <div class="last-course__blur">
+                        <h3 class="h3">Shop</h3>
+                        <div class="h3__next-step">Pro license expired:</div>
+                        <span class="h3__next-lesson">#</span>
+                        <span class="h3__next-lesson-number">in 25 days</span>
+                        <span class="h3__next-lesson-name"></span>
+                    </div>   
+                </div>
+                <div class="last-course-block">
+                    <div class="last-course__blur">
+                        <h3 class="h3">Achievments</h3>
+                        <div class="h3__next-step">You gained:</div>
+                        <span class="h3__next-lesson"></span>
+                        <span class="h3__next-lesson-number">0/200</span>
+                        <span class="h3__next-lesson-name"></span>
+                    </div>   
+                </div>
+                <div class="last-course-block">
+                    <div class="last-course__blur">
+                        <h3 class="h3">Feedback</h3>
+                        <div class="h3__next-step">Please contact or leave feedback</div>
+                        <span class="h3__next-lesson"></span>
+                        <span class="h3__next-lesson-number"></span>
+                        <span class="h3__next-lesson-name"></span>
+                    </div>   
+                </div>
+            </section>
+        </div>
+    </main>
+    {% endif %}
+</body>
+</html>
