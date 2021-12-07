@@ -2,8 +2,10 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse, HttpResponseRedirect
 from feed.models import Feed, AccountImage
 from path.models import Rating, CourseBase
+from m2m.models import PersonalGoals
 from feed.forms import DocumentForm
 from django.contrib.auth.views import LogoutView
+import datetime
 
 
 level_pics = [
@@ -16,6 +18,14 @@ level_pics = [
 def feed(request, *args, **kwargs):
     if request.user.is_authenticated == True:    
         target_mail = request.user.username
+        #Got id of the user
+        userid = Feed.objects.filter(mail=target_mail).values_list('id')
+        userid1 = userid[0][0]
+        #Search for goals
+        impgoals = PersonalGoals.objects.filter(author_id=userid1, imp=True).all()
+        goals = PersonalGoals.objects.filter(author_id=userid1, imp=False).all()
+        #Find today date
+        today = datetime.datetime.today().strftime("%d.%m.%Y")
         #Got exp quantity
         exp = Feed.objects.filter(mail=target_mail).values_list('rating_exp')
         exp1 = exp[0][0]
@@ -66,7 +76,10 @@ def feed(request, *args, **kwargs):
             'color': color,
             'xcord': xcord,
             'last_lesson': last_lesson[0][0],
-            'last_lesson_name': last_lesson_name[0][0]
+            'last_lesson_name': last_lesson_name[0][0],
+            'goals': goals,
+            'impgoals': impgoals,
+            'today': today
         })
     else:
         return HttpResponseRedirect('../login')

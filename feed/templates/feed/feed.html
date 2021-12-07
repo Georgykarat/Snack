@@ -96,6 +96,9 @@ $( function() {
                 <div class="header-cnt2_left__logo">snack</div>
             </div>
             <ul class="header-cnt_centre__menu">
+                {% if access == 2 %}
+                <li class="header-cnt_centre__menu-a"><a href="../admin/">Admin</a></li>
+                {% endif %}
                 <li class="header-cnt_centre__menu-a"><a href="#">About</a></li>
                 <li class="header-cnt_centre__menu-a"><a href="#">Courses</a></li>
                 <li class="header-cnt_centre__menu-a"><a href="#">Process</a></li>
@@ -111,8 +114,8 @@ $( function() {
                 </div>   
                 <div class="header-profile-cnt">
                     <div class="header-image"></div>
-                    <div class="header-name">{{name}} {{last_name}}</div>
-                    <a href="settings/"><button class="arrow-btn"></button></a>
+                    <a href="settings/"><div class="header-name">{{name}} {{last_name}}</div></a>
+                    <button class="arrow-btn"></button>
                 </div>
             </div>
         </div>
@@ -176,8 +179,8 @@ $( function() {
                                 <div class="h3">Goals List:</div>
                                 <div class="goal-dates__cnt">
                                     <select name="dates" id="dates">
-                                        <option value="Today">Today, 03 Dec 2021</option>
-                                        <option value="Yesterday">Yesterday, 02 Dec 2021</option>
+                                        <option value="Today">Today, {{today}}</option>
+                                        <option value="Yesterday">Yesterday</option>
                                         <option value="LW">Last week</option>
                                         <option value="LM">Last month</option>
                                         <option value="LY">Last year</option>
@@ -189,56 +192,41 @@ $( function() {
                             <div class="important__cnt-flex">
                                 <h4>Priority:</h4>
                                 <ul class="priority-goals">
+                                    {% if impgoals == False %}
+                                    <div class="nonetext">None</div>
+                                    {% else %}
+                                    {% for goal in impgoals %}
                                     <li class="goal-item">
                                         <div class="goal-item-leftcnt">
-                                            <div class="goal-item-header">Complete quiz for Python</div>
-                                            <div class="goal-item-time">Today - 11.30 AM</div>
+                                            <div class="goal-item-header">{{goal.title}}</div>
+                                            <div class="goal-item-time">{{goal.time}}</div>
                                         </div>
                                         <div class="goal-item-rightcnt">
                                             <button class="edit-goal"></button>
                                         </div>
                                     </li>
+                                    {% endfor %}
+                                    {% endif %}
                                 </ul>
                             </div>
                             <div class="important__cnt-flex">
                                 <h4>Other:</h4>
                                 <ul class="priority-goals">
+                                    {% if goals == False %}
+                                    <div class="nonetext">None</div>
+                                    {% else %}
+                                    {% for goal in goals %}
                                     <li class="goal-item">
                                         <div class="goal-item-leftcnt">
-                                            <div class="goal-item-header">Complete quiz for Python</div>
-                                            <div class="goal-item-time">Today - 11.30 AM</div>
+                                            <div class="goal-item-header">{{goal.title}}</div>
+                                            <div class="goal-item-time">{{goal.time}}</div>
                                         </div>
                                         <div class="goal-item-rightcnt">
                                             <button class="edit-goal"></button>
                                         </div>
                                     </li>
-                                    <li class="goal-item">
-                                        <div class="goal-item-leftcnt">
-                                            <div class="goal-item-header">Start off your Photoshop course</div>
-                                            <div class="goal-item-time">Tomorrow - 10.30 AM</div>
-                                        </div>
-                                        <div class="goal-item-rightcnt">
-                                            <button class="edit-goal"></button>
-                                        </div>
-                                    </li>
-                                    <li class="goal-item">
-                                        <div class="goal-item-leftcnt">
-                                            <div class="goal-item-header">Look out for Python educational resources and materials</div>
-                                            <div class="goal-item-time">05 Dec - 7.17 PM</div>
-                                        </div>
-                                        <div class="goal-item-rightcnt">
-                                            <button class="edit-goal"></button>
-                                        </div>
-                                    </li>
-                                    <li class="goal-item">
-                                        <div class="goal-item-leftcnt">
-                                            <div class="goal-item-header">Complete quiz for Python</div>
-                                            <div class="goal-item-time">Today - 11.30 AM</div>
-                                        </div>
-                                        <div class="goal-item-rightcnt">
-                                            <button class="edit-goal"></button>
-                                        </div>
-                                    </li>
+                                    {% endfor %}
+                                    {% endif %}
                                 </ul>
                             </div>
                         </div>
