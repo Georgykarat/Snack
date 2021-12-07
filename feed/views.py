@@ -5,7 +5,9 @@ from path.models import Rating, CourseBase
 from m2m.models import PersonalGoals
 from feed.forms import DocumentForm
 from django.contrib.auth.views import LogoutView
+from django.conf import settings
 import datetime
+import os
 
 
 level_pics = [
@@ -100,12 +102,19 @@ def upload_file(request):
         if upload_file_form.is_valid():
             file_path = upload_file_form.cleaned_data.get('file')
             target_mail = request.user.username
+            idnumber = Feed.objects.filter(mail=target_mail).values_list('id')
+            iduser = idnumber[0][0]
             if AccountImage.objects.filter(mail=target_mail):
                 AccountImage.objects.filter(mail=target_mail).delete()
             else:
                 pass
             upload_file = AccountImage(mail=target_mail, file=file_path)
             upload_file.save()
+            new_path = 'files/userpic/' + str(iduser) + '.png'
+            os.rename(upload_file.file.path, settings.MEDIA_ROOT + new_path)
+            upload_file.file.name = new_path
+            upload_file.save()
+
             return HttpResponseRedirect('..')
     else:
         upload_file_form = DocumentForm()

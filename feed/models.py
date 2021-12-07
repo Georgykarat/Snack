@@ -37,4 +37,4 @@ class Feed(models.Model):
 
 class AccountImage(models.Model):
     mail = models.EmailField(blank=True)
-    file = models.FileField(upload_to='files/')
+    file = models.FileField(upload_to='files/userpic/')
