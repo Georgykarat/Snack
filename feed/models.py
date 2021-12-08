@@ -1,5 +1,6 @@
 
 from django.db import models
+from feed.formatChecker import ContentTypeRestrictedFileField
 
 # Create your models here.
 
@@ -37,4 +38,4 @@ class Feed(models.Model):
 
 class AccountImage(models.Model):
     mail = models.EmailField(blank=True)
-    file = models.FileField(upload_to='files/userpic/')
+    file = ContentTypeRestrictedFileField(upload_to='files/userpic/', content_types=['image/png', 'image/jpg', 'image/jpeg'], max_upload_size=5242880, blank=True, null=True)
