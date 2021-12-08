@@ -1,9 +1,24 @@
+{% load static %}
 
 <!DOCTYPE html>
 <html lang="ru">
 <head>
 	<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Snack Profile Settings</title>
+    <script src="{% static 'js/jQueryv3.6.0.min.js' %}"></script>
+    <script>
+        $("form").submit(function() {
+  if (window.File && window.FileReader && window.FileList && window.Blob) {
+    var file = $('#id_file')[0].files[0];
+
+    if (file && file.size > 2 * 1024 * 1024) {
+      alert("File " + file.name + " of type " + file.type + " is too big");
+      return false;
+    }
+  }
+});
+    </script>
 </head>
 <body>
     {% if request.user.is_authenticated %}

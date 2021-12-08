@@ -663,13 +663,13 @@ $(function(){
             $('.select-cnt__flag').css("background-image","url('../static/img/flags/svg/001-yemen.svg')");
             flag_selector.css('color','black');
         } else if ($('#id_country option:selected').text() == 'Zambia') {
-            $('.select-cnt__flag').css("background-image","url('../static/img/flags/svg/uzbekistan.svg')");
+            $('.select-cnt__flag').css("background-image","url('../static/img/flags/svg/zambia-2.png')");
             flag_selector.css('color','black');
         } else if ($('#id_country option:selected').text() == 'Zimbabwe') {
-            $('.select-cnt__flag').css("background-image","url('../static/img/flags/svg/uzbekistan.svg')");
+            $('.select-cnt__flag').css("background-image","url('../static/img/flags/svg/zimbabwe.png')");
             flag_selector.css('color','black');
-        } else if ($('#id_country option:selected').text() == 'Sealand') {
-            $('.select-cnt__flag').css("background-image","url('../static/img/flags/svg/uzbekistan.svg')");
+        } else if ($('#id_country option:selected').text() == 'UN') {
+            $('.select-cnt__flag').css("background-image","url('../static/img/flags/svg/043-united-nations.svg')");
             flag_selector.css('color','black');
         } 
         else {

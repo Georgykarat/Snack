@@ -177,7 +177,7 @@ class UserForm(forms.Form):
         ('San Marino', 'San Marino'),
         ('Sao Tome and Principe', 'Sao Tome and Principe'),
         ('Saudi Arabia', 'Saudi Arabia'),
-        ('Sealand', 'Sealand'),
+        ('UN', 'UN'),
         ('Senegal', 'Senegal'),
         ('Serbia and Montenegro', 'Serbia and Montenegro'),
         ('Seychelles', 'Seychelles'),
