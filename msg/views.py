@@ -1,10 +1,13 @@
+from django.http.response import JsonResponse
 from django.shortcuts import render, redirect
 from django.http import HttpResponse, HttpResponseRedirect
+from django.contrib.auth.hashers import make_password
 from feed.models import Feed, AccountImage
 from path.models import Rating, CourseBase
-from m2m.models import PersonalGoals, FriendList
+from m2m.models import PersonalGoals, FriendList, MessageBase
 from feed.forms import DocumentForm
 from django.contrib.auth.views import LogoutView
+from django.views import View
 from django.conf import settings
 import datetime
 import os
@@ -50,6 +53,66 @@ def msg(request, *args, **kwargs):
             'photo': photo,
             'begin_path': begin_path,
             'friends': friendslistinfo,
+            'messages': None,
         })
     else:
         return HttpResponseRedirect('/login/')
+
+
+
+def get(request):
+    print('AJAX success')
+    if request.is_ajax():
+        flag = request.GET.get('flag')
+        print('AJAX success2')
+        if flag == 'a':
+            firstname = request.GET.get('firstname')
+            surname = request.GET.get('surname')
+            touserid = request.GET.get('userid')
+            #Now let's check if the user exists
+            if Feed.objects.filter(id = touserid, first_name = firstname, last_name = surname).exists():
+                #Exists
+                #Check, do we have a chatroom with the user
+                #Get our id
+                target_mail = request.user.username
+                userid = Feed.objects.filter(mail=target_mail).values_list('id')[0][0]
+                #Firstly, need to find our friendship in frends DB
+                if (FriendList.objects.filter(fromid = userid, toid = touserid).exists()) or (FriendList.objects.filter(fromid = touserid, toid = userid).exists()):
+                    #Success - friends
+                    if FriendList.objects.filter(fromid = userid, toid = touserid).exists():
+                        roomid = FriendList.objects.filter(fromid = userid, toid = touserid).values_list('id')[0][0]
+                    else:
+                        roomid = FriendList.objects.filter(fromid = touserid, toid = userid).values_list('id')[0][0]
+                    #Now we have a room number, let's get messages
+                    messages = MessageBase.objects.filter(roomid = roomid)
+                    return JsonResponse({
+                        'messages': list(messages.values()),
+                        'ourid': userid
+                    })
+                else:
+                    #No friendship :(
+                    pass
+            else:
+                #Does nit exist
+                pass
+
+
+def post(request):
+    message = request.POST['text']
+
+    target_mail = request.user.username
+    #Got id of the user
+    userid = Feed.objects.filter(mail=target_mail).values_list('id')[0][0]
+    toid = request.POST['toid']
+    if (FriendList.objects.filter(fromid = userid, toid = toid).exists()) or (FriendList.objects.filter(fromid = toid, toid = userid).exists()):
+        if FriendList.objects.filter(fromid = userid, toid = toid).exists():
+            roomid = FriendList.objects.filter(fromid = userid, toid = toid).values_list('id')[0][0]
+        else:
+            roomid = FriendList.objects.filter(fromid = toid, toid = userid).values_list('id')[0][0]
+        messagehashed = message
+        new_message = MessageBase.objects.create(title = messagehashed, fromid = userid, roomid = roomid)
+        new_message.save()
+        return None
+    else:
+        pass
+

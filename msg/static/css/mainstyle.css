@@ -406,6 +406,8 @@ main {
     display: inline-block;
     border: none;
     cursor: pointer;
+    text-align: center;
+    align-items: center;
     
 }
 .msg-string {

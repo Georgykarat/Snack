@@ -26,3 +26,4 @@ class MessageBase(models.Model):
 	time = models.DateTimeField(default=datetime.now)
 	roomid = models.IntegerField()
 	fromid = models.IntegerField()
+	new = models.BooleanField(default=True)

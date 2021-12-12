@@ -11,7 +11,7 @@ class PersonalGoalsAdmin(admin.ModelAdmin):
 
 
 class FriendListAdmin(admin.ModelAdmin):
-    list_display = ['fromid', 'toid']
+    list_display = ['id','fromid', 'toid']
     search_fields = ['fromid', 'toid']
 
 

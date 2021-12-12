@@ -100,8 +100,8 @@
                 <li class="contact-string">
                     <div class="background-photo"></div>  
                     <div class="string-namecnt">
-                        <div style="display: none;">{{f.id}}</div>
-                        <div class="string-name">{{f.first_name}} {{f.last_name}}</div>
+                        <div id="userid" style="display: none;">{{f.id}}</div>
+                        <div class="string-name"><span class="fn">{{f.first_name}}</span>&nbsp;<span class="sn">{{f.last_name}}</span></div>
                         <div class="flg"></div>
                     </div>
                     <div class="lvl">{{f.lvl}}</div>
@@ -113,20 +113,31 @@
         <div class="msg-cnt-blank">&nbsp;Choose your contact<br><br><br>&nbsp;<----</div>
         <div class="msg-cnt">
             <div class="msg-zone-cnt">
+                {% csrf_token %}
+                {% if messages == None %}
+                {% else %}
+                {% for m in messages %}
+                {% if m.fromid == ourid %}
                 <div class="msg-string">
-                    <div class="msg">Hey homie!
-                        <div class="msg-time">4.05 PM</div>
+                    <div class="msg">{{ m.title }}
+                        <div class="msg-time">{{ m.time }}</div>
                     </div>
                 </div>
+                {% else %}
                 <div class="msg-string2">
-                    <div class="msg2">Hola, dickan!
-                        <div class="msg-time">4.07 PM</div>
+                    <div class="msg2">{{ m.title }}
+                        <div class="msg-time">{{ m.time }}</div>
                     </div>
                 </div>
+                {% endif %}
+                {% endfor %}
+                {% endif %}
             </div>
             <form class="msg-input" method="POST">
+                {% csrf_token %}
                 <input type="input" name="" class="input-msg-txt" placeholder="Message here">
-                <button class="msg-btn">Msg</button>
+                <div style="display: none;" class="useridsbmt"></div>
+                <input class="msg-btn" type="submit" value="Msg"></input>
             </form>
         </div>
     </main>
