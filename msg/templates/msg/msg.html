@@ -96,22 +96,18 @@
                 <input type="search" name="search" id="search" class="search-contacts-msg" placeholder="Name, Surname">
             </div>
             <ul class="contact-list-ul">
+                {% for f in friends %}
                 <li class="contact-string">
                     <div class="background-photo"></div>  
                     <div class="string-namecnt">
-                        <div class="string-name">Georgii Karateev</div>
+                        <div style="display: none;">{{f.id}}</div>
+                        <div class="string-name">{{f.first_name}} {{f.last_name}}</div>
                         <div class="flg"></div>
                     </div>
-                    <div class="lvl">1</div>
+                    <div class="lvl">{{f.lvl}}</div>
                 </li>
-                <li class="contact-string"> 
-                    <div class="background-photo"></div>  
-                    <div class="string-namecnt">
-                        <div class="string-name">Vladimir Melchukov</div>
-                        <div class="flg"></div>
-                    </div>
-                    <div class="lvl">14</div>
-                </li>
+                {% endfor %}
+
             </ul>
         </div>
         <div class="msg-cnt-blank">&nbsp;Choose your contact<br><br><br>&nbsp;<----</div>

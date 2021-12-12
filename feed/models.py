@@ -31,6 +31,7 @@ class Feed(models.Model):
     last_lesson = models.CharField(default="01", max_length=2)
     accessid = models.IntegerField(default=0)
     rating_exp = models.IntegerField(default=0)
+    lvl = models.IntegerField(default=0)
 
     def __str__(self):
         return self.mail

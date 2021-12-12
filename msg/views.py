@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse, HttpResponseRedirect
 from feed.models import Feed, AccountImage
 from path.models import Rating, CourseBase
-from m2m.models import PersonalGoals
+from m2m.models import PersonalGoals, FriendList
 from feed.forms import DocumentForm
 from django.contrib.auth.views import LogoutView
 from django.conf import settings
@@ -17,6 +17,21 @@ def msg(request, *args, **kwargs):
         #Got id of the user
         userid = Feed.objects.filter(mail=target_mail).values_list('id')
         userid1 = userid[0][0]
+        #Let's find our friends
+        friendslist = []
+        friends1 = FriendList.objects.filter(fromid = userid1).values_list('toid')
+        friends1 = list(friends1)
+        for i in friends1:
+            friendslist.append(i)
+        friends2 = FriendList.objects.filter(toid = userid1).values_list('fromid')
+        friends2 = list(friends2)
+        for i in friends2:
+            friendslist.append(i)
+        friendslisttemp = []
+        for i in friendslist:
+            friendslisttemp.append(i[0])
+        # friendslist.remove(userid1)
+        friendslistinfo = Feed.objects.filter(id__in = friendslisttemp).all()
         #Find today date
         today = datetime.datetime.today().strftime("%d.%m.%Y")
         #Get User information
@@ -34,6 +49,7 @@ def msg(request, *args, **kwargs):
             'country': feed_data[0][3],
             'photo': photo,
             'begin_path': begin_path,
+            'friends': friendslistinfo,
         })
     else:
         return HttpResponseRedirect('/login/')
