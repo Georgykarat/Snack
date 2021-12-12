@@ -111,37 +111,7 @@ $( function() {
     </style>
 </head>
 <body>
-    <div class="header-cnt">
-        <div class="header-cnt-centre">
-            <div class="header-cnt_left__logo">
-                <img src="{% static 'png/lg.png' %}" width="30" height="30">
-                <div class="header-cnt2_left__logo">snack</div>
-            </div>
-            <ul class="header-cnt_centre__menu">
-                {% if access == 2 %}
-                <li class="header-cnt_centre__menu-a"><a href="../admin/">Admin</a></li>
-                {% endif %}
-                <li class="header-cnt_centre__menu-a"><a href="#">About</a></li>
-                <li class="header-cnt_centre__menu-a"><a href="#">Courses</a></li>
-                <li class="header-cnt_centre__menu-a"><a href="#">Process</a></li>
-                <li class="header-cnt_centre__menu-a"><a href="#">Help</a></li>
-            </ul>
-            <div class="header-cnt_right__logo">
-                <div class="header-profile-cnt1">
-                    <div class="bell-cnt">    
-                        <button class="bell-btn"></button>
-                        <div class="notify-circle"></div>
-                    </div> 
-                    <button class="chat-btn"></button>
-                </div>   
-                <div class="header-profile-cnt">
-                    <div class="header-image"></div>
-                    <a href="settings/"><div class="header-name">{{name}} {{last_name}}</div></a>
-                    <button class="arrow-btn"></button>
-                </div>
-            </div>
-        </div>
-    </div>
+    {% include "feed/header.html" %}
     <main>
         <div class="maincnt-centr">
             <h2>Welcome back, <span class="username">&nbsp;{{name}}&nbsp;!</span></h2>

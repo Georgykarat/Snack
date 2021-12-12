@@ -1,0 +1,147 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Snack Courses</title>
+    <link rel="stylesheet" href="{% static 'css/stylesfeed.css' %}">
+    <script src="{% static 'js/jQueryv3.6.0.min.js' %}"></script>
+    <script src="{% static 'js/jquery-ui.min.js' %}"></script>
+    <link rel="stylesheet" href="{% static 'js/jquery-ui.css' %}">
+    <!--<script src="script.js"></script>-->
+    <script type="text/javascript">
+
+
+$( function() {
+    $( "#original_items" ).sortable({
+        distance: 5,
+        tolerance: "pointer"
+    });
+  } );
+
+
+
+    </script>
+    <style>
+        @font-face{
+  font-family: Lemon Milk Pro;
+  font-style: normal;
+  src: url({% static 'css/Lemon Milk Pro Ultra Light.otf' %});
+}
+
+@font-face{
+  font-family: Lemon Milk Pro b;
+  font-style: bold;
+  src: url({% static 'css/Lemon Milk Pro Medium.otf' %});
+}
+
+@font-face{
+  font-family: Lemon Milk Regular;
+  font-style: bold;
+  src: url({% static 'css/Lemon Milk Pro Regular.otf' %});
+}
+@font-face{
+  font-family: Lemon Milk Pro bb;
+  font-style: bold;
+  src: url({% static 'css/Lemon Milk Pro Bold.otf' %});
+}
+        .header-image {
+    display: flex;
+    min-width: 35px;
+    width: 35px;
+    min-height: 35px;
+    height: 35px;
+    background-color: transparent;
+    background-image: url({{begin_path}}{{photo}});
+    background-position: center;
+    background-size: 100%;
+    background-repeat: no-repeat;
+    border-radius: 20px;
+    cursor: pointer;
+}
+.bell-btn {
+    height: 35px;
+    width: 35px;
+    cursor: not-allowed;
+    background-color: transparent;
+    background-position: center;
+    background-image: url('../static/png/notification.png');
+    background-repeat: no-repeat;
+    background-size: 70%;
+    border: none;
+    margin-left: 0px;
+}
+.chat-btn {
+    height: 35px;
+    width: 35px;
+    cursor: not-allowed;
+    background-color: transparent;
+    background-position: center;
+    background-image: url('../static/png/chat.png');
+    background-repeat: no-repeat;
+    background-size: 70%;
+    border: none;
+    margin-left: 5px;
+}
+.arrow-btn {
+    height: 35px;
+    width: 35px;
+    cursor: pointer;
+    background-color: transparent;
+    background-position: center;
+    background-image: url('../static/png/down-arrow.png');
+    background-repeat: no-repeat;
+    background-size: 50%;
+    border: none;
+    margin-left: 15px;
+}
+.edit-goal {
+    height: 30px;
+    width: 30px;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    background-repeat: no-repeat;
+    background-image: url('../static/png/dots.png');
+    background-size: 100%;
+
+}
+    </style>
+</head>
+<body>
+    <div class="header-cnt">
+        <div class="header-cnt-centre">
+            <div class="header-cnt_left__logo">
+                <img src="{% static 'png/lg.png' %}" width="30" height="30">
+                <div class="header-cnt2_left__logo">snack</div>
+            </div>
+            <ul class="header-cnt_centre__menu">
+                {% if access == 2 %}
+                <li class="header-cnt_centre__menu-a"><a href="../admin/">Admin</a></li>
+                {% endif %}
+                <li class="header-cnt_centre__menu-a"><a href="#">About</a></li>
+                <li class="header-cnt_centre__menu-a"><a href="#">Courses</a></li>
+                <li class="header-cnt_centre__menu-a"><a href="#">Process</a></li>
+                <li class="header-cnt_centre__menu-a"><a href="#">Help</a></li>
+            </ul>
+            <div class="header-cnt_right__logo">
+                <div class="header-profile-cnt1">
+                    <div class="bell-cnt">    
+                        <a href="/msg/"><button class="bell-btn"></button></a>
+                        <div class="notify-circle"></div>
+                    </div> 
+                    <button class="chat-btn"></button>
+                </div>   
+                <div class="header-profile-cnt">
+                    <div class="header-image"></div>
+                    <a href="settings/"><div class="header-name">{{name}} {{last_name}}</div></a>
+                    <button class="arrow-btn"></button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
