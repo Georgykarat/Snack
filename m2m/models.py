@@ -27,3 +27,10 @@ class MessageBase(models.Model):
 	roomid = models.IntegerField()
 	fromid = models.IntegerField()
 	new = models.BooleanField(default=True)
+
+
+class UserCourse(models.Model):
+	userid = models.IntegerField(blank=True, default=None)
+	courseid = models.IntegerField(blank=True, default=None)
+	lessonid = models.IntegerField(blank=True, default=None)
+	startdate = models.DateTimeField(blank=True, default=datetime.now)

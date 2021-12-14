@@ -1,5 +1,5 @@
 from django.contrib import admin
-from m2m.models import PersonalGoals, FriendList, MessageBase
+from m2m.models import PersonalGoals, FriendList, MessageBase, UserCourse
 
 
 # Register your models here.
@@ -20,6 +20,13 @@ class MessageBaseAdmin(admin.ModelAdmin):
     list_display = ['roomid', 'fromid', 'title']
     search_fields = []
 
+
+class UserCourseAdmin(admin.ModelAdmin):
+    list_display = ['userid', 'courseid', 'lessonid']
+    search_fields = ['userid']
+
+
 admin.site.register(PersonalGoals, PersonalGoalsAdmin)
 admin.site.register(FriendList, FriendListAdmin)
 admin.site.register(MessageBase, MessageBaseAdmin)
+admin.site.register(UserCourse, UserCourseAdmin)

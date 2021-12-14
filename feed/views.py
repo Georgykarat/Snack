@@ -91,7 +91,7 @@ def feed(request, *args, **kwargs):
 
 def mailcheck(request):
     if request.is_ajax():
-        mailtocheck = request.GET.get('mailtocheck')
+        mailtocheck = request.GET.get('mailtocheck').lower()
         if mailtocheck:
             if Feed.objects.filter(mail = mailtocheck).exists():
                 nomail = False
