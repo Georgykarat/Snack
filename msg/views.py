@@ -61,10 +61,8 @@ def msg(request, *args, **kwargs):
 
 
 def get(request):
-    print('AJAX success')
     if request.is_ajax():
         flag = request.GET.get('flag')
-        print('AJAX success2')
         if flag == 'a':
             firstname = request.GET.get('firstname')
             surname = request.GET.get('surname')
@@ -110,6 +108,7 @@ def post(request):
         else:
             roomid = FriendList.objects.filter(fromid = toid, toid = userid).values_list('id')[0][0]
         messagehashed = message
+        #today = datetime.datetime.today().strftime("%H:%M. %d.%m.%Y")
         new_message = MessageBase.objects.create(title = messagehashed, fromid = userid, roomid = roomid)
         new_message.save()
         return None

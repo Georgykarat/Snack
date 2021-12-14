@@ -50,6 +50,19 @@ def registration(request, *args, **kwargs):
     return render(request, 'registration/registration.html', {})
 
 
+def mailcheck(request):
+    if request.is_ajax():
+        mailtocheck = request.GET.get('mailtocheck')
+        if mailtocheck:
+            if Feed.objects.filter(mail = mailtocheck).exists():
+                return HttpResponseRedirect('/login/')
+            else:
+                pass
+        else:
+            pass
+
+
+
 class Registration(View):
 
 
@@ -112,3 +125,13 @@ class Registration(View):
         return render(request, 'registration/registration.html', context={'user_form': user_form})
 
 
+    def mailcheck(request):
+        if request.is_ajax():
+            mailtocheck = request.GET.get('mailtocheck')
+            if mailtocheck:
+                if Feed.objects.filter(mail = mailtocheck).exists():
+                    return HttpResponseRedirect('/login/')
+                else:
+                    return None
+            else:
+                return None

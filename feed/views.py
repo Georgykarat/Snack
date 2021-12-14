@@ -1,3 +1,4 @@
+from django.http.response import JsonResponse
 from django.shortcuts import render, redirect
 from django.http import HttpResponse, HttpResponseRedirect
 from feed.models import Feed, AccountImage
@@ -85,6 +86,28 @@ def feed(request, *args, **kwargs):
         })
     else:
         return HttpResponseRedirect('../login')
+
+
+
+def mailcheck(request):
+    if request.is_ajax():
+        mailtocheck = request.GET.get('mailtocheck')
+        if mailtocheck:
+            if Feed.objects.filter(mail = mailtocheck).exists():
+                nomail = False
+                return JsonResponse({
+                    'nomail': nomail,    
+                })
+            else:
+                nomail = True
+                return JsonResponse({
+                    'nomail': nomail,    
+                })
+        else:
+            pass
+
+
+
 
 
 class MainLogoutView(LogoutView):

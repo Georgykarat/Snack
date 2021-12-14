@@ -365,7 +365,7 @@ main {
     height: 90%;
     background-color: transparent;
     flex-wrap: wrap;
-    padding: 0 0px;
+    padding: 0 0 10px 0;
     overflow-y: auto;
 }
 .msg-input {

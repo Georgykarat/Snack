@@ -111,20 +111,20 @@
             </ul>
         </div>
         <div class="msg-cnt-blank">&nbsp;Choose your contact<br><br><br>&nbsp;<----</div>
-        <div class="msg-cnt">
-            <div class="msg-zone-cnt">
+        <div class="msg-cnt" id="msg-cnt">
+            <div class="msg-zone-cnt" id="msg-zone-cnt">
                 {% csrf_token %}
                 {% if messages == None %}
                 {% else %}
                 {% for m in messages %}
                 {% if m.fromid == ourid %}
-                <div class="msg-string">
+                <div class="msg-string msgstring" id="msgstring">
                     <div class="msg">{{ m.title }}
                         <div class="msg-time">{{ m.time }}</div>
                     </div>
                 </div>
                 {% else %}
-                <div class="msg-string2">
+                <div class="msg-string2 msgstring" id="msgstring">
                     <div class="msg2">{{ m.title }}
                         <div class="msg-time">{{ m.time }}</div>
                     </div>

@@ -359,10 +359,41 @@ $('.mail-f').on('keyup', function(){
 });
 /* Availability proceed check */
 $('body').on('keyup', function(){
+
+	$.ajax({
+			url: '/feed/check',
+			type: 'get',
+			data: {
+				mailtocheck: $('#id_mail').val(),
+			},
+			success: function(response) {
+				var nomail = response.nomail;
+				var pass_code1;
+				pass_code1 = $('.pass-f').val();
+				var mail;
+				mail = $('.mail-f').val();
+				if (nomail == false) {
+					$('.mail-text').text('Mail already exists')
+				} else {
+					$('.mail-text').text('Email')
+				};
+				if ((!/^[a-z0-9]+$/.test(pass_code1) == true) && (!/^[A-Z0-9]+$/.test(pass_code1) == true) && ( !/^[A-Za-z]+$/.test(pass_code1) == true) && (pass_code1.length >= 8) && (pass_code1 != "") && (mail.indexOf('@') != -1) && (mail != "") && ($('.pass-f').val() == $('.confirm-password2').val()) && ($('.confirm-password2').val() != "") && nomail == true) {
+					$('.create-acc-password').css('background-color','#27cf7f');
+					$('.create-acc-password').css('border','1px solid #27cf7f');
+					document.getElementById('create-acc-password').removeAttribute("disabled");
+				} else {
+					$('.create-acc-password').css('background-color','lightgrey');
+					$('.create-acc-password').css('border','1px solid lightgrey');
+					document.getElementById('create-acc-password').setAttribute("disabled");
+				}
+			
+			}
+		});
+/*
 	var pass_code1;
 	pass_code1 = $('.pass-f').val();
 	var mail;
-	mail = $('.mail-f').val();	
+	mail = $('.mail-f').val();
 	if ((!/^[a-z0-9]+$/.test(pass_code1) == true) && (!/^[A-Z0-9]+$/.test(pass_code1) == true) && ( !/^[A-Za-z]+$/.test(pass_code1) == true) && (pass_code1.length >= 8) && (pass_code1 != "") && (mail.indexOf('@') != -1) && (mail != "") && ($('.pass-f').val() == $('.confirm-password2').val()) && ($('.confirm-password2').val() != "")) {
 		$('.create-acc-password').css('background-color','#27cf7f');
 		$('.create-acc-password').css('border','1px solid #27cf7f');
@@ -371,7 +402,7 @@ $('body').on('keyup', function(){
 		$('.create-acc-password').css('background-color','lightgrey');
 		$('.create-acc-password').css('border','1px solid lightgrey');
 		document.getElementById('create-acc-password').setAttribute("disabled");
-	}
+	} */
 });
 /* Valid password border */
 $('body').on('keyup',function(){
@@ -503,6 +534,7 @@ var mySwiper = new Swiper ('.swiper-container', {
 		}
 	});
 
+	// Check if mail already exists
 
 
 
