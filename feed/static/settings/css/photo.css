@@ -1,0 +1,138 @@
+
+.wrapper
+{
+    width: 100%;
+    height: 500px;
+    display: table; /*table - none */
+}
+
+.main
+{
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.main__content
+{
+    padding: 5px;
+    text-align: center;
+}
+
+.image
+{
+    display: block;
+    margin: 15px auto;
+    border: 1px solid #ddd;
+    background: #fff;
+    border-radius: 15px;
+    max-width: 60%;
+    max-height: 600px;
+}
+
+.canvas
+{
+    display: block;
+    max-width: 60%;
+    max-height: 60%;
+    position: absolute;
+    border: 0;
+    border-radius: 15px;
+    cursor: move;
+}
+
+.input 
+{
+    display: inline-block;
+    vertical-align: middle;
+    margin: 5px;
+    height: 10px;
+    width: 50px;
+    padding: 10px;
+    background-color: #E0E0E0;
+    font-size: 16px;
+    border: none;
+    border-radius: 15px;
+    text-align: center;
+}
+
+.button
+{
+    display: inline-block;
+    vertical-align: middle;
+    margin: 20px;
+    background-color: #26D07C;
+    border: 0;
+    border-radius: 25px;
+    padding: 10px 25px;
+    color: #fff;
+    cursor: pointer;
+    transition: .3s;
+    font-size: 16px;
+}
+
+.button:hover
+{
+    background: transparent;
+    transition: .1s;
+}
+
+.button_disabled
+{
+    background: #555;
+    cursor: not-allowed;
+}
+
+.a, .a:visited
+{
+    color: #6694f6;
+}
+
+.a:hover
+{
+    text-decoration: none;
+}
+
+.a_hidden
+{
+    opacity: 0;
+}
+.photo-filler-cnt {
+    width: 100%;
+    height: 200px;
+    display: flex;
+}
+.img-temp-header {
+    margin-top: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    min-width: 100%;
+    height: 150px;
+    border: none;
+    border-radius: 25px;
+}
+.manual-file__txt {
+    border-bottom: 1px solid black;
+    cursor: pointer;
+    color: black;
+    transition: .3s;
+}
+.manual-file__txt:hover {
+    border-bottom: 1px solid #26D07C;
+    color: #26D07C;
+    cursor: pointer;
+    transition: .3s;
+}
+
+.btn-for-manual-upload {
+    width: 0.1px;
+    height: 0.1px;
+    opacity: 0;
+    overflow: hidden;
+    position: absolute;
+    z-index: -1;
+    outline: -webkit-focus-ring-color auto 5px;
+
+}

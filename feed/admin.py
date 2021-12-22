@@ -4,8 +4,8 @@ from path.models import Rating, CourseBase, QuizBase
 
 # Register your models here.
 class FeedAdmin(admin.ModelAdmin):
-    list_display = ['id', 'mail', 'first_name', 'last_name','rating_exp', 'country', 'created_date', 'accessid', 'lvl']
-    search_fields = ['mail', 'first_name', 'last_name', 'lvl']
+    list_display = ['id', 'mail', 'first_name', 'last_name','rating_exp', 'country', 'created_date', 'accessid', 'lvl', 'login', 'time']
+    search_fields = ['mail', 'first_name', 'last_name', 'lvl', 'login']
 
 
 class CoursesAdmin(admin.ModelAdmin):

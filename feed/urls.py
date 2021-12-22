@@ -10,4 +10,6 @@ urlpatterns = [
     path('logout/', MainLogoutView.as_view(), name="logout"),
     path('settings/', upload_file, name="settings"),
     path('check/', views.mailcheck, name="mailcheck"),
+    path('settings/photodraft/', views.photodraft, name="photodraft"),
+    path('settings/savesettings/', views.savesettings, name="savesettings"),
 ]

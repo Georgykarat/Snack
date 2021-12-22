@@ -17,6 +17,7 @@ class AccessLevel(models.Model):
 class Feed(models.Model):
     country = models.CharField(max_length = 50)
     mail = models.EmailField()
+    login = models.CharField(max_length=30, blank=True, default="")
     password = models.CharField(max_length = 50, blank=True, null=True)
     activity = models.CharField(verbose_name="job", max_length = 1000)
     created_date = models.DateTimeField(auto_now_add=True)
@@ -32,6 +33,7 @@ class Feed(models.Model):
     accessid = models.IntegerField(default=0)
     rating_exp = models.IntegerField(default=0)
     lvl = models.IntegerField(default=0)
+    time = models.CharField(max_length = 3, default="0")
 
     def __str__(self):
         return self.mail

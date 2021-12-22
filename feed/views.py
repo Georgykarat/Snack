@@ -120,6 +120,7 @@ def settings(request, *args, **kwargs):
 '''
 
 def upload_file(request):
+    '''
     if request.method == 'POST':
         upload_file_form = DocumentForm(request.POST, request.FILES)
         if upload_file_form.is_valid():
@@ -140,5 +141,63 @@ def upload_file(request):
 
             return HttpResponseRedirect('..')
     else:
-        upload_file_form = DocumentForm()
-    return render(request, 'settings/settings.html', {'form': upload_file_form})
+        '''
+
+    target_mail = request.user.username
+    #Got id of the user
+    userid = Feed.objects.filter(mail=target_mail).values_list('id')
+    feed_data = Feed.objects.filter(mail=target_mail).values_list('accessid', 'first_name', 'last_name', 'country', 'city', 'login', 'time', 'theme', 'activity')
+    upload_file_form = DocumentForm()
+    if int(feed_data[0][6]) >= 0:
+        timesign = '+'
+    else:
+        timesign = '-'
+    if feed_data[0][7] == 0:
+        style = 'Light Mode'
+    elif feed_data[0][7] == 1:
+        style = 'Night Mode'
+    return render(request, 'settings/settings2.html', {
+            'access': feed_data[0][0],
+            'loginm': target_mail,
+            'name': feed_data[0][1],
+            'last_name': feed_data[0][2],
+            'country': feed_data[0][3],
+            'city': feed_data[0][4],
+            'login': feed_data[0][5],
+            'form': upload_file_form,
+            'timezone': feed_data[0][6],
+            'theme': style,
+            'timesign': timesign,
+            'activity': feed_data[0][7],
+        })
+    #return render(request, 'settings/settings2.html', {'form': upload_file_form})
+
+
+def photodraft(request):
+    if request.is_ajax():
+        draftphoto = request.GET.get('photodraft')
+        print(draftphoto)
+    else:
+        print('no photo')
+
+
+def savesettings(request):
+    if request.is_ajax():
+        login = request.GET.get('login')
+        name = request.GET.get('name')
+        surname = request.GET.get('surname')
+        country = request.GET.get('country')
+        occupation = request.GET.get('occupation')
+        timezonesign = request.GET.get('.timezonesign')
+        timezone = request.GET.get('.timezone')
+        target_mail = request.user.username
+        if timezonesign == '+':
+            hours = str(timezone)
+        else:
+            hours = str(int(timezone) * -1)
+        Feed.objects.filter(mail=target_mail).update(country = country, login = login, first_name = name, last_name = surname, activity = occupation, time = hours)
+        print('Done')
+        return HttpResponseRedirect('/feed/settings/')
+    else:
+        pass
+

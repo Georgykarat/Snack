@@ -1,0 +1,465 @@
+* {
+    font-family: "Lemon Milk Regular";
+	margin: 0;
+    padding: 0;
+    text-decoration: none;
+    list-style: none;
+}
+a {
+    text-decoration: none;
+    color: unset;
+}
+
+body, html {
+    margin: 0;
+    height: 0;
+    max-width: 100%;
+    width: 100%;
+}
+body {
+    background-color: rgb(255,255,255);
+}
+
+@font-face{
+  font-family: Lemon Milk Pro;
+  font-style: normal;
+  src: url('../../png/Lemon Milk Pro Ultra Light.otf');
+}
+
+@font-face{
+  font-family: Lemon Milk Pro b;
+  font-style: bold;
+  src: url('../../png/Lemon Milk Pro Medium.otf');
+}
+
+@font-face{
+  font-family: Lemon Milk Regular;
+  font-style: bold;
+  src: url('../../png/Lemon Milk Pro Regular.otf');
+}
+@font-face{
+  font-family: Lemon Milk Pro bb;
+  font-style: bold;
+  src: url('../../png/Lemon Milk Pro Bold.otf');
+}
+
+
+.header-cnt {
+    width: 100%;
+    margin: 0;
+    max-width: 100%;
+    background-color: white;
+    border-bottom-right-radius: 20px;
+    border-bottom-left-radius: 20px;
+    height: 100px;
+    box-shadow: 0px 0px 100px #E5E5E5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.header-cnt-centre {
+    width: 80%;
+    max-width: 80%;
+    background-color: transparent;
+    height: 80px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.header-cnt_left__logo {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.header-cnt2_left__logo {
+    font-size: 20px;
+    font-family: 'Lemon Milk Pro bb';
+    font-style: italic;
+    color: #0B132A;
+    padding-left: 10px;
+}
+.header-cnt_centre__menu {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 35%;
+    width: 35%;
+}
+.header-cnt_centre__menu-a {
+    font-size: 16px;
+    color: #4F5665;
+    cursor: pointer;
+}
+.header-cnt_right__logo {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    width: 30%;
+}
+.header__sign-in-btn {
+    font-size: 16px;
+    padding: 10px 20px;
+    color: #0B132A;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+.header__sign-up-btn {
+    color: #26D07C;
+    font-size: 16px;
+    box-shadow: none;
+    border-color: #26D07C;
+    border-radius: 30px;
+    border-width: 1px;
+    cursor: pointer;
+    padding: 10px 50px;
+    background-color: transparent;
+    border-style: solid;
+    transition: 1s;
+}
+.header__sign-up-btn:hover {
+    color: white;
+    box-shadow: none;
+    border-color: #26D07C;
+    background-color: #26D07C;
+    transition: 1s;
+}
+.bell-cnt {
+    display: flex;
+    justify-content: flex-end;
+}
+.notify-circle {
+    height: 10px;
+    width: 10px;
+    background-color: #FF5151;
+    border-radius: 10px;
+    cursor: pointer;
+    border: 2px solid white;
+    position: relative;
+    right: 19px;
+    top: 4px;
+    opacity: 1;
+    transition: .4s;
+}
+.bell-btn {
+    height: 35px;
+    width: 35px;
+    cursor: not-allowed;
+    background-color: transparent;
+    background-position: center;
+    background-image: url('../../png/notification.png');
+    background-repeat: no-repeat;
+    background-size: 70%;
+    border: none;
+    margin-left: 0px;
+}
+.chat-btn {
+    height: 35px;
+    width: 35px;
+    cursor: not-allowed;
+    background-color: transparent;
+    background-position: center;
+    background-image: url('../../png/chat.png');
+    background-repeat: no-repeat;
+    background-size: 70%;
+    border: none;
+    margin-left: 5px;
+}
+.arrow-btn {
+    height: 35px;
+    width: 35px;
+    cursor: pointer;
+    background-color: transparent;
+    background-position: center;
+    background-image: url('../../png/down-arrow.png');
+    background-repeat: no-repeat;
+    background-size: 50%;
+    border: none;
+    margin-left: 15px;
+}
+.header-profile-cnt {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: nowrap;
+}
+.header-profile-cnt1 {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: nowrap;
+    margin-right: 25px;
+    top: 10px;
+}
+.header-name {
+    display: flex;
+    align-items: center;
+    padding-left: 10px;
+    color: #161E54;
+}
+main {
+    background-color: transparent;
+    width: 100%;
+    min-width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.main__central-cnt {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    max-width: 80%;
+    width: 80%;
+    min-width: 80%;
+    background-color: transparent;
+    margin: 40px 0;
+}
+.main__central-cnt_left {
+    display: flex;
+    width: 20%;
+    max-width: 20%;
+    min-width: 20%;
+    background-color: transparent;
+}
+.main__central-cnt_right {
+    display: block;
+    width: 30%;
+    min-width: 30%;
+    max-width: 30%;
+}
+.main__central-right {
+    display: flex;
+    width: 30%;
+    max-width: 30%;
+    min-width: 30%;
+    background-color: transparent;
+}
+.main__cnt_noflex {
+    display: block;
+    width: 100%;
+    min-width: 100%;
+    max-width: 100%;
+}
+.main__cnt-flex {
+    display: flex;
+    width: 100%;
+    min-width: 100%;
+    max-width: 100%;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+}
+h2 {
+    font-family: 'Lemon Milk Regular';
+    color: #979797;
+    font-size: 16px;
+    margin-bottom: 40px;
+}
+.left-menu {
+    display: flex;
+    list-style: none;
+    flex-wrap: wrap;
+    width: 100%;
+    min-width: 100%;
+    max-width: 100%;
+    padding-bottom: 20px;
+    margin-bottom: 50px;
+    border-bottom: 1px solid lightgrey;
+}
+.left-menu-items {
+    width: 100%;
+    min-width: 100%;
+    max-width: 100%;
+    display: flex;
+    align-items: center;
+    margin-bottom: 40px;
+    flex-wrap: nowrap;
+    cursor: pointer;
+}
+.li-menu {
+    font-size: 14px;
+}
+.admin-btn {
+    background-image: url('../../png/blueprint.png');
+}
+.workspace-btn {
+    background-image: url('../../png/workspace.png');
+}
+.courses-btn {
+    background-image: url('../../png/nachos.png');
+}
+.analytics-btn {
+    background-image: url('../../png/analytics.png');
+}
+.friends-btn {
+    background-image: url('../../png/team-2.png');
+}
+.rating-btn {
+    background-image: url('../../png/star.png');
+}
+.goals-btn {
+    background-image: url('../../png/check.png');
+}
+.profile-btn {
+    background-image: url('../../png/gear.png');
+}
+.help-btn {
+    background-image: url('../../png/question.png');
+}
+.active-text {
+    color: #4F5665;
+}
+.nonactive-text {
+    color: #B2B2B2;
+}
+.active-btn {
+    background-color: #26D07C;
+}
+.noactive-btn {
+    background-color: #E0E0E0;
+}
+.right-cnt-header {
+    font-size: 28px;
+    color: #E5E5E5;
+}
+h3 {
+    font-size: 32px;
+    color: #4F5665;
+    margin: 20px 0;
+    min-width: 100%;
+    width: 100%;
+}
+h5 {
+    font-size: 24px;
+}
+.admin-cnt {
+    background-color: #a30000;
+}
+.tester-cnt {
+    background-color: #000080;
+}
+.vip-cnt {
+    background-color: #ffd700;
+}
+.free-cnt {
+    background-color: #6b6b6b;
+}
+.profile-settings {
+    display: block;
+    align-items: center;
+    width: 100%;
+    min-width: 100%;
+}
+.settings__form-label {
+    color: #0B132A;
+    font-size: 20px;
+    width: 100%;
+    min-width: 100%;
+    display: block;
+}
+.settings-inpt {
+    height: 40px;
+    width: 100%;
+    min-width: 100%;
+    margin: 20px 0;
+    padding: 0 10px;
+    font-size: 20px;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+    padding-right: 10px;
+}
+.grey-color {
+    background-color: #E0E0E0;
+}
+.black-color {
+    color: black;
+}
+.input-gmt {
+    height: 40px;
+    width: 50%;
+    min-width: 50%;
+    padding: 0 10px;
+    font-size: 20px;
+    border: none;
+    border-bottom-right-radius: 15px;
+    border-top-right-radius: 15px;
+}
+.timezone__cnt {
+    display: flex;
+    width: 100%;
+    min-width: 100%;
+    margin: 20px 0;
+}
+.gmt-symbol {
+    height: 38px;
+    width: 40px;
+    background-color: transparent;
+    border-top-left-radius: 15px;
+    border-bottom-left-radius: 15px;
+    outline: none;
+    border: 1px solid lightgrey;
+    cursor: pointer;
+    align-items: center;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    font-family: 'Lemon Milk Pro bb';
+    font-size: 25px;
+}
+.confirm-settings__btn {
+    display: flex;
+    width: 100%;
+    min-width: 100%;
+    background-color: #26D07C;
+    transition: .5s;
+    border: 1px solid transparent;
+    justify-content: center;
+    align-items: center;
+    height: 50px;
+    border-radius: 25px;
+    cursor: pointer;
+    font-family: 'Lemon Milk Pro bb';
+    color: white;
+}
+.confirm-settings__btn:hover {
+    background-color: transparent;
+    transition: .5s;
+    border: 1px solid #26D07C;
+}
+.change-pass__cnt {
+    display: flex;
+    width: 100%;
+    min-width: 100%;
+    flex-wrap: wrap;
+
+}
+.password__form_cnt {
+    display: flex;
+    width: 100%;
+    min-width: 100%;
+    flex-wrap: wrap;
+}
+.delete__red-btn {
+    display: flex;
+    width: 100%;
+    min-width: 100%;
+    background-color: red;
+    transition: .5s;
+    border: 1px solid transparent;
+    justify-content: center;
+    align-items: center;
+    height: 50px;
+    border-radius: 25px;
+    cursor: pointer;
+    font-family: 'Lemon Milk Pro bb';
+    color: white;
+}
+.delete__red-btn:hover {
+    background-color: transparent;
+    transition: .5s;
+    border: 1px solid red;
+}
+.not-allowed__cursor {
+    cursor: not-allowed;
+}
