@@ -42,3 +42,8 @@ class Feed(models.Model):
 class AccountImage(models.Model):
     mail = models.EmailField(blank=True)
     file = ContentTypeRestrictedFileField(upload_to='files/userpic/', content_types=['image/png', 'image/jpg', 'image/jpeg'], max_upload_size=5242880, blank=True, null=True)
+
+
+class Invites(models.Model):
+    invite = models.CharField(max_length=20)
+    accessid = models.IntegerField(default=0)

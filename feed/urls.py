@@ -12,4 +12,7 @@ urlpatterns = [
     path('check/', views.mailcheck, name="mailcheck"),
     path('settings/photodraft/', views.photodraft, name="photodraft"),
     path('settings/savesettings/', views.savesettings, name="savesettings"),
+    path('settings/theme/', views.theme, name="theme"),
+    path('settings/changepass/', views.changepass, name='changepassword'),
+    path('settings/deleteacc/', views.deleteacc, name='deleteaccount'),
 ]

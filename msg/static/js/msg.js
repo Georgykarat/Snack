@@ -82,7 +82,6 @@ var MsgSbmt = $('.msg-btn');
 				csrfmiddlewaretoken:$('input[name=csrfmiddlewaretoken]').val(),
 			},
 			success: function(data) {
-				alert(data);
 			}
 		});
 		var text = $('.input-msg-txt').val();

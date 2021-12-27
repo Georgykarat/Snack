@@ -31,8 +31,21 @@
     cursor: pointer;
 }
     </style>
+    <script>
+        $(".test-form").submit(function() {
+  if (window.File && window.FileReader && window.FileList && window.Blob) {
+    var file = $('#id_file')[0].files[0];
+
+    if (file && file.size > 2 * 1024 * 1024) {
+      alert("File " + file.name + " of type " + file.type + " is too big");
+      return false;
+    }
+  }
+});
+    </script>
 </head>
 <body>
+    <div class="body" style="width: 100%; min-width: 100%; height: 100%;">
     <div class="header-cnt">
         <div class="header-cnt-centre">
             <div class="header-cnt_left__logo">
@@ -106,19 +119,24 @@
                                 <div class="help-btn noactive-btn btn-layout"></div>
                                 <div class="li-menu nonactive-text">Need Help?</div>
                             </li>
+                            <a href="/feed/logout/"><li class="left-menu-items">
+                                <div class="help-btn noactive-btn btn-layout"></div>
+                                <div class="li-menu nonactive-text">Exit</div>
+                            </li></a>
                         </ul>
-                        <div id="toggles">
+                        <form id="toggles" method="post">
+                            {% csrf_token %}
                             <div class="toggle-base">
                                 <div class="toggle-btn"></div>
                             </div>
                             <div class="toggle-label">{{theme}}</div>
-                        </div>
+                        </form>
                     </div>
                 </div>
             </div>
             <div class="main__central-cnt_right">
                 <h3>Profile settings:</h3>
-                <form method="POST" class="profile-settings">
+                <form method="post" class="profile-settings">
                     {% csrf_token %}
                     <label class="settings__form-label black-color">Login</label>
                     <input type="input" name="settings__form-label" class="settings-inpt grey-color not-allowed__cursor" id="login" placeholder="Enter your %Username%" value="{{loginm}}" disabled="disabled">
@@ -358,34 +376,42 @@
                         <div class="gmt-symbol grey-color black-color" id="timesign">{{timesign}}</div>
                         <input type="input" name="gmt-hours" maxlength="2" id="timevalue" class="input-gmt grey-color black-color" placeholder="UTC" value="{{timezone}}">
                     </div>
-                    <a href="savesettings/"><button class="confirm-settings__btn" id="savesettings">SAVE</button></a>
+                    <div class="confirm-settings__btn" id="savesettings">SAVE</div>
                 </form>
-                <div class="change-pass__cnt" id="change-pass__cnt">
+                <form method="post" class="change-pass__cnt" id="change-pass__cnt">
+                    {% csrf_token %}
                     <h3>Password:</h3>
                     <div class="password__form_cnt">
                         <label class="settings__form-label black-color">Old password</label>
-                        <input type="password" name="oldpass" placeholder="Old password" class="settings-inpt grey-color black-color">
+                        <input type="password" name="oldpass" placeholder="{{chgpaswmsg}}" class="settings-inpt grey-color black-color pass-1">
                         <label class="settings__form-label black-color">New password</label>
-                        <input type="password" name="oldpass" placeholder="New password" class="settings-inpt grey-color black-color">
+                        <input type="password" name="oldpass" placeholder="{{chgpaswmsg}}" class="settings-inpt grey-color black-color pass-2">
                         <label class="settings__form-label black-color">Repeat</label>
-                        <input type="password" name="oldpass" placeholder="New password" class="settings-inpt grey-color black-color">
+                        <input type="password" name="oldpass" placeholder="{{chgpaswmsg}}" class="settings-inpt grey-color black-color pass-3">
                         <button class="confirm-settings__btn" id="changepass">CHANGE PASSWORD</button>
                     </div>
-                </div>
-                <div class="change-pass__cnt" id="deleteacc__form">
+                </form>
+                <form method="post" class="change-pass__cnt" id="deleteacc__form">
+                    {% csrf_token %}
                     <h3 style="color: red;">Delete account:</h3>
                     <div class="password__form_cnt">
-                        <label class="settings__form-label black-color">Type in your mail times + your name + surname</label>
-                        <input type="input" name="oldpass" placeholder="Keyword" class="settings-inpt grey-color black-color">
+                        <label class="settings__form-label black-color" style="user-select: none;">Type in to delete:<br><span class="deletionkeyword" style="color: red; user-select: none;-webkit-user-select: none;-khtml-user-select: none;-moz-user-select: none;-ms-user-select: none;user-select: none;">{{loginm}}{{name}}{{last_name}}</span></label>
+                        <input type="input" name="oldpass" placeholder="!!! RED ZONE !!!" class="settings-inpt grey-color black-color" id="delete_input">
                         <button class="delete__red-btn" id="delete-acc">!!! DELETE ACCOUNT !!!</button>
                     </div>
-                </div>
+                </form>
             </div>
             <form class="main__central-cnt_right" method="post" enctype="multipart/form-data">
                 <h3>Photo:</h3>
                 <h5 class="black-color">Upload and crop your photo</h5>
+                <form method="post" enctype="multipart/form-data" class="test-form">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <button type="submit">Submit</button>
+                </form>
+                <!--
                 <div class="photo-filler-cnt">
-                    <div class="img-temp-header grey-color black-color"><input type="file" name="file" id="file" class="btn-for-manual-upload"><label for="file" class="manual-file__txt black-color">Choose</label>&nbsp;or drop your image here</div>
+                    <div class="img-temp-header grey-color black-color"><input type="file" name="file" id="file" class="btn-for-manual-upload"><label for="file" class="manual-file__txt black-color">Choose</label>&nbsp;<s>or drop your image here</s></div>
                 </div>
                 <div class="wrapper">
                     <main class="main">
@@ -414,10 +440,12 @@
                         </div>
                     </main>
                 </div>
+            -->
             </form>
         </div>
     </main>
     {% include "home/footer.html" %}
+</div>
 </body>
 </html>
 

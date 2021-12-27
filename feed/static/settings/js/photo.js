@@ -247,15 +247,17 @@ Array.prototype.forEach.call( inputs, function( input )
 var photo_draft = $('.img-temp-header');
 
 photo_draft.mouseleave(function(){
-	ourphoto = $('.btn-for-manual-upload').files;
+	var selectedFile = $('#file')[0].files[0];
+	image = selectedFile
 	$.ajax({
 		url: 'photodraft/',
-		type: 'get',
+		type: 'post',
 		data:{
-			photodraft: ourphoto,
+			csrfmiddlewaretoken:$('input[name=csrfmiddlewaretoken]').val(),
+			photodraft: selectedFile,
 		},
 		success: function(data) {
-			alert(data)
+			alert(data);
 			image.src = files;
 		}
 	});
