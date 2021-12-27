@@ -1,15 +1,45 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/login.css' %}">
     <title>Snack Login</title>
 </head>
 <body>
-    <h1>Log In</h1>
-    <form method="post" action="">
-        {% csrf_token %}
-        {{ form.as_p}}
-        <button type="submit">Login</button>
-    </form>
+    <div class="header-cnt">
+        <div class="header-cnt-centre">
+            <div class="header-cnt_left__logo">
+                <img src="{% static 'css/lg.png' %}" width="30" height="30">
+                <div class="header-cnt2_left__logo">snack</div>
+            </div>
+            <ul class="header-cnt_centre__menu">
+                <li class="header-cnt_centre__menu-a"><a href="#">About</a></li>
+                <li class="header-cnt_centre__menu-a"><a href="#">Courses</a></li>
+                <li class="header-cnt_centre__menu-a"><a href="#">Process</a></li>
+                <li class="header-cnt_centre__menu-a"><a href="#">Help</a></li>
+            </ul>
+            <div class="header-cnt_right__logo">
+                <a href="registration/"><button class="header__sign-up-btn">Sign&nbsp;Up</button></a>
+            </div>
+        </div>
+    </div>
+    <main>
+        <div class="main-cnt-centr">
+            <div class="main-cnt-centre__small-cnt login-view">
+                <h1 class="h1-new">Snack In</h1>
+                <form method="post" action="">
+                    {% csrf_token %}
+                    {{ form.as_p}}
+                    <div class="sbm-cnt">
+                        <button type="submit" class="lgn-btn">Login</button>
+                        <a href=""><div class="forgot-pass">Forgot password?</div></a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </main>
+    {% include "home/footer.html" %}
 </body>
 </html>
