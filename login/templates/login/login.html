@@ -5,6 +5,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="{% static 'css/login.css' %}">
+    <script src="{% static 'js/jQueryv3.6.0.min.js' %}"></script>
+    <script src="{% static 'js/jquery-ui.min.js' %}"></script>
+    <script src="{% static 'js/script.js' %}"></script>
     <title>Snack Login</title>
 </head>
 <body>
@@ -36,6 +39,22 @@
                         <button type="submit" class="lgn-btn">Login</button>
                         <a href=""><div class="forgot-pass">Forgot password?</div></a>
                     </div>
+                </form>
+            </div>
+            <div class="main-cnt-centre__small-cnt reset-view">
+                <h1 class="h1-new">Reset your password</h1>
+                <form method="post" class="reset-pass__form">
+                    {% csrf_token %}
+                    <p class="reset-get-mail__cnt">
+                        <label>Your mail:</label>
+                        <input type="text" class="ourmail">
+                    </p>
+                    <div class="getpass">Get code</div>
+                    <p class="reset-get-code__cnt">
+                        <label>Code:</label>
+                        <input type="text" class="ourmail">
+                    </p>
+                    <button class="resetpass">Get new password</button>
                 </form>
             </div>
         </div>

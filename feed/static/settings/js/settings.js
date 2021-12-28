@@ -84,9 +84,19 @@ deletebtn.on('click', function(){
 
 });
 
-NonActiveBtn.hover(function(){
-
+NonActiveBtn.mouseover(function(){
+    $(this).children('.noactive-btn').animate({
+        backgroundColor: "#26D07C"
+    }, 200, function() {
+        $(this).children('.noactive-btn').css('background-color', '#26D07C');
+    });
 });
-
+NonActiveBtn.mouseleave(function(){
+    $(this).children('.noactive-btn').animate({
+        backgroundColor: "#E0E0E0"
+    }, 100, function() {
+        $(this).children('.noactive-btn').css('background-color', '#E0E0E0');
+    });
+});
 
 });

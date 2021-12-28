@@ -208,9 +208,26 @@ label {
     padding-left: 20px;
     cursor: pointer;
 }
+.reset-view {
+    display: flex;
+}
+.login-view {
+    display: none;
+}
 .sbm-cnt {
     display: flex;
     width: 100%;
     justify-content: center;
     align-items: center;
+}
+.getpass {
+    position: relative;
+    top: -55px;
+    left: -10px;
+    float: right;
+    font-size: 15px;
+    border: none;
+    background-color: white;
+    cursor: pointer;
+    color: #26D07C;
 }

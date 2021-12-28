@@ -306,6 +306,9 @@ h2 {
 .help-btn {
     background-image: url('../../png/question.png');
 }
+.exit-btn {
+    background-image: url('../../png/exit.png');
+}
 .active-text {
     color: #4F5665;
 }

@@ -19,6 +19,10 @@ class FriendList(models.Model):
 	toid = models.IntegerField()
 
 
+class FriendRequests(models.Model):
+	fromid = models.IntegerField()
+	toid = models.IntegerField()
+
 
 
 class MessageBase(models.Model):

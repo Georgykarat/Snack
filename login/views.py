@@ -33,5 +33,9 @@ def login_view(request, *args, **kwargs):
         return render(request, 'login/login.html', context=context)
 
 
+def resetpass(request):
+    pass
+
+
 class MainLoginView(LoginView):
     template_name = 'login/login.html'
