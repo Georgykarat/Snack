@@ -209,10 +209,10 @@ label {
     cursor: pointer;
 }
 .reset-view {
-    display: flex;
+    display: none;
 }
 .login-view {
-    display: none;
+    display: flex;
 }
 .sbm-cnt {
     display: flex;
@@ -230,4 +230,13 @@ label {
     background-color: white;
     cursor: pointer;
     color: #26D07C;
+}
+.resetpass {
+    cursor: pointer;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+.loginhref {
+    display: none;
 }

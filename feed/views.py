@@ -225,7 +225,7 @@ def changepass(request):
         #"pbkdf2_sha1"
         # checkresult = check_password(p1)
         # old_pass = User.objects.filter(username = target_mail).values_list('password')[0][0]
-        if False == True:
+        if True == True:
             #Let's edit thepassword
             ouruser = User.objects.get(username__exact = target_mail)
             ouruser.set_password(p2)

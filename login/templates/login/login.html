@@ -4,10 +4,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="{% static 'css/login.css' %}">
-    <script src="{% static 'js/jQueryv3.6.0.min.js' %}"></script>
+    <script src="{% static 'js/jQueryv3.4.1.min.js' %}"></script>
     <script src="{% static 'js/jquery-ui.min.js' %}"></script>
-    <script src="{% static 'js/script.js' %}"></script>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/login.css' %}">
+    <script src="{% static 'js/login.js' %}"></script>
     <title>Snack Login</title>
 </head>
 <body>
@@ -24,7 +24,8 @@
                 <li class="header-cnt_centre__menu-a"><a href="#">Help</a></li>
             </ul>
             <div class="header-cnt_right__logo">
-                <a href="registration/"><button class="header__sign-up-btn">Sign&nbsp;Up</button></a>
+                <a href="/login/" class="loginhref"><button class="header__sign-in-btn">Sign&nbsp;In</button></a>
+                <a href="/registration/"><button class="header__sign-up-btn">Sign&nbsp;Up</button></a>
             </div>
         </div>
     </div>
@@ -37,7 +38,7 @@
                     {{ form.as_p}}
                     <div class="sbm-cnt">
                         <button type="submit" class="lgn-btn">Login</button>
-                        <a href=""><div class="forgot-pass">Forgot password?</div></a>
+                        <div class="forgot-pass">Forgot password?</div>
                     </div>
                 </form>
             </div>
@@ -50,11 +51,14 @@
                         <input type="text" class="ourmail">
                     </p>
                     <div class="getpass">Get code</div>
+                </form>
+                <form method="post" class="reset-pass2__form">
+                    {% csrf_token %}
                     <p class="reset-get-code__cnt">
                         <label>Code:</label>
-                        <input type="text" class="ourmail">
+                        <input type="text" class="ourmail2">
                     </p>
-                    <button class="resetpass">Get new password</button>
+                    <div class="resetpass">Get new password</div>
                 </form>
             </div>
         </div>
