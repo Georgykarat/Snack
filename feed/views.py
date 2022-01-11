@@ -258,5 +258,7 @@ def deleteacc(request):
         return None
 
 
+def coursespage(request):
+    pass
 
 

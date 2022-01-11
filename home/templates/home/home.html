@@ -35,15 +35,17 @@
 <body>
     <div class="header-cnt">
         <div class="header-cnt-centre">
+            <div class="menu-mobile"></div>
             <div class="header-cnt_left__logo">
-                <img src="{% static 'css/lg.png' %}" width="30" height="30">
+                <img class="logousual" src="{% static 'css/lg.png' %}" width="30" height="30">
+                <img class="logononusual" src="{% static 'css/lg.png' %}" width="20" height="20">
                 <div class="header-cnt2_left__logo">snack</div>
             </div>
             <ul class="header-cnt_centre__menu">
-                <li class="header-cnt_centre__menu-a"><a href="#">About</a></li>
-                <li class="header-cnt_centre__menu-a"><a href="#">Courses</a></li>
-                <li class="header-cnt_centre__menu-a"><a href="#">Process</a></li>
-                <li class="header-cnt_centre__menu-a"><a href="#">Help</a></li>
+                <li class="header-cnt_centre__menu-a inactive-currently blocked"><a href="#">About</a></li>
+                <li class="header-cnt_centre__menu-a inactive-currently blocked"><a href="#">Courses</a></li>
+                <li class="header-cnt_centre__menu-a inactive-currently blocked"><a href="#">Process</a></li>
+                <li class="header-cnt_centre__menu-a inactive-currently blocked"><a href="#">Help</a></li>
             </ul>
             <div class="header-cnt_right__logo">
                 <a href="login/"><button class="header__sign-in-btn">Sign&nbsp;In</button></a>

@@ -44,6 +44,9 @@
         display: none;
         width: 0;
     }
+    .menu-mobile {
+        display: flex;
+    }
     .header-cnt_right__logo {
         width: 30%;
     }
@@ -159,11 +162,28 @@
         margin-top: 10px;
         padding: 5px 5px;
         font-size: 12px;
+        box-shadow: 0px 2px 50px #26D07C88;
     }
     .header-cnt_right__logo {
         width: 60%;
     }
     .h1-dot {
         font-size: 22px;
+    }
+    .header__sign-in-btn {
+        font-size: 12px;
+    }
+    .header__sign-up-btn {
+        font-size: 12px;
+        padding: 5px 5px;
+    }
+    .header-cnt2_left__logo {
+        font-size: 14px;
+    }
+    .logousual {
+        display: none;
+    }
+    .logononusual {
+        display: flex;
     }
 }
