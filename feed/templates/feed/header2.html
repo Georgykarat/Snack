@@ -1,0 +1,55 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Snack</title>
+</head>
+<body>
+    <div class="header-cnt">
+        <div class="header-cnt-centre">
+            <div class="header-cnt_left__logo">
+                <img src="{% static 'png/lg.png' %}" width="30" height="30">
+                <div class="header-cnt2_left__logo">snack</div>
+            </div>
+            <div class="header-central-cnt">
+                <div class="header__photo_border">
+                    <div class="header__photo"></div>
+                </div>
+                <div class="header__name-lvl-cnt">
+                    <div class="header__name-lvl-name">{{name}}&nbsp;{{last_name}}&nbsp;&nbsp;<span class="header__license-level">{{access_name}}</span></div>
+                    <div class="header__name-lvl-bigcnt">
+                        <div class="header__name-lvl-lvlcnt">
+                            <div class="header__name-lvl-lvl" style="width: {{percantage}}%"></div>
+                        </div>
+                        <div class="header__name-lvl-lvlname">{{material}}&nbsp;{{ratingid}}</div>
+                    </div>
+                </div>
+                <div class="header__lvl-badge"></div>
+            </div>
+            <div class="header-cnt_right__logo2">
+                <a href="/feed/logout/"><div class="header__left_logout">Logout</div></a>
+                <!--
+                <div class="header-profile-cnt1">
+                    <div class="bell-cnt">    
+                        <button class="bell-btn"></button>
+                        <div class="notify-circle" id="bell-notify"></div>
+                    </div> 
+                    <div class="bell-cnt">
+                        <button class="chat-btn"></button>
+                        <div class="notify-circle" id="chat-notify"></div>
+                    </div>
+                </div>   
+                <div class="header-profile-cnt">
+                    <div class="header-image"></div>
+                    <div class="header-name">Vladimir Melchukov</div>
+                    <button class="arrow-btn"></button>
+                </div>
+            -->
+            </div>
+        </div>
+    </div>
+</body>
+</html>
