@@ -151,11 +151,9 @@
                         <select class="main__cnt_filter tags_filter">
                             <option value="">No Tag:</option>
                             <option value="Current">Current</option>
-                            <option value="Backend">Backend</option>
-                            <option value="Data">Data</option>
-                            <option value="IT">IT</option>
-                            <option value="Frontend">Frontend</option>
-                            <option value="Programming">Programming</option>
+                            {% for tag in tags %}
+                            <option value="{{tag.tag}}">{{tag.tag}}</option>
+                            {% endfor %}
                         </select>
                         <select class="main__cnt_filter complexity_filter">
                             <option value="">Difficulty:</option>
@@ -174,10 +172,15 @@
                                 <div class="courses-li__rightcnt-cntr">
                                     <ul class="courses__tags-list">
                                         <li class="courses__tags-li courses__tags-li_active">Current</li>
-                                        <li class="courses__tags-li">IT</li>
-                                        <li class="courses__tags-li">Programming</li>
-                                        <li class="courses__tags-li">Backend</li>
-                                        <li class="courses__tags-li">Data</li>
+                                        {% for course_tag in course_tag %}
+                                            {% if course.courseid == course_tag.courseid %}
+                                                {% for tag in tags %}
+                                                    {% if course_tag.tagid == tag.tagid %}
+                                                        <li class="courses__tags-li">{{tag.tag}}</li>
+                                                    {% endif %}
+                                                {% endfor %}
+                                            {% endif %}
+                                        {% endfor %}
                                     </ul>
                                     <h3>{{course.course_name}}</h3>
                                     <div class="courses__course-creator">{{course.author}}</div>

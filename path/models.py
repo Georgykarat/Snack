@@ -51,6 +51,17 @@ class QuizBase(models.Model):
     def __str__(self):
         return self.num + " " + self.quiztype + " " + self.question
 
+class TagsBase(models.Model):
+    tagid = models.IntegerField()
+    tag = models.CharField(max_length=50)
+
+    def __str__(self):
+        return self.tag
+
+class Course_Tags(models.Model):
+    courseid = models.IntegerField()
+    tagid = models.IntegerField()
+
 '''
 class TemporaryExpCounter(models.Model):
     mail = models.CharField(max_length=500)

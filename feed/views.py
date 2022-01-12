@@ -4,7 +4,7 @@ from django.contrib.auth.hashers import check_password
 from django.shortcuts import render, redirect
 from django.http import HttpResponse, HttpResponseRedirect
 from feed.models import Feed, AccountImage, AccessLevel
-from path.models import Rating, CourseBase
+from path.models import Rating, CourseBase, TagsBase, Course_Tags
 from m2m.models import PersonalGoals
 from feed.forms import DocumentForm
 from django.contrib.auth.views import LogoutView, UserModel
@@ -266,6 +266,11 @@ def coursespage(request):
         #Let's get our courses from DB
         courses = CourseBase.objects.filter(avaliable=True).all() #Get all avaliable courses
         #
+        #Let's get all tags
+        tags = TagsBase.objects.all()
+        course_tag = Course_Tags.objects.all()
+        #Create dict with courses:[tags]
+            
         return render(request, 'courses/courses.html', {
             'access': feed_data[0][0],
             'access_name': access_name,
@@ -280,6 +285,8 @@ def coursespage(request):
             'material': current_level_info[0][1],
             'percantage': percentage,
             'courses': courses,
+            'tags': tags,
+            'course_tag': course_tag,
         })
     else:
         return HttpResponseRedirect('../login')
