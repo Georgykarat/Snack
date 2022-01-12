@@ -9,8 +9,8 @@ class FeedAdmin(admin.ModelAdmin):
 
 
 class CoursesAdmin(admin.ModelAdmin):
-    list_display = ['courseid','lessonid', 'course_name', 'lesson_name', 'icon']
-    search_fields = ['course_name', 'lesson_name']
+    list_display = ['courseid', 'course_name', 'icon', 'color', 'description', 'complexity', 'author', 'authorid', 'avaliable']
+    search_fields = ['course_name']
 
 
 class RatingAdmin(admin.ModelAdmin):

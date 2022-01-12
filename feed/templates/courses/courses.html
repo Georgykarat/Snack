@@ -86,10 +86,12 @@
                     <div class="main__cnt-flex">
                         <h2>Main Menu</h2>
                         <ul class="left-menu">
+                            {% if access == 2 %}
                             <a href="/admin/"><li class="left-menu-items">
                                 <div class="admin-btn noactive-btn btn-layout"></div>
                                 <div class="li-menu nonactive-text">Admin</div>
                             </li></a>
+                            {% endif %}
                             <a href="../"><li class="left-menu-items">
                                 <div class="workspace-btn noactive-btn btn-layout"></div>
                                 <div class="li-menu nonactive-text">My Workspace</div>
@@ -165,8 +167,9 @@
                         </select>
                     </div>
                     <ul class="courses-ul">
+                        {% for course in courses %}
                         <li class="courses-li">
-                            <div class="courses-li__leftcnt course_pythonbasics"></div>
+                            <div class="courses-li__leftcnt" style="background-color: #{{course.color}};"></div>
                             <div class="courses-li__rightcnt">
                                 <div class="courses-li__rightcnt-cntr">
                                     <ul class="courses__tags-list">
@@ -176,10 +179,10 @@
                                         <li class="courses__tags-li">Backend</li>
                                         <li class="courses__tags-li">Data</li>
                                     </ul>
-                                    <h3>Python: Basics</h3>
-                                    <div class="courses__course-creator">Georgii Karateev, Founder of Snack LLC</div>
+                                    <h3>{{course.course_name}}</h3>
+                                    <div class="courses__course-creator">{{course.author}}</div>
                                     <div class="courses__description">
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis laoreet pellentesque laoreet. Aenean ullamcorper nec tortor ut imperdiet.
+                                        {{course.description}}
                                     </div>
                                     <div class="courses__large-cnt">
                                         <div class="courses_progress-cnt">
@@ -193,13 +196,24 @@
                                     <div class="course__info_pane displaynone">
                                         <div class="course__info_cnt">
                                             <div class="lessons__amount">56 <span class="thin-txt">lessons</span></div>
+                                            {% if course.complexity == 0 %}
+                                            <div class="complexity__amount">Easy-peasy</div>
+                                            {% elif course.complexity == 1 %}
+                                            <div class="complexity__amount">Easy</div>
+                                            {% elif course.complexity == 2 %}
                                             <div class="complexity__amount">Medium</div>
+                                            {% elif course.complexity == 3 %}
+                                            <div class="complexity__amount">Hard</div>
+                                            {% elif course.complexity == 4 %}
+                                            <div class="complexity__amount">Extreme</div>
+                                            {% endif %}
                                         </div>
                                         <div class="get-started">Get Started</div>
                                     </div>
                                 </div>
                             </div>
                         </li>
+                        {% endfor %}
                         <li class="courses-li opacity20">
                             <div class="courses-li__leftcnt course_pythonadvanced"></div>
                             <div class="courses-li__rightcnt">

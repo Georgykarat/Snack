@@ -19,18 +19,19 @@ class Rating(models.Model):
 
 
 class CourseBase(models.Model):
-    courseid = models.CharField(max_length=4)
+    courseid = models.IntegerField()
     course_name = models.CharField(max_length=50)
-    lessonid = models.CharField(max_length=2, blank=True)
-    lesson_name = models.CharField(max_length=50, blank=True)
-    icon = models.FileField(upload_to='lessonicons/')
+    icon = models.FileField(upload_to='lessonicons/', blank=True)
+    color = models.CharField(blank=True, max_length=8)
     description = models.CharField(blank=True, max_length=5000)
-    video = models.CharField(blank=True, max_length=50)
-    script = models.CharField(max_length=10000, blank=True)
+    complexity = models.IntegerField(blank=True)
+    author = models.CharField(blank=True, max_length=100)
+    authorid = models.IntegerField(blank=True, default=0)
+    avaliable = models.BooleanField(default=False)
 
 
     def __str__(self):
-        return self.course_name + " " + self.lesson_name
+        return self.course_name
 
 
 class QuizBase(models.Model):
