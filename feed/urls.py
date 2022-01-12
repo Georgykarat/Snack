@@ -15,4 +15,5 @@ urlpatterns = [
     path('settings/theme/', views.theme, name="theme"),
     path('settings/changepass/', views.changepass, name='changepassword'),
     path('settings/deleteacc/', views.deleteacc, name='deleteaccount'),
+    path('courses/', views.coursespage, name='courses'),
 ]

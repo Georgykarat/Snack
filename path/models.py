@@ -1,15 +1,18 @@
 
 from django.db import models
 
+
 # Create your models here.
 
 
 
 class Rating(models.Model):
     ratingid = models.IntegerField()
-    rating_name = models.CharField(max_length = 30)
+    rating_name = models.CharField(max_length = 30, blank=True)
     rating_material = models.CharField(max_length = 20)
     rating_exp = models.IntegerField()
+    image_badge = models.CharField(verbose_name="image path", max_length = 1000, blank=True)
+    icon = models.FileField(upload_to='levels/', blank=True)
 
     def __str__(self):
         return self.rating_material + " " + self.rating_name

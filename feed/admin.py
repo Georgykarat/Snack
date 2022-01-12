@@ -14,7 +14,7 @@ class CoursesAdmin(admin.ModelAdmin):
 
 
 class RatingAdmin(admin.ModelAdmin):
-    list_display = ['ratingid', 'rating_material', 'rating_name', 'rating_exp']
+    list_display = ['ratingid', 'rating_material', 'rating_name', 'rating_exp', 'image_badge', 'icon']
     search_fields = ['rating_material', 'rating_name']
 
 

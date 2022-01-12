@@ -1,0 +1,702 @@
+* {
+    font-family: "Lemon Milk Regular";
+	margin: 0;
+    padding: 0;
+    text-decoration: none;
+    list-style: none;
+}
+input, textarea, select {
+-webkit-appearance: none;
+}
+a {
+    text-decoration: none;
+    color: unset;
+}
+
+body, html {
+    margin: 0;
+    height: 0;
+    max-width: 100%;
+    width: 100%;
+}
+body {
+    background-color: rgb(255,255,255);
+}
+
+@font-face{
+  font-family: Lemon Milk Pro;
+  font-style: normal;
+  src: url('../png/Lemon Milk Pro Ultra Light.otf');
+}
+
+@font-face{
+  font-family: Lemon Milk Pro b;
+  font-style: bold;
+  src: url('../png/Lemon Milk Pro Medium.otf');
+}
+
+@font-face{
+  font-family: Lemon Milk Regular;
+  font-style: bold;
+  src: url('../png/Lemon Milk Pro Regular.otf');
+}
+@font-face{
+  font-family: Lemon Milk Pro bb;
+  font-style: bold;
+  src: url('../png/Lemon Milk Pro Bold.otf');
+}
+
+
+.header-cnt {
+    width: 100%;
+    margin: 0;
+    max-width: 100%;
+    background-color: white;
+    border-bottom-right-radius: 20px;
+    border-bottom-left-radius: 20px;
+    height: 100px;
+    box-shadow: 0px 0px 100px #E5E5E5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.header-central-cnt {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 150px;
+    width: 40%;
+}
+.header-cnt-centre {
+    width: 80%;
+    max-width: 80%;
+    background-color: transparent;
+    height: 80px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header__photo_border {
+    border-radius: 60px;
+    border: 0px solid #a30000;
+    background-color: #00000000;
+    transition: .5s;
+
+}
+/*
+.header__photo:hover {
+    transition: .5s;
+    border: 0px solid white;
+}
+*/
+.header__name-lvl-cnt {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin-left: 10px;
+    flex-wrap: wrap;
+    width: 100%;
+}
+.header__name-lvl-name {
+    color: #4F5665;
+    font-size: 14px;
+    font-family: 'Lemon Milk Regular';
+    width: 100%;
+}
+.header__license-level {
+    color: #B2B2B2;
+    font-size: 12px;
+    font-family: 'Lemon Milk Regular';
+}
+.header__name-lvl-bigcnt {
+    display: flex;
+    justify-content: flex-start;
+    width: 100%;
+}
+.header__name-lvl-lvlcnt {
+    height: 7px;
+    width: 75%;
+    background-color: #F1F1F1;
+    border-radius: 10px;
+    margin-top: 10px;
+    margin-right: 10px; 
+}
+.header__name-lvl-lvl {
+    height: 7px;
+    border-radius: 10px;
+    background: linear-gradient(to right, #4C6859FF, #4C6859AD);
+}
+.header__name-lvl-lvlname {
+    color: #B2B2B2;
+    font-size: 12px;
+    font-family: 'Lemon Milk Pro';
+    position: relative;
+    bottom: -2px;
+}
+.header-cnt_left__logo {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.header-cnt2_left__logo {
+    font-size: 20px;
+    font-family: 'Lemon Milk Pro bb';
+    font-style: italic;
+    color: #0B132A;
+    padding-left: 10px;
+}
+.header-cnt_centre__menu {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 35%;
+    width: 35%;
+}
+.header-cnt_centre__menu-a {
+    font-size: 16px;
+    color: #4F5665;
+    cursor: pointer;
+}
+.header-cnt_right__logo2 {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    width: 10%;
+}
+
+.header__left_logout {
+    display: flex;
+    color: #4F5665;
+    justify-content: flex-end;
+    align-items: center;
+    font-size: 16px;
+    cursor: pointer;
+    padding-right: 40px;
+    background-image: url('../png/log-out.png');
+    background-size: 20%;
+    background-repeat: no-repeat;
+    background-position: right;
+}
+.header__sign-in-btn {
+    font-size: 16px;
+    padding: 10px 20px;
+    color: #0B132A;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+.header__sign-up-btn {
+    color: #26D07C;
+    font-size: 16px;
+    box-shadow: none;
+    border-color: #26D07C;
+    border-radius: 30px;
+    border-width: 1px;
+    cursor: pointer;
+    padding: 10px 50px;
+    background-color: transparent;
+    border-style: solid;
+    transition: 1s;
+}
+.header__sign-up-btn:hover {
+    color: white;
+    box-shadow: none;
+    border-color: #26D07C;
+    background-color: #26D07C;
+    transition: 1s;
+}
+.bell-cnt {
+    display: flex;
+    justify-content: flex-end;
+}
+.notify-circle {
+    height: 10px;
+    width: 10px;
+    background-color: #FF5151;
+    border-radius: 10px;
+    cursor: pointer;
+    border: 2px solid white;
+    position: relative;
+    right: 19px;
+    top: 4px;
+    opacity: 1;
+    transition: .4s;
+}
+.bell-btn {
+    height: 35px;
+    width: 35px;
+    cursor: not-allowed;
+    background-color: transparent;
+    background-position: center;
+    background-image: url('../png/notification.png');
+    background-repeat: no-repeat;
+    background-size: 70%;
+    border: none;
+    margin-left: 0px;
+}
+.chat-btn {
+    height: 35px;
+    width: 35px;
+    cursor: not-allowed;
+    background-color: transparent;
+    background-position: center;
+    background-image: url('../png/chat.png');
+    background-repeat: no-repeat;
+    background-size: 70%;
+    border: none;
+    margin-left: 5px;
+}
+.arrow-btn {
+    height: 35px;
+    width: 35px;
+    cursor: pointer;
+    background-color: transparent;
+    background-position: center;
+    background-image: url('../png/down-arrow.png');
+    background-repeat: no-repeat;
+    background-size: 50%;
+    border: none;
+    margin-left: 15px;
+}
+.header-profile-cnt {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: nowrap;
+}
+.header-profile-cnt1 {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: nowrap;
+    margin-right: 25px;
+    top: 10px;
+}
+.header-image {
+    display: flex;
+    min-width: 35px;
+    width: 35px;
+    min-height: 35px;
+    height: 35px;
+    background-color: transparent;
+    background-position: center;
+    background-image: url('testimg.jpg');
+    background-size: 100%;
+    background-repeat: no-repeat;
+    border-radius: 20px;
+    cursor: pointer;
+}
+.header-name {
+    display: flex;
+    align-items: center;
+    padding-left: 10px;
+    color: #161E54;
+}
+main {
+    background-color: transparent;
+    width: 100%;
+    min-width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.main__central-cnt {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    max-width: 80%;
+    width: 80%;
+    min-width: 80%;
+    background-color: transparent;
+    margin: 40px 0;
+}
+.main__central-cnt_left {
+    display: flex;
+    width: 20%;
+    max-width: 20%;
+    min-width: 20%;
+    background-color: transparent;
+}
+.main__central-cnt_right {
+    display: flex;
+    width: 76%;
+    min-width: 76%;
+    max-width: 76%;
+}
+.main__central-right {
+    display: flex;
+    width: 80%;
+    max-width: 80%;
+    min-width: 80%;
+    background-color: transparent;
+}
+.main__cnt_noflex {
+    display: block;
+    width: 100%;
+    min-width: 100%;
+    max-width: 100%;
+}
+.main__cnt-flex {
+    display: flex;
+    width: 100%;
+    min-width: 100%;
+    max-width: 100%;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+}
+h2 {
+    font-family: 'Lemon Milk Regular';
+    color: #979797;
+    font-size: 16px;
+    margin-bottom: 40px;
+}
+.left-menu {
+    display: flex;
+    list-style: none;
+    flex-wrap: wrap;
+    width: 100%;
+    min-width: 100%;
+    max-width: 100%;
+    padding-bottom: 20px;
+    margin-bottom: 50px;
+    border-bottom: 1px solid lightgrey;
+}
+.left-menu-items {
+    width: 100%;
+    min-width: 100%;
+    max-width: 100%;
+    display: flex;
+    align-items: center;
+    margin-bottom: 40px;
+    flex-wrap: nowrap;
+    cursor: pointer;
+}
+.li-menu {
+    font-size: 14px;
+}
+.admin-btn {
+    background-image: url('../png/blueprint.png');
+}
+.workspace-btn {
+    background-image: url('../png/workspace.png');
+}
+.courses-btn {
+    background-image: url('../png/nachos.png');
+}
+.analytics-btn {
+    background-image: url('../png/analytics.png');
+}
+.friends-btn {
+    background-image: url('../png/team-2.png');
+}
+.rating-btn {
+    background-image: url('../png/star.png');
+}
+.goals-btn {
+    background-image: url('../png/check.png');
+}
+.profile-btn {
+    background-image: url('../png/gear.png');
+}
+.help-btn {
+    background-image: url('../png/question.png');
+}
+.active-text {
+    color: #4F5665;
+}
+.nonactive-text {
+    color: #B2B2B2;
+}
+.active-btn {
+    background-color: #26D07C;
+}
+.noactive-btn {
+    background-color: #E0E0E0;
+}
+
+.right-cnt-header {
+    font-size: 28px;
+    color: #E5E5E5;
+}
+.h1courses {
+    font-size: 26px;
+    color: #4F5665;
+}
+.main__cnt_filters-pane {
+    display: flex;
+    flex-wrap: nowrap;
+    width: 100%;
+    justify-content: space-between;
+    margin: 40px 0;
+}
+.main__cnt_filter_search {
+    width: 28%;
+    height: 36px;
+    background-color: white;
+    border: 2px solid #E0E0E0;
+    color: grey;
+    border-radius: 10px;
+    padding-left: 20px;
+    outline: none;
+    background-image: url('../png/search.png');
+    background-position-x: 95%;
+    background-position-y: 50%;
+    background-repeat: no-repeat;
+    background-size: 5%;
+}
+.main__cnt_filter {
+    width: 30%;
+    height: 40px;
+    background-color: white;
+    background-image: url('../png/arrow-down.png');
+    background-position-x: 95%;
+    background-position-y: 50%;
+    background-repeat: no-repeat;
+    background-size: 5%;
+    border: 2px solid #E0E0E0;
+    color: grey;
+    border-radius: 10px;
+    padding-left: 20px;
+    outline: none;
+    cursor: pointer;
+}
+.main__cnt_filter > option {
+    font-size: 20px;
+}
+.courses__header-cnt {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.courses__view_cnt {
+    border-radius: 25px;
+    display: flex;
+    border: none;
+    height: 2em;
+    color: grey;
+}
+.courses__view_cnt_list {
+    font-size: 14px;
+    color: grey;
+    align-items: center;
+    cursor: pointer;
+}
+.courses-ul {
+    display: flex;
+    width: 100%;
+    flex-wrap: wrap;
+}
+.courses-li {
+    display: flex;
+    height: 270px;
+    width: 100%;
+    border-radius: 25px;
+    border: none;
+    background-color: white;
+    justify-content: flex-start;
+    margin: 30px 0;
+    box-shadow: 10px 10px 40px #E0e0e0;
+    cursor: pointer;
+}
+.courses-li__leftcnt {
+    width: 25%;
+    border-right: none;
+    height: 100%;
+    border-top-left-radius: 25px;
+    border-bottom-left-radius: 25px;
+}
+.courses-li__rightcnt {
+    width: 75%;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+.courses-li__rightcnt-cntr {
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    width: 90%;
+}
+.courses__tags-list {
+    display: flex;
+    justify-content: flex-start;
+    width: 100%;
+    margin: 20px 0;
+}
+.courses__tags-li {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2px 5px;
+    background-color: #F5F5F5;
+    color: #4F5665;
+    font-size: 10px;
+    border-radius: 10px;
+    margin-right: 5px;
+}
+.courses__tags-li_active {
+    background-color: #26D07C;
+    color: white;
+}
+h3 {
+    width: 100%;
+    color: #081F32;
+    font-size: 22px;
+    margin-bottom: 7px 0;
+
+}
+.courses__course-creator {
+    font-size: 12px;
+    color: lightgrey;
+    font-family: 'Lemon Milk Pro';
+}
+.courses__description {
+    font-size: 14px;
+    color: #6E798C;
+    font-family: 'Lemon Milk Pro';
+    padding-right: 40px;
+    margin-top: 20px;
+    height: 80px;
+}
+.courses_scale {
+    display: flex;
+    height: 9px;
+    border-radius: 25px;
+    background-color: #F1F1F1;
+    width: 80%;
+}
+.courses_scale-progress {
+    height: 9px;
+    border-radius: 25px;
+    background: linear-gradient(to right, #26D07CFF, #26D07C80);
+}
+.courses_scale-percentage {
+    font-size: 20px;
+    color: #26D07C;
+    padding-left: 20px;
+}
+.courses_progress_currentlesson {
+    font-size: 12px;
+    color: #AFB5C0;
+    font-family: 'Lemon Milk Pro';
+}
+.courses_progress-cnt {
+    display: flex;
+    width: 100%;
+    align-items: center;
+}
+.courses__large-cnt {
+    display: flex;
+    width: 100%;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+}
+.course__info_pane {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+}
+.course__info_cnt {
+    display: flex;
+    width: 40%;
+    justify-content: space-between;
+}
+.lessons__amount {
+    padding-left: 40px;
+    background-position: left;
+    background-repeat: no-repeat;
+    background-image: url('../png/playlist.png');
+    background-size: 25%;
+    color: #6E798C;
+}
+.complexity__amount {
+    padding-left: 30px;
+    background-position: left;
+    background-repeat: no-repeat;
+    background-image: url('../png/user.png');
+    background-size: 30%;
+    color: #6E798C;
+}
+.get-started {
+    padding-right: 30px;
+    background-position: right;
+    background-repeat: no-repeat;
+    background-image: url('../png/right-arrows.png');
+    background-size: 15%;
+    color: #26D07C;
+}
+.grey {
+    /*
+    background-color: #F5F5F5;
+    border: 1px solid #E0E0E0;
+    */
+}
+.li-cnt {
+    width: 90%;
+    min-width: 90%;
+    max-width: 90%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: nowrap;
+}
+.li-cnt_left {
+    display: flex;
+    width: 85%;
+    min-width: 85%;
+    align-items: center;
+    flex-wrap: wrap;
+}
+.goals-title {
+    font-size: 20px;
+    color: #303030;
+    width: 100%;
+}
+.goals-subtitle {
+    font-size: 12px;
+    color: #686868;
+    width: 100%;
+}
+.edit-goals {
+    display: flex;
+    height: 50px;
+    width: 50px;
+    border: none;
+    background-color: transparent;
+    background-image: url('dots.png');
+    background-repeat: no-repeat;
+    background-size: 80%;
+    background-position: center;
+    cursor: pointer;
+}
+.green {
+    background-color: #26D07C;
+    border: 1px solid #E0E0E0;
+}
+.green-txt {
+    color: white;
+}
+
+.black {
+    color: black;
+    padding-bottom: 30px;
+}
+.grey2 {
+    color: #4F5665;
+    padding-bottom: 25px;
+    font-size: 14px;
+}
+.blocked {
+    cursor: not-allowed;
+}
+.thin-txt {
+    font-family: 'Lemon Milk Pro';
+}
+.displaynone {
+    display: none;
+}
+.opacity20 {
+    opacity: 20%;
+    cursor: not-allowed;
+}
