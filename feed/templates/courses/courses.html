@@ -8,32 +8,13 @@
     <title>Snack Courses</title>
     <link rel="stylesheet" href="{% static 'css/courses.css' %}">
     <link rel="stylesheet" href="{% static 'css/coursetheme.css' %}">
+    <link rel="stylesheet" href="{% static 'css/lefttab.css' %}">
     <link rel="stylesheet" href="{% static 'css/toggler.css' %}">
     <script src="{% static 'js/jQueryv3.6.0.min.js' %}"></script>
     <script src="{% static 'js/jquery-ui.min.js' %}"></script>
     <link rel="stylesheet" href="{% static 'js/jquery-ui.css' %}">
     <script src="{% static 'js/courses.js' %}"></script>
     <script src="{% static 'js/theme.js' %}"></script>
-    <style>
-        .header__photo {
-    height: 60px;
-    width: 60px;
-    border: 2px solid #a30000;
-    border-radius: 60px;
-    background-image: url({{begin_path}}{{photo}});
-    background-position: center;
-    background-size: 110%;
-    background-repeat: no-repeat;
-        }
-        .header__lvl-badge {
-    height: 60px;
-    width: 40px;
-    background-image: url({{begin_path}}{{levelbadge}});
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: 130%;
-}
-    </style>
 </head>
 <body>
     {% include "feed/header2.html" %}

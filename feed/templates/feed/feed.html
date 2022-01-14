@@ -6,225 +6,135 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Snack Courses</title>
-    <link rel="stylesheet" href="{% static 'css/stylesfeed.css' %}">
+    <link rel="stylesheet" href="{% static 'css/feed3.css' %}">
+    <link rel="stylesheet" href="{% static 'css/coursetheme.css' %}">
+    <link rel="stylesheet" href="{% static 'css/lefttab.css' %}">
+    <link rel="stylesheet" href="{% static 'css/toggler.css' %}">
     <script src="{% static 'js/jQueryv3.6.0.min.js' %}"></script>
     <script src="{% static 'js/jquery-ui.min.js' %}"></script>
     <link rel="stylesheet" href="{% static 'js/jquery-ui.css' %}">
-    <!--<script src="script.js"></script>-->
-    <script type="text/javascript">
-
-
-$( function() {
-    $( "#original_items" ).sortable({
-        distance: 5,
-        tolerance: "pointer"
-    });
-  } );
-
-
-
-    </script>
+    <script src="{% static 'js/feed.js' %}"></script>
+    <script src="{% static 'js/theme.js' %}"></script>
     <style>
-        @font-face{
-  font-family: Lemon Milk Pro;
-  font-style: normal;
-  src: url({% static 'css/Lemon Milk Pro Ultra Light.otf' %});
-}
-
-@font-face{
-  font-family: Lemon Milk Pro b;
-  font-style: bold;
-  src: url({% static 'css/Lemon Milk Pro Medium.otf' %});
-}
-
-@font-face{
-  font-family: Lemon Milk Regular;
-  font-style: bold;
-  src: url({% static 'css/Lemon Milk Pro Regular.otf' %});
-}
-@font-face{
-  font-family: Lemon Milk Pro bb;
-  font-style: bold;
-  src: url({% static 'css/Lemon Milk Pro Bold.otf' %});
-}
-        .header-image {
+        .feed__lvl_cnt-lvlbadge {
     display: flex;
-    min-width: 35px;
-    width: 35px;
-    min-height: 35px;
-    height: 35px;
-    background-color: transparent;
-    background-image: url({{begin_path}}{{photo}});
-    background-position: center;
+    justify-content: center;
+    width: 15%;
+    background-image: url({{begin_path}}{{levelbadge}});
+    background-repeat: no-repeat;
     background-size: 100%;
-    background-repeat: no-repeat;
-    border-radius: 20px;
-    cursor: pointer;
-}
-.bell-btn {
-    height: 35px;
-    width: 35px;
-    cursor: not-allowed;
-    background-color: transparent;
     background-position: center;
-    background-image: url('../static/png/notification.png');
-    background-repeat: no-repeat;
-    background-size: 70%;
-    border: none;
-    margin-left: 0px;
-}
-.chat-btn {
-    height: 35px;
-    width: 35px;
-    cursor: not-allowed;
-    background-color: transparent;
-    background-position: center;
-    background-image: url('../static/png/chat.png');
-    background-repeat: no-repeat;
-    background-size: 70%;
-    border: none;
-    margin-left: 5px;
-}
-.arrow-btn {
-    height: 35px;
-    width: 35px;
-    cursor: pointer;
-    background-color: transparent;
-    background-position: center;
-    background-image: url('../static/png/down-arrow.png');
-    background-repeat: no-repeat;
-    background-size: 50%;
-    border: none;
-    margin-left: 15px;
-}
-.edit-goal {
-    height: 30px;
-    width: 30px;
-    background-color: transparent;
-    border: none;
-    cursor: pointer;
-    background-repeat: no-repeat;
-    background-image: url('../static/png/dots.png');
-    background-size: 100%;
-
 }
     </style>
 </head>
 <body>
-    {% include "feed/header.html" %}
+    {% include "feed/header2.html" %}
     <main>
-        <div class="maincnt-centr">
-            <h2>Welcome back, <span class="username">&nbsp;{{name}}&nbsp;!</span></h2>
-            <div class="courses__cardzone_cnt">
-                <div class="courses__continue_text">Continue courses:</div>
-                <div class="cards__large_cnt">
-                    <ul id="original_items">
-                        <li class="one__card python_basics">
-                            <div class="lesson__text">PYTHON BASICS</div>
-                            <div class="ctn-lesson__btn_cnt">
-                                <button class="go-to-lsn__btn">CONTINUE</button>
+        <div class="main__central-cnt">
+            <div class="main__central-cnt_left">
+                <div class="main__cnt_noflex">
+                    <div class="main__cnt-flex">
+                        <h2>Main Menu</h2>
+                        <ul class="left-menu">
+                            {% if access == 2 %}
+                            <a href="/admin/"><li class="left-menu-items">
+                                <div class="admin-btn noactive-btn btn-layout"></div>
+                                <div class="li-menu nonactive-text">Admin</div>
+                            </li></a>
+                            {% endif %}
+                            <li class="left-menu-items">
+                                <div class="workspace-btn active-btn btn-layout"></div>
+                                <div class="li-menu active-text">My Workspace</div>
+                            </li>
+                            <a href="/feed/courses/"><li class="left-menu-items">
+                                <div class="courses-btn noactive-btn btn-layout"></div>
+                                <div class="li-menu nonactive-text">Courses</div>
+                            </li></a>
+                            <li class="left-menu-items opacity20">
+                                <div class="analytics-btn noactive-btn btn-layout"></div>
+                                <div class="li-menu nonactive-text">Performance</div>
+                            </li>
+                            <li class="left-menu-items opacity20">
+                                <div class="friends-btn noactive-btn btn-layout"></div>
+                                <div class="li-menu nonactive-text">Friends</div>
+                            </li>
+                            <li class="left-menu-items opacity20">
+                                <div class="rating-btn noactive-btn btn-layout"></div>
+                                <div class="li-menu nonactive-text">Ratings</div>
+                            </li>
+                            <li class="left-menu-items opacity20">
+                                <div class="goals-btn noactive-btn btn-layout"></div>
+                                <div class="li-menu nonactive-text">Goals List</div>
+                            </li>
+                        </ul>
+                        <h2>Settings</h2>
+                        <ul class="left-menu">
+                            <li class="left-menu-items">
+                                <div class="profile-btn noactive-btn btn-layout"></div>
+                                <div class="li-menu nonactive-text">Edit Profile</div>
+                            </li>
+                            <li class="left-menu-items opacity20">
+                                <div class="help-btn noactive-btn btn-layout"></div>
+                                <div class="li-menu nonactive-text">Need Help?</div>
+                            </li>
+                        </ul>
+                        <div id="toggles">
+                            <div class="toggle-base">
+                                <div class="toggle-btn"></div>
                             </div>
-                        </li>
-                        <li class="one__card python_advanced">
-                            <div class="lesson__text">PYTHON ADVANCED AND&nbsp;DJANGO</div>
-                            <div class="ctn-lesson__btn_cnt">
-                                <button class="go-to-lsn__btn">CONTINUE</button>
-                            </div>
-                        </li>
-                        <li class="one__card">
-                            <div class="lesson__text">ALGORYTHMS</div>
-                            <div class="ctn-lesson__btn_cnt">
-                                <button class="go-to-lsn__btn">CONTINUE</button>
-                            </div>
-                        </li>
-                        <li class="one__card">
-                            <div class="lesson__text">ADOBE PHOTOSHOP</div>
-                            <div class="ctn-lesson__btn_cnt">
-                                <button class="go-to-lsn__btn">CONTINUE</button>
-                            </div>
-                        </li>
-                        <li class="one__card">
-                            <div class="lesson__text">HTML</div>
-                            <div class="ctn-lesson__btn_cnt">
-                                <button class="go-to-lsn__btn">CONTINUE</button>
-                            </div>
-                        </li>
-                        <li class="one__card">
-                            <div class="lesson__text">CSS</div>
-                            <div class="ctn-lesson__btn_cnt">
-                                <button class="go-to-lsn__btn">CONTINUE</button>
-                            </div>
-                        </li>
-                    </ul>
-                    <ul id="cloned_items">
-                    </ul>
+                            <div class="toggle-label">Light Mode</div>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <div class="how-is-my-learning_cnt">
-                <div class="courses__continue_text">How is my learning:</div>
-                <div class="learning-progress_cnt">
-                    <div class="analytics_cnt">%nodata%</div>
-                    <div class="big-right-cnt">
-                    <div class="to-do-list_cnt">
-                        <div class="to-do-list__header">
-                            <div class="to-do-list__header-flex">
-                                <div class="h3">Goals List:</div>
-                                <div class="goal-dates__cnt">
-                                    <select name="dates" id="dates">
-                                        <option value="Today">Today, {{today}}</option>
-                                        <option value="Yesterday">Yesterday</option>
-                                        <option value="LW">Last week</option>
-                                        <option value="LM">Last month</option>
-                                        <option value="LY">Last year</option>
-                                    </select>
+            <div class="main__central-cnt_right">
+                <div class="main__cnt_noflex">
+                    <div class="feed__lvl_cnt_flex">
+                        <div class="feed__lvl_cnt-lvlbadge"></div>
+                        <div class="feed__lvl_cnt-centralcnt">
+                            <div class="feed_greetingsandlevel">
+                                <div class="feed__lvl_greetingscnt"><span class="h2">Welcome back,</span>&nbsp;<span class="h2-name">{{ name }}!</span>&nbsp;&#128405;</div>
+                                <div class="feed__lvl_currentlvl">Your current level is: {{ material }}&nbsp;{{ratingid}}</div>
+                            </div>
+                            <div class="feed_greetingsandlevel">
+                                <div class="feed__lvl_scalecnt">
+                                    <div class="feed__lvl_scale">
+                                        <div class="feed__lvl_scalegrogress" style="background: linear-gradient(to right, #4C6859FF, #4C6859AD); width: {{ percantage }}%;"></div>
+                                    </div>
+                                    <div class="feed__lvl_pointstonextlvl">
+                                       {{ next_level_material }}&nbsp;{{ next_level }}: {{ until_next }}&nbsp;points to go 
+                                    </div>
+                                </div>
+                                <div class="feed__lvl-percentage"><div class="percentage">{{ percantage }}%</div></div>
+                            </div>
+                        </div>
+                        <div class="feed__lvl_cnt-rightcnt">
+                            <div class="feed__lvl_achieve-badge opacity20"></div>
+                        </div>
+                    </div>
+                    <div class="section__header">Continue Learning:</div>
+                    <ul class="section__continue">
+                        <li class="last__course_li">
+                            <div class="last__course_li_section">
+                                <div class="last__course_li_1str">
+                                    <div class="last__course_imnow-std-txt">I AM NOW STUDYING...</div>
+                                    <div class="last__course_imnow-std-txt">3 days ago</div>
+                                </div>
+                                <div class="last__course_li_headerstr">
+                                    Python: Basics
+                                </div>
+                                <div class="last__course_li_2str">
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis laoreet pellentesque laoreet. Aenean ullamcorper nec tortor ut imperdiet.
+                                </div>
+                                <div class="last__course_li_3str">
+                                    <div class="last__course_continue">Continue</div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="to-do-list__header">
-                            <div class="important__cnt-flex">
-                                <h4>Priority:</h4>
-                                <ul class="priority-goals">
-                                    {% if impgoals == False %}
-                                    <div class="nonetext">None</div>
-                                    {% else %}
-                                    {% for goal in impgoals %}
-                                    <li class="goal-item">
-                                        <div class="goal-item-leftcnt">
-                                            <div class="goal-item-header">{{goal.title}}</div>
-                                            <div class="goal-item-time">{{goal.time}}</div>
-                                        </div>
-                                        <div class="goal-item-rightcnt">
-                                            <button class="edit-goal"></button>
-                                        </div>
-                                    </li>
-                                    {% endfor %}
-                                    {% endif %}
-                                </ul>
-                            </div>
-                            <div class="important__cnt-flex">
-                                <h4>Other:</h4>
-                                <ul class="priority-goals">
-                                    {% if goals == False %}
-                                    <div class="nonetext">None</div>
-                                    {% else %}
-                                    {% for goal in goals %}
-                                    <li class="goal-item">
-                                        <div class="goal-item-leftcnt">
-                                            <div class="goal-item-header">{{goal.title}}</div>
-                                            <div class="goal-item-time">{{goal.time}}</div>
-                                        </div>
-                                        <div class="goal-item-rightcnt">
-                                            <button class="edit-goal"></button>
-                                        </div>
-                                    </li>
-                                    {% endfor %}
-                                    {% endif %}
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                        <button class="create-new-goal-btn">Create a New Goal</button>
-                    </div>
+                        </li>
+                    </ul>
+                    <div class="section__header opacity20">Training:</div>
+                    <div class="section__header opacity20">Achievments:</div>
+                    <div class="section__header opacity20">Explore More:</div>
                 </div>
             </div>
         </div>

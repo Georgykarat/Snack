@@ -1,0 +1,247 @@
+
+.header-cnt {
+    width: 100%;
+    margin: 0;
+    max-width: 100%;
+    background-color: white;
+    border-bottom-right-radius: 20px;
+    border-bottom-left-radius: 20px;
+    height: 100px;
+    box-shadow: 0px 0px 100px #E5E5E5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.header-central-cnt {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 150px;
+    width: 40%;
+}
+.header-cnt-centre {
+    width: 80%;
+    max-width: 80%;
+    background-color: transparent;
+    height: 80px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header__photo_border {
+    border-radius: 60px;
+    border: 0px solid #a30000;
+    background-color: #00000000;
+    transition: .5s;
+
+}
+/*
+.header__photo:hover {
+    transition: .5s;
+    border: 0px solid white;
+}
+*/
+.header__name-lvl-cnt {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin-left: 10px;
+    flex-wrap: wrap;
+    width: 100%;
+}
+.header__name-lvl-name {
+    color: #4F5665;
+    font-size: 14px;
+    font-family: 'Lemon Milk Regular';
+    width: 100%;
+}
+.header__license-level {
+    color: #B2B2B2;
+    font-size: 12px;
+    font-family: 'Lemon Milk Regular';
+}
+.header__name-lvl-bigcnt {
+    display: flex;
+    justify-content: flex-start;
+    width: 100%;
+}
+.header__name-lvl-lvlcnt {
+    height: 7px;
+    width: 75%;
+    background-color: #F1F1F1;
+    border-radius: 10px;
+    margin-top: 10px;
+    margin-right: 10px; 
+}
+.header__name-lvl-lvl {
+    height: 7px;
+    border-radius: 10px;
+    background: linear-gradient(to right, #4C6859FF, #4C6859AD);
+}
+.header__name-lvl-lvlname {
+    color: #B2B2B2;
+    font-size: 12px;
+    font-family: 'Lemon Milk Pro';
+    position: relative;
+    bottom: -2px;
+}
+.header-cnt_left__logo {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.header-cnt2_left__logo {
+    font-size: 20px;
+    font-family: 'Lemon Milk Pro bb';
+    font-style: italic;
+    color: #0B132A;
+    padding-left: 10px;
+}
+.header-cnt_centre__menu {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 35%;
+    width: 35%;
+}
+.header-cnt_centre__menu-a {
+    font-size: 16px;
+    color: #4F5665;
+    cursor: pointer;
+}
+.header-cnt_right__logo2 {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    width: 10%;
+}
+
+.header__left_logout {
+    display: flex;
+    color: #4F5665;
+    justify-content: flex-end;
+    align-items: center;
+    font-size: 16px;
+    cursor: pointer;
+    padding-right: 40px;
+    background-image: url('../png/log-out.png');
+    background-size: 20%;
+    background-repeat: no-repeat;
+    background-position: right;
+}
+.header__sign-in-btn {
+    font-size: 16px;
+    padding: 10px 20px;
+    color: #0B132A;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+.header__sign-up-btn {
+    color: #26D07C;
+    font-size: 16px;
+    box-shadow: none;
+    border-color: #26D07C;
+    border-radius: 30px;
+    border-width: 1px;
+    cursor: pointer;
+    padding: 10px 50px;
+    background-color: transparent;
+    border-style: solid;
+    transition: 1s;
+}
+.header__sign-up-btn:hover {
+    color: white;
+    box-shadow: none;
+    border-color: #26D07C;
+    background-color: #26D07C;
+    transition: 1s;
+}
+.bell-cnt {
+    display: flex;
+    justify-content: flex-end;
+}
+.notify-circle {
+    height: 10px;
+    width: 10px;
+    background-color: #FF5151;
+    border-radius: 10px;
+    cursor: pointer;
+    border: 2px solid white;
+    position: relative;
+    right: 19px;
+    top: 4px;
+    opacity: 1;
+    transition: .4s;
+}
+.bell-btn {
+    height: 35px;
+    width: 35px;
+    cursor: not-allowed;
+    background-color: transparent;
+    background-position: center;
+    background-image: url('../png/notification.png');
+    background-repeat: no-repeat;
+    background-size: 70%;
+    border: none;
+    margin-left: 0px;
+}
+.chat-btn {
+    height: 35px;
+    width: 35px;
+    cursor: not-allowed;
+    background-color: transparent;
+    background-position: center;
+    background-image: url('../png/chat.png');
+    background-repeat: no-repeat;
+    background-size: 70%;
+    border: none;
+    margin-left: 5px;
+}
+.arrow-btn {
+    height: 35px;
+    width: 35px;
+    cursor: pointer;
+    background-color: transparent;
+    background-position: center;
+    background-image: url('../png/down-arrow.png');
+    background-repeat: no-repeat;
+    background-size: 50%;
+    border: none;
+    margin-left: 15px;
+}
+.header-profile-cnt {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: nowrap;
+}
+.header-profile-cnt1 {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: nowrap;
+    margin-right: 25px;
+    top: 10px;
+}
+.header-image {
+    display: flex;
+    min-width: 35px;
+    width: 35px;
+    min-height: 35px;
+    height: 35px;
+    background-color: transparent;
+    background-position: center;
+    background-image: url('testimg.jpg');
+    background-size: 100%;
+    background-repeat: no-repeat;
+    border-radius: 20px;
+    cursor: pointer;
+}
+.header-name {
+    display: flex;
+    align-items: center;
+    padding-left: 10px;
+    color: #161E54;
+}

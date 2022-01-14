@@ -1,0 +1,235 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Snack Courses</title>
+    <link rel="stylesheet" href="{% static 'css/stylesfeed.css' %}">
+    <script src="{% static 'js/jQueryv3.6.0.min.js' %}"></script>
+    <script src="{% static 'js/jquery-ui.min.js' %}"></script>
+    <link rel="stylesheet" href="{% static 'js/jquery-ui.css' %}">
+    <!--<script src="script.js"></script>-->
+    <script type="text/javascript">
+
+
+$( function() {
+    $( "#original_items" ).sortable({
+        distance: 5,
+        tolerance: "pointer"
+    });
+  } );
+
+
+
+    </script>
+    <style>
+        @font-face{
+  font-family: Lemon Milk Pro;
+  font-style: normal;
+  src: url({% static 'css/Lemon Milk Pro Ultra Light.otf' %});
+}
+
+@font-face{
+  font-family: Lemon Milk Pro b;
+  font-style: bold;
+  src: url({% static 'css/Lemon Milk Pro Medium.otf' %});
+}
+
+@font-face{
+  font-family: Lemon Milk Regular;
+  font-style: bold;
+  src: url({% static 'css/Lemon Milk Pro Regular.otf' %});
+}
+@font-face{
+  font-family: Lemon Milk Pro bb;
+  font-style: bold;
+  src: url({% static 'css/Lemon Milk Pro Bold.otf' %});
+}
+        .header-image {
+    display: flex;
+    min-width: 35px;
+    width: 35px;
+    min-height: 35px;
+    height: 35px;
+    background-color: transparent;
+    background-image: url({{begin_path}}{{photo}});
+    background-position: center;
+    background-size: 100%;
+    background-repeat: no-repeat;
+    border-radius: 20px;
+    cursor: pointer;
+}
+.bell-btn {
+    height: 35px;
+    width: 35px;
+    cursor: not-allowed;
+    background-color: transparent;
+    background-position: center;
+    background-image: url('../static/png/notification.png');
+    background-repeat: no-repeat;
+    background-size: 70%;
+    border: none;
+    margin-left: 0px;
+}
+.chat-btn {
+    height: 35px;
+    width: 35px;
+    cursor: not-allowed;
+    background-color: transparent;
+    background-position: center;
+    background-image: url('../static/png/chat.png');
+    background-repeat: no-repeat;
+    background-size: 70%;
+    border: none;
+    margin-left: 5px;
+}
+.arrow-btn {
+    height: 35px;
+    width: 35px;
+    cursor: pointer;
+    background-color: transparent;
+    background-position: center;
+    background-image: url('../static/png/down-arrow.png');
+    background-repeat: no-repeat;
+    background-size: 50%;
+    border: none;
+    margin-left: 15px;
+}
+.edit-goal {
+    height: 30px;
+    width: 30px;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    background-repeat: no-repeat;
+    background-image: url('../static/png/dots.png');
+    background-size: 100%;
+
+}
+    </style>
+</head>
+<body>
+    {% include "feed/header.html" %}
+    <main>
+        <div class="maincnt-centr">
+            <h2>Welcome back, <span class="username">&nbsp;{{name}}&nbsp;!</span></h2>
+            <div class="courses__cardzone_cnt">
+                <div class="courses__continue_text">Continue courses:</div>
+                <div class="cards__large_cnt">
+                    <ul id="original_items">
+                        <li class="one__card python_basics">
+                            <div class="lesson__text">PYTHON BASICS</div>
+                            <div class="ctn-lesson__btn_cnt">
+                                <button class="go-to-lsn__btn">CONTINUE</button>
+                            </div>
+                        </li>
+                        <li class="one__card python_advanced">
+                            <div class="lesson__text">PYTHON ADVANCED AND&nbsp;DJANGO</div>
+                            <div class="ctn-lesson__btn_cnt">
+                                <button class="go-to-lsn__btn">CONTINUE</button>
+                            </div>
+                        </li>
+                        <li class="one__card">
+                            <div class="lesson__text">ALGORYTHMS</div>
+                            <div class="ctn-lesson__btn_cnt">
+                                <button class="go-to-lsn__btn">CONTINUE</button>
+                            </div>
+                        </li>
+                        <li class="one__card">
+                            <div class="lesson__text">ADOBE PHOTOSHOP</div>
+                            <div class="ctn-lesson__btn_cnt">
+                                <button class="go-to-lsn__btn">CONTINUE</button>
+                            </div>
+                        </li>
+                        <li class="one__card">
+                            <div class="lesson__text">HTML</div>
+                            <div class="ctn-lesson__btn_cnt">
+                                <button class="go-to-lsn__btn">CONTINUE</button>
+                            </div>
+                        </li>
+                        <li class="one__card">
+                            <div class="lesson__text">CSS</div>
+                            <div class="ctn-lesson__btn_cnt">
+                                <button class="go-to-lsn__btn">CONTINUE</button>
+                            </div>
+                        </li>
+                    </ul>
+                    <ul id="cloned_items">
+                    </ul>
+                </div>
+            </div>
+            <div class="how-is-my-learning_cnt">
+                <div class="courses__continue_text">How is my learning:</div>
+                <div class="learning-progress_cnt">
+                    <div class="analytics_cnt">%nodata%</div>
+                    <div class="big-right-cnt">
+                    <div class="to-do-list_cnt">
+                        <div class="to-do-list__header">
+                            <div class="to-do-list__header-flex">
+                                <div class="h3">Goals List:</div>
+                                <div class="goal-dates__cnt">
+                                    <select name="dates" id="dates">
+                                        <option value="Today">Today, {{today}}</option>
+                                        <option value="Yesterday">Yesterday</option>
+                                        <option value="LW">Last week</option>
+                                        <option value="LM">Last month</option>
+                                        <option value="LY">Last year</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="to-do-list__header">
+                            <div class="important__cnt-flex">
+                                <h4>Priority:</h4>
+                                <ul class="priority-goals">
+                                    {% if impgoals == False %}
+                                    <div class="nonetext">None</div>
+                                    {% else %}
+                                    {% for goal in impgoals %}
+                                    <li class="goal-item">
+                                        <div class="goal-item-leftcnt">
+                                            <div class="goal-item-header">{{goal.title}}</div>
+                                            <div class="goal-item-time">{{goal.time}}</div>
+                                        </div>
+                                        <div class="goal-item-rightcnt">
+                                            <button class="edit-goal"></button>
+                                        </div>
+                                    </li>
+                                    {% endfor %}
+                                    {% endif %}
+                                </ul>
+                            </div>
+                            <div class="important__cnt-flex">
+                                <h4>Other:</h4>
+                                <ul class="priority-goals">
+                                    {% if goals == False %}
+                                    <div class="nonetext">None</div>
+                                    {% else %}
+                                    {% for goal in goals %}
+                                    <li class="goal-item">
+                                        <div class="goal-item-leftcnt">
+                                            <div class="goal-item-header">{{goal.title}}</div>
+                                            <div class="goal-item-time">{{goal.time}}</div>
+                                        </div>
+                                        <div class="goal-item-rightcnt">
+                                            <button class="edit-goal"></button>
+                                        </div>
+                                    </li>
+                                    {% endfor %}
+                                    {% endif %}
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                        <button class="create-new-goal-btn">Create a New Goal</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    {% include "home/footer.html" %}
+</body>
+</html>
+

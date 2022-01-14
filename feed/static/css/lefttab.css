@@ -1,0 +1,63 @@
+.left-menu {
+    display: flex;
+    list-style: none;
+    flex-wrap: wrap;
+    width: 100%;
+    min-width: 100%;
+    max-width: 100%;
+    padding-bottom: 20px;
+    margin-bottom: 50px;
+    border-bottom: 1px solid lightgrey;
+}
+.left-menu-items {
+    width: 100%;
+    min-width: 100%;
+    max-width: 100%;
+    display: flex;
+    align-items: center;
+    margin-bottom: 40px;
+    flex-wrap: nowrap;
+    cursor: pointer;
+}
+.li-menu {
+    font-size: 14px;
+}
+.admin-btn {
+    background-image: url('../png/blueprint.png');
+}
+.workspace-btn {
+    background-image: url('../png/workspace.png');
+}
+.courses-btn {
+    background-image: url('../png/nachos.png');
+}
+.analytics-btn {
+    background-image: url('../png/analytics.png');
+}
+.friends-btn {
+    background-image: url('../png/team-2.png');
+}
+.rating-btn {
+    background-image: url('../png/star.png');
+}
+.goals-btn {
+    background-image: url('../png/check.png');
+}
+.profile-btn {
+    background-image: url('../png/gear.png');
+}
+.help-btn {
+    background-image: url('../png/question.png');
+}
+.active-text {
+    color: #4F5665;
+}
+.nonactive-text {
+    color: #B2B2B2;
+}
+.active-btn {
+    background-color: #26D07C;
+}
+.noactive-btn {
+    background-color: #E0E0E0;
+}

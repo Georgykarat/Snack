@@ -1,0 +1,351 @@
+* {
+    font-family: "Lemon Milk Regular";
+	margin: 0;
+    padding: 0;
+    text-decoration: none;
+    list-style: none;
+}
+input, textarea, select {
+-webkit-appearance: none;
+}
+a {
+    text-decoration: none;
+    color: unset;
+}
+
+body, html {
+    margin: 0;
+    height: 0;
+    max-width: 100%;
+    width: 100%;
+}
+body {
+    background-color: rgb(255,255,255);
+}
+
+@font-face{
+  font-family: Lemon Milk Pro;
+  font-style: normal;
+  src: url('../png/Lemon Milk Pro Ultra Light.otf');
+}
+
+@font-face{
+  font-family: Lemon Milk Pro b;
+  font-style: bold;
+  src: url('../png/Lemon Milk Pro Medium.otf');
+}
+
+@font-face{
+  font-family: Lemon Milk Regular;
+  font-style: bold;
+  src: url('../png/Lemon Milk Pro Regular.otf');
+}
+@font-face{
+  font-family: Lemon Milk Pro bb;
+  font-style: bold;
+  src: url('../png/Lemon Milk Pro Bold.otf');
+}
+
+
+
+main {
+    background-color: transparent;
+    width: 100%;
+    min-width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.main__central-cnt {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    max-width: 80%;
+    width: 80%;
+    min-width: 80%;
+    background-color: transparent;
+    margin: 40px 0;
+}
+.main__central-cnt_left {
+    display: flex;
+    width: 20%;
+    max-width: 20%;
+    min-width: 20%;
+    background-color: transparent;
+}
+.main__central-cnt_right {
+    display: flex;
+    width: 76%;
+    min-width: 76%;
+    max-width: 76%;
+}
+.main__central-right {
+    display: flex;
+    width: 80%;
+    max-width: 80%;
+    min-width: 80%;
+    background-color: transparent;
+}
+.main__cnt_noflex {
+    display: block;
+    width: 100%;
+    min-width: 100%;
+    max-width: 100%;
+}
+.main__cnt-flex {
+    display: flex;
+    width: 100%;
+    min-width: 100%;
+    max-width: 100%;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+}
+.feed__lvl_cnt_flex {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    height: 200px;
+}
+.feed__lvl_cnt-centralcnt {
+    display: flex;
+    justify-content: flex-start;
+    width: 70%;
+    flex-wrap: wrap;
+    align-items: center;
+}
+.feed__lvl_greetingscnt {
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    font-size: 26px;
+    flex-wrap: wrap;
+    margin-top: 25px;
+}
+.feed_greetingsandlevel {
+    display: flex;
+    height: 70px;
+    flex-wrap: wrap;
+    width: 100%;
+}
+.h2 {
+    color: #4F5665;
+    font-size: 26px;
+}
+.h2-name {
+    color: #26D07C;
+    font-size: 26px;
+}
+.feed__lvl_currentlvl {
+    color: #979797;
+    font-size: 20px;
+    width: 100%;
+}
+.feed__lvl_scalecnt {
+    width: 75%;
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    height: 40px;
+}
+.feed__lvl_scale {
+    width: 95%;
+    height: 7px;
+    background-color: #F1F1F1;
+    border-radius: 20px;
+}
+.feed__lvl_scalegrogress {
+    height: 7px;
+    border-radius: 20px;
+}
+.feed__lvl_pointstonextlvl {
+    width: 80%;
+    color: #AFB5C0;
+    font-size: 12px;
+    margin-top: 10px;
+}
+.feed__lvl-percentage {
+    width: 15%;
+    color: #696969;
+    font-size: 20px;
+    display: flex;
+    justify-content: flex-start;
+    text-align: left;
+}
+.percentage {
+    display: flex;
+    position: relative;
+    top: -10px;
+}
+.feed__lvl_cnt-rightcnt {
+    display: flex;
+    justify-content: flex-start;
+    width: 15%;
+    flex-wrap: wrap;
+    align-items: center;
+}
+.feed__lvl_achieve-badge {
+    height: 50px;
+    width: 50px;
+    border: 1px dashed grey;
+    border-radius: 50px;
+}
+.section__header {
+    width: 100%;
+    color: #4F5665;
+    font-size: 26px;
+    margin-top: 30px;
+    margin-bottom: 50px;
+}
+.section__continue {
+    display: flex;
+    width: 100%;
+    justify-content: flex-start;
+    flex-wrap: nowrap;
+    margin-bottom: 60px;
+    height: 600px;
+    overflow: auto;
+}
+.last__course_li {
+    width: 450px;
+    height: 550px;
+    background-color: #4293C0;
+    border-radius: 25px;
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    box-shadow: 0 0 20px lightgrey;
+    margin: 20px 30px;
+}
+.last__course_li_section {
+    width: 100%;
+    background-color: white;
+    height: 235px;
+    position: relative;
+    top: -40px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+.last__course_li_1str {
+    justify-content: space-between;
+    display: flex;
+    width: 90%;
+}
+.last__course_li_2str {
+    justify-content: space-between;
+    display: flex;
+    width: 90%;
+    height: 80px;
+    font-size: 14px;
+    color: #6E798C;
+}
+.last__course_li_3str {
+    justify-content: flex-end;
+    display: flex;
+    width: 90%;
+    font-size: 18px;
+    padding-bottom: 10px;
+    padding-right: 50px;
+}
+.last__course_continue {
+    color: #4293C0;
+}
+.last__course_li_headerstr {
+    height: 65px;
+    font-size: 20px;
+    color: #081F32;
+    justify-content: flex-start;
+    width: 90%;
+}
+.last__course_imnow-std-txt {
+    font-size: 10px;
+    color: #6E798C;
+    padding-top: 15px;
+    padding-bottom: 0px;
+}
+h2 {
+    font-family: 'Lemon Milk Regular';
+    color: #979797;
+    font-size: 16px;
+    margin-bottom: 40px;
+}
+
+.right-cnt-header {
+    font-size: 28px;
+    color: #E5E5E5;
+}
+h1 {
+    font-size: 26px;
+    color: #4F5665;
+}
+
+
+.li-cnt {
+    width: 90%;
+    min-width: 90%;
+    max-width: 90%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: nowrap;
+}
+.li-cnt_left {
+    display: flex;
+    width: 85%;
+    min-width: 85%;
+    align-items: center;
+    flex-wrap: wrap;
+}
+.goals-title {
+    font-size: 20px;
+    color: #303030;
+    width: 100%;
+}
+.goals-subtitle {
+    font-size: 12px;
+    color: #686868;
+    width: 100%;
+}
+.edit-goals {
+    display: flex;
+    height: 50px;
+    width: 50px;
+    border: none;
+    background-color: transparent;
+    background-image: url('dots.png');
+    background-repeat: no-repeat;
+    background-size: 80%;
+    background-position: center;
+    cursor: pointer;
+}
+.green {
+    background-color: #26D07C;
+    border: 1px solid #E0E0E0;
+}
+.green-txt {
+    color: white;
+}
+
+.black {
+    color: black;
+    padding-bottom: 30px;
+}
+.grey2 {
+    color: #4F5665;
+    padding-bottom: 25px;
+    font-size: 14px;
+}
+.blocked {
+    cursor: not-allowed;
+}
+.thin-txt {
+    font-family: 'Lemon Milk Pro';
+}
+.displaynone {
+    display: none;
+}
+.opacity20 {
+    opacity: 20%;
+    cursor: not-allowed;
+}

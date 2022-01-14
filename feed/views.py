@@ -23,47 +23,58 @@ level_pics = [
 def feed(request, *args, **kwargs):
     if request.user.is_authenticated == True:    
         target_mail = request.user.username
-        #Got id of the user
         userid = Feed.objects.filter(mail=target_mail).values_list('id')
         userid1 = userid[0][0]
-        #Search for goals
-        impgoals = PersonalGoals.objects.filter(author_id=userid1, imp=True).all()
-        goals = PersonalGoals.objects.filter(author_id=userid1, imp=False).all()
-        #Find today date
-        today = datetime.datetime.today().strftime("%d.%m.%Y")
         #Got exp quantity
-        exp = Feed.objects.filter(mail=target_mail).values_list('rating_exp')
-        exp1 = exp[0][0]
-        '''
+        exp = Feed.objects.filter(mail=target_mail).values_list('rating_exp')[0][0]
         i = 0 #Задали индекс счётчику
-        while (exp1 >= (Rating.objects.filter(ratingid=i).values_list('rating_exp')[0][0])):
-            i += 1 #Подняли счётчик, если экспы слишком много для уровня этого индекса
-        '''
-        feed_data = Feed.objects.filter(mail=target_mail).values_list('accessid', 'first_name', 'last_name', 'country', 'city')
+        level = Rating.objects.filter(ratingid=i-1).values_list('rating_name', 'rating_material')
+        feed_data = Feed.objects.filter(mail=target_mail).values_list('accessid', 'first_name', 'last_name', 'country', 'city', 'lvl')
         feed_data1 = Feed.objects.filter(mail=target_mail).values_list('last_course')
-        # last_course = CourseBase.objects.filter(courseid=feed_data1[0][0]).values_list('course_name')
-        last_lesson = Feed.objects.filter(mail=target_mail).values_list('last_lesson')
-        # last_lesson_name = CourseBase.objects.filter(courseid=feed_data1[0][0], lessonid=last_lesson[0][0]).values_list('lesson_name')
+        # Let's find our access title
+        access_name = AccessLevel.objects.filter(accessid=feed_data[0][0]).values_list('access')[0][0]
+        #Let's count our level
+        next_level = feed_data[0][5] + 1 #got next level id
+        next_level_exp = Rating.objects.filter(ratingid=next_level).values_list('rating_exp')[0][0] #got next level exp
+        current_level_info = Rating.objects.filter(ratingid=feed_data[0][5]).values_list('rating_name', 'rating_material', 'rating_exp', 'icon', 'ratingid') #got current level info
+        exp_between_lvl = next_level_exp - current_level_info[0][2]
+        current_exp_without_prev = exp - current_level_info[0][2]
+        percentage = int(current_exp_without_prev / exp_between_lvl * 100) #percantage was calculated
+        until_next = next_level_exp - exp
+        next_level_material = Rating.objects.filter(ratingid=next_level).values_list('rating_material')[0][0]
+        #
         if AccountImage.objects.filter(mail=target_mail):
             photo = AccountImage.objects.filter(mail=target_mail).values_list('file')[0][0]
         else:
             photo = "files/guys.jpeg"
         begin_path = '/media/'
-        html_education = '<span>{{education}}</span>'
+        #Let's get our courses from DB
+        courses = CourseBase.objects.filter(avaliable=True).all() #Get all avaliable courses
+        #
+        #Let's get all tags
+        tags = TagsBase.objects.all()
+        course_tag = Course_Tags.objects.all()
+        #Create dict with courses:[tags]
+            
         return render(request, 'feed/feed.html', {
             'access': feed_data[0][0],
+            'access_name': access_name,
             'name': feed_data[0][1],
             'last_name': feed_data[0][2],
             'country': feed_data[0][3],
             'city': feed_data[0][4],
-            # 'last_course' : last_course[0][0],
             'photo': photo,
             'begin_path': begin_path,
-            'last_lesson': last_lesson[0][0],
-            # 'last_lesson_name': last_lesson_name[0][0],
-            'goals': goals,
-            'impgoals': impgoals,
-            'today': today
+            'levelbadge': current_level_info[0][3],
+            'ratingid': current_level_info[0][4],
+            'material': current_level_info[0][1],
+            'percantage': percentage,
+            'courses': courses,
+            'tags': tags,
+            'course_tag': course_tag,
+            'until_next': until_next,
+            'next_level_material': next_level_material,
+            'next_level': next_level,
         })
     else:
         return HttpResponseRedirect('../login')

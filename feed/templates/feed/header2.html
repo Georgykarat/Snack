@@ -6,6 +6,27 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Snack</title>
+    <link rel="stylesheet" href="{% static 'css/header.css' %}">
+    <style>
+        .header__photo {
+    height: 60px;
+    width: 60px;
+    border: 2px solid #a30000;
+    border-radius: 60px;
+    background-image: url({{begin_path}}{{photo}});
+    background-position: center;
+    background-size: 110%;
+    background-repeat: no-repeat;
+        }
+        .header__lvl-badge {
+    height: 60px;
+    width: 40px;
+    background-image: url({{begin_path}}{{levelbadge}});
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 130%;
+}
+    </style>
 </head>
 <body>
     <div class="header-cnt">

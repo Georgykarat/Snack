@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Snack Courses</title>
-    <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/footer.css' %}">
 </head>
 <body>
     <footer>
@@ -29,7 +29,9 @@
             <div class="footer-left-cnt">
                 <ul class="footer-ul">
                     <li class="footer-li black">Discover</li>
-                    <li class="footer-li grey"><a href="#">Register</a></li>
+                    {% if request.user.is_authenticated == False%}
+                    <li class="footer-li grey"><a href="/registration/">Register</a></li>
+                    {% endif %}
                     <li class="footer-li grey opacity20"><a href="#">Pricing</a></li>
                     <li class="footer-li grey opacity20"><a href="#">Course List</a></li>
                     <li class="footer-li grey opacity20"><a href="#">Subscription</a></li>
