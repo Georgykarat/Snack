@@ -117,6 +117,9 @@ footer {
     width: 30%;
     max-width: 30%;
 }
+.footer-li {
+    padding-bottom: 20px;
+}
 .black {
     color: black;
     padding-bottom: 30px;
