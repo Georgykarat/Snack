@@ -127,3 +127,7 @@ footer {
     padding-bottom: 25px;
     font-size: 14px;
 }
+.opacity20 {
+    opacity: 20%;
+    cursor: not-allowed;
+}
