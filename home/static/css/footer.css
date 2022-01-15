@@ -117,14 +117,12 @@ footer {
     width: 30%;
     max-width: 30%;
 }
-.footer-li {
-    padding-bottom: 20px;
-}
+
 .black {
     color: black;
     padding-bottom: 30px;
 }
-.grey3 {
+.grey-li {
     color: #4F5665;
     padding-bottom: 25px;
     font-size: 14px;
