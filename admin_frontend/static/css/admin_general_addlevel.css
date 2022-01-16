@@ -1,0 +1,18 @@
+.admin__addlevel_form {
+    display: flex;
+    width: 100%;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+}
+.admin__addlevel_password_check {
+    display: flex;
+    width: 100%;
+    justify-content: start;
+    flex-wrap: wrap;
+}
+.admin__form_header {
+    display: flex;
+    width: 100%;
+    font-size: 20px;
+    background-color: transparent;
+}

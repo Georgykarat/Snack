@@ -7,4 +7,5 @@ from .import views
 
 urlpatterns = [
     path("", views.admin_general, name="admin_general"),
+    path("addlevel/", views.admin_panel_addlevel, name="admin_panel_addlevel"),
 ]

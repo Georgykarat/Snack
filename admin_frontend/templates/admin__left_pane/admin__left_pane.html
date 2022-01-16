@@ -1,0 +1,70 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Snack Courses</title>
+    <link rel="stylesheet" href="{% static 'css/admin_general.css' %}">
+    <link rel="stylesheet" href="{% static 'css/lefttab.css' %}">
+    <link rel="stylesheet" href="{% static 'css/toggler.css' %}">
+    <script src="{% static 'js/jQueryv3.6.0.min.js' %}"></script>
+    <script src="{% static 'js/admin_general.js' %}"></script>
+    <script src="{% static 'js/theme.js' %}"></script>
+
+</head>
+<body>
+    <h2>Main Menu</h2>
+    <ul class="left-menu">
+        {% if access == 2 %}
+        <a href="../"><li class="left-menu-items">
+            <div class="admin-btn active-btn btn-layout"></div>
+            <div class="li-menu active-text">Admin</div>
+        </li></a>
+        {% endif %}
+        <a href="/feed/"><li class="left-menu-items">
+            <div class="workspace-btn noactive-btn btn-layout"></div>
+            <div class="li-menu nonactive-text">My Workspace</div>
+        </li></a>
+        <a href="/feed/courses/"><li class="left-menu-items">
+            <div class="courses-btn noactive-btn btn-layout"></div>
+            <div class="li-menu nonactive-text">Courses</div>
+        </li></a>
+        <li class="left-menu-items opacity20">
+            <div class="analytics-btn noactive-btn btn-layout"></div>
+            <div class="li-menu nonactive-text">Performance</div>
+        </li>
+        <li class="left-menu-items opacity20">
+            <div class="friends-btn noactive-btn btn-layout"></div>
+            <div class="li-menu nonactive-text">Friends</div>
+        </li>
+        <li class="left-menu-items opacity20">
+            <div class="rating-btn noactive-btn btn-layout"></div>
+            <div class="li-menu nonactive-text">Ratings</div>
+        </li>
+        <li class="left-menu-items opacity20">
+            <div class="goals-btn noactive-btn btn-layout"></div>
+            <div class="li-menu nonactive-text">Goals List</div>
+        </li>
+    </ul>
+    <h2>Settings</h2>
+    <ul class="left-menu">
+        <a href="/feed/settings/"><li class="left-menu-items">
+            <div class="profile-btn noactive-btn btn-layout"></div>
+            <div class="li-menu nonactive-text">Edit Profile</div>
+        </li></a>
+        <li class="left-menu-items opacity20">
+            <div class="help-btn noactive-btn btn-layout"></div>
+            <div class="li-menu nonactive-text">Need Help?</div>
+        </li>
+    </ul>
+    <!--<div id="toggles">
+        <div class="toggle-base">
+            <div class="toggle-btn"></div>
+        </div>
+        <div class="toggle-label">Light Mode</div>
+    </div>-->
+</body>
+</html>
+
