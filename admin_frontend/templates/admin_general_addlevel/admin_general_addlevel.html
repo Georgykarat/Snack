@@ -13,6 +13,7 @@
     <script src="{% static 'js/jQueryv3.6.0.min.js' %}"></script>
     <script src="{% static 'js/admin_general.js' %}"></script>
     <script src="{% static 'js/theme.js' %}"></script>
+    
 
 </head>
 <body>
@@ -29,14 +30,60 @@
             <div class="main__central-cnt_right">
                 <div class="main__cnt_noflex">
                     <section class="admin-section-main">
+                        <div class="admin__header" style="margin-bottom: 20px;">Existing levels</div>
+                        <div class="admin__addlevel_alllevels-cnt">
+                            <table style="border: 1px solid lightgrey;">
+                                <tr class="admin_panel__td" style="background-color: lightgrey; border: 1px solid lightgrey;">
+                                    <td class="admin_panel__td">Rating ID</td>
+                                    <td class="admin_panel__td">Material</td>
+                                    <td class="admin_panel__td">EXP level</td>
+                                    <td class="admin_panel__td">Users</td>
+                                </tr>
+                                {% for level in levels %}
+
+                                <tr class="admin_panel__td">
+                                    <td class="admin_panel__td">{{level.ratingid}}</td>
+                                    <td class="admin_panel__td">{{level.rating_material}}</td>
+                                    <td class="admin_panel__td">{{level.rating_exp}}</td>
+                                    <td class="admin_panel__td">{{level.amount_per_level}}</td>
+                                </tr>
+                                {% endfor %}
+                            </table>
+                        </div>
                         <div class="admin__header_cnt">
-                            <div class="admin__header">Add Level</div>
+                            <div class="admin__header" style="margin-top: 40px;">Add Level</div>
                             <!--<div class="admin__header_q">Help</div>-->
                         </div>
-                        <form class="admin__addlevel_form" method="post">
+                        <!--<form method="post" class="admin__addlevel_form">
+                            {% csrf_token %}
+                            <div class="admin__form_header l0-card-check">Security cards need:</div>
                             <div class="admin__addlevel_password_check">
+                                <img src="{% static 'img/L0 card.svg' %}" width="60" height="130" title="L0 pass: your admin password">
                                 <div class="admin__form_header l0-card-check">L0 card check:</div>
+                                <input class="admin__panel_settings_input l0-card-check-input" type="password">
                             </div>
+                            <div class="admin__addlevel_password_check">
+                                <div class="admin__form_header l0-card-check">Rating ID</div>
+                                <input class="admin__panel_settings_input admin__panel_addlevel_rid" value="{{levels_amount}}">
+                            </div>
+                            <div class="admin__addlevel_password_check">
+                                <div class="admin__form_header l0-card-check">Rating Material</div>
+                                <input class="admin__panel_settings_input admin__panel_addlevel_rm">
+                            </div>
+                            <div class="admin__addlevel_password_check">
+                                <div class="admin__form_header l0-card-check">Rating EXP (exp below level)</div>
+                                <input class="admin__panel_settings_input admin__panel_addlevel_xp">
+                            </div>
+                            <div class="admin__addlevel_password_check">
+                                <div class="admin__form_header l0-card-check">Badge</div>
+                                <input class="admin__panel_settings_fileinput admin__panel_addlevel_badge" type="file">
+                            </div>
+                            <div class="admin__submin-btn admin__panel-addlevel-btn" style="cursor: pointer;">Add Level</div>
+                        </form>-->
+                        <form method="post" enctype="multipart/form-data" class="test-form">
+                            {% csrf_token %}
+                            {{ ourform.as_p }}
+                            <button type="submit" class="admin__submin-btn">Submit</button>
                         </form>
                     </section>
                 </div>
@@ -45,5 +92,6 @@
     </main>
     {% include "home/footer.html" %}
 </body>
+<script src="{% static 'js/admin_general_addlevel.js' %}"></script>
 </html>
 

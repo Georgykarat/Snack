@@ -15,4 +15,24 @@
     width: 100%;
     font-size: 20px;
     background-color: transparent;
+    margin-top: 20px;
+}
+.admin__addlevel_alllevels {
+    display: flex;
+    width: 100%;
+
+}
+.admin__addlevel_alllevels-cnt {
+    display: flex;
+    width: 100%;
+    height: 400px;
+    overflow-y: auto;
+}
+.admin_panel__td {
+    width: 100px;
+    text-align: center;
+}
+.admin_panel__tr {
+    display: flex;
+    align-items: center;
 }

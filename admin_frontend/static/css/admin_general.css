@@ -192,7 +192,6 @@ h1 {
     background-position-x: 98%;
     background-position-y: center;
     background-size: 3%;
-
 }
 .admin__panel_li-azuredevops {
     background-image: url('../img/scrum.png');
@@ -240,13 +239,37 @@ h1 {
 .displaynone {
     display: none;
 }
-.l0-card-check {
-    padding-left: 30px;
-    background-image: url('../img/L0 card.svg');
-    background-repeat: no-repeat;
-    background-position: left;
-    background-size: 5%;
+.admin__panel_settings_input {
+    width: 400px;
+    height: 50px;
+    margin-top: 20px;
+    border-radius: 25px;
+    border: 1px solid lightgrey;
+    padding: 0 20px;
+    font-size: 20px;
 }
+.admin__complexity {
+    width: 400px;
+    height: 50px;
+    margin-top: 20px;
+    border-radius: 25px;
+    border: 1px solid lightgrey;
+    padding: 0 20px;
+    font-size: 20px;
+}
+.admin__panel_settings_fileinput {
+    margin-top: 20px;
+}
+.admin__submin-btn {
+    background-color: #26D07C;
+    font-size: 20px;
+    border-radius: 20px;
+    padding: 5px 20px;
+    margin: 20px 0;
+    border: none;
+    color: white;
+}
+
 .opacity20 {
     opacity: 20%;
     cursor: not-allowed;
