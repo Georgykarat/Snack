@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'static',
     'm2m',
     'msg',
+    'admin_frontend',
     'django_cleanup', #deletes unused media files
 ]
 

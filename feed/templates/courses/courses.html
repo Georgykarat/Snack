@@ -26,7 +26,7 @@
                         <h2>Main Menu</h2>
                         <ul class="left-menu">
                             {% if access == 2 %}
-                            <a href="/admin/"><li class="left-menu-items">
+                            <a href="/admin_frontend/"><li class="left-menu-items">
                                 <div class="admin-btn noactive-btn btn-layout"></div>
                                 <div class="li-menu nonactive-text">Admin</div>
                             </li></a>
@@ -88,7 +88,7 @@
                     <div class="main__cnt_filters-pane">
                         <input class="main__cnt_filter_search" placeholder="Find">
                         <select class="main__cnt_filter tags_filter">
-                            <option value="">No Tag:</option>
+                            <option value="">No Tag Filter:</option>
                             <option value="Current">Current</option>
                             {% for tag in tags %}
                             <option value="{{tag.tag}}">{{tag.tag}}</option>
