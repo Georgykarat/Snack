@@ -30,30 +30,52 @@
             <div class="main__central-cnt_right">
                 <div class="main__cnt_noflex">
                     <section class="admin-section-main">
-                        <div class="admin__header" style="margin-bottom: 20px;">Existing levels</div>
+                        <div class="admin__header" style="margin-bottom: 20px;">Existing courses</div>
                         <div class="admin__addlevel_alllevels-cnt">
                             <table style="border: 1px solid lightgrey;">
+                                <col>
+	                            <col>
+	                            <col>
+                                <col>
+	                            <col style="width:200px">
+	                            <col>
+                                <col>
+	                            <col>
+	                            <col>
+                                <thead>
                                 <tr class="admin_panel__td" style="background-color: lightgrey; border: 1px solid lightgrey;">
-                                    <td class="admin_panel__td">Rating ID</td>
-                                    <td class="admin_panel__td">Material</td>
-                                    <td class="admin_panel__td">EXP level</td>
-                                    <td class="admin_panel__td">Badge</td>
-                                    <td class="admin_panel__td">Users</td>
+                                    <th class="admin_panel__td">Course ID</th>
+                                    <th class="admin_panel__td">Course</th>
+                                    <th class="admin_panel__td">Icon</th>
+                                    <th class="admin_panel__td">Color</th>
+                                    <th class="admin_panel__td">Description</th>
+                                    <th class="admin_panel__td">Complexity</th>
+                                    <th class="admin_panel__td">Author</th>
+                                    <th class="admin_panel__td">Author ID</th>
+                                    <th class="admin_panel__td">Avaliable</th>
                                 </tr>
-                                {% for level in levels %}
-
+                                </thead>
+                                {% for course in courses %}
                                 <tr class="admin_panel__td">
-                                    <td class="admin_panel__td">{{level.ratingid}}</td>
-                                    <td class="admin_panel__td">{{level.rating_material}}</td>
-                                    <td class="admin_panel__td">{{level.rating_exp}}</td>
-                                    <td class="admin_panel__td" style="background-image: url('{{begin_path}}{{level.icon}}'); background-size: 50%;"></td>
-                                    <td class="admin_panel__td">{{level.amount_per_level}}</td>
+                                    <td class="admin_panel__td">{{course.courseid}}</td>
+                                    <td class="admin_panel__td">{{course.course_name}}</td>
+                                    <td class="admin_panel__td" style="background-image: url('{{begin_path}}{{course.icon}}'); background-size: 50%;"></td>
+                                    <td class="admin_panel__td">#{{course.color}}</td>
+                                    <td class="admin_panel__td">{{course.description}}</td>
+                                    <td class="admin_panel__td">{{course.complexity}}</td>
+                                    <td class="admin_panel__td">{{course.author}}</td>
+                                    <td class="admin_panel__td">{{course.authorid}}</td>
+                                    {% if course.avaliable == True %}
+                                    <td class="admin_panel__td">+</td>
+                                    {% else %}
+                                    <td class="admin_panel__td"></td>
+                                    {% endif %}
                                 </tr>
                                 {% endfor %}
                             </table>
                         </div>
                         <div class="admin__header_cnt">
-                            <div class="admin__header" style="margin-top: 40px;">Add Level</div>
+                            <div class="admin__header" style="margin-top: 40px;">Add Course</div>
                             <!--<div class="admin__header_q">Help</div>-->
                         </div>
                         <!--<form method="post" class="admin__addlevel_form">

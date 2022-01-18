@@ -31,6 +31,9 @@
 .admin_panel__td {
     width: 100px;
     text-align: center;
+    background-repeat: no-repeat;
+    background-position: center;
+
 }
 .admin_panel__tr {
     display: flex;
