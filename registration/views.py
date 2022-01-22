@@ -8,7 +8,7 @@ from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect
 from registration.forms import UserForm
 from django.views import View
-from feed.models import Feed
+from feed.models import Feed, Invites
 from registration.models import RegMailCode
 
 import smtplib
@@ -47,7 +47,7 @@ def code_generate(l):
 
 
 def registration(request, *args, **kwargs):
-    return render(request, 'registration/registration.html', {})
+    return render(request, 'registration_v2/registration.html', {})
 
 
 def mailcheck(request):
@@ -99,7 +99,7 @@ class Registration(View):
             # Yet no return
         else:
             user_form = UserForm()
-            return render(request, 'registration/registration.html', context={'user_form': user_form})
+            return render(request, 'registration_v2/registration.html', context={'user_form': user_form})
     
     def post(self, request):
         user_form = UserForm(request.POST)
@@ -122,7 +122,7 @@ class Registration(View):
                 Feed.objects.filter(mail=username).update(mail=username.lower())
                 login(request, newuser)
                 return HttpResponseRedirect('../feed')
-        return render(request, 'registration/registration.html', context={'user_form': user_form})
+        return render(request, 'registration_v2/registration.html', context={'user_form': user_form})
 
 
     def mailcheck(request):
@@ -135,3 +135,76 @@ class Registration(View):
                     return None
             else:
                 return None
+
+
+
+def phase1_generatecode(request):
+    if request.is_ajax():
+        mail_to_reg = request.POST['mail'].lower()
+        code = code_generate(8)
+        regcode = 'Your code is ' + code
+        send_email(mail_to_reg, 'Registration code', regcode)
+        testuser = RegMailCode.objects.filter(mail=mail_to_reg)
+        if testuser:
+            testuser.delete()
+        tempuser = RegMailCode(mail=mail_to_reg, mailcode=code)
+        tempuser.save()
+        return JsonResponse({}, status=200)
+
+
+def createacc(request):
+    if request.is_ajax():
+        mail_to_reg = request.POST['mail'].lower()
+        password = request.POST['password']
+        codeprovided = request.POST['ourcode']
+        code_check = RegMailCode.objects.filter(mail=mail_to_reg).values_list('mailcode')[0][0]
+        if code_check and code_check == codeprovided:
+            varhash = make_password(password, None, 'pbkdf2_sha1')
+            newuser = User(username=mail_to_reg.lower(), password=varhash)
+            newuser.save()
+            login(request, newuser)
+            code_check_to_delete = RegMailCode.objects.filter(mail=mail_to_reg)
+            code_check_to_delete.delete()
+            return JsonResponse({}, status=200)
+        else:
+            return JsonResponse({}, status=400)
+
+
+def moveon(request, *args, **kwargs):
+    return render(request, 'registration_secondstep/registration.html', {})
+
+
+def createaccfeed(request):
+    if request.is_ajax():
+        if request.user.is_authenticated == True:    
+            user_name = request.user.username
+            if True:
+                name = request.POST['name']
+                surname = request.POST['name']
+                country = request.POST['country']
+                print(country)
+                occupation = request.POST['occupation']
+                invite = request.POST['invite']
+                if name != "" and surname != "" and country != "" and occupation != "":
+                    invite_gift = Invites.objects.filter(invite=invite)
+                    if invite_gift.exists():
+                        giftaccessid = invite_gift.values_list('accessid')[0][0]
+                        newfeeduser = Feed(country=country, mail=user_name.lower(), activity=occupation, first_name=name, last_name=surname, accessid=int(giftaccessid))
+                    else:
+                        newfeeduser = Feed(country=country, mail=user_name.lower(), activity=occupation, first_name=name, last_name=surname)
+                    newfeeduser.save()
+                    return HttpResponseRedirect('/feed/')
+                else:
+                    return JsonResponse({'reason': 1}, status=401)
+            else:
+                return JsonResponse({'reason': 2}, status=402)
+        else:
+            return JsonResponse({'reason': 3}, status=403)
+    else:
+        return JsonResponse({'reason': 0}, status=404)
+
+
+                    
+
+
+

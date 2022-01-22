@@ -22,7 +22,7 @@ from registration.views import Registration
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('home.urls')),
-    path('registration/', Registration.as_view()),
+    path('registration/', include('registration.urls')),
     path('feed/', include('feed.urls')),
     path('login/', include('login.urls')),
     path('path/', include('path.urls')),

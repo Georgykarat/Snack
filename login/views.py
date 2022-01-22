@@ -49,7 +49,7 @@ def login_view(request, *args, **kwargs):
         return HttpResponseRedirect('../feed')
     else:    
         if request.method == 'POST':
-            auth_form = AuthForm(request.POST)
+            auth_form = AuthForm(request.POST, label_suffix='')
             if auth_form.is_valid():
                 mail = auth_form.cleaned_data['mail']
                 password = auth_form.cleaned_data['password']

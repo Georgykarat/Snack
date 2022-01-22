@@ -1,0 +1,76 @@
+@media (min-width: 1678px) {
+    .getpass {
+        left: -35px;
+    }
+
+}
+@media (min-width: 2200px) {
+    .getpass {
+        left: -45px;
+    }
+
+}
+@media (max-width: 1000px) {
+    .main-cnt-centre__small-cnt {
+        width: 80%;
+    }
+}
+
+@media (max-width: 800px) {
+    .header-cnt {
+        display: none;
+    }
+    footer {
+        display: none;
+    }
+    .main-cnt-centre__small-cnt {
+        width: 100%;
+    }
+}
+@media (max-width: 600px) {
+    .header-cnt {
+        display: none;
+    }
+    .main-cnt-login__greetings_header1 {
+        font-size: 26px;
+    }
+    .main-cnt-login__greetings_header2 {
+        font-size: 16px;
+    }
+    .main-cnt-centr {
+        width: 95%;
+        max-width: 95%;
+    }
+    input {
+        font-size: 16px;
+    }
+    .att-text-1 {
+        font-size: 10px;
+}
+}
+@media (max-height: 500px) {
+    .header-cnt {
+        display: none;
+    }
+}
+@media (max-width: 350px) {
+    .dont-yet-have-acc {
+        font-size: 12px;
+    }
+    .main-cnt-login__greetings_header1 {
+        font-size: 24px;
+    }
+    .main-cnt-login__greetings_header2 {
+        font-size: 14px;
+    }
+    label {
+        font-size: 16px;
+    }
+    input {
+        height: 40px;
+    }
+    .lgn-btn {
+        height: 40px;
+        font-size: 16px;
+    }
+}

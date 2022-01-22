@@ -54,6 +54,8 @@ PassReset.on('click', function(){
 $('.forgot-pass').on('click', function(){
     $('.login-view').css('display', 'none');
     $('.reset-view').css('display', 'flex');
+    $('.dont-yet-have-acc').css('display', 'none');
+    $('.main-cnt-login__greetings_header2').text('Forgot your password?');
 
 
 });

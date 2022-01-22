@@ -4,7 +4,7 @@ from django.db import models
 
 class RegMailCode(models.Model):
     mail = models.CharField(max_length = 1000)
-    mailcode = models.CharField(max_length = 4)
+    mailcode = models.CharField(max_length = 8)
 
     def __str__(self):
         return self.mail

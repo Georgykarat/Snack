@@ -1,0 +1,114 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="{% static 'js/jQueryv3.6.0.min.js' %}"></script>
+    <script src="{% static 'js/jquery-ui.min.js' %}"></script>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/registration_V2.css' %}">
+    <script src="{% static 'js/registration.js' %}"></script>
+    <script src="{% static 'js/flag-toggle.js' %}"></script>
+    <title>Snack Login</title>
+</head>
+<body>
+    <div class="header-cnt">
+        <div class="header-cnt-centre">
+            <div class="header-cnt_left__logo">
+                <img src="/media/general/lg.png" width="30" height="30">
+                <div class="header-cnt2_left__logo">snack</div>
+            </div>
+            <ul class="header-cnt_centre__menu">
+                <li class="header-cnt_centre__menu-a"><a href="#">About</a></li>
+                <li class="header-cnt_centre__menu-a"><a href="#">Courses</a></li>
+                <li class="header-cnt_centre__menu-a"><a href="#">Process</a></li>
+                <li class="header-cnt_centre__menu-a"><a href="#">Help</a></li>
+            </ul>
+            <div class="header-cnt_right__logo">
+                <a href="/login/" class="loginhref"><button class="header__sign-in-btn">Sign&nbsp;In</button></a>
+                <a href="/registration/"><button class="header__sign-up-btn">Sign&nbsp;Up</button></a>
+            </div>
+        </div>
+    </div>
+    <main>
+        <div class="main-cnt-centr">
+            <div class="main-cnt-login__greetings">
+                <div class="main-cnt-login__greetings_header1">Let's learn some with <span class="green">Snack!</span></div>
+                <div class="main-cnt-login__greetings_header2">Kickstart by registering down below</div>
+            </div>
+
+            <div class="main-cnt-centre__small-cnt login-view">
+                <!--<h1 class="h1-new">Snack In</h1>-->
+                <form method="post" action="">
+                    {% csrf_token %}
+                    <div class="register__form_1">
+                        <div class="register__form-reg-block">
+                            <label>Your e-mail:</label>
+                            <input type="text" class="mail-f">
+                        </div>
+                        <div class="register__form-reg-block mb20">
+                            <label>Your password:</label>
+                            <input type="password" class="pass-f">
+                        </div>
+                        <div class="register__form-reg-block">
+                            <div class="password-check-att-general-cnt-first-row">
+                                <div class="first-att">
+                                    <svg width="20" height="20">
+                                        <circle cx="10" cy="15" r="3" fill="#cbcdcc"  class="check-one"/>
+                                        <polyline points="7,14 10,19 16,9" stroke="#27cf7f" stroke-width="2" fill="none" class="tick-one" />
+                                    </svg>
+                                    <span class="att-text-1">One uppercase character</span>
+                                </div>
+                                <div class="first-att">
+                                    <svg width="20" height="20" class="svg2">
+                                        <circle cx="10" cy="15" r="3" fill="#cbcdcc" class="check-two"/>
+                                        <polyline points="7,14 10,19 16,9" stroke="#27cf7f" stroke-width="2" fill="none" class="tick-two" />
+                                    </svg>
+                                    <span class="att-text-1">One number</span>
+                                </div>
+                            </div>
+                            <div class="password-check-att-general-cnt-first-row">
+                                <div class="first-att">
+                                    <svg width="20" height="20">
+                                        <circle cx="10" cy="15" r="3" fill="#cbcdcc" class="check-three"/>
+                                        <polyline points="7,14 10,19 16,9" stroke="#27cf7f" stroke-width="2" fill="none" class="tick-three" />
+                                    </svg>
+                                    <span class="att-text-1">One lowercase character</span>
+                                </div>
+                                <div class="first-att">
+                                    <svg width="20" height="20" class="svg3">
+                                        <circle cx="10" cy="15" r="3" fill="#cbcdcc" class="check-four" />
+                                        <polyline points="7,14 10,19 16,9" stroke="#27cf7f" stroke-width="2" fill="none" class="tick-four" />
+                                    </svg>
+                                    <span class="att-text-1">8 characters min.</span>
+                                </div>							
+                            </div>
+                        </div>
+                        <div class="register__form-reg-block">
+                            <label>Confirm password:</label>
+                            <input type="password" class="confirmpass-f">
+                        </div>
+                        <div class="register__form-reg-block_checkbox">
+                            <input type="checkbox" class="checkbox__reg__custom" id="rights">
+                            <label class="you-agree-terms-policy__text" for="rights">I agree to Snack Terms, Privacy Policy and agree to get cookies.</label>
+                        </div>
+                        <div class="sbm-cnt">
+                            <div class="lgn-btn reg__button1">Create an account</div>
+                        </div>
+                    </div>
+                </form>
+                    <div class="register__form_2">
+                        <div class="register__form-reg-block-2">
+                            <label style="width: 100%;" class="reg__code_label">Code:</label>
+                            <input type="text" style="width: 100%;" maxlength="8" class="temp-code-f">
+                            <div class="send-one-more-code">Send one more code</div>
+                            <a href="/registration/moveon/"><div class="lgn-btn reg__button3">Confirm code</div></a>
+                        </div>
+                    </div>
+            </div>
+        </div>
+    </main>
+    {% include "home/footer.html" %}
+</body>
+<link rel="stylesheet" type="text/css" href="{% static 'css/login__media.css' %}">
+</html>

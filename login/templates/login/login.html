@@ -31,14 +31,19 @@
     </div>
     <main>
         <div class="main-cnt-centr">
+            <div class="main-cnt-login__greetings">
+                <div class="main-cnt-login__greetings_header1">Welcome back to <span class="green">Snack!</span></div>
+                <div class="main-cnt-login__greetings_header2">Log in to start learning</div>
+            </div>
+
             <div class="main-cnt-centre__small-cnt login-view">
-                <h1 class="h1-new">Snack In</h1>
+                <!--<h1 class="h1-new">Snack In</h1>-->
                 <form method="post" action="">
                     {% csrf_token %}
                     {{ form.as_p}}
+                    <div class="forgot-pass">Forgot password?</div>
                     <div class="sbm-cnt">
-                        <button type="submit" class="lgn-btn">Login</button>
-                        <div class="forgot-pass">Forgot password?</div>
+                        <button type="submit" class="lgn-btn">Log In</button>
                     </div>
                 </form>
             </div>
@@ -61,8 +66,10 @@
                     <div class="resetpass">Get new password</div>
                 </form>
             </div>
+            <div class="dont-yet-have-acc">Don't have an account yet?&nbsp;&nbsp;<a href="/registration/"><span class="dont-yet-have-acc-sign-Up">Sign Up</span></a></div>
         </div>
     </main>
     {% include "home/footer.html" %}
 </body>
+<link rel="stylesheet" type="text/css" href="{% static 'css/login__media.css' %}">
 </html>
