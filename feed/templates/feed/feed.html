@@ -25,121 +25,213 @@
     background-size: 100%;
     background-position: center;
 }
+.main__central__mobile-photo {
+    height: 80px;
+    width: 80px;
+    border-radius: 60px;
+    border: 4px solid white;
+    box-shadow: 0px 5px 10px lightgrey;
+    background-image: url({{begin_path}}{{photo}});
+    background-size: 110%;
+    background-position: center;
+    background-repeat: no-repeat;
+}
     </style>
 </head>
 <body>
     {% include "feed/header2.html" %}
+    <div class="main__central_mobile-menu">
+        <div class="main__central_mobile-menu-flex">
+            <div class="main__central_mobile-menu-centre">
+                <div class="main__central_mobile_profile-cnt">
+                    <div class="main__central__mobile-photo"></div>
+                    <div class="mobile__contacts_cnt">
+                        <div class="mobile__central_cnt-name">{{name}}&nbsp;{{last_name}}</div>
+                        <div class="mobile__central_cnt-country">{{country}}</div>
+                    </div>
+                </div>
+                <div class="mobile__access_level">{{access_name}}</div>
+            </div>
+        </div>
+        <ul class="mobile__menu_ul">
+            <li class="mobile__menu_li returnback">
+                <div class="mobile__menu_round round-active mobile__user"></div>
+                <div class="mobile__menu_text round-text-active">My Workspace</div>
+            </li>
+            <a href="/feed/courses/"><li class="mobile__menu_li">
+                <div class="mobile__menu_round round-nonactive"></div>
+                <div class="mobile__menu_text round-text-nonactive">Courses</div>
+            </li></a>
+            <a href="/feed/settings/" class="mobile__menu_li-a"><li class="mobile__menu_li">
+                <div class="mobile__menu_round round-nonactive mobile__settings"></div>
+                <div class="mobile__menu_text round-text-nonactive">Edit Profile</div>
+            </li></a>
+            <li class="mobile__menu_li">
+                <div class="mobile__menu_round round-nonactive mobile__help"></div>
+                <div class="mobile__menu_text round-text-nonactive">Need Help?</div>
+            </li>
+            <a href="logout/"><li class="mobile__menu_li">
+                <div class="mobile__menu_round round-exit"></div>
+                <div class="mobile__menu_text round-text-exit">Log Out</div>
+            </li></a>
+        </ul>
+        <div class="mobile__cnt-with-options">
+            <div class="mobile__cnt-with-options-flex">
+                <div class="mobile_option-text mobile__privace">Privacy Policy</div>
+                <div class="mobile_option-text">English</div>
+            </div>    
+        </div>
+    </div>
     <main>
-        <div class="main__central-cnt">
-            <div class="main__central-cnt_left">
-                <div class="main__cnt_noflex">
-                    <div class="main__cnt-flex">
-                        <h2>Main Menu</h2>
-                        <ul class="left-menu">
-                            {% if access == 2 %}
-                            <a href="/admin_frontend/"><li class="left-menu-items">
-                                <div class="admin-btn noactive-btn btn-layout"></div>
-                                <div class="li-menu nonactive-text">Admin</div>
-                            </li></a>
-                            {% endif %}
-                            <li class="left-menu-items">
-                                <div class="workspace-btn active-btn btn-layout"></div>
-                                <div class="li-menu active-text">My Workspace</div>
-                            </li>
-                            <a href="/feed/courses/"><li class="left-menu-items">
-                                <div class="courses-btn noactive-btn btn-layout"></div>
-                                <div class="li-menu nonactive-text">Courses</div>
-                            </li></a>
-                            <li class="left-menu-items opacity20">
-                                <div class="analytics-btn noactive-btn btn-layout"></div>
-                                <div class="li-menu nonactive-text">Performance</div>
-                            </li>
-                            <li class="left-menu-items opacity20">
-                                <div class="friends-btn noactive-btn btn-layout"></div>
-                                <div class="li-menu nonactive-text">Friends</div>
-                            </li>
-                            <li class="left-menu-items opacity20">
-                                <div class="rating-btn noactive-btn btn-layout"></div>
-                                <div class="li-menu nonactive-text">Ratings</div>
-                            </li>
-                            <li class="left-menu-items opacity20">
-                                <div class="goals-btn noactive-btn btn-layout"></div>
-                                <div class="li-menu nonactive-text">Goals List</div>
-                            </li>
-                        </ul>
-                        <h2>Settings</h2>
-                        <ul class="left-menu">
-                            <a href="/feed/settings/"><li class="left-menu-items">
-                                <div class="profile-btn noactive-btn btn-layout"></div>
-                                <div class="li-menu nonactive-text">Edit Profile</div>
-                            </li></a>
-                            <li class="left-menu-items opacity20">
-                                <div class="help-btn noactive-btn btn-layout"></div>
-                                <div class="li-menu nonactive-text">Need Help?</div>
-                            </li>
-                        </ul>
-                        <div id="toggles">
-                            <div class="toggle-base">
-                                <div class="toggle-btn"></div>
+        
+            <div class="main__central-cnt">
+                <div class="main__central-cnt_left">
+                    <div class="main__cnt_noflex">
+                        <div class="main__cnt-flex">
+                            <h2>Main Menu</h2>
+                            <ul class="left-menu">
+                                {% if access == 2 %}
+                                <a href="/admin_frontend/"><li class="left-menu-items">
+                                    <div class="admin-btn noactive-btn btn-layout"></div>
+                                    <div class="li-menu nonactive-text">Admin</div>
+                                </li></a>
+                                {% endif %}
+                                <li class="left-menu-items">
+                                    <div class="workspace-btn active-btn btn-layout"></div>
+                                    <div class="li-menu active-text">My Workspace</div>
+                                </li>
+                                <a href="/feed/courses/"><li class="left-menu-items">
+                                    <div class="courses-btn noactive-btn btn-layout"></div>
+                                    <div class="li-menu nonactive-text">Courses</div>
+                                </li></a>
+                                <li class="left-menu-items opacity20">
+                                    <div class="analytics-btn noactive-btn btn-layout"></div>
+                                    <div class="li-menu nonactive-text">Performance</div>
+                                </li>
+                                <li class="left-menu-items opacity20">
+                                    <div class="friends-btn noactive-btn btn-layout"></div>
+                                    <div class="li-menu nonactive-text">Friends</div>
+                                </li>
+                                <li class="left-menu-items opacity20">
+                                    <div class="rating-btn noactive-btn btn-layout"></div>
+                                    <div class="li-menu nonactive-text">Ratings</div>
+                                </li>
+                                <li class="left-menu-items opacity20">
+                                    <div class="goals-btn noactive-btn btn-layout"></div>
+                                    <div class="li-menu nonactive-text">Goals List</div>
+                                </li>
+                            </ul>
+                            <h2>Settings</h2>
+                            <ul class="left-menu">
+                                <a href="/feed/settings/"><li class="left-menu-items">
+                                    <div class="profile-btn noactive-btn btn-layout"></div>
+                                    <div class="li-menu nonactive-text">Edit Profile</div>
+                                </li></a>
+                                <li class="left-menu-items opacity20">
+                                    <div class="help-btn noactive-btn btn-layout"></div>
+                                    <div class="li-menu nonactive-text">Need Help?</div>
+                                </li>
+                            </ul>
+                            <div id="toggles">
+                                <div class="toggle-base">
+                                    <div class="toggle-btn"></div>
+                                </div>
+                                <div class="toggle-label">Light Mode</div>
                             </div>
-                            <div class="toggle-label">Light Mode</div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="main__central-cnt_right">
-                <div class="main__cnt_noflex">
-                    <div class="feed__lvl_cnt_flex">
-                        <div class="feed__lvl_cnt-lvlbadge"></div>
-                        <div class="feed__lvl_cnt-centralcnt">
-                            <div class="feed_greetingsandlevel">
-                                <div class="feed__lvl_greetingscnt"><span class="h2">Welcome back,</span>&nbsp;<span class="h2-name">{{ name }}!</span>&nbsp;&#128405;</div>
-                                <div class="feed__lvl_currentlvl">Your current level is: {{ material }}&nbsp;{{ratingid}}</div>
+                <div class="main__central-cnt_right">
+                    <div class="main__cnt_noflex">
+                        <div class="feed__lvl_cnt_flex">
+                            <div class="feed__lvl_cnt-lvlbadge"></div>
+                            <div class="feed__lvl_cnt-centralcnt">
+                                <div class="feed_greetingsandlevel">
+                                    <div class="feed__lvl_greetingscnt"><span class="h2">Welcome back,</span>&nbsp;<span class="h2-name">{{ name }}!</span>&nbsp;&#128405;</div>
+                                    <div class="feed__lvl_currentlvl">Your level: {{ material }}&nbsp;{{ratingid}}</div>
+                                </div>
+                                <div class="feed_greetingsandlevel">
+                                    <div class="feed__lvl_scalecnt">
+                                        <div class="feed__lvl_scale">
+                                            <div class="feed__lvl_scalegrogress" style="background: linear-gradient(to right, #4C6859FF, #4C6859AD); width: {{ percantage }}%;"></div>
+                                        </div>
+                                        <div class="feed__lvl_pointstonextlvl">
+                                        {{ next_level_material }}&nbsp;{{ next_level }}: {{ until_next }}&nbsp;points to go 
+                                        </div>
+                                    </div>
+                                    <div class="feed__lvl-percentage"><div class="percentage">{{ percantage }}%</div></div>
+                                </div>
                             </div>
-                            <div class="feed_greetingsandlevel">
-                                <div class="feed__lvl_scalecnt">
+                            <div class="feed__lvl_cnt-rightcnt">
+                                <div class="feed__lvl_achieve-badge opacity20"></div>
+                            </div>
+                        </div>
+                        <!-- -->
+                        <div class="feed_greetingsandlevel2">
+                            <div class="feed__lvl_scalecnt2">
+                                <div class="feed__lvl_sclale_flexcnt" style="display: flex;">
                                     <div class="feed__lvl_scale">
                                         <div class="feed__lvl_scalegrogress" style="background: linear-gradient(to right, #4C6859FF, #4C6859AD); width: {{ percantage }}%;"></div>
                                     </div>
-                                    <div class="feed__lvl_pointstonextlvl">
-                                       {{ next_level_material }}&nbsp;{{ next_level }}: {{ until_next }}&nbsp;points to go 
+                                    <div class="feed__lvl-percentage2" style="display: flex; padding-left: 5px;"><div class="percentage">{{ percantage }}%</div></div>
+                                </div>   
+                                <div class="feed__lvl_pointstonextlvl">
+                                {{ next_level_material }}&nbsp;{{ next_level }}: {{ until_next }}&nbsp;points to go 
+                                </div>
+                            </div>
+                        </div>
+                        <!-- -->
+                        <div class="section__header">Continue Learning:</div>
+                        <ul class="section__continue">
+                            <li class="last__course_li">
+                                <div class="last__course_li_section">
+                                    <div class="last__course_li_1str">
+                                        <div class="last__course_imnow-std-txt">I AM NOW STUDYING...</div>
+                                        <div class="last__course_imnow-std-txt">3 days ago</div>
+                                    </div>
+                                    <div class="last__course_li_headerstr__cnt">
+                                        <div class="last__course_li_headerstr">
+                                            Python: Basics
+                                        </div>
+                                        <div class="last__course_li_headerstr-continue">
+                                            Continue:
+                                        </div>
+                                    </div>
+                                    <div class="last__course_li_2str">
+                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis laoreet pellentesque laoreet. Aenean ullamcorper nec tortor ut imperdiet.
+                                    </div>
+                                    <div class="last__course_li_3str">
+                                        <div class="last__course_continue">Continue</div>
                                     </div>
                                 </div>
-                                <div class="feed__lvl-percentage"><div class="percentage">{{ percantage }}%</div></div>
-                            </div>
-                        </div>
-                        <div class="feed__lvl_cnt-rightcnt">
-                            <div class="feed__lvl_achieve-badge opacity20"></div>
-                        </div>
+                            </li>
+                            <li class="last__course_li">
+                                <div class="last__course_li_section">
+                                    <div class="last__course_li_1str">
+                                        <div class="last__course_imnow-std-txt">I AM NOW STUDYING...</div>
+                                        <div class="last__course_imnow-std-txt">3 days ago</div>
+                                    </div>
+                                    <div class="last__course_li_headerstr">
+                                        Python: Basics
+                                    </div>
+                                    <div class="last__course_li_2str">
+                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis laoreet pellentesque laoreet. Aenean ullamcorper nec tortor ut imperdiet.
+                                    </div>
+                                    <div class="last__course_li_3str">
+                                        <div class="last__course_continue">Continue</div>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                        <div class="section__header opacity20">Training:</div>
+                        <div class="section__header opacity20">Achievments:</div>
+                        <div class="section__header opacity20">Explore More:</div>
                     </div>
-                    <div class="section__header">Continue Learning:</div>
-                    <ul class="section__continue">
-                        <li class="last__course_li">
-                            <div class="last__course_li_section">
-                                <div class="last__course_li_1str">
-                                    <div class="last__course_imnow-std-txt">I AM NOW STUDYING...</div>
-                                    <div class="last__course_imnow-std-txt">3 days ago</div>
-                                </div>
-                                <div class="last__course_li_headerstr">
-                                    Python: Basics
-                                </div>
-                                <div class="last__course_li_2str">
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis laoreet pellentesque laoreet. Aenean ullamcorper nec tortor ut imperdiet.
-                                </div>
-                                <div class="last__course_li_3str">
-                                    <div class="last__course_continue">Continue</div>
-                                </div>
-                            </div>
-                        </li>
-                    </ul>
-                    <div class="section__header opacity20">Training:</div>
-                    <div class="section__header opacity20">Achievments:</div>
-                    <div class="section__header opacity20">Explore More:</div>
                 </div>
             </div>
-        </div>
-    </main>
+        </main>
     {% include "home/footer.html" %}
 </body>
+<link rel="stylesheet" href="{% static 'css/feed_header2__media.css' %}">
 </html>
 

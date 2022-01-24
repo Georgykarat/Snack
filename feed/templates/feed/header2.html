@@ -26,11 +26,38 @@
     background-repeat: no-repeat;
     background-size: 130%;
 }
+.header__logout_mobile {
+    width: 50px;
+    height: 50px;
+    background-image: url("{% static 'png/Light.svg' %}");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 50%;
+    display: none;
+    cursor: pointer;
+}
+.header__menu__mobile {
+    width: 50px;
+    height: 50px;
+    background-image: url("{% static 'png/Sort.svg' %}");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 50%;
+    display: none;
+    cursor: pointer;
+}
+.header__mobile-lvl {
+    font-size: 16px;
+    font-family: 'Lemon Milk Pro bb';
+    display: none;
+    color: #B2B2B2;
+}
     </style>
 </head>
 <body>
     <div class="header-cnt">
         <div class="header-cnt-centre">
+            <div class="header__menu__mobile"></div>
             <div class="header-cnt_left__logo">
                 <img src="{% static 'png/lg.png' %}" width="30" height="30">
                 <div class="header-cnt2_left__logo">snack</div>
@@ -39,6 +66,7 @@
                 <div class="header__photo_border">
                     <div class="header__photo"></div>
                 </div>
+                <div class="header__mobile-lvl">{{ratingid}}</div>
                 <div class="header__name-lvl-cnt">
                     <div class="header__name-lvl-name">{{name}}&nbsp;{{last_name}}&nbsp;&nbsp;<span class="header__license-level">{{access_name}}</span></div>
                     <div class="header__name-lvl-bigcnt">
@@ -52,6 +80,7 @@
             </div>
             <div class="header-cnt_right__logo2">
                 <a href="/feed/logout/"><div class="header__left_logout">Logout</div></a>
+                <a href="/feed/logout/"><div class="header__logout_mobile"></div></a>
                 <!--
                 <div class="header-profile-cnt1">
                     <div class="bell-cnt">    

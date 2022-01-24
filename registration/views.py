@@ -190,6 +190,7 @@ def createaccfeed(request):
                     if invite_gift.exists():
                         giftaccessid = invite_gift.values_list('accessid')[0][0]
                         newfeeduser = Feed(country=country, mail=user_name.lower(), activity=occupation, first_name=name, last_name=surname, accessid=int(giftaccessid))
+                        invite_gift.delete()
                     else:
                         newfeeduser = Feed(country=country, mail=user_name.lower(), activity=occupation, first_name=name, last_name=surname)
                     newfeeduser.save()

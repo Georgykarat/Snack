@@ -1,0 +1,219 @@
+@media (max-width: 1100px) {
+    .last__course_li {
+        height: 300px;
+    }
+}
+@media (max-width: 1100px) {
+    .main__central-cnt_left {
+        display: none;
+
+    }
+    .main__central-cnt_right {
+        width: 100%;
+        min-width: 100%;
+        max-width: 100%;
+        justify-content: center;
+    }
+    .feed__lvl_cnt-rightcnt {
+        display: none;
+    }
+    .header-cnt_left__logo {
+        display: none;
+    }
+    .header-central-cnt {
+        width: 80%;
+    }
+    .header__logout_mobile {
+        display: flex;
+    }
+    .header__left_logout {
+        display: none;
+    }
+    .header-cnt-centre {
+        width: 98%;
+        max-width: 98%;
+    }
+    .header-central-cnt {
+        padding-left: 0;
+    }
+    .header__menu__mobile {
+        display: flex;
+    }
+    .main__central-cnt {
+        width: 98%;
+        max-width: 98%;
+        min-width: 98%;
+    }
+    .section__header {
+        padding-left: 100px;
+        width: 80%;
+    }
+    .last__course_li_2str {
+        display: none;
+    }
+    .last__course_li_section {
+        height: 120px;
+        top: 0px;
+        border-bottom-left-radius: 25px;
+        border-bottom-right-radius: 25px;
+        align-items: flex-start;
+    }
+    .last__course_li {
+        height: 350px;
+        width: 400px;
+        min-width: 300px;
+    }
+    .section__continue {
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+    .feed__lvl_cnt-lvlbadge {
+        width: 150px;
+        height: 200px;
+    }
+    .last__course_li_headerstr-continue {
+        display: flex;
+    }
+    .last__course_li_1str {
+        height: 40px;
+    }
+    .last__course_li_3str {
+        display: none;
+    }
+    .last__course_li_headerstr {
+        text-align: left;
+        width: 50%;
+        height: auto;
+    }
+    .last__course_li_section {
+        text-align: start;
+    }
+    .last__course_li_headerstr__cnt {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 90%;
+    }
+    .footer-cnt-centre {
+        padding: 40px 0;
+    }
+    .footer-li {
+        font-size: 10px;
+    }
+}
+@media (max-width: 600px) {
+    .header__photo_border {
+        display: none;
+    }
+    .header-cnt {
+        height: 60px;
+    }
+    .header__name-lvl-name {
+        display: none;
+    }
+    .header__mobile-lvl {
+        display: flex;
+    }
+    .header__name-lvl-lvlname {
+        display: none;
+    }
+    .header__name-lvl-lvlcnt {
+        width: 100%;
+        margin-top: 0;
+    }
+    .feed__lvl_greetingscnt {
+        font-size: 20px;
+        
+    }
+    .feed_greetingsandlevel {
+        position: relative;
+        bottom: -20px;
+    }
+    .feed_greetingsandlevel2 {
+        display: flex;
+        justify-content: center;
+    }
+    .h2, .h2-name {
+        font-size: 20px;
+    }
+    .feed__lvl_currentlvl {
+        font-size: 14px;
+    }
+    .percentage {
+        font-size: 16px;
+    }
+    .feed__lvl_scalecnt {
+        width: 85%;
+    }
+    .feed__lvl_scalecnt {
+        position: relative;
+        bottom: -25px;
+        display: none;
+        width: 98%;
+    }
+    .feed__lvl-percentage {
+        position: relative;
+        bottom: -25px;
+        display: none;
+    }
+    .feed__lvl_scalecnt {
+        width: 98%;
+    }
+    .feed__lvl_scale {
+        width: 90%;
+    }
+    .feed__lvl_pointstonextlvl {
+        margin-top: 0px;
+    }
+    .section__header {
+        padding-left: 50px;
+        width: 80%;
+        font-size: 20px;
+        margin-bottom: 20px;
+    }
+    .feed__lvl_greetingscnt {
+        justify-content: center;
+    }
+    .feed__lvl_currentlvl {
+        justify-content: center;
+        text-align: center;
+    }
+    .last__course_li_headerstr__cnt {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 90%;
+    }
+    .feed__lvl_pointstonextlvl {
+        position: relative;
+        top: -10px;
+        font-size: 10px;
+    }
+    .header-cnt {
+        box-shadow: none;
+    }
+    .main__central-cnt {
+        margin-top: 10px;
+    }
+    .footer-cnt-centre {
+        flex-wrap: wrap;
+    }
+    .footer-left-cnt {
+        max-width: 100%;
+        width: 100%;
+        margin-top: 10px;
+        justify-content: center;
+        text-align: center;
+    }
+    .contacts-socials_cnt {
+        justify-content: center;
+    }
+
+}
+@media (max-width: 440px) {
+    .header__lvl-badge {
+        width: 30px;
+        height: 45px;
+        background-size: 100%;
+    }
+}
