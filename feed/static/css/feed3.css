@@ -61,8 +61,6 @@ main {
     height: 100%;
     width: 100%;
     background-color: white;
-    overflow: fixed;
-    position: fixed;
     border-top: 1px solid #E0E0E0;
     justify-content: center;
     flex-wrap: wrap;
@@ -425,6 +423,8 @@ main {
     justify-content: flex-start;
     width: 90%;
     text-align: start;
+    position: relative;
+    top: -8px;
 }
 .last__course_li_headerstr-continue {
     font-size: 12px;

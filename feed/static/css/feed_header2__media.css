@@ -215,5 +215,6 @@
         width: 30px;
         height: 45px;
         background-size: 100%;
+        display: none;
     }
 }

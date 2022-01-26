@@ -54,6 +54,12 @@
             </div>
         </div>
         <ul class="mobile__menu_ul">
+            {% if access > 1 %}
+            <li class="mobile__menu_li">
+                <div class="mobile__menu_round round-nonactive"></div>
+                <div class="mobile__menu_text round-text-nonactive">Test</div>
+            </li>
+            {% endif %}
             <li class="mobile__menu_li returnback">
                 <div class="mobile__menu_round round-active mobile__user"></div>
                 <div class="mobile__menu_text round-text-active">My Workspace</div>
@@ -211,8 +217,13 @@
                                         <div class="last__course_imnow-std-txt">I AM NOW STUDYING...</div>
                                         <div class="last__course_imnow-std-txt">3 days ago</div>
                                     </div>
-                                    <div class="last__course_li_headerstr">
-                                        Python: Basics
+                                    <div class="last__course_li_headerstr__cnt">
+                                        <div class="last__course_li_headerstr">
+                                            Python: Advanced
+                                        </div>
+                                        <div class="last__course_li_headerstr-continue">
+                                            Continue:
+                                        </div>
                                     </div>
                                     <div class="last__course_li_2str">
                                         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis laoreet pellentesque laoreet. Aenean ullamcorper nec tortor ut imperdiet.
