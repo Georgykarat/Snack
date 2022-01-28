@@ -23,14 +23,10 @@ level_pics = [
 def feed(request, *args, **kwargs):
     if request.user.is_authenticated == True:    
         target_mail = request.user.username
-        userid = Feed.objects.filter(mail=target_mail).values_list('id')
-        userid1 = userid[0][0]
         #Got exp quantity
         exp = Feed.objects.filter(mail=target_mail).values_list('rating_exp')[0][0]
         i = 0 #Задали индекс счётчику
-        level = Rating.objects.filter(ratingid=i-1).values_list('rating_name', 'rating_material')
         feed_data = Feed.objects.filter(mail=target_mail).values_list('accessid', 'first_name', 'last_name', 'country', 'city', 'lvl')
-        feed_data1 = Feed.objects.filter(mail=target_mail).values_list('last_course')
         # Let's find our access title
         access_name = AccessLevel.objects.filter(accessid=feed_data[0][0]).values_list('access')[0][0]
         #Let's count our level

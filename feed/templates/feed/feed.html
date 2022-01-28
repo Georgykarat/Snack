@@ -15,6 +15,9 @@
     <link rel="stylesheet" href="{% static 'js/jquery-ui.css' %}">
     <script src="{% static 'js/feed.js' %}"></script>
     <script src="{% static 'js/theme.js' %}"></script>
+    <script src="{% static 'css/swiper/swiper-bundle.js' %}"></script>
+    <link rel="stylesheet" href="{% static 'css/swiper/swiper-bundle.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/feed_Swiper_add.css' %}">
     <style>
         .feed__lvl_cnt-lvlbadge {
     display: flex;
@@ -188,6 +191,7 @@
                         </div>
                         <!-- -->
                         <div class="section__header">Continue Learning:</div>
+                        <!--
                         <ul class="section__continue">
                             <li class="last__course_li">
                                 <div class="last__course_li_section">
@@ -234,6 +238,50 @@
                                 </div>
                             </li>
                         </ul>
+                    -->
+                        <!-- Swiper-->
+                        <div class="swiper">
+                            <!-- Additional required wrapper -->
+                            <div class="swiper-wrapper">
+                              <!-- Slides -->
+                              <div class="swiper-slide" style="background-color: #4293C0;">
+                                <div class="swiper-course-header">Python: Basics</div>
+                                <div class="swiper-course-description"></div>
+                                <div class="swiper-course-next">Next level: 06.Slices&nbsp;|&nbsp;<!--Completed: 5/52 (0.11%)--></div>
+                                <div class="swiper-course-cnt-flex">
+                                    <div class="swiper-course-cnt">
+                                        <div class="swiper-course-cnt-filler" style="width: 26%;"></div>
+                                    </div>
+                                </div>
+                                <div class="swiper-course-continue">CONTINUE</div>
+                              </div>
+                              <div class="swiper-slide" style="background-color: #2974ff;">
+                                    <div class="swiper-course-header">Python: Advanced</div>
+                                    <div class="swiper-course-description"></div>
+                                <div class="swiper-course-next">Next level: 01.OOP: Basics&nbsp;|&nbsp;<!--Completed: 5/52 (0.11%)--></div>
+                                <div class="swiper-course-cnt-flex">
+                                    <div class="swiper-course-cnt">
+                                        <div class="swiper-course-cnt-filler" style="width: 2%;"></div>
+                                    </div>
+                                </div>
+                                <div class="swiper-course-continue">CONTINUE</div>
+                                </div>
+                              <div class="swiper-slide" style="background-color: #b5becf;">
+                                    <div class="swiper-course-header">HTML</div>
+                                    <div class="swiper-course-description"></div>
+                                <div class="swiper-course-next">Next level: 26.Flexbox 2&nbsp;|&nbsp;<!--Completed: 5/52 (0.11%)--></div>
+                                <div class="swiper-course-cnt-flex">
+                                    <div class="swiper-course-cnt">
+                                        <div class="swiper-course-cnt-filler" style="width: 96%;"></div>
+                                    </div>
+                                </div>
+                                <div class="swiper-course-continue">CONTINUE</div>
+                                </div>
+                            </div>
+                            <!-- If we need pagination -->
+                            <!--<div class="swiper-pagination"></div>-->
+                        </div>
+                        <!-- end of swiper -->
                         <div class="section__header opacity20">Training:</div>
                         <div class="section__header opacity20">Achievments:</div>
                         <div class="section__header opacity20">Explore More:</div>

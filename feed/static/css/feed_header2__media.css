@@ -208,6 +208,40 @@
     .contacts-socials_cnt {
         justify-content: center;
     }
+    .swiper-course-next {
+
+        font-size: 10px;
+        width: 98%;
+    }
+    .swiper-course-header {
+
+        font-size: 20px;
+        width: 90%;
+        font-family: 'Lemon Milk Pro bb';
+    }
+    .swiper {
+        width: 80%;
+        height: 150px;
+        justify-content: center;
+    }
+    .swiper-course-next {
+        padding-left: 20px;
+        padding-top: 30px;
+        font-size: 10px;
+        width: 90%;
+    }
+    .swiper-course-description {
+        padding-left: 20px;
+        padding-top: 0px;
+        height: 0px;
+    }
+    .swiper-course-cnt {
+        width: 90%;
+    }
+    .swiper-course-continue {
+        padding-top: 10px;
+        font-size: 13px;
+    }
 
 }
 @media (max-width: 440px) {

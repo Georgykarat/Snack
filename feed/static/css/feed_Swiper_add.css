@@ -1,0 +1,67 @@
+.swiper-slide {
+    border-radius: 20px;
+    cursor: grabbing;
+}
+.swiper-course-header {
+    padding-left: 20px;
+    padding-top: 20px;
+    color: white;
+    font-size: 30px;
+    width: 90%;
+    font-family: 'Lemon Milk Pro bb';
+}
+.swiper-course-description {
+    padding-left: 20px;
+    padding-top: 10px;
+    color: white;
+    font-size: 14px;
+    width: 80%;
+    height: 60px;
+}
+.swiper-course-next {
+    padding-left: 20px;
+    padding-top: 70px;
+    color: white;
+    font-size: 15px;
+    width: 90%;
+}
+.swiper-course-cnt-flex {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+}
+.swiper-course-cnt {
+    display: flex;
+    margin-top: 10px;
+    width: 95%;
+    height: 10px;
+    border-radius: 10px;
+    background-color: white;
+    justify-content: flex-start;
+}
+.swiper-course-cnt-filler {
+    display: flex;
+    height: 8px;
+    border-radius: 10px;
+    background-color: #26D07C;
+    margin-left: 1px;
+    position: relative;
+    bottom: -1px;
+}
+.swiper-course-completed {
+    padding-left: 20px;
+    padding-top: 10px;
+    color: white;
+    font-size: 15px;
+    width: 90%;
+    font-family: 'Lemon Milk Pro';
+}
+.swiper-course-continue {
+    padding-left: 20px;
+    padding-top: 20px;
+    color: white;
+    font-size: 15px;
+    width: 90%;
+    font-family: 'Lemon Milk Pro bb';
+    cursor: pointer;
+}

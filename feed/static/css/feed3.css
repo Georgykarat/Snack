@@ -120,7 +120,7 @@ main {
     border-radius: 10px;
 }
 .mobile__menu_ul {
-    width: 100%;
+    width: 70%;
     margin: 50px 0;
     display: flex;
     justify-content: start;
@@ -164,6 +164,7 @@ main {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    margin-bottom: 20px;
 }
 .round-text-active {
     color: #4F5665;
@@ -558,3 +559,15 @@ h1 {
     opacity: 20%;
     cursor: not-allowed;
 }
+.swiper {
+    width: 80%;
+    height: 300px;
+    justify-content: center;
+}
+.swiper-button-next {
+    display: none;
+}
+.swiper-button-prev {
+    display: none;
+}
+
