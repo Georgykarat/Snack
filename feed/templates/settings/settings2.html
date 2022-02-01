@@ -30,6 +30,17 @@
     border-radius: 20px;
     cursor: pointer;
 }
+.main__central__mobile-photo {
+    height: 80px;
+    width: 80px;
+    border-radius: 60px;
+    border: 4px solid white;
+    box-shadow: 0px 5px 10px lightgrey;
+    background-image: url({{begin_path}}{{photo}});
+    background-size: 110%;
+    background-position: center;
+    background-repeat: no-repeat;
+}
     </style>
     <script>
         $(".test-form").submit(function() {
@@ -45,30 +56,53 @@
     </script>
 </head>
 <body>
-    <div class="body" style="width: 100%; min-width: 100%; height: 100%;">
-    <div class="header-cnt">
-        <div class="header-cnt-centre">
-            <div class="header-cnt_left__logo">
-                <img src="{% static 'png/lg.png' %}" width="30" height="30">
-                <div class="header-cnt2_left__logo">snack</div>
-            </div>
-            <div class="header-cnt_right__logo">
-                <div class="header-profile-cnt1">
-                    <div class="bell-cnt">    
-                        <button class="bell-btn"></button>
-                        <div class="notify-circle" id="bell-notify"></div>
-                    </div> 
-                    <div class="bell-cnt">
-                        <button class="chat-btn"></button>
-                        <div class="notify-circle" id="chat-notify"></div>
+    {% include "feed/header2.html" %}
+    <div class="main__central_mobile-menu">
+        <div class="main__central_mobile-menu-flex">
+            <div class="main__central_mobile-menu-centre">
+                <div class="main__central_mobile_profile-cnt">
+                    <div class="main__central__mobile-photo"></div>
+                    <div class="mobile__contacts_cnt">
+                        <div class="mobile__central_cnt-name">{{name}}&nbsp;{{last_name}}</div>
+                        <div class="mobile__central_cnt-country">{{country}}</div>
                     </div>
-                </div>   
-                <div class="header-profile-cnt">
-                    <div class="header-image"></div>
-                    <div class="header-name">{{name}}&nbsp;{{last_name}}</div>
-                    <button class="arrow-btn"></button>
                 </div>
+                <div class="mobile__access_level">{{access_name}}</div>
             </div>
+        </div>
+        <ul class="mobile__menu_ul">
+            {% if access > 1 %}
+            <li class="mobile__menu_li">
+                <div class="mobile__menu_round round-nonactive"></div>
+                <div class="mobile__menu_text round-text-nonactive">Test</div>
+            </li>
+            {% endif %}
+            <a href="/feed/"><li class="mobile__menu_li">
+                <div class="mobile__menu_round round-nonactive mobile__user"></div>
+                <div class="mobile__menu_text round-text-nonactive">My Workspace</div>
+            </li></a>
+            <a href="/feed/courses/" class="mobile__menu_li-a"><li class="mobile__menu_li">
+                <div class="mobile__menu_round round-nonactive"></div>
+                <div class="mobile__menu_text round-text-nonactive">Courses</div>
+            </li></a>
+            <li class="mobile__menu_li returnback">
+                <div class="mobile__menu_round round-active mobile__settings"></div>
+                <div class="mobile__menu_text round-text-active">Edit Profile</div>
+            </li>
+            <li class="mobile__menu_li">
+                <div class="mobile__menu_round round-nonactive mobile__help"></div>
+                <div class="mobile__menu_text round-text-nonactive">Need Help?</div>
+            </li>
+            <a href="/feed/logout/"><li class="mobile__menu_li">
+                <div class="mobile__menu_round round-exit"></div>
+                <div class="mobile__menu_text round-text-exit">Log Out</div>
+            </li></a>
+        </ul>
+        <div class="mobile__cnt-with-options">
+            <div class="mobile__cnt-with-options-flex">
+                <div class="mobile_option-text mobile__privace">Privacy Policy</div>
+                <div class="mobile_option-text">English</div>
+            </div>    
         </div>
     </div>
     <main>
@@ -135,8 +169,14 @@
                 </div>
             </div>
             <div class="main__central-cnt_right">
-                <h3>Profile settings:</h3>
-                <form method="post" class="profile-settings">
+                <div class="mobile__settings-list-dropdown">Profile settings</div>
+                <div class="mobile__settings-list-dropdown-itself">
+                    <div class="mobile__settings-list-dropdown-option1">Change photo</div>
+                    <div class="mobile__settings-list-dropdown-option2">Change password</div>
+                    <div class="mobile__settings-list-dropdown-option3">Delete account</div>
+                </div>
+                <h3 class="h3__profile-settings-header__settings">Profile settings:</h3>
+                <form method="post" class="profile-settings" id="profile-settings-id-cnt">
                     {% csrf_token %}
                     <label class="settings__form-label black-color">Login</label>
                     <input type="input" name="settings__form-label" class="settings-inpt grey-color not-allowed__cursor" id="login" placeholder="Enter your %Username%" value="{{loginm}}" disabled="disabled">
@@ -147,7 +187,7 @@
                     <label class="settings__form-label black-color">Last name</label>
                     <input type="input" name="settings__form-label" class="settings-inpt grey-color black-color" id="lastname" placeholder="Enter your First name" value="{{last_name}}">
                     <label class="settings__form-label black-color">Country</label>
-                    <select class="settings-inpt grey-color black-color" id="id_country" name="country">
+                    <select class="settings-select-inpt grey-color black-color" id="id_country" name="country">
                                         <option value="Where are you from?">{{country}}</option>
                                         <option value="Afghanistan">Afghanistan</option>
                                         <option value="Albania">Albania</option>
@@ -374,13 +414,13 @@
                     <label class="settings__form-label black-color">Time zone</label>
                     <div class="timezone__cnt">
                         <div class="gmt-symbol grey-color black-color" id="timesign">{{timesign}}</div>
-                        <input type="input" name="gmt-hours" maxlength="2" id="timevalue" class="input-gmt grey-color black-color" placeholder="UTC" value="{{timezone}}">
+                        <input type="input" name="gmt-hours" maxlength="2" id="timevalue" class="input-gmt grey-color black-color settings-inpt gmt__left-border-square" placeholder="UTC" value="{{timezone}}">
                     </div>
-                    <div class="confirm-settings__btn" id="savesettings">SAVE</div>
+                    <div class="confirm-settings__btn" id="savesettings">Save Changes</div>
                 </form>
                 <form method="post" class="change-pass__cnt" id="change-pass__cnt">
                     {% csrf_token %}
-                    <h3>Password:</h3>
+                    <h3 class="h3__profile-settings-header__settings">Password:</h3>
                     <div class="password__form_cnt">
                         <label class="settings__form-label black-color">Old password</label>
                         <input type="password" name="oldpass" placeholder="{{chgpaswmsg}}" class="settings-inpt grey-color black-color pass-1">
@@ -393,15 +433,24 @@
                 </form>
                 <form method="post" class="change-pass__cnt" id="deleteacc__form">
                     {% csrf_token %}
-                    <h3 style="color: red;">Delete account:</h3>
+                    <h3 class="h3__profile-settings-header__settings" style="color: red;">Delete account:</h3>
                     <div class="password__form_cnt">
-                        <label class="settings__form-label black-color" style="user-select: none;">Type in to delete:<br><span class="deletionkeyword" style="color: red; user-select: none;-webkit-user-select: none;-khtml-user-select: none;-moz-user-select: none;-ms-user-select: none;user-select: none;">{{loginm}}{{name}}{{last_name}}</span></label>
+                        <label class="settings__form-label black-color" style="user-select: none; line-height: 1.7;">To delete your account, type the following in the field below:<br><span class="deletionkeyword" style="color: red; user-select: none;-webkit-user-select: none;-khtml-user-select: none;-moz-user-select: none;-ms-user-select: none;user-select: none; font-size: 16px;">{{loginm}}{{name}}{{last_name}}</span><br>Please note that this is inevitable</label>
                         <input type="input" name="oldpass" placeholder="!!! RED ZONE !!!" class="settings-inpt grey-color black-color" id="delete_input">
                         <button class="delete__red-btn" id="delete-acc">!!! DELETE ACCOUNT !!!</button>
                     </div>
                 </form>
+                <form class="main__central-cnt_right photo__form-edit-photo mobile__photo-form" method="post" enctype="multipart/form-data">
+                    <h3 class="h3__profile-settings-header__settings">Photo:</h3>
+                    <h5 class="black-color mobile-title-loadphoto" style="padding-bottom: 20px;">Upload and crop your photo</h5>
+                    <form method="post" enctype="multipart/form-data" class="test-form mobile-title-loadphoto">
+                        {% csrf_token %}
+                        {{ form.as_p }}
+                        <button type="submit" class="photo__green-btn">Submit</button>
+                    </form>
+                </form>
             </div>
-            <form class="main__central-cnt_right" method="post" enctype="multipart/form-data">
+            <form class="main__central-cnt_right photo__form-edit-photo" method="post" enctype="multipart/form-data">
                 <h3>Photo:</h3>
                 <h5 class="black-color">Upload and crop your photo</h5>
                 <form method="post" enctype="multipart/form-data" class="test-form">
@@ -447,5 +496,6 @@
     {% include "home/footer.html" %}
 </div>
 </body>
+<link rel="stylesheet" href="{% static 'settings/css/settings__media.css' %}">
 </html>
 

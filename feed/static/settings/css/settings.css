@@ -19,6 +19,10 @@ body, html {
 body {
     background-color: rgb(255,255,255);
 }
+select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+}
 
 @font-face{
   font-family: Lemon Milk Pro;
@@ -350,35 +354,39 @@ h5 {
     background-color: #6b6b6b;
 }
 .profile-settings {
-    display: block;
+    display: flex;
+    flex-wrap: wrap;
     align-items: center;
+    justify-content: center;
+    margin: 0 auto;
     width: 100%;
     min-width: 100%;
 }
 .settings__form-label {
-    color: #0B132A;
-    font-size: 20px;
-    width: 100%;
-    min-width: 100%;
+    color: #4F5665;
+    font-size: 16px;
+    width: 80%;
+    min-width: 80%;
     display: block;
 }
-.settings-inpt {
-    height: 40px;
-    width: 100%;
-    min-width: 100%;
+
+.settings-select-inpt {
+    height: 60px;
+    width: 82%;
+    min-width: 82%;
     margin: 20px 0;
     padding: 0 10px;
-    font-size: 20px;
-    border: none;
+    font-size: 16px;
+    border: 1px solid #CBD5E1;
     border-radius: 15px;
     cursor: pointer;
     padding-right: 10px;
 }
 .grey-color {
-    background-color: #E0E0E0;
+    background-color: #F1F5F9;
 }
 .black-color {
-    color: black;
+    color: #4F5665;
 }
 .input-gmt {
     height: 40px;
@@ -392,18 +400,18 @@ h5 {
 }
 .timezone__cnt {
     display: flex;
-    width: 100%;
-    min-width: 100%;
-    margin: 20px 0;
+    width: 92%;
+    justify-content: center;
+    margin: 0px 0;
 }
 .gmt-symbol {
-    height: 38px;
+    height: 60px;
     width: 40px;
-    background-color: transparent;
+    background-color: #F1F5F9;
     border-top-left-radius: 15px;
     border-bottom-left-radius: 15px;
     outline: none;
-    border: 1px solid lightgrey;
+    border: 1px solid #CBD5E1;
     cursor: pointer;
     align-items: center;
     text-align: center;
@@ -411,21 +419,29 @@ h5 {
     justify-content: center;
     font-family: 'Lemon Milk Pro bb';
     font-size: 25px;
+    margin-top: 20px;
+    color: #CBD5E1;
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none;   /* Chrome/Safari/Opera */
+    -khtml-user-select: none;    /* Konqueror */
+    -moz-user-select: none;      /* Firefox */
+    -ms-user-select: none;
 }
 .confirm-settings__btn {
     display: flex;
-    width: 100%;
-    min-width: 100%;
+    width: 85%;
+    min-width: 85%;
     background-color: #26D07C;
     transition: .5s;
     border: 1px solid transparent;
     justify-content: center;
     align-items: center;
-    height: 50px;
-    border-radius: 25px;
+    height: 60px;
+    border-radius: 15px;
     cursor: pointer;
     font-family: 'Lemon Milk Pro bb';
     color: white;
+    margin-top: 10px;
 }
 .confirm-settings__btn:hover {
     background-color: transparent;
@@ -441,21 +457,22 @@ h5 {
 }
 .password__form_cnt {
     display: flex;
+    justify-content: center;
     width: 100%;
     min-width: 100%;
     flex-wrap: wrap;
+    margin-left: 0%;
 }
 .delete__red-btn {
     display: flex;
-    width: 100%;
-    min-width: 100%;
+    width: 86%;
     background-color: red;
     transition: .5s;
     border: 1px solid transparent;
     justify-content: center;
     align-items: center;
-    height: 50px;
-    border-radius: 25px;
+    height: 60px;
+    border-radius: 15px;
     cursor: pointer;
     font-family: 'Lemon Milk Pro bb';
     color: white;
@@ -464,7 +481,244 @@ h5 {
     background-color: transparent;
     transition: .5s;
     border: 1px solid red;
+    color: red;
 }
 .not-allowed__cursor {
     cursor: not-allowed;
+}
+.settings-inpt {
+    height: 60px;
+    width: 80%;
+    min-width: 80%;
+    margin: 20px 0;
+    padding: 0 10px;
+    font-size: 16px;
+    border: 1px solid #CBD5E1;
+    border-radius: 15px;
+    cursor: pointer;
+    padding-right: 10px;
+}
+.gmt__left-border-square{
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+}
+.photo__green-btn {
+    display: flex;
+    width: 86%;
+    background-color: #26D07C;
+    transition: .5s;
+    border: 1px solid transparent;
+    justify-content: center;
+    align-items: center;
+    height: 60px;
+    border-radius: 15px;
+    cursor: pointer;
+    font-family: 'Lemon Milk Pro bb';
+    color: white;
+    font-size: 20px;
+    margin-top: 20px;
+}
+/* Mobile styles*/
+.main__central_mobile-menu {
+    display: none;
+    height: 100%;
+    width: 100%;
+    background-color: white;
+    border-top: 1px solid #E0E0E0;
+    justify-content: center;
+    flex-wrap: wrap;
+    align-items: start;
+}
+.main__central_mobile-menu-flex {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    
+}
+.main__central_mobile-menu-centre {
+    width: 95%;
+    justify-content: space-between;
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    border-bottom: 1px solid #E0E0E0;
+    margin-top: 20px;
+    height: 120px;
+}
+.main__central_mobile_profile-cnt {
+    width: 80%;
+    display: flex;
+    height: 100px;
+}
+.mobile__contacts_cnt {
+    width: 60%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: start;
+    align-items: center;
+    margin-left: 20px;
+    height: 45px;
+    position: relative;
+    bottom: -20px;
+}
+.mobile__central_cnt-name {
+    font-size: 20px;
+    color: #0F172A;
+    width: 100%;
+}
+.mobile__central_cnt-country {
+    font-size: 14px;
+    color: #64748B;
+    width: 100%;
+    font-family: 'Lemon Milk Pro';
+}
+.mobile__access_level {
+    font-size: 10px;
+    color: white;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    padding-left: 5px;
+    padding-right: 5px;
+    background-color: rgba(255, 0, 0, 0.548);
+    border-radius: 10px;
+}
+.mobile__menu_ul {
+    width: 70%;
+    margin: 50px 0;
+    display: flex;
+    justify-content: start;
+    margin-left: 40px;
+    flex-wrap: wrap;
+}
+.mobile__menu_li {
+    width: 100%;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    margin-bottom: 30px;
+    cursor: pointer;
+}
+.mobile__menu_li-a {
+    width: 100%;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    cursor: pointer;
+}
+.mobile__menu_round {
+    height: 40px;
+    width: 40px;
+    border-radius: 30px;
+    margin-right: 20px;
+}
+.mobile__menu_text {
+    font-size: 14px;
+}
+.mobile__cnt-with-options {
+    width: 100%;
+    flex-wrap: nowrap;
+    justify-content: center;
+    display: flex;
+    height: 20px;
+    align-self: end;
+}
+.mobile__cnt-with-options-flex {
+    width: 90%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+.round-text-active {
+    color: #4F5665;
+}
+.round-text-nonactive {
+    color: #979797;
+}
+.round-text-exit {
+    color: #DA3232;
+}
+.round-active {
+    background-color: #26D07C;
+}
+.round-nonactive {
+    background-color: #E0E0E0;
+}
+.round-exit {
+    background-color: #FBD8DC;
+    background-image: url(../../png/exit.svg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 70%;
+}
+.mobile__user {
+    background-image: url(../../png/fi-rr-user.svg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 50%;
+}
+.mobile__settings {
+    background-image: url(../../png/fi-rr-settings-active.svg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 50%;
+}
+.mobile__help {
+    background-image: url(../../png/fi-rr-shield-interrogation.svg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 50%;
+}
+.mobile__privace {
+    padding-right: 20px;
+    background-image: url(../../png/next.svg);
+    background-position: right;
+    background-repeat: no-repeat;
+    background-size: 10%;
+}
+.mobile_option-text {
+    color: #4F5665;
+    font-size: 14px;
+    font-family: 'Lemon Milk Pro';
+}
+.mobile__settings-list-dropdown {
+    font-size: 20px;
+    font-family: 'Lemon Milk Pro bb';
+    color: #0F172A;
+    padding-right: 30px;
+    background-image: url('../img/arrowdown.svg');
+    background-position-x: 100%;
+    background-position-y: 55%;
+    background-repeat: no-repeat;
+    background-size: 8%;
+    cursor: pointer;
+    display: none;
+    width: 300px;
+    margin-bottom: 20px;
+    margin-left: 10%;
+}
+.mobile__settings-list-dropdown-itself {
+    display: block;
+    height: 0px; /* 150 */
+    margin-left: 10%;
+
+}
+.mobile__settings-list-dropdown-option1, .mobile__settings-list-dropdown-option2, .mobile__settings-list-dropdown-option3 {
+    color: #979797;
+    font-size: 16px;
+    margin-top: 20px;
+    display: none;
+    cursor: pointer;
+    font-family: 'Lemon Milk Pro bb';
+}
+.mobile__photo-form {
+    display:none;
+    width: 80%;
+    min-width: 80%;
+    max-width: 80%;
+    flex-wrap: wrap;
+}
+.mobile-title-loadphoto {
+    width: 80%;
+    display: flex;
 }

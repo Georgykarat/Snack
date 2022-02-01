@@ -131,34 +131,54 @@ def upload_file(request):
     else:
         target_mail = request.user.username
         #Got id of the user
-        userid = Feed.objects.filter(mail=target_mail).values_list('id')
-        feed_data = Feed.objects.filter(mail=target_mail).values_list('accessid', 'first_name', 'last_name', 'country', 'city', 'login', 'time', 'theme', 'activity')
+        #userid = Feed.objects.filter(mail=target_mail).values_list('id')
+        exp = Feed.objects.filter(mail=target_mail).values_list('rating_exp')[0][0]
+        feed_data = Feed.objects.filter(mail=target_mail).values_list('accessid', 'first_name', 'last_name', 'country', 'city', 'lvl','login', 'time', 'theme', 'activity')
         upload_file_form = DocumentForm()
-        if int(feed_data[0][6]) >= 0:
+        if int(feed_data[0][7]) >= 0:
             timesign = '+'
         else:
             timesign = '-'
-        if feed_data[0][7] == 0:
+        if feed_data[0][8] == 0:
             style = 'Light Mode'
-        elif feed_data[0][7] == 1:
+        elif feed_data[0][8] == 1:
             style = 'Night Mode'
         acessid = feed_data[0][0]
         if acessid == 2:
             chgpaswmsg = "..."
+        begin_path = '/media/'
+        if AccountImage.objects.filter(mail=target_mail):
+            photo = AccountImage.objects.filter(mail=target_mail).values_list('file')[0][0]
+        else:
+            photo = "files/guys.jpeg"
+        next_level = feed_data[0][5] + 1 #got next level id
+        next_level_exp = Rating.objects.filter(ratingid=next_level).values_list('rating_exp')[0][0] #got next level exp
+        current_level_info = Rating.objects.filter(ratingid=feed_data[0][5]).values_list('rating_name', 'rating_material', 'rating_exp', 'icon', 'ratingid') #got current level info
+        exp_between_lvl = next_level_exp - current_level_info[0][2]
+        current_exp_without_prev = exp - current_level_info[0][2]
+        percentage = int(current_exp_without_prev / exp_between_lvl * 100) #percantage was calculated
+        access_name = AccessLevel.objects.filter(accessid=feed_data[0][0]).values_list('access')[0][0]
         return render(request, 'settings/settings2.html', {
                 'access': acessid,
+                'access_name': access_name,
+                'photo': photo,
+                'begin_path': begin_path,
                 'loginm': target_mail,
                 'name': feed_data[0][1],
                 'last_name': feed_data[0][2],
                 'country': feed_data[0][3],
                 'city': feed_data[0][4],
-                'login': feed_data[0][5],
+                'login': feed_data[0][6],
                 'form': upload_file_form,
-                'timezone': feed_data[0][6],
+                'timezone': feed_data[0][7],
                 'theme': style,
                 'timesign': timesign,
-                'activity': feed_data[0][8],
+                'activity': feed_data[0][9],
                 'chgpaswmsg': chgpaswmsg,
+                'levelbadge': current_level_info[0][3],
+                'ratingid': current_level_info[0][4],
+                'material': current_level_info[0][1],
+                'percantage': percentage,
             })
     #return render(request, 'settings/settings2.html', {'form': upload_file_form})
 

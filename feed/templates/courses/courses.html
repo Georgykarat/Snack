@@ -15,9 +15,84 @@
     <link rel="stylesheet" href="{% static 'js/jquery-ui.css' %}">
     <script src="{% static 'js/courses.js' %}"></script>
     <script src="{% static 'js/theme.js' %}"></script>
+    <style>
+        .header-image {
+    display: flex;
+    min-width: 35px;
+    width: 35px;
+    min-height: 35px;
+    height: 35px;
+    background-color: transparent;
+    background-position: center;
+    background-image: url({{begin_path}}{{photo}});
+    background-size: 100%;
+    background-repeat: no-repeat;
+    border-radius: 20px;
+    cursor: pointer;
+}
+.main__central__mobile-photo {
+    height: 80px;
+    width: 80px;
+    border-radius: 60px;
+    border: 4px solid white;
+    box-shadow: 0px 5px 10px lightgrey;
+    background-image: url({{begin_path}}{{photo}});
+    background-size: 110%;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+    </style>
 </head>
 <body>
     {% include "feed/header2.html" %}
+    <div class="main__central_mobile-menu">
+        <div class="main__central_mobile-menu-flex">
+            <div class="main__central_mobile-menu-centre">
+                <div class="main__central_mobile_profile-cnt">
+                    <div class="main__central__mobile-photo"></div>
+                    <div class="mobile__contacts_cnt">
+                        <div class="mobile__central_cnt-name">{{name}}&nbsp;{{last_name}}</div>
+                        <div class="mobile__central_cnt-country">{{country}}</div>
+                    </div>
+                </div>
+                <div class="mobile__access_level">{{access_name}}</div>
+            </div>
+        </div>
+        <ul class="mobile__menu_ul">
+            {% if access > 1 %}
+            <li class="mobile__menu_li">
+                <div class="mobile__menu_round round-nonactive"></div>
+                <div class="mobile__menu_text round-text-nonactive">Test</div>
+            </li>
+            {% endif %}
+            <a href="/feed/"><li class="mobile__menu_li">
+                <div class="mobile__menu_round round-nonactive mobile__user"></div>
+                <div class="mobile__menu_text round-text-nonactive">My Workspace</div>
+            </li></a>
+            <li class="mobile__menu_li returnback">
+                <div class="mobile__menu_round round-active"></div>
+                <div class="mobile__menu_text round-text-active">Courses</div>
+            </li>
+            <a href="/feed/settings/" class="mobile__menu_li-a"><li class="mobile__menu_li returnback">
+                <div class="mobile__menu_round round-nonactive mobile__settings"></div>
+                <div class="mobile__menu_text round-text-nonactive">Edit Profile</div>
+            </li></a>
+            <li class="mobile__menu_li">
+                <div class="mobile__menu_round round-nonactive mobile__help"></div>
+                <div class="mobile__menu_text round-text-nonactive">Need Help?</div>
+            </li>
+            <a href="/feed/logout/"><li class="mobile__menu_li">
+                <div class="mobile__menu_round round-exit"></div>
+                <div class="mobile__menu_text round-text-exit">Log Out</div>
+            </li></a>
+        </ul>
+        <div class="mobile__cnt-with-options">
+            <div class="mobile__cnt-with-options-flex">
+                <div class="mobile_option-text mobile__privace">Privacy Policy</div>
+                <div class="mobile_option-text">English</div>
+            </div>    
+        </div>
+    </div>
     <main>
         <div class="main__central-cnt">
             <div class="main__central-cnt_left">
@@ -197,5 +272,6 @@
     </main>
     {% include "home/footer.html" %}
 </body>
+<link rel="stylesheet" href="{% static 'css/courses__media.css' %}">
 </html>
 
