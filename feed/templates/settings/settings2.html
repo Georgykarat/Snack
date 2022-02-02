@@ -14,7 +14,7 @@
     <script src="{% static 'settings/js/theme.js' %}"></script>
     <link rel="stylesheet" href="{% static 'settings/css/photo.css' %}">
     <link rel="stylesheet" href="{% static 'settings/css/toggler.css' %}">
-    <script src="{% static 'settings/js/photo.js' %}"></script>
+    <!--<script src="{% static 'settings/js/photo.js' %}"></script>-->
     <style>
         .header-image {
     display: flex;
@@ -440,7 +440,7 @@
                         <button class="delete__red-btn" id="delete-acc">!!! DELETE ACCOUNT !!!</button>
                     </div>
                 </form>
-                <form class="main__central-cnt_right photo__form-edit-photo mobile__photo-form" method="post" enctype="multipart/form-data">
+                <div class="main__central-cnt_right photo__form-edit-photo mobile__photo-form" method="post" enctype="multipart/form-data">
                     <h3 class="h3__profile-settings-header__settings">Photo:</h3>
                     <h5 class="black-color mobile-title-loadphoto" style="padding-bottom: 20px;">Upload and crop your photo</h5>
                     <form method="post" enctype="multipart/form-data" class="test-form mobile-title-loadphoto">
@@ -448,9 +448,9 @@
                         {{ form.as_p }}
                         <button type="submit" class="photo__green-btn">Submit</button>
                     </form>
-                </form>
+                </div>
             </div>
-            <form class="main__central-cnt_right photo__form-edit-photo" method="post" enctype="multipart/form-data">
+            <div class="main__central-cnt_right photo__form-edit-photo" method="post" enctype="multipart/form-data">
                 <h3>Photo:</h3>
                 <h5 class="black-color">Upload and crop your photo</h5>
                 <form method="post" enctype="multipart/form-data" class="test-form">
@@ -490,7 +490,7 @@
                     </main>
                 </div>
             -->
-            </form>
+            </div>
         </div>
     </main>
     {% include "home/footer.html" %}
