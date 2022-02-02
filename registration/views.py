@@ -4,8 +4,9 @@ from django.contrib.auth import authenticate, login
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.hashers import make_password
 from django.contrib.auth.models import User
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse, HttpResponseRedirect
+from django.urls import reverse
 from registration.forms import UserForm
 from django.views import View
 from feed.models import Feed, Invites
@@ -180,7 +181,7 @@ def createaccfeed(request):
             user_name = request.user.username
             if True:
                 name = request.POST['name']
-                surname = request.POST['name']
+                surname = request.POST['surname']
                 country = request.POST['country']
                 print(country)
                 occupation = request.POST['occupation']
@@ -194,7 +195,8 @@ def createaccfeed(request):
                     else:
                         newfeeduser = Feed(country=country, mail=user_name.lower(), activity=occupation, first_name=name, last_name=surname)
                     newfeeduser.save()
-                    return HttpResponseRedirect('/feed/')
+                    return redirect('/feed/')
+                    #return HttpResponseRedirect('/feed/')
                 else:
                     return JsonResponse({'reason': 1}, status=401)
             else:

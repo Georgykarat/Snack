@@ -301,7 +301,11 @@
         margin-top: 10px;
     }
     .courses-li__leftcnt {
-        width: 30%;
+        width: 0%;
+    }
+    .courses-li__rightcnt {
+        width: 100%;
+        border-radius: 15px;
     }
     .lessons__amount {
         font-size: 12px;
@@ -337,6 +341,12 @@
     .courses__view_cnt {
         display: none;
     }
+    .courses-li {
+
+        margin: 10px 0;
+
+    }
+
 
 }
 @media (max-width: 440px) {
@@ -345,5 +355,13 @@
         height: 45px;
         background-size: 100%;
         display: none;
+    }
+    .courses__tags-li {
+        font-size: 10px;
+    }
+    .main__cnt_filter_search {
+        width: 88%;
+        margin-bottom: 10px;
+        background-size: 3%;
     }
 }

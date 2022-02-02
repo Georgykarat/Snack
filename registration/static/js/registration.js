@@ -112,7 +112,9 @@ SecondButton.on('click', function(){
                 occupation: Occupation.val(),
                 invite: InviteCode.val(),
             },
-            success: function() {},
+            success: function() {
+                window.location.href = '/feed/'
+            },
             error: function() {},
         });
     } else {

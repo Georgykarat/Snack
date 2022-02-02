@@ -41,6 +41,11 @@
     background-position: center;
     background-repeat: no-repeat;
 }
+@media (max-width: 600px) {
+    .courses-li__rightcnt {
+        background: linear-gradient(to top right, #b5becf 60%, #ffffff 130%);
+    }
+}
     </style>
 </head>
 <body>
@@ -180,9 +185,10 @@
                     </div>
                     <ul class="courses-ul">
                         {% for course in courses %}
+                        <a href="{{course.courseid}}">
                         <li class="courses-li">
                             <div class="courses-li__leftcnt" style="background-color: #{{course.color}};"></div>
-                            <div class="courses-li__rightcnt">
+                            <div class="courses-li__rightcnt" style="background: linear-gradient(to top right, #{{course.color}} 70%, #ffffff 130%);">
                                 <div class="courses-li__rightcnt-cntr">
                                     <ul class="courses__tags-list">
                                         <li class="courses__tags-li courses__tags-li_active">Current</li>
@@ -230,6 +236,7 @@
                                 </div>
                             </div>
                         </li>
+                        </a>
                         {% endfor %}
                         <li class="courses-li opacity20">
                             <div class="courses-li__leftcnt course_pythonadvanced"></div>

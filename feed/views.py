@@ -146,6 +146,8 @@ def upload_file(request):
         acessid = feed_data[0][0]
         if acessid == 2:
             chgpaswmsg = "..."
+        else:
+            chgpaswmsg = "..."
         begin_path = '/media/'
         if AccountImage.objects.filter(mail=target_mail):
             photo = AccountImage.objects.filter(mail=target_mail).values_list('file')[0][0]

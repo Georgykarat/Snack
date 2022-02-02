@@ -42,9 +42,20 @@ const swiper = new Swiper('.swiper', {
     // Optional parameters
     direction: 'horizontal',
     loop: true,
-    slidesPerView: 1,
-    spaceBetween: 20,
     effect: 'cards',
+    breakpoints: {
+        // when window width is >= 320px
+        100: {
+            slidesPerView: 1,
+            spaceBetween: 20,
+        },
+        // when window width is >= 640px
+        800: {
+          slidesPerView: 1,
+          spaceBetween: 20,
+        }
+      },
+
   
     // If we need pagination
     pagination: {

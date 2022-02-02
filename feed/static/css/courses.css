@@ -190,17 +190,18 @@ h2 {
     cursor: pointer;
 }
 .courses-li__leftcnt {
-    width: 25%;
+    width: 0%;
     border-right: none;
     height: 100%;
     border-top-left-radius: 25px;
     border-bottom-left-radius: 25px;
 }
 .courses-li__rightcnt {
-    width: 75%;
+    width: 100%;
     display: flex;
     justify-content: center;
     align-items: flex-start;
+    border-radius: 20px;
 }
 .courses-li__rightcnt-cntr {
     display: flex;
@@ -231,19 +232,19 @@ h2 {
 }
 h3 {
     width: 100%;
-    color: #081F32;
+    color: white;
     font-size: 22px;
     margin-bottom: 7px 0;
 
 }
 .courses__course-creator {
     font-size: 12px;
-    color: lightgrey;
+    color: white;
     font-family: 'Lemon Milk Pro';
 }
 .courses__description {
     font-size: 14px;
-    color: #6E798C;
+    color: lightgrey;
     font-family: 'Lemon Milk Pro';
     padding-right: 40px;
     margin-top: 20px;
@@ -268,7 +269,7 @@ h3 {
 }
 .courses_progress_currentlesson {
     font-size: 12px;
-    color: #AFB5C0;
+    color: white;
     font-family: 'Lemon Milk Pro';
 }
 .courses_progress-cnt {
