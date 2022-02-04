@@ -1,6 +1,6 @@
 from django.contrib import admin
 from feed.models import Feed, AccessLevel, AccountImage, Invites
-from path.models import Rating, CourseBase, QuizBase, TagsBase, Course_Tags
+from path.models import Rating, CourseBase, QuizBase, TagsBase, Course_Tags, LessonBase
 
 # Register your models here.
 class FeedAdmin(admin.ModelAdmin):
@@ -9,7 +9,7 @@ class FeedAdmin(admin.ModelAdmin):
 
 
 class CoursesAdmin(admin.ModelAdmin):
-    list_display = ['courseid', 'course_name', 'icon', 'color', 'description', 'complexity', 'author', 'authorid', 'avaliable']
+    list_display = ['courseid', 'course_name', 'moto', 'icon', 'color', 'fontcolor', 'description', 'complexity', 'author', 'authorid', 'avaliable']
     search_fields = ['course_name']
 
 
@@ -38,6 +38,10 @@ class TagsBaseAdmin(admin.ModelAdmin):
 class Course_TagsAdmin(admin.ModelAdmin):
     list_display = ['courseid', 'tagid']
 
+class LessonBaseAdmin(admin.ModelAdmin):
+    list_display = ['id', 'courseid', 'lessonid', 'lesson_name', 'description', 'script', 'video', 'prerequesite', 'avaliable']
+    search_fields = ['courseid', 'lessonid', 'lesson_name']
+
 admin.site.register(Feed, FeedAdmin)
 admin.site.register(AccessLevel, AccessLevelAdmin)
 admin.site.register(Rating, RatingAdmin)
@@ -47,3 +51,4 @@ admin.site.register(QuizBase, QuizBaseAdmin)
 admin.site.register(Invites, InvitesAdmin)
 admin.site.register(TagsBase, TagsBaseAdmin)
 admin.site.register(Course_Tags, Course_TagsAdmin)
+admin.site.register(LessonBase, LessonBaseAdmin)

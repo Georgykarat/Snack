@@ -1,0 +1,633 @@
+* {
+    font-family: "Lemon Milk Regular";
+	margin: 0;
+    padding: 0;
+    text-decoration: none;
+    list-style: none;
+}
+button, input, textarea, select {
+-webkit-appearance: none;
+}
+a {
+    text-decoration: none;
+    color: unset;
+}
+
+body, html {
+    margin: 0;
+    height: 0;
+    max-width: 100%;
+    width: 100%;
+}
+body {
+    background-color: rgb(255,255,255);
+}
+
+@font-face{
+  font-family: Lemon Milk Pro;
+  font-style: normal;
+  src: url('../png/Lemon Milk Pro Ultra Light.otf');
+}
+
+@font-face{
+  font-family: Lemon Milk Pro b;
+  font-style: bold;
+  src: url('../png/Lemon Milk Pro Medium.otf');
+}
+
+@font-face{
+  font-family: Lemon Milk Regular;
+  font-style: bold;
+  src: url('../png/Lemon Milk Pro Regular.otf');
+}
+@font-face{
+  font-family: Lemon Milk Pro bb;
+  font-style: bold;
+  src: url('../png/Lemon Milk Pro Bold.otf');
+}
+
+
+main {
+    background-color: transparent;
+    width: 100%;
+    min-width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.main__central-cnt {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    max-width: 90%;
+    width: 90%;
+    min-width: 90%;
+    background-color: transparent;
+    margin: 40px 0;
+}
+.main__central-cnt_left {
+    display: flex;
+    width: 20%;
+    max-width: 20%;
+    min-width: 20%;
+    background-color: transparent;
+}
+.main__central-cnt_right {
+    display: flex;
+    width: 76%;
+    min-width: 76%;
+    max-width: 76%;
+}
+.main__central-right {
+    display: flex;
+    width: 80%;
+    max-width: 80%;
+    min-width: 80%;
+    background-color: transparent;
+}
+.main__cnt_noflex {
+    display: block;
+    width: 100%;
+    min-width: 100%;
+    max-width: 100%;
+}
+.main__cnt-flex {
+    display: flex;
+    width: 100%;
+    min-width: 100%;
+    max-width: 100%;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+}
+h2 {
+    font-family: 'Lemon Milk Regular';
+    color: #979797;
+    font-size: 16px;
+    margin-bottom: 40px;
+}
+.right-cnt-header {
+    font-size: 28px;
+    color: #E5E5E5;
+}
+.h1courses {
+    font-size: 26px;
+    color: #4F5665;
+}
+
+
+
+
+.main__path-path {
+    font-size: 14px;
+    color: #979797;
+    width: 100%;
+}
+.main__path-black-active {
+    color: black;
+}
+.main__lesson_name-header {
+    font-size: 40px;
+    color: #4F5665;
+    font-family: 'Lemon Milk Pro b';
+    margin-top: 30px;
+    width: 100%;
+}
+.main__lesson_course_name-header {
+    font-size: 16px;
+    color: #B2B2B2;
+    font-family: 'Lemon Milk Pro';
+    margin-top: 5px;
+    width: 100%;
+}
+.main__cnt_lesson_general-cnt {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: nowrap;
+}
+.main__cnt_lesson_left-cnt {
+    width: 75%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: start;
+}
+.main__cnt_lesson_right-cnt {
+    width: 22%;
+    display: block;
+    flex-wrap: wrap;
+    justify-content: start;
+    align-items: start;
+}
+.main__lesson_takequiz-btn {
+    padding: 10px 20px;
+    width: 90%;
+    height: 60px;
+    background-color: lightgrey;
+    color: white;
+    border: none;
+    border-radius: 15px;
+    margin-top: 70px;
+    font-size: 16px;
+}
+.main__lesson_video-cnt {
+    width: 100%;
+    margin-top: 40px;
+}
+.main__lesson_course-progress-cnt {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 40px;
+}
+.main__leson-progress-header {
+    font-size: 18px;
+    color: #4F5665;
+    width: 100%;
+}
+.main__leson-progress-total {
+    font-size: 10px;
+    margin-top: 20PX;
+    color: #B2B2B2;
+    width: 100%;
+}
+.main__leson-progressbar-cnt {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    flex-wrap: nowrap;
+    margin-top: 10px;
+}
+.main__progressbar_notcompleted {
+    display: flex;
+    height: 3px;
+    background-color: #E0E0E0;
+}
+.main__course_progress-ul {
+    width: 100%;
+    margin-top: 30px;
+    max-height: 250px;
+    overflow-y: auto;
+}
+.main__course_progress-li {
+    width: 100%;
+    display: flex;
+    flex-wrap: nowrap;
+    margin-bottom: 20px;
+}
+.main__course_progress-li-counter {
+    min-height: 30px;
+    min-width: 30px;
+    border-radius: 20px;
+    border: 1px solid #4F5665;
+    color: #4F5665;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+}
+.main__course_progress-li-counter-current {
+    min-height: 30px;
+    min-width: 30px;
+    border-radius: 20px;
+    border: 1px solid #4F5665;
+    color: #4F5665;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+}
+.main__course_progress-li-counter-prev {
+    min-height: 30px;
+    min-width: 30px;
+    border-radius: 20px;
+    border: 1px solid #26D07C;
+    background-color: #26D07C;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    background-image: url('../png/white_check.svg');
+    background-repeat: no-repeat;
+    background-size: 5%;
+    background-position: center;
+
+}
+.main__course_progress-li-title-prev {
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    color: #C4C4C4;
+    font-size: 14px;
+    margin-left: 0px;
+    padding-left: 10px;
+    width: 100%;
+
+    background-image: url('../png/grey-next-arrow.svg');
+    background-repeat: no-repeat;
+    background-position: right;
+    background-size: 7%;
+}
+.main__course_progress-li-title {
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    color: #4F5665;
+    font-size: 14px;
+    margin-left: 0px;
+    padding-left: 10px;
+    width: 100%;
+
+    background-image: url('../png/lock.svg');
+    background-repeat: no-repeat;
+    background-position: right;
+    background-size: 5%;
+}
+.main__course_progress-li-title-current {
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    color: #4F5665;
+    font-size: 14px;
+    margin-left: 0px;
+    padding-left: 10px;
+    width: 100%;
+}
+.active-lesson-ul {
+    color: #26D07C;
+    border-color: #26D07C;
+}
+.main__course-general-info {
+    display: block;
+    margin-top: 40px;
+}
+.main__course-general-info-flex {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: start;
+}
+.main__course-general-info-flex-li {
+    display: flex;
+    font-size: 16px;
+    padding-right: 25px;
+    cursor: pointer;
+}
+
+.lesson__info_inactive {
+    color: #B2B2B2;
+}
+.lesson__info_active {
+    color: #4F5665;
+}
+.main__lessons_options-tab-line {
+    width: 100%;
+    margin-top: 10px;
+    margin-bottom: 30px;
+}
+.main__lessons_options-tab-line-itself {
+    height: 2px;
+    background-color: #4F5665;
+    width: 50px;
+    position: relative;
+    right: 0;
+}
+.main__lesson_info-maininfo {
+    display: block;
+    width: 100%;
+    color: #4F5665;
+    font-size: 14px;
+    outline: none;
+}
+.main__lesson_info-materials {
+    display: none;
+    width: 100%;
+    color: #4F5665;
+    font-size: 14px;
+    outline: none;
+}
+.main__lesson_info-script {
+    display: none;
+    width: 100%;
+    color: #4F5665;
+    font-size: 14px;
+    outline: none;
+}
+
+
+
+
+
+.li-cnt {
+    width: 90%;
+    min-width: 90%;
+    max-width: 90%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: nowrap;
+}
+.li-cnt_left {
+    display: flex;
+    width: 85%;
+    min-width: 85%;
+    align-items: center;
+    flex-wrap: wrap;
+}
+.goals-title {
+    font-size: 20px;
+    color: #303030;
+    width: 100%;
+}
+.goals-subtitle {
+    font-size: 12px;
+    color: #686868;
+    width: 100%;
+}
+.edit-goals {
+    display: flex;
+    height: 50px;
+    width: 50px;
+    border: none;
+    background-color: transparent;
+    background-image: url('dots.png');
+    background-repeat: no-repeat;
+    background-size: 80%;
+    background-position: center;
+    cursor: pointer;
+}
+.green {
+    background-color: #26D07C;
+    border: 1px solid #E0E0E0;
+}
+.green-txt {
+    color: white;
+}
+
+.black {
+    color: black;
+    padding-bottom: 30px;
+}
+.grey2 {
+    color: #4F5665;
+    padding-bottom: 25px;
+    font-size: 14px;
+}
+.blocked {
+    cursor: not-allowed;
+}
+.thin-txt {
+    font-family: 'Lemon Milk Pro';
+}
+.displaynone {
+    display: none;
+}
+.opacity20 {
+    opacity: 20%;
+    cursor: not-allowed;
+}
+/* Mobile styles*/
+.main__central_mobile-menu {
+    display: none;
+    height: 100%;
+    width: 100%;
+    background-color: white;
+    border-top: 1px solid #E0E0E0;
+    justify-content: center;
+    flex-wrap: wrap;
+    align-items: start;
+}
+.main__central_mobile-menu-flex {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    
+}
+.main__central_mobile-menu-centre {
+    width: 95%;
+    justify-content: space-between;
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    border-bottom: 1px solid #E0E0E0;
+    margin-top: 20px;
+    height: 120px;
+}
+.main__central_mobile_profile-cnt {
+    width: 80%;
+    display: flex;
+    height: 100px;
+}
+.mobile__contacts_cnt {
+    width: 60%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: start;
+    align-items: center;
+    margin-left: 20px;
+    height: 45px;
+    position: relative;
+    bottom: -20px;
+}
+.mobile__central_cnt-name {
+    font-size: 20px;
+    color: #0F172A;
+    width: 100%;
+}
+.mobile__central_cnt-country {
+    font-size: 14px;
+    color: #64748B;
+    width: 100%;
+    font-family: 'Lemon Milk Pro';
+}
+.mobile__access_level {
+    font-size: 10px;
+    color: white;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    padding-left: 5px;
+    padding-right: 5px;
+    background-color: rgba(255, 0, 0, 0.548);
+    border-radius: 10px;
+}
+.mobile__menu_ul {
+    width: 70%;
+    margin: 50px 0;
+    display: flex;
+    justify-content: start;
+    margin-left: 40px;
+    flex-wrap: wrap;
+}
+.mobile__menu_li {
+    width: 100%;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    margin-bottom: 30px;
+    cursor: pointer;
+}
+.mobile__menu_li-a {
+    width: 100%;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    cursor: pointer;
+}
+.mobile__menu_round {
+    height: 40px;
+    width: 40px;
+    border-radius: 30px;
+    margin-right: 20px;
+}
+.mobile__menu_text {
+    font-size: 14px;
+}
+.mobile__cnt-with-options {
+    width: 100%;
+    flex-wrap: nowrap;
+    justify-content: center;
+    display: flex;
+    height: 20px;
+    align-self: end;
+}
+.mobile__cnt-with-options-flex {
+    width: 90%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+.round-text-active {
+    color: #4F5665;
+}
+.round-text-nonactive {
+    color: #979797;
+}
+.round-text-exit {
+    color: #DA3232;
+}
+.round-active {
+    background-color: #26D07C;
+}
+.round-nonactive {
+    background-color: #E0E0E0;
+}
+.round-exit {
+    background-color: #FBD8DC;
+    background-image: url(../png/exit.svg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 70%;
+}
+.mobile__user {
+    background-image: url(../png/fi-rr-user.svg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 50%;
+}
+.mobile__settings {
+    background-image: url(../png/fi-rr-settings.svg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 50%;
+}
+.mobile__help {
+    background-image: url(../png/fi-rr-shield-interrogation.svg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 50%;
+}
+.mobile__privace {
+    padding-right: 20px;
+    background-image: url(../png/next.svg);
+    background-position: right;
+    background-repeat: no-repeat;
+    background-size: 10%;
+}
+.mobile_option-text {
+    color: #4F5665;
+    font-size: 14px;
+    font-family: 'Lemon Milk Pro';
+}
+.mobile__settings-list-dropdown {
+    font-size: 20px;
+    font-family: 'Lemon Milk Pro bb';
+    color: #0F172A;
+    padding-right: 30px;
+    background-image: url('../img/arrowdown.svg');
+    background-position-x: 100%;
+    background-position-y: 55%;
+    background-repeat: no-repeat;
+    background-size: 8%;
+    cursor: pointer;
+    display: none;
+    width: 300px;
+    margin-bottom: 20px;
+    margin-left: 10%;
+}
+.mobile__settings-list-dropdown-itself {
+    display: block;
+    height: 0px; /* 150 */
+    margin-left: 10%;
+
+}
+.mobile__settings-list-dropdown-option1, .mobile__settings-list-dropdown-option2, .mobile__settings-list-dropdown-option3 {
+    color: #979797;
+    font-size: 16px;
+    margin-top: 20px;
+    display: none;
+    cursor: pointer;
+    font-family: 'Lemon Milk Pro bb';
+}
+.mobile__photo-form {
+    display:none;
+    width: 80%;
+    min-width: 80%;
+    max-width: 80%;
+    flex-wrap: wrap;
+}
+.mobile-title-loadphoto {
+    width: 80%;
+    display: flex;
+}

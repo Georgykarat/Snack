@@ -46,7 +46,7 @@ ComplexityFilter.on('change', function(){
         var TagToFind = this.value;
         ComplexityElement.each(function(){
             if ($(this).text() == TagToFind) {
-                $(this).parent().parent().parent().parent().parent().show();
+                $(this).parent().parent().parent().parent().parent().parent().show();
             }
         });
     }
@@ -59,7 +59,9 @@ SearchFilter.on('input', function(){
         } else {
             CourseHeader.each(function(){
                 if($(this).text().toLowerCase().indexOf(SearchMaterial) < 0){
-                    $(this).parent().parent().parent().hide();
+                    $(this).parent().parent().parent().parent().hide();
+                } else {
+                    $(this).parent().parent().parent().parent().show();
                 }
             });
         }

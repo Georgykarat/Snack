@@ -185,10 +185,9 @@
                     </div>
                     <ul class="courses-ul">
                         {% for course in courses %}
-                        <a href="{{course.courseid}}">
                         <li class="courses-li">
                             <div class="courses-li__leftcnt" style="background-color: #{{course.color}};"></div>
-                            <div class="courses-li__rightcnt" style="background: linear-gradient(to top right, #{{course.color}} 70%, #ffffff 130%);">
+                            <div class="courses-li__rightcnt" style="background: linear-gradient(to right, #{{course.color}} 70%, #000000 180%);">
                                 <div class="courses-li__rightcnt-cntr">
                                     <ul class="courses__tags-list">
                                         <li class="courses__tags-li courses__tags-li_active">Current</li>
@@ -202,42 +201,44 @@
                                             {% endif %}
                                         {% endfor %}
                                     </ul>
-                                    <h3>{{course.course_name}}</h3>
-                                    <div class="courses__course-creator">{{course.author}}</div>
-                                    <div class="courses__description">
-                                        {{course.description}}
-                                    </div>
-                                    <div class="courses__large-cnt">
-                                        <div class="courses_progress-cnt">
-                                            <div class="courses_scale">
-                                                <div class="courses_scale-progress" style="width: 56%"></div>
+                                    <a href="{{course.courseid}}" style="width: 100%;">
+                                        <h3>{{course.course_name}}</h3>
+                                        <div class="courses__course-creator">{{course.author}}</div>
+                                        <div class="courses__description">
+                                            {{course.description}}
+                                        </div>
+                                        <div class="courses__large-cnt">
+                                            <div class="courses_progress-cnt">
+                                                <div class="courses_scale">
+                                                    <div class="courses_scale-progress" style="width: 56%"></div>
+                                                </div>
+                                                <div class="courses_scale-percentage">56&nbsp;%</div>
                                             </div>
-                                            <div class="courses_scale-percentage">56&nbsp;%</div>
+                                            <div class="courses_progress_currentlesson">Continue from: 10. Lists</div>
                                         </div>
-                                        <div class="courses_progress_currentlesson">Continue from: 10. Lists</div>
-                                    </div>
-                                    <div class="course__info_pane displaynone">
-                                        <div class="course__info_cnt">
-                                            <div class="lessons__amount">56 <span class="thin-txt">lessons</span></div>
-                                            {% if course.complexity == 0 %}
-                                            <div class="complexity__amount">Easy-peasy</div>
-                                            {% elif course.complexity == 1 %}
-                                            <div class="complexity__amount">Easy</div>
-                                            {% elif course.complexity == 2 %}
-                                            <div class="complexity__amount">Medium</div>
-                                            {% elif course.complexity == 3 %}
-                                            <div class="complexity__amount">Hard</div>
-                                            {% elif course.complexity == 4 %}
-                                            <div class="complexity__amount">Extreme</div>
-                                            {% endif %}
+                                        <div class="course__info_pane displaynone">
+                                            <div class="course__info_cnt">
+                                                <div class="lessons__amount">56 <span class="thin-txt">lessons</span></div>
+                                                {% if course.complexity == 0 %}
+                                                <div class="complexity__amount">Easy-peasy</div>
+                                                {% elif course.complexity == 1 %}
+                                                <div class="complexity__amount">Easy</div>
+                                                {% elif course.complexity == 2 %}
+                                                <div class="complexity__amount">Medium</div>
+                                                {% elif course.complexity == 3 %}
+                                                <div class="complexity__amount">Hard</div>
+                                                {% elif course.complexity == 4 %}
+                                                <div class="complexity__amount">Extreme</div>
+                                                {% endif %}
+                                            </div>
+                                            <div class="get-started">Get Started</div>
                                         </div>
-                                        <div class="get-started">Get Started</div>
-                                    </div>
+                                    </a>
                                 </div>
                             </div>
                         </li>
-                        </a>
                         {% endfor %}
+                        <!--
                         <li class="courses-li opacity20">
                             <div class="courses-li__leftcnt course_pythonadvanced"></div>
                             <div class="courses-li__rightcnt">
@@ -272,6 +273,7 @@
                                 </div>
                             </div>
                         </li>
+                        -->
                     </ul>
                 </div>
             </div>

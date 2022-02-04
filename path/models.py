@@ -23,6 +23,8 @@ class CourseBase(models.Model):
     course_name = models.CharField(max_length=50)
     icon = models.FileField(upload_to='lessonicons/', blank=True)
     color = models.CharField(blank=True, max_length=8)
+    fontcolor = models.CharField(blank=True, max_length=8)
+    moto = models.CharField(blank=True, max_length=5000)
     description = models.CharField(blank=True, max_length=5000)
     complexity = models.IntegerField(blank=True)
     author = models.CharField(blank=True, max_length=100)
@@ -32,6 +34,22 @@ class CourseBase(models.Model):
 
     def __str__(self):
         return self.course_name
+
+
+class LessonBase(models.Model):
+    courseid = models.IntegerField()
+    lessonid = models.IntegerField()
+    lesson_name = models.CharField(max_length=50)
+    description = models.CharField(blank=True, max_length=5000)
+    materials = models.TextField(blank=True, max_length=5000)
+    script = models.TextField(blank=True, max_length=50000)
+    video = models.CharField(max_length=50, blank=True) #Link to video storage
+    prerequesite = models.IntegerField(blank=True, null=True)
+    avaliable = models.BooleanField(default=False)
+
+
+    def __str__(self):
+        return self.lesson_name
 
 
 class QuizBase(models.Model):
