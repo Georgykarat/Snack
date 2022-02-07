@@ -47,3 +47,10 @@ class AccountImage(models.Model):
 class Invites(models.Model):
     invite = models.CharField(max_length=20)
     accessid = models.IntegerField(default=0)
+
+
+class UserProgress(models.Model):
+    userid = models.IntegerField()
+    courseid = models.IntegerField()
+    lessonid = models.IntegerField()
+    finished = models.BooleanField(default=False)

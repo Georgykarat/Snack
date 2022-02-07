@@ -189,6 +189,25 @@ h2 {
     background-color: white;
     border: 1px solid #26D07C;
 }
+.main__path_course-header-card-left-header-btn-finished {
+    width: 200px;
+    color: white;
+    background-color: #26D07C;
+    border-radius: 15px;
+    font-size: 20px;
+    padding: 10px;
+    border: 1px solid transparent;
+    margin-top: 70px;
+    cursor: pointer;
+    transition: .4s;
+}
+.path__next-lesson-text-with-btn {
+    font-size: 14px;
+    display: flex;
+    position: relative;
+    bottom: -32px;
+    margin-left: 30px;
+}
 .active-star__path {
     position: relative;
     top: -10px;

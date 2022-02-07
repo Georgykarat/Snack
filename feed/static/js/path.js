@@ -1,6 +1,18 @@
 $(function(){
 
+var StartLearning = $('.main__path_course-header-card-left-header-btn');
 
+StartLearning.on('click', function(){
+    $.ajax({
+        type: 'get',
+        url: 'coursestart/',
+        data: {
+            /*csrfmiddlewaretoken:$('input[name=csrfmiddlewaretoken]').val(),*/
+        },
+        success: function(data) {
+        }
+    });
+});
 
 /* Mobile options */
 

@@ -283,6 +283,15 @@ h3 {
     justify-content: flex-start;
     flex-wrap: wrap;
 }
+.courses__large-cnt:nth-child(1n + 1) {
+    display: flex;
+    flex-wrap: nowrap;
+}
+.course-completed-notification {
+    font-size: 25px;
+    font-family: 'Lemon Milk Pro bb';
+    color: #26D07C;
+}
 .course__info_pane {
     display: flex;
     width: 100%;
@@ -294,19 +303,11 @@ h3 {
     justify-content: space-between;
 }
 .lessons__amount {
-    padding-left: 40px;
-    background-position: left;
-    background-repeat: no-repeat;
-    background-image: url('../png/playlist.png');
-    background-size: 25%;
+    margin-left: 10px;
     color: #6E798C;
 }
 .complexity__amount {
-    padding-left: 30px;
-    background-position: left;
-    background-repeat: no-repeat;
-    background-image: url('../png/user.png');
-    background-size: 30%;
+    margin-left: 10px;
     color: #6E798C;
 }
 .get-started {

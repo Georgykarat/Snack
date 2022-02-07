@@ -213,6 +213,10 @@ h1 {
     background-image: url('../img/figma.png');
     background-size: 40%;
 }
+.admin__panel_li-Kinescope {
+    background-image: url('../img/kinescope.jpeg');
+    background-size: 60%;
+}
 .admin__panel_li-addcourse {
     background-image: url('../img/addcourse.svg');
     background-size: 40%;

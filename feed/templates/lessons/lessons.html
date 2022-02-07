@@ -160,14 +160,15 @@
                 <div class="main__cnt_noflex">
                     <div class="main__cnt_lesson_general-cnt">
                         <div class="main__cnt_lesson_left-cnt">
-                            <a href="/feed/courses/"><div class="main__path-path">Courses&nbsp;</a><span style="font-family: 'Times New Roman', Times, serif;">&#8594;</span>&nbsp;<a href="../">{{coursename}}</a>&nbsp;&#8594;&nbsp;<span class="main__path-black-active">{{lessonname}}</span></div>
                             {% if clessonid < 10 %}
+                            <a href="/feed/courses/"><div class="main__path-path">Courses&nbsp;</a><span style="font-family: 'Times New Roman', Times, serif;">&#8594;</span>&nbsp;<a href="../">{{coursename}}</a>&nbsp;&#8594;&nbsp;<span class="main__path-black-active">0{{clessonid}}.&nbsp;{{lessonname}}</span></div>
                             <div class="main__lesson_name-header">0{{clessonid}}.&nbsp;{{lessonname}}</div>
                             {% else %}
+                            <a href="/feed/courses/"><div class="main__path-path">Courses&nbsp;</a><span style="font-family: 'Times New Roman', Times, serif;">&#8594;</span>&nbsp;<a href="../">{{coursename}}</a>&nbsp;&#8594;&nbsp;<span class="main__path-black-active">{{clessonid}}.&nbsp;{{lessonname}}</span></div>
                             <div class="main__lesson_name-header">{{clessonid}}.&nbsp;{{lessonname}}</div>
                             {% endif %}
                             <div class="main__lesson_course_name-header">{{coursename}}</div>
-                            <video class="main__lesson_video-cnt" width="100%" controls="controls" poster="" style="cursor: pointer;">
+                            <video class="main__lesson_video-cnt" id="singleVideo" width="100%" controls="controls" poster="" style="cursor: pointer;">
                                 <!--<source src="{{begin_path}}video/0000/videoplayback.mp4" type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"'>-->
                                 <source src="{{begin_path}}video/0000/01.mp4" type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"'>
                             </video>
@@ -195,15 +196,23 @@
                             <button class="main__lesson_takequiz-btn" style="cursor: not-allowed;">Take Lesson Quiz&nbsp;&#8594;</button>
                             <div class="main__lesson_course-progress-cnt">
                                 <div class="main__leson-progress-header">{{coursename}}</div>
-                                <div class="main__leson-progress-total">0/{{lesson_total}}&nbsp;COMPLETED</div>
+                                <div class="main__leson-progress-total">{{lessons_completed_counter}}/{{lesson_total}}&nbsp;COMPLETED</div>
                                 <div class="main__leson-progressbar-cnt">
-                                    {% for lesson in alllessons %}
+                                    {% for completeditem in alllessonscompleted %}
+                                    <div class="main__progressbar_completed" style="width: {{progressbar_width}}%;"></div>
+                                    {% endfor %}
+                                    {% for lesson in alllessonsnotcompleted %}
                                     <div class="main__progressbar_notcompleted" style="width: {{progressbar_width}}%;"></div>
                                     {% endfor %}
                                 </div>
                                 <ul class="main__course_progress-ul">
                                     {% for lesson in alllessons %}
-                                        {% if lesson.lessonid < clessonid %}
+                                        {% if lesson.lessonid in finished_courses_list and lesson.lessonid == clessonid%}
+                                        <a href="../{{lesson.lessonid}}/"><li class="main__course_progress-li">
+                                            <div class="main__course_progress-li-counter-prev active-lesson-ul"></div>
+                                            <div class="main__course_progress-li-title-now" style="color: #26D07C;">{{lesson.lesson_name}}</div>
+                                        </li></a>
+                                        {% elif lesson.lessonid in finished_courses_list %}
                                             <a href="../{{lesson.lessonid}}/"><li class="main__course_progress-li">
                                                 <div class="main__course_progress-li-counter-prev"></div>
                                                 <div class="main__course_progress-li-title-prev">{{lesson.lesson_name}}</div>
@@ -212,15 +221,22 @@
                                         <li class="main__course_progress-li">
                                             <div class="main__course_progress-li-counter-current active-lesson-ul">{{lesson.lessonid}}</div>
                                             <div class="main__course_progress-li-title-current active-lesson-ul">{{lesson.lesson_name}}</div>
-                                        </li> 
+                                        </li>
+                                        {% elif lesson.lessonid in notfinished_courses_list %}
+                                        <a href="../{{lesson.lessonid}}/"><li class="main__course_progress-li">
+                                            <div class="main__course_progress-li-counter-current">{{lesson.lessonid}}</div>
+                                            <div class="main__course_progress-li-title-prev">{{lesson.lesson_name}}</div>
+                                        </li></a> 
                                         {% elif lesson.lessonid > clessonid %}
-                                            <li class="main__course_progress-li">
+                                            <a href=""><li class="main__course_progress-li" id="{{lesson.lessonid}}">
                                                 <div class="main__course_progress-li-counter">{{lesson.lessonid}}</div>
                                                 <div class="main__course_progress-li-title">{{lesson.lesson_name}}</div>
-                                            </li>
+                                            </li></a>
                                         {% endif %}
                                     {% endfor %}
                                 </ul>
+                                <div class="main__lesson-duration">Duration:&nbsp;<span class="minutes"></span>:<span class="seconds"></span></div>
+                                <div class="main__lesson-duration">Current:&nbsp;<span class="c-minutes" id="c-minutes"></span>:<span class="c-seconds" id="c-seconds"></span></div>
                             </div>
                         </div>
                     </div>

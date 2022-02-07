@@ -80,6 +80,14 @@ class Course_Tags(models.Model):
     courseid = models.IntegerField()
     tagid = models.IntegerField()
 
+class ActionTypes(models.Model):
+    actionid = models.IntegerField()
+    action = models.CharField(max_length=50, blank=True)
+    expmovement = models.IntegerField()
+
+    def __str__(self):
+        return self.actionid + " " + self.action
+
 '''
 class TemporaryExpCounter(models.Model):
     mail = models.CharField(max_length=500)

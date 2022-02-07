@@ -45,6 +45,11 @@ body {
   font-style: bold;
   src: url('../png/Lemon Milk Pro Bold.otf');
 }
+@font-face{
+    font-family: "Open Sans Regular";
+    font-style: normal;
+    src: url('../fonts/OpenSans-Regular.ttf');
+  }
 
 
 main {
@@ -202,6 +207,11 @@ h2 {
     height: 3px;
     background-color: #E0E0E0;
 }
+.main__progressbar_completed {
+    display: flex;
+    height: 3px;
+    background-color: #26D07C;
+}
 .main__course_progress-ul {
     width: 100%;
     margin-top: 30px;
@@ -268,6 +278,17 @@ h2 {
     background-position: right;
     background-size: 7%;
 }
+.main__course_progress-li-title-now {
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    color: #26D07C;
+    font-size: 14px;
+    margin-left: 0px;
+    padding-left: 10px;
+    width: 100%;
+}
 .main__course_progress-li-title {
     height: 30px;
     display: flex;
@@ -314,7 +335,10 @@ h2 {
     padding-right: 25px;
     cursor: pointer;
 }
-
+.main__lesson-duration {
+    color: #4F5665;
+    font-size: 14px;
+}
 .lesson__info_inactive {
     color: #B2B2B2;
 }
@@ -351,8 +375,15 @@ h2 {
     display: none;
     width: 100%;
     color: #4F5665;
-    font-size: 14px;
+    font-size: 18px;
     outline: none;
+    font-family: 'Open Sans Regular';
+}
+.main__lesson_info-script > p {
+    text-indent: 25px;
+    margin-bottom: 20px;
+    text-align: justify;
+    line-height: 1.8;
 }
 
 

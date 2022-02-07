@@ -8,12 +8,13 @@ var ScriptTab = $('.main__lesson_info-script');
 var MainInfoBtn = $('.lessoninfo-btn');
 var ScriptBtn = $('.lessonscript-btn');
 var MarBtn = $('.lessonmat-btn');
+var Video = $('.main__lesson_video-cnt');
 
 
 MainInfoBtn.on('click', function(){
-    MaterialsTab.fadeOut(100);
-    ScriptTab.fadeOut(100);
-    MainInfoTab.fadeIn(100);
+    MaterialsTab.fadeOut(200);
+    ScriptTab.fadeOut(200);
+    MainInfoTab.fadeIn(200);
     MainInfoBtn.addClass('lesson__info_active');
     ScriptBtn.removeClass('lesson__info_active');
     MarBtn.removeClass('lesson__info_active');
@@ -30,9 +31,9 @@ MainInfoBtn.on('click', function(){
     });
 });
 ScriptBtn.on('click', function(){
-    MainInfoTab.fadeOut(100);
-    MaterialsTab.fadeOut(100);
-    ScriptTab.fadeIn(100);
+    MainInfoTab.fadeOut(200);
+    MaterialsTab.fadeOut(200);
+    ScriptTab.fadeIn(200);
     ScriptBtn.addClass('lesson__info_active');
     MainInfoBtn.removeClass('lesson__info_active');
     MarBtn.removeClass('lesson__info_active');
@@ -48,9 +49,9 @@ ScriptBtn.on('click', function(){
     });
 });
 MarBtn.on('click', function(){
-    MainInfoTab.fadeOut(100);
-    ScriptTab.fadeOut(100);
-    MaterialsTab.fadeIn(100);
+    MainInfoTab.fadeOut(200);
+    ScriptTab.fadeOut(200);
+    MaterialsTab.fadeIn(200);
     MarBtn.addClass('lesson__info_active');
     MainInfoBtn.removeClass('lesson__info_active');
     ScriptBtn.removeClass('lesson__info_active');
@@ -66,6 +67,65 @@ MarBtn.on('click', function(){
     });
 });
 
+// Time duration counter
+var i = setInterval(function() {
+	if(document.querySelector('video').readyState > 0) {
+		var obj = document.querySelector('video').duration;
+        var minutes = parseInt(obj / 60, 10);
+        var seconds = Math.round(obj % 60);
+        $('.minutes').text(minutes);
+        $('.seconds').text(seconds);
+        console.log(obj);
+
+		// (Put the minutes and seconds in the display)
+		clearInterval(i);
+	}
+}, 200);
+
+// Current time
+
+var LessonCompleted = (function(){
+    var executed = false;
+    return function() {
+        if (!executed) {
+            executed = true;
+            //Here should be AJAX instead of console.log
+            $.ajax({
+                type: 'get',
+                url: 'completed/',
+                data: {
+                    /*csrfmiddlewaretoken:$('input[name=csrfmiddlewaretoken]').val(),*/
+                },
+                success: function(response) {
+                    nextlesson = response.nextlesson;
+                    nextlessonhref = "../" + nextlesson + "/";
+                    lessonid = "#" + nextlesson;
+                    $(lessonid).parent().attr("href", nextlessonhref);
+                    $(lessonid).children('.main__course_progress-li-title').removeClass('main__course_progress-li-title').addClass('main__course_progress-li-title-prev');
+                }
+            });
+            console.log('Pop should be activated');
+        }
+    };
+})();
+
+var aud = document.getElementById("singleVideo");
+
+// Assign an ontimeupdate event to the <audio> element, and execute a function if the current playback position has changed
+aud.ontimeupdate = function() {VideoTimeChanched()};
+
+function VideoTimeChanched() {
+    var obj = document.querySelector('video').duration;
+    var cminutes = parseInt(aud.currentTime / 60, 10);
+    var cseconds = Math.round(aud.currentTime % 60);
+    document.getElementById("c-minutes").innerHTML = cminutes;
+    document.getElementById("c-seconds").innerHTML = cseconds;
+    objstop = obj - 10
+    if (aud.currentTime > objstop && aud.currentTime < objstop + 3) {
+        LessonCompleted();
+    }
+
+}
 
 
 /* Mobile options */

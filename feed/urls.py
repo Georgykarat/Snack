@@ -17,5 +17,7 @@ urlpatterns = [
     path('settings/deleteacc/', views.deleteacc, name='deleteaccount'),
     path('courses/', views.coursespage, name='courses'),
     path('courses/<courseid>/', views.pathpage, name='pathpage'),
+    path('courses/<courseid>/coursestart/', views.coursestart, name='pathpage'),
     path('courses/<courseid>/<lessonid>/', views.lessonpage, name='lessonpage'),
+    path('courses/<courseid>/<lessonid>/completed/', views.lessoncompleted, name='lessoncompleted'),
 ]

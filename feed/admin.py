@@ -1,6 +1,6 @@
 from django.contrib import admin
-from feed.models import Feed, AccessLevel, AccountImage, Invites
-from path.models import Rating, CourseBase, QuizBase, TagsBase, Course_Tags, LessonBase
+from feed.models import Feed, AccessLevel, AccountImage, Invites, UserProgress
+from path.models import Rating, CourseBase, QuizBase, TagsBase, Course_Tags, LessonBase, ActionTypes
 
 # Register your models here.
 class FeedAdmin(admin.ModelAdmin):
@@ -42,6 +42,12 @@ class LessonBaseAdmin(admin.ModelAdmin):
     list_display = ['id', 'courseid', 'lessonid', 'lesson_name', 'description', 'script', 'video', 'prerequesite', 'avaliable']
     search_fields = ['courseid', 'lessonid', 'lesson_name']
 
+class UserProgressAdmin(admin.ModelAdmin):
+    list_display = ['userid', 'courseid', 'lessonid', 'finished']
+
+class ActionTypesAdmin(admin.ModelAdmin):
+    list_display = ['actionid', 'action', 'expmovement']
+
 admin.site.register(Feed, FeedAdmin)
 admin.site.register(AccessLevel, AccessLevelAdmin)
 admin.site.register(Rating, RatingAdmin)
@@ -52,3 +58,5 @@ admin.site.register(Invites, InvitesAdmin)
 admin.site.register(TagsBase, TagsBaseAdmin)
 admin.site.register(Course_Tags, Course_TagsAdmin)
 admin.site.register(LessonBase, LessonBaseAdmin)
+admin.site.register(UserProgress, UserProgressAdmin)
+admin.site.register(ActionTypes, ActionTypesAdmin)

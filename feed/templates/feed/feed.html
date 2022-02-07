@@ -191,97 +191,50 @@
                             </div>
                         </div>
                         <!-- -->
+                        {% if started_courses %}
                         <div class="section__header">Continue Learning:</div>
-                        <!--
-                        <ul class="section__continue">
-                            <li class="last__course_li">
-                                <div class="last__course_li_section">
-                                    <div class="last__course_li_1str">
-                                        <div class="last__course_imnow-std-txt">I AM NOW STUDYING...</div>
-                                        <div class="last__course_imnow-std-txt">3 days ago</div>
-                                    </div>
-                                    <div class="last__course_li_headerstr__cnt">
-                                        <div class="last__course_li_headerstr">
-                                            Python: Basics
-                                        </div>
-                                        <div class="last__course_li_headerstr-continue">
-                                            Continue:
-                                        </div>
-                                    </div>
-                                    <div class="last__course_li_2str">
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis laoreet pellentesque laoreet. Aenean ullamcorper nec tortor ut imperdiet.
-                                    </div>
-                                    <div class="last__course_li_3str">
-                                        <div class="last__course_continue">Continue</div>
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="last__course_li">
-                                <div class="last__course_li_section">
-                                    <div class="last__course_li_1str">
-                                        <div class="last__course_imnow-std-txt">I AM NOW STUDYING...</div>
-                                        <div class="last__course_imnow-std-txt">3 days ago</div>
-                                    </div>
-                                    <div class="last__course_li_headerstr__cnt">
-                                        <div class="last__course_li_headerstr">
-                                            Python: Advanced
-                                        </div>
-                                        <div class="last__course_li_headerstr-continue">
-                                            Continue:
-                                        </div>
-                                    </div>
-                                    <div class="last__course_li_2str">
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis laoreet pellentesque laoreet. Aenean ullamcorper nec tortor ut imperdiet.
-                                    </div>
-                                    <div class="last__course_li_3str">
-                                        <div class="last__course_continue">Continue</div>
-                                    </div>
-                                </div>
-                            </li>
-                        </ul>
-                    -->
                         <!-- Swiper-->
                         <div class="swiper">
                             <!-- Additional required wrapper -->
                             <div class="swiper-wrapper">
                               <!-- Slides -->
-                              <div class="swiper-slide" style="background: linear-gradient(to right, #000000 -190%, #489cc9 60%, #000000 190%);">
-                                <div class="swiper-course-header">Python: Basics</div>
-                                <div class="swiper-course-description"></div>
-                                <div class="swiper-course-next">Next level: 06.Slices&nbsp;|&nbsp;<!--Completed: 5/52 (0.11%)--></div>
-                                <div class="swiper-course-cnt-flex">
-                                    <div class="swiper-course-cnt">
-                                        <div class="swiper-course-cnt-filler" style="width: 26%;"></div>
-                                    </div>
+                              {% for course in started_courses %}
+                                {% for courseid, color in colors_list.items %}
+                                {% if course == courseid %}
+                                <a href="courses/{{course}}/">
+                                    <div class="swiper-slide" style="background: linear-gradient(to right, #000000 -190%, #{{color}} 60%, #000000 190%);">
+                                        {% for key, value in progress_tracker_dict.items %}
+                                        {% if key == course %}
+                                        {% for key2, value2 in value.items %}
+                                        {% if key2 == 'current_lesson_id' %}
+                                        {% for x, y, z, a in value2 %}
+                                        <div class="swiper-course-header">{{z}}</div>
+                                        <div class="swiper-course-description"></div>
+                                        <div class="swiper-course-next">Next level: {{x}}.{{y}}&nbsp;|&nbsp;<!--Completed: 5/52 (0.11%)--></div>
+                                        {% endfor %}
+                                        {% elif key2 == 'percentage' %}
+                                        <div class="swiper-course-cnt-flex">
+                                            <div class="swiper-course-cnt">
+                                                <div class="swiper-course-cnt-filler" style="width: {{value2}}%;"></div>
+                                            </div>
+                                        </div>
+                                        {% endif %}
+                                        <div class="swiper-course-continue">CONTINUE</div>
+                                        {% endfor %}
+                                {% endif%}
+                                {% endfor %}
+                                </a>
+                                {% endif%}
+                                {% endfor %}
+                            {% endfor %}
                                 </div>
-                                <div class="swiper-course-continue">CONTINUE</div>
-                              </div>
-                              <div class="swiper-slide" style="background: linear-gradient(to right, #000000 -190%, #2974ff 60%, #000000 190%);">
-                                    <div class="swiper-course-header">Python: Advanced</div>
-                                    <div class="swiper-course-description"></div>
-                                <div class="swiper-course-next">Next level: 01.OOP: Basics&nbsp;|&nbsp;<!--Completed: 5/52 (0.11%)--></div>
-                                <div class="swiper-course-cnt-flex">
-                                    <div class="swiper-course-cnt">
-                                        <div class="swiper-course-cnt-filler" style="width: 2%;"></div>
-                                    </div>
-                                </div>
-                                <div class="swiper-course-continue">CONTINUE</div>
-                                </div>
-                              <div class="swiper-slide" style="background: linear-gradient(to right, #000000 -190%,#b5becf 60%, #000000 190%);">
-                                    <div class="swiper-course-header">HTML</div>
-                                    <div class="swiper-course-description"></div>
-                                <div class="swiper-course-next">Next level: 26.Flexbox 2&nbsp;|&nbsp;<!--Completed: 5/52 (0.11%)--></div>
-                                <div class="swiper-course-cnt-flex">
-                                    <div class="swiper-course-cnt">
-                                        <div class="swiper-course-cnt-filler" style="width: 96%;"></div>
-                                    </div>
-                                </div>
-                                <div class="swiper-course-continue">CONTINUE</div>
-                                </div>
+                              
+                              
                             </div>
                             <!-- If we need pagination -->
                             <!--<div class="swiper-pagination"></div>-->
                         </div>
+                        {% endif %}
                         <!-- end of swiper -->
                         <div class="section__header opacity20">Training:</div>
                         <div class="section__header opacity20">Achievments:</div>
