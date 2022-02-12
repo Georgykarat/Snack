@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Snack Courses</title>
     <link rel="stylesheet" href="{% static 'css/path.css' %}">
+    <link rel="stylesheet" href="{% static 'css/reqstyles_path.css' %}">
     <link rel="stylesheet" href="{% static 'css/coursetheme.css' %}">
     <link rel="stylesheet" href="{% static 'css/lefttab.css' %}">
     <link rel="stylesheet" href="{% static 'css/toggler.css' %}">
@@ -40,6 +41,17 @@
     background-size: 110%;
     background-position: center;
     background-repeat: no-repeat;
+}
+.path__instructor_photo {
+    height: 60px;
+    width: 60px;
+    border-radius: 50px;
+    border: 2px solid #E0E0E0;
+    background-image: url({{begin_path}}{{author_photo}});
+    background-size: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    margin-left: 30px;
 }
 @media (max-width: 600px) {
     .courses-li__rightcnt {
@@ -178,7 +190,34 @@
                                         </div>
                                     </div>
                                     <div class="main__path_course-description" style="color: #{{fontcolor}}">{{moto}}</div>
+                                    <div class="main__path_course-general-information">
+                                        <div class="main__path_course-general-information-lessonscnt">
+                                            <svg width="18" height="20" viewBox="0 0 18 20" fill="none" xmlns="http://www.w3.org/2000/svg" >
+                                                <path d="M12.7839 8.59375C12.7839 8.16227 12.4326 7.8125 11.9993 7.8125H3.91835C3.48504 7.8125 3.13379 8.16227 3.13379 8.59375C3.13379 9.02523 3.48504 9.375 3.91835 9.375H11.9993C12.4326 9.375 12.7839 9.02523 12.7839 8.59375Z" fill="#{{fontcolor}}" fill-opacity="0.7"/>
+                                                <path d="M3.91835 10.9375C3.48504 10.9375 3.13379 11.2873 3.13379 11.7188C3.13379 12.1502 3.48504 12.5 3.91835 12.5H8.82618C9.25949 12.5 9.61074 12.1502 9.61074 11.7188C9.61074 11.2873 9.25949 10.9375 8.82618 10.9375H3.91835Z" fill="#{{fontcolor}}" fill-opacity="0.7"/>
+                                                <path d="M5.76215 18.4375H3.13823C2.27302 18.4375 1.56912 17.7366 1.56912 16.875V3.125C1.56912 2.26344 2.27302 1.5625 3.13823 1.5625H12.784C13.6492 1.5625 14.3531 2.26344 14.3531 3.125V7.92969C14.3531 8.36117 14.7043 8.71094 15.1376 8.71094C15.5709 8.71094 15.9222 8.36117 15.9222 7.92969V3.125C15.9222 1.40188 14.5144 0 12.784 0H3.13823C1.40781 0 0 1.40188 0 3.125V16.875C0 18.5981 1.40781 20 3.13823 20H5.76215C6.19546 20 6.54671 19.6502 6.54671 19.2188C6.54671 18.7873 6.19546 18.4375 5.76215 18.4375Z" fill="#{{fontcolor}}" fill-opacity="0.7"/>
+                                                <path d="M17.3116 11.3114C16.3939 10.3976 14.9007 10.3976 13.9836 11.3108L9.67629 15.5905C9.58481 15.6814 9.51734 15.7933 9.47976 15.9165L8.5417 18.9917C8.45854 19.2643 8.531 19.5604 8.73082 19.7643C8.88052 19.9171 9.08387 20 9.29245 20C9.36224 20 9.43269 19.9907 9.50185 19.9716L12.6685 19.0981C12.7988 19.0622 12.9176 18.9933 13.0133 18.8982L17.3117 14.626C18.2294 13.7122 18.2294 12.2253 17.3116 11.3114ZM12.0508 17.6472L10.4577 18.0867L10.9239 16.5582L13.8303 13.6705L14.9401 14.7756L12.0508 17.6472ZM16.2027 13.5207L16.0507 13.6718L14.9411 12.5669L15.0926 12.4164C15.3985 12.1118 15.8962 12.1118 16.2021 12.4164C16.508 12.721 16.508 13.2166 16.2027 13.5207Z" fill="#{{fontcolor}}" fill-opacity="0.7"/>
+                                                <path d="M11.9993 4.6875H3.91835C3.48504 4.6875 3.13379 5.03727 3.13379 5.46875C3.13379 5.90023 3.48504 6.25 3.91835 6.25H11.9993C12.4326 6.25 12.7839 5.90023 12.7839 5.46875C12.7839 5.03727 12.4326 4.6875 11.9993 4.6875Z" fill="#{{fontcolor}}" fill-opacity="0.7"/>
+                                            </svg>
+                                            <div class="main__path_course-general-information-lessons" style="color: #{{fontcolor}}">{{lessons_amount}}&nbsp;lessons</div>
+                                        </div>
+                                        <div class="main__path_course-general-information-lessonscnt">
+                                            <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M14.5379 9.00436C14.5379 8.62336 14.2329 8.31471 13.8571 8.31471H9.69094V4.15472V4.1546C9.69094 3.77231 9.38075 3.46225 8.99872 3.46225C8.61643 3.46225 8.30624 3.77231 8.30624 4.1546V9.00167C8.30624 9.38408 8.61643 9.69414 8.99872 9.69414H13.8575C14.2329 9.69414 14.5379 9.38536 14.5379 9.00436ZM16.617 9C16.617 13.2074 13.2067 16.6183 9.00013 16.6183C4.79332 16.6183 1.38328 13.2074 1.38328 9C1.38328 4.79255 4.79332 1.38174 9.00013 1.38174C13.2067 1.38174 16.617 4.79255 16.617 9ZM18 9C18 4.02939 13.9706 0 9.00013 0C4.02939 0 0 4.02939 0 9C0 13.9706 4.02939 18 9.00013 18C13.9706 18 18 13.9706 18 9Z" fill="#{{fontcolor}}" fill-opacity="0.7"/>
+                                            </svg>
+                                            {% if hours < 1 %}
+                                            <div class="main__path_course-general-information-lessons" style="color: #{{fontcolor}}">{{minutes}}&nbsp;minutes in total</div>
+                                            {% else %}
+                                            <div class="main__path_course-general-information-lessons" style="color: #{{fontcolor}}">{{hours}}&nbsp;hours in total</div>
+                                            {% endif %}
+                                        </div>
+                                        <div class="main__path_course-general-information-lessonscnt">
+                                            <div class="path__flag"></div>
+                                            <div class="main__path_course-general-information-lessons" style="color: #{{fontcolor}}">English</div>
+                                        </div>
+                                    </div>
                                 </div>
+                                
                                 <div class="main__path_course-header-card-left-header-cnt">
                                     {% if next_lesson_id and next_lesson and finished_thecourse %}
                                     <a href="../"><button class="main__path_course-header-card-left-header-btn-finished" style="background-color: lightgray; width: 400px;">The Course was completed! Congrats!&nbsp;</button></a>
@@ -195,6 +234,68 @@
                             </div>
                             <div class="main__path_course-header-card-right">
                                 <div class="main__path_course-logo" style="background-color: #{{coursecolor}}; background-image: url({{begin_path}}{{courseicon}})"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="path__centtralcnt_flex">
+                        <div class="path__centtralcnt_flex_left">
+                            <div class="path__centtralcnt_noflex_left">
+                                <div class="path__centtralcnt_header">Description:</div>
+                                <div class="path__centtralcnt_description">
+                                    {{coursedescription}}
+                                </div>
+                                <div class="path__centtralcnt_header">You will learn:</div>
+                                <ul class="path__you_will-rearn-ul">
+                                    {% for i in benefits %}
+                                    {% for x, y in i.items %}
+                                    <li class="path__you_will-rearn-li">
+                                        <div class="path__you_will-rearn-tick"><img src="{% static 'png/whitetick.svg' %}" style="justify-content: center; display:flex;" class="tickitself" width="20"></div>
+                                        <div class="path__ul_lear_block">
+                                            <div class="path__ul_lear_block_h1">{{x}}</div>
+                                            <div class="path__ul_lear_block_h2">{{y}}</div>
+                                        </div>
+                                    </li>
+                                    {% endfor %}
+                                    {% endfor %}
+                                </ul>
+                                <div class="path__centtralcnt_header">Requirements:</div>
+                                {{reqs|safe}}
+                            </div>
+                        </div>
+                        <div class="path__centtralcnt_flex_right">
+                            <div class="path__centtralcnt_noflex_left">
+                                <div class="path__centtralcnt_header">Course Instructor:</div>
+                                <div class="path__instructor-block">
+                                    <div class="path__instructor_photo"></div>
+                                    <div class="path__instructor_name-cnt">
+                                        <div class="path__instructor_name">{{author_name}}</div>
+                                        <div class="path__instructor_position">{{author_pos}}</div>
+                                    </div>
+                                </div>
+                                <div class="path__ul_cnt">
+                                    <div class="path__centtralcnt_header" style="padding-bottom: 0px; padding-top: 20px;">Table of Contents:</div>
+                                    <div class="path__centtralcnt_subheader">PYTHON: BASICS</div>
+                                    <ul class="path__ul_courses">
+                                        {% for lesson in lesson_base %}
+                                        {% if lesson.lessonid in finished_courses_list%}
+                                        <a href="{{lesson.lessonid}}/" style="width: 100%;"><li class="path__li_courses"> 
+                                            <div class="path__li_number_item-active">{{lesson.lessonid}}</div>
+                                            <div class="path__li_title_item-active">{{lesson.lesson_name}}</div>
+                                        </li></a>
+                                        {% elif lesson.lessonid == next_lesson_id %}
+                                        <a href="{{lesson.lessonid}}/" style="width: 100%;"><li class="path__li_courses"> 
+                                            <div class="path__li_number_item-current">{{lesson.lessonid}}</div>
+                                            <div class="path__li_title_item-current">{{lesson.lesson_name}}</div>
+                                        </li></a>
+                                        {% elif lesson.lessonid not in finished_courses_list %}
+                                        <li class="path__li_courses"> 
+                                            <div class="path__li_number_item-locked">{{lesson.lessonid}}</div>
+                                            <div class="path__li_title_item-locked">{{lesson.lesson_name}}</div>
+                                        </li>
+                                        {% endif %}
+                                        {% endfor %}
+                                    </ul>
+                                </div>
                             </div>
                         </div>
                     </div>

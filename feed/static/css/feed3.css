@@ -119,6 +119,36 @@ main {
     background-color: rgba(255, 0, 0, 0.548);
     border-radius: 10px;
 }
+.mobile__access_level-free {
+    font-size: 10px;
+    color: white;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    padding-left: 5px;
+    padding-right: 5px;
+    background-color: rgba(194, 194, 194, 0.548);
+    border-radius: 10px;
+}
+.mobile__access_level-vip {
+    font-size: 10px;
+    color: white;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    padding-left: 5px;
+    padding-right: 5px;
+    background-color: rgba(255, 215, 0, 0.548);
+    border-radius: 10px;
+}
+.mobile__access_level-tester {
+    font-size: 10px;
+    color: white;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    padding-left: 5px;
+    padding-right: 5px;
+    background-color: rgba(63, 0, 255, 0.548);
+    border-radius: 10px;
+}
 .mobile__menu_ul {
     width: 70%;
     margin: 50px 0;

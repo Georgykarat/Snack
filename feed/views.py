@@ -4,7 +4,7 @@ from django.contrib.auth.hashers import check_password
 from django.shortcuts import render, redirect
 from django.http import HttpResponse, HttpResponseRedirect
 from feed.models import Feed, AccountImage, AccessLevel, UserProgress
-from path.models import Rating, CourseBase, TagsBase, Course_Tags, LessonBase
+from path.models import Rating, CourseBase, TagsBase, Course_Tags, LessonBase, ActionTypes
 from m2m.models import PersonalGoals
 from feed.forms import DocumentForm
 from django.contrib.auth.views import LogoutView, UserModel
@@ -419,7 +419,7 @@ def pathpage(request, courseid):
     if request.user.is_authenticated == True: 
         # Need check the course existance
         if CourseBase.objects.filter(courseid=int(courseid), avaliable=True).exists():
-            course_data = CourseBase.objects.filter(courseid=int(courseid)).values_list('course_name', 'icon', 'color', 'description', 'complexity', 'author', 'authorid', 'fontcolor', 'moto')[0]
+            course_data = CourseBase.objects.filter(courseid=int(courseid)).values_list('course_name', 'icon', 'color', 'description', 'complexity', 'author', 'authorid', 'fontcolor', 'moto', 'reqs', 'benefits')[0]
             # Page upload begins
             target_mail = request.user.username
             userid = Feed.objects.filter(mail=target_mail).values_list('id')[0][0]
@@ -467,6 +467,51 @@ def pathpage(request, courseid):
                 photo = "files/guys.jpeg"
             begin_path = '/media/'
             #Let's get our courses from DB
+            lesson_base = LessonBase.objects.filter(courseid = courseid, avaliable = True).all()
+            lessons_amount = len(lesson_base)
+            lessonstome_in_total = lessons_amount * 6
+            hours = lessonstome_in_total // 60
+            minutes = lessonstome_in_total % 60
+            #author info
+            author_data = course_data[5]
+            author_name = author_data[:author_data.find(',')]
+            author_pos = author_data[author_data.find(',') + 2:]
+            author_mail = Feed.objects.filter(id = course_data[6]).values_list('mail')[0][0]
+            author_photo = AccountImage.objects.filter(mail = author_mail).values_list('file')[0][0]
+
+            alllessonscompletedforlist = UserProgress.objects.filter(courseid=int(courseid), finished=True).values_list('lessonid')
+            finished_courses_list = []
+            for string in alllessonscompletedforlist:
+                ourlessonid = string[0]
+                finished_courses_list.append(ourlessonid)
+            finished_courses_set = set(finished_courses_list)
+            finished_courses_list = list(finished_courses_set)
+
+            if UserProgress.objects.filter(userid = userid, courseid = courseid, finished = False).exists():
+                lessonid = UserProgress.objects.filter(userid = userid, courseid = courseid, finished = False).values_list('lessonid')[0]
+            elif UserProgress.objects.filter(userid = userid, courseid = courseid).exists() == False:
+                lessonid = 1
+            else:
+                lessonid = ourlessonid
+
+
+            benefits_list = course_data[10][1:-1]
+            benefits_len = len(benefits_list.split('],['))
+            benefits = []
+            benefits_item = (benefits_list.split('],['))
+            for i in range(benefits_len):
+                benefit_s_dict = {}
+                benefits_item_current = benefits_item[i]
+                if i == 0:
+                    benefits_item_current = benefits_item_current[1:]
+                elif i == benefits_len - 1:
+                    benefits_item_current = benefits_item_current[:-1]
+                benefit_d = benefits_item_current.split(';')
+                benefit_s_dict[benefit_d[0]] = benefit_d[1]
+                benefits.append(benefit_s_dict)
+            
+
+
                 
             return render(request, 'path_lessons/path_lessons.html', {
                 'access': feed_data[0][0],
@@ -487,12 +532,23 @@ def pathpage(request, courseid):
                 'coursedescription': course_data[3],
                 'fontcolor': course_data[7],
                 'moto': course_data[8],
+                'reqs': course_data[9],
+                'benefits': benefits,
                 'started_course': started_course,
                 'coursecomplexityfilled': coursecomplexity,
                 'coursenotfilled': coursenotfilled,
                 'next_lesson_id': next_lesson_id,
                 'next_lesson': next_lesson,
                 'finished_thecourse': finished_thecourse,
+                'lessons_amount': lessons_amount,
+                'hours': hours,
+                'minutes': minutes,
+                'author_name': author_name,
+                'author_photo': author_photo,
+                'author_pos': author_pos,
+                'lesson_base': lesson_base,
+                'finished_courses_list': finished_courses_list,
+                'lessonid': lessonid,
             })
         else:
             return HttpResponse(status=404)
@@ -517,6 +573,21 @@ def coursestart(request, courseid):
     else:
         return HttpResponse(status=404)
 
+
+
+def xpmovement(actionid, mod, currentlvl, currentexp):
+    expmovement = ActionTypes.objects.filter(actionid = int(actionid)).values_list('expmovement')[0][0]
+    if expmovement < 0:
+        pass
+    else:
+        expmovement = expmovement * mod
+    next_level_border = Rating.objects.filter(ratingid = int(currentlvl) + 1).values_list('rating_exp')[0][0]
+    final_exp_int = currentexp + expmovement
+    if final_exp_int >= next_level_border:
+        up = True
+    else:
+        up = False
+    return [up, final_exp_int]
 
 
 def lessonpage(request, courseid, lessonid):
@@ -561,6 +632,7 @@ def lessonpage(request, courseid, lessonid):
                     finished_courses_set = set(finished_courses_list)
                     finished_courses_list = list(finished_courses_set)
                     alllessonsnotcompletedforlist = UserProgress.objects.filter(courseid=int(courseid), finished=False).values_list('lessonid')
+                    finished_or_not = UserProgress.objects.filter(courseid=int(courseid), lessonid=int(lessonid)).values_list('finished', 'quizcompleted')[0]
                     notfinished_courses_list = []
                     for string in alllessonsnotcompletedforlist:
                         ourlessonid = string[0]
@@ -605,6 +677,8 @@ def lessonpage(request, courseid, lessonid):
                         'alllessonsnotcompleted': alllessonsnotcompleted,
                         'finished_courses_list': finished_courses_list,
                         'notfinished_courses_list': notfinished_courses_list,
+                        'course_finished': finished_or_not[0],
+                        'quiz_finished': finished_or_not[1],
                     })
                 else:
                     return HttpResponse(status=404)
@@ -621,6 +695,7 @@ def lessoncompleted(request, courseid, lessonid):
         if request.is_ajax():
             target_mail = request.user.username
             userid = Feed.objects.filter(mail=target_mail).values_list('id')[0][0]
+            userinfo = Feed.objects.filter(id=userid).values_list('xpmodificator', 'lvl', 'rating_exp')[0]
             prerequisite = LessonBase.objects.filter(courseid = courseid, lessonid=lessonid).values_list('prerequesite')[0][0]
             if prerequisite:
                 if UserProgress.objects.filter(userid = userid, courseid = courseid, lessonid = prerequisite, finished = True).exists():
@@ -628,6 +703,14 @@ def lessoncompleted(request, courseid, lessonid):
                         if UserProgress.objects.filter(userid = userid, courseid = courseid, lessonid = int(lessonid) + 1).exists():
                             return JsonResponse({}, status=400)
                         else:
+                            if UserProgress.objects.filter(userid = userid, courseid = courseid, lessonid = lessonid, finished = False).exists():
+                                info_on_exp_movement = xpmovement(0, int(userinfo[0]), int(userinfo[1]), int(userinfo[2]))
+                                if info_on_exp_movement[0]:
+                                    level_up = True
+                                    Feed.objects.filter(id = userid).update(rating_exp = int(info_on_exp_movement[1]), lvl = int(userinfo[1]) + 1)
+                                else:
+                                    level_up = False
+                                    Feed.objects.filter(id = userid).update(rating_exp = int(info_on_exp_movement[1]))
                             UserProgress.objects.filter(userid = userid, courseid = courseid, lessonid = lessonid).update(finished = True)
                             if LessonBase.objects.filter(courseid = courseid, lessonid = int(lessonid) + 1).exists():
                                 newitem = UserProgress()
@@ -635,6 +718,7 @@ def lessoncompleted(request, courseid, lessonid):
                                 newitem.courseid = int(courseid)
                                 newitem.lessonid = int(lessonid) + 1
                                 newitem.save()
+                                
                                 return JsonResponse({'nextlesson': int(lessonid) + 1}, status=200)
                             else:
                                 return JsonResponse({'nextlesson': 99999}, status=200)
@@ -647,6 +731,14 @@ def lessoncompleted(request, courseid, lessonid):
                     if UserProgress.objects.filter(userid = userid, courseid = courseid, lessonid = int(lessonid) + 1).exists():
                         return JsonResponse({}, status=400)
                     else:
+                        if UserProgress.objects.filter(userid = userid, courseid = courseid, lessonid = lessonid, finished = False).exists():
+                            info_on_exp_movement = xpmovement(0, int(userinfo[0]), int(userinfo[1]), int(userinfo[2]))
+                            if info_on_exp_movement[0]:
+                                level_up = True
+                                Feed.objects.filter(id = userid).update(rating_exp = int(info_on_exp_movement[1]), lvl = int(userinfo[1]) + 1)
+                            else:
+                                level_up = False
+                                Feed.objects.filter(id = userid).update(rating_exp = int(info_on_exp_movement[1]))
                         UserProgress.objects.filter(userid = userid, courseid = courseid, lessonid = lessonid).update(finished = True)
                         if LessonBase.objects.filter(courseid = courseid, lessonid = int(lessonid) + 1).exists():
                             newitem = UserProgress()
@@ -663,3 +755,12 @@ def lessoncompleted(request, courseid, lessonid):
             return HttpResponse(status=404)
     else:
         return HttpResponse(status=404)
+
+
+
+def quiz(request, courseid, lessonid):
+    if request.user.is_authenticated:
+        if request.is_ajax():
+            target_mail = request.user.username
+            userid = Feed.objects.filter(mail=target_mail).values_list('id')[0][0]
+            pass

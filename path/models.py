@@ -1,4 +1,5 @@
 
+from distutils.command.clean import clean
 from django.db import models
 
 
@@ -27,6 +28,8 @@ class CourseBase(models.Model):
     moto = models.CharField(blank=True, max_length=5000)
     description = models.CharField(blank=True, max_length=5000)
     complexity = models.IntegerField(blank=True)
+    reqs = models.TextField(blank=True, max_length=50000)
+    benefits = models.TextField(blank=True, max_length=50000)
     author = models.CharField(blank=True, max_length=100)
     authorid = models.IntegerField(blank=True, default=0)
     avaliable = models.BooleanField(default=False)
@@ -46,6 +49,7 @@ class LessonBase(models.Model):
     video = models.CharField(max_length=50, blank=True) #Link to video storage
     prerequesite = models.IntegerField(blank=True, null=True)
     avaliable = models.BooleanField(default=False)
+    
 
 
     def __str__(self):
@@ -53,11 +57,11 @@ class LessonBase(models.Model):
 
 
 class QuizBase(models.Model):
-    num = models.CharField(max_length=6)
-    quiztype = models.CharField(max_length=4)
-    question = models.CharField(max_length=1000)
+    courseid = models.IntegerField()
+    lessonid = models.IntegerField()
+    quiztype = models.IntegerField()
+    question = models.CharField(max_length=5000)
     question_pic = models.FileField(upload_to='quizpics', blank=True)
-    question_textorcode = models.CharField(max_length=5000, blank=True)
     option_1 = models.CharField(max_length=5000, blank=True)
     option_2 = models.CharField(max_length=5000, blank=True)
     option_3 = models.CharField(max_length=5000, blank=True)
@@ -67,7 +71,7 @@ class QuizBase(models.Model):
     complexity = models.IntegerField()
 
     def __str__(self):
-        return self.num + " " + self.quiztype + " " + self.question
+        return str(self.id) + " " + str(self.courseid) + " " + str(self.lessonid)
 
 class TagsBase(models.Model):
     tagid = models.IntegerField()
@@ -86,7 +90,17 @@ class ActionTypes(models.Model):
     expmovement = models.IntegerField()
 
     def __str__(self):
-        return self.actionid + " " + self.action
+        return str(self.actionid) + " " + self.action
+
+'''
+class RequirmentsType(models.Model):
+    reqid = models.IntegerField()
+    reqname = models.CharField(max_length=75)
+    reqicon = models.FileField(upload_to='reqpics', blank=True)
+
+    def __str__(self):
+        return str(self.reqid) + " " + self.reqname
+'''
 
 '''
 class TemporaryExpCounter(models.Model):

@@ -34,6 +34,7 @@ class Feed(models.Model):
     rating_exp = models.IntegerField(default=0)
     lvl = models.IntegerField(default=0)
     time = models.CharField(max_length = 3, default="0")
+    xpmodificator = models.IntegerField(default=1)
 
     def __str__(self):
         return self.mail
@@ -54,3 +55,4 @@ class UserProgress(models.Model):
     courseid = models.IntegerField()
     lessonid = models.IntegerField()
     finished = models.BooleanField(default=False)
+    quizcompleted = models.BooleanField(default=False)

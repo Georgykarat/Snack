@@ -4,12 +4,12 @@ from path.models import Rating, CourseBase, QuizBase, TagsBase, Course_Tags, Les
 
 # Register your models here.
 class FeedAdmin(admin.ModelAdmin):
-    list_display = ['id', 'mail', 'first_name', 'last_name','rating_exp', 'country', 'created_date', 'accessid', 'lvl', 'login', 'time']
+    list_display = ['id', 'mail', 'first_name', 'last_name','rating_exp', 'country', 'created_date', 'accessid', 'lvl', 'login', 'time', 'xpmodificator']
     search_fields = ['mail', 'first_name', 'last_name', 'lvl', 'login']
 
 
 class CoursesAdmin(admin.ModelAdmin):
-    list_display = ['courseid', 'course_name', 'moto', 'icon', 'color', 'fontcolor', 'description', 'complexity', 'author', 'authorid', 'avaliable']
+    list_display = ['courseid', 'course_name', 'moto', 'icon', 'color', 'fontcolor', 'description', 'complexity', 'reqs', 'benefits', 'author', 'authorid', 'avaliable']
     search_fields = ['course_name']
 
 
@@ -25,8 +25,8 @@ class AccountImageAdmin(admin.ModelAdmin):
     list_display = ['mail', 'file']
 
 class QuizBaseAdmin(admin.ModelAdmin):
-    list_display = ['id', 'num', 'quiztype', 'question','question_pic', 'question_textorcode', 'option_1', 'option_2', 'option_3', 'option_4', 'answer', 'answer_explanation', 'complexity']
-    search_fields = ['num', 'quiztype', 'question', 'complexity']
+    list_display = ['id', 'courseid', 'lessonid', 'quiztype', 'question','question_pic', 'option_1', 'option_2', 'option_3', 'option_4', 'answer', 'answer_explanation', 'complexity']
+    search_fields = ['courseid', 'quiztype', 'question', 'complexity']
 
 class InvitesAdmin(admin.ModelAdmin):
     list_display = ['invite']
@@ -43,7 +43,8 @@ class LessonBaseAdmin(admin.ModelAdmin):
     search_fields = ['courseid', 'lessonid', 'lesson_name']
 
 class UserProgressAdmin(admin.ModelAdmin):
-    list_display = ['userid', 'courseid', 'lessonid', 'finished']
+    list_display = ['userid', 'courseid', 'lessonid', 'finished', 'quizcompleted']
+    search_fields = ['userid', 'courseid']
 
 class ActionTypesAdmin(admin.ModelAdmin):
     list_display = ['actionid', 'action', 'expmovement']

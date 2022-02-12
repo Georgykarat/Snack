@@ -385,6 +385,11 @@ h2 {
     text-align: justify;
     line-height: 1.8;
 }
+.lesson_console_font {
+    width: 100%;
+    background-color: lightgrey;
+    padding: 10px;
+}
 
 
 

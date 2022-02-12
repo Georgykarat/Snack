@@ -54,7 +54,15 @@
                         <div class="mobile__central_cnt-country">{{country}}</div>
                     </div>
                 </div>
-                <div class="mobile__access_level">{{access_name}}</div>
+                {% if access_name == 'Admin' %}
+                <div class="mobile__access_level">Admin</div>
+                {% elif access_name == 'Free' %}
+                <div class="mobile__access_level-free">Snacker</div>
+                {% elif access_name == 'VIP' %}
+                <div class="mobile__access_level-vip">VIP</div>
+                {% elif access_name == 'Test' %}
+                <div class="mobile__access_level-tester">Tester</div>
+                {% endif %}
             </div>
         </div>
         <ul class="mobile__menu_ul">

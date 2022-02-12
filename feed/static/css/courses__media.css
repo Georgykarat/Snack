@@ -284,6 +284,19 @@
     .courses__description {
         display: none;
     }
+    .course__badge-cnt {
+        min-width: 40px;
+        min-height: 40px;
+        max-height: 40px;
+        border-radius: 40px;
+        background-position: center;
+        background-size: 70%;
+        background-repeat: no-repeat;
+        border: 1px solid white;
+        position: relative;
+        top: -70px;
+        right: -90%;
+    }
     h3 {
         font-size: 16px;
         margin-bottom: 5px;
@@ -298,7 +311,7 @@
         margin-top: 10px;
     }
     .courses_progress_currentlesson {
-        margin-top: 10px;
+        margin-top: 3px;
     }
     .courses-li__leftcnt {
         width: 0%;
@@ -363,5 +376,9 @@
         width: 88%;
         margin-bottom: 10px;
         background-size: 3%;
+    }
+    .course__badge-cnt {
+        top: -50px;
+        right: -85%;
     }
 }

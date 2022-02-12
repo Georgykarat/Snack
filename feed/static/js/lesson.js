@@ -9,6 +9,9 @@ var MainInfoBtn = $('.lessoninfo-btn');
 var ScriptBtn = $('.lessonscript-btn');
 var MarBtn = $('.lessonmat-btn');
 var Video = $('.main__lesson_video-cnt');
+var QuizButton = $('.main__lesson_takequiz-btn');
+var LessonCompletedCounter = $('.lesson_completed_counter');
+var NotCompletedFirst = $('.main__progressbar_notcompleted').first();
 
 
 MainInfoBtn.on('click', function(){
@@ -102,6 +105,12 @@ var LessonCompleted = (function(){
                     lessonid = "#" + nextlesson;
                     $(lessonid).parent().attr("href", nextlessonhref);
                     $(lessonid).children('.main__course_progress-li-title').removeClass('main__course_progress-li-title').addClass('main__course_progress-li-title-prev');
+                    QuizButton.css('background-color', '#26D07C');
+                    QuizButton.css('cursor', 'pointer');
+                    current_lesson_figure = LessonCompletedCounter.text();
+                    current_lesson_figure = Number(current_lesson_figure) + 1;
+                    LessonCompletedCounter.text(current_lesson_figure);
+                    NotCompletedFirst.css('background-color', '#26D07C');
                 }
             });
             console.log('Pop should be activated');

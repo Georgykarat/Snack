@@ -1,0 +1,13 @@
+.req-computer-pic {
+    background-image: url('/media/reqpics/laptop.svg');
+    background-repeat: no-repeat;
+    background-position-x: 0%;
+    background-size: 5%;
+}
+.req-os-pic {
+    background-image: url('/media/reqpics/operating-system.svg');
+    background-repeat: no-repeat;
+    background-position-x: 1%;
+    background-position-y: 6px;
+    background-size: 4%;
+}

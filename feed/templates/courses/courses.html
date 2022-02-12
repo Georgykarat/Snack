@@ -205,9 +205,14 @@
                                     </ul>
                                     <a href="{{course.courseid}}" style="width: 100%;">
                                         <h3>{{course.course_name}}</h3>
-                                        <div class="courses__course-creator">{{course.author}}</div>
-                                        <div class="courses__description">
-                                            {{course.description}}
+                                        <div class="course__naming-cnt-without-badge">
+                                            <div class="courses__course-creator">{{course.author}}</div>
+                                            <div class="course__naming-cnt-with-badge">
+                                                <div class="courses__description">
+                                                    {{course.description}}
+                                                </div>
+                                                <div class="course__badge-cnt" style="background-image: url({{begin_path}}{{course.icon}}); background-color: #{{course.color}};"></div>
+                                            </div>
                                         </div>
                                         {% if course.courseid in started_courses %}
                                         {% if progress_tracker_dict %}
@@ -319,7 +324,6 @@
                             <div class="courses-li__rightcnt" style="background: linear-gradient(to right, #{{course.color}} 70%, #000000 180%);">
                                 <div class="courses-li__rightcnt-cntr">
                                     <ul class="courses__tags-list">
-                                        <li class="courses__tags-li courses__tags-li_active">Current</li>
                                         {% for course_tag in course_tag %}
                                             {% if course.courseid == course_tag.courseid %}
                                                 {% for tag in tags %}
@@ -332,9 +336,14 @@
                                     </ul>
                                     <a href="" style="width: 100%;">
                                         <h3>{{course.course_name}}</h3>
-                                        <div class="courses__course-creator">{{course.author}}</div>
-                                        <div class="courses__description">
-                                            {{course.description}}
+                                        <div class="course__naming-cnt-without-badge">
+                                            <div class="courses__course-creator">{{course.author}}</div>
+                                            <div class="course__naming-cnt-with-badge">
+                                                <div class="courses__description">
+                                                    {{course.description}}
+                                                </div>
+                                                <div class="course__badge-cnt" style="background-image: url({{begin_path}}{{course.icon}});"></div>
+                                            </div>
                                         </div>
                                         {% if course.courseid in started_courses %}
                                         <div class="courses__large-cnt">

@@ -193,10 +193,16 @@
                             </div>
                         </div>
                         <div class="main__cnt_lesson_right-cnt">
+                            {% if course_finished == False %}
                             <button class="main__lesson_takequiz-btn" style="cursor: not-allowed;">Take Lesson Quiz&nbsp;&#8594;</button>
+                            {% elif course_finished and quiz_finished == False %}
+                            <button class="main__lesson_takequiz-btn" style="background-color: #26D07C; cursor: pointer;">Take Lesson Quiz&nbsp;&#8594;</button>
+                            {% else %}
+                            <button class="main__lesson_takequiz-btn" style="background-color: gold; cursor: pointer;">Take Lesson Quiz&nbsp;&#8594;</button>
+                            {% endif %}
                             <div class="main__lesson_course-progress-cnt">
                                 <div class="main__leson-progress-header">{{coursename}}</div>
-                                <div class="main__leson-progress-total">{{lessons_completed_counter}}/{{lesson_total}}&nbsp;COMPLETED</div>
+                                <div class="main__leson-progress-total"><span class="lesson_completed_counter">{{lessons_completed_counter}}</span>/{{lesson_total}}&nbsp;COMPLETED</div>
                                 <div class="main__leson-progressbar-cnt">
                                     {% for completeditem in alllessonscompleted %}
                                     <div class="main__progressbar_completed" style="width: {{progressbar_width}}%;"></div>
@@ -206,15 +212,24 @@
                                     {% endfor %}
                                 </div>
                                 <ul class="main__course_progress-ul">
+                                    
                                     {% for lesson in alllessons %}
                                         {% if lesson.lessonid in finished_courses_list and lesson.lessonid == clessonid%}
                                         <a href="../{{lesson.lessonid}}/"><li class="main__course_progress-li">
-                                            <div class="main__course_progress-li-counter-prev active-lesson-ul"></div>
+                                            <div class="main__course_progress-li-counter-prev active-lesson-ul">
+                                                <svg width="18" height="13" viewBox="0 0 18 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M17 1L6 12L1 7" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                                </svg>
+                                            </div>
                                             <div class="main__course_progress-li-title-now" style="color: #26D07C;">{{lesson.lesson_name}}</div>
                                         </li></a>
                                         {% elif lesson.lessonid in finished_courses_list %}
                                             <a href="../{{lesson.lessonid}}/"><li class="main__course_progress-li">
-                                                <div class="main__course_progress-li-counter-prev"></div>
+                                                <div class="main__course_progress-li-counter-prev">
+                                                    <svg width="18" height="13" viewBox="0 0 18 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                        <path d="M17 1L6 12L1 7" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                                        </svg>
+                                                </div>
                                                 <div class="main__course_progress-li-title-prev">{{lesson.lesson_name}}</div>
                                             </li></a>
                                         {% elif lesson.lessonid == clessonid %}
