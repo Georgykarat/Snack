@@ -35,6 +35,7 @@ class Feed(models.Model):
     lvl = models.IntegerField(default=0)
     time = models.CharField(max_length = 3, default="0")
     xpmodificator = models.IntegerField(default=1)
+    lastactivity = models.CharField(max_length=30, default="", blank=True)
 
     def __str__(self):
         return self.mail

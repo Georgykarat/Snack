@@ -50,6 +50,11 @@ body {
     font-style: normal;
     src: url('../fonts/OpenSans-Regular.ttf');
   }
+  @font-face{
+    font-family: "Ubuntu Mono";
+    font-style: normal;
+    src: url('../fonts/UbuntuMono-Regular.ttf');
+  }
 
 
 main {
@@ -137,12 +142,29 @@ h2 {
     margin-top: 30px;
     width: 100%;
 }
+.lesson__course_name-time_cnt {
+    width: 100%;
+    display: flex;
+    justify-content: start;
+    flex-wrap: nowrap;
+    margin-top: 5px;
+}
 .main__lesson_course_name-header {
     font-size: 16px;
     color: #B2B2B2;
     font-family: 'Lemon Milk Pro';
-    margin-top: 5px;
-    width: 100%;
+    margin-right: 20px;
+}
+.main__lesson_course_name-header-time {
+    padding-left: 20px;
+    font-size: 14px;
+    color: #B2B2B2;
+    font-family: 'Lemon Milk Pro';
+    background-image: url('../png/clock.svg');
+    background-position-x: left;
+    background-position-y: 3px;
+    background-repeat: no-repeat;
+    background-size: 25%;
 }
 .main__cnt_lesson_general-cnt {
     width: 100%;
@@ -387,8 +409,10 @@ h2 {
 }
 .lesson_console_font {
     width: 100%;
-    background-color: lightgrey;
+    background-color: #F5F5F5;
     padding: 10px;
+    border-radius: 5px;
+    font-family: 'Ubuntu Mono';
 }
 
 

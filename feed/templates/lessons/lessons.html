@@ -138,14 +138,14 @@
                         </ul>
                         <h2>Settings</h2>
                         <ul class="left-menu">
-                            <a href="/feed/settings/"><li class="left-menu-items">
+                            <a href="/feed/settings/" style="width: 100%;"><li class="left-menu-items">
                                 <div class="profile-btn noactive-btn btn-layout"></div>
                                 <div class="li-menu nonactive-text">Edit Profile</div>
                             </li></a>
-                            <li class="left-menu-items opacity20">
+                            <a href="/feed/faq/"><li class="left-menu-items">
                                 <div class="help-btn noactive-btn btn-layout"></div>
                                 <div class="li-menu nonactive-text">Need Help?</div>
-                            </li>
+                            </li></a>
                         </ul>
                         <div id="toggles">
                             <div class="toggle-base">
@@ -167,7 +167,10 @@
                             <a href="/feed/courses/"><div class="main__path-path">Courses&nbsp;</a><span style="font-family: 'Times New Roman', Times, serif;">&#8594;</span>&nbsp;<a href="../">{{coursename}}</a>&nbsp;&#8594;&nbsp;<span class="main__path-black-active">{{clessonid}}.&nbsp;{{lessonname}}</span></div>
                             <div class="main__lesson_name-header">{{clessonid}}.&nbsp;{{lessonname}}</div>
                             {% endif %}
-                            <div class="main__lesson_course_name-header">{{coursename}}</div>
+                            <div class="lesson__course_name-time_cnt">
+                                <div class="main__lesson_course_name-header">{{coursename}}</div>
+                                <div class="main__lesson_course_name-header-time"><span class="minutes"></span>:<span class="seconds"></span></div>
+                            </div>
                             <video class="main__lesson_video-cnt" id="singleVideo" width="100%" controls="controls" poster="" style="cursor: pointer;">
                                 <!--<source src="{{begin_path}}video/0000/videoplayback.mp4" type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"'>-->
                                 <source src="{{begin_path}}video/0000/01.mp4" type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"'>
@@ -250,8 +253,7 @@
                                         {% endif %}
                                     {% endfor %}
                                 </ul>
-                                <div class="main__lesson-duration">Duration:&nbsp;<span class="minutes"></span>:<span class="seconds"></span></div>
-                                <div class="main__lesson-duration">Current:&nbsp;<span class="c-minutes" id="c-minutes"></span>:<span class="c-seconds" id="c-seconds"></span></div>
+                                <div class="main__lesson-duration" style="display: none;">Current:&nbsp;<span class="c-minutes" id="c-minutes"></span>:<span class="c-seconds" id="c-seconds"></span></div>
                             </div>
                         </div>
                     </div>

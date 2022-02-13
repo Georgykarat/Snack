@@ -10,7 +10,7 @@ from feed.forms import DocumentForm
 from django.contrib.auth.views import LogoutView, UserModel
 from django.conf import UserSettingsHolder, settings
 from django.template.defaulttags import register
-import datetime
+import datetime 
 import os
 
 
@@ -25,10 +25,34 @@ def get_item(dictionary, key):
     return dictionary.get(key)
 
 
+def currenttime(id):
+    nowtime = datetime.datetime.now().strftime("%d-%m-%Y %H:%M")
+    Feed.objects.filter(id=id).update(lastactivity = nowtime)
+
+
+
+def xpmovement(actionid, mod, currentlvl, currentexp):
+    expmovement = ActionTypes.objects.filter(actionid = int(actionid)).values_list('expmovement')[0][0]
+    if expmovement < 0:
+        pass
+    else:
+        expmovement = expmovement * mod
+    next_level_border = Rating.objects.filter(ratingid = int(currentlvl) + 1).values_list('rating_exp')[0][0]
+    final_exp_int = currentexp + expmovement
+    if final_exp_int >= next_level_border:
+        up = True
+    else:
+        up = False
+    return [up, final_exp_int]
+
+
+
+
 def feed(request, *args, **kwargs):
     if request.user.is_authenticated == True:    
         target_mail = request.user.username
         userid = Feed.objects.filter(mail=target_mail).values_list('id')[0][0]
+        currenttime(userid)
         #Got exp quantity
         exp = Feed.objects.filter(mail=target_mail).values_list('rating_exp')[0][0]
         i = 0 #Задали индекс счётчику
@@ -575,21 +599,6 @@ def coursestart(request, courseid):
 
 
 
-def xpmovement(actionid, mod, currentlvl, currentexp):
-    expmovement = ActionTypes.objects.filter(actionid = int(actionid)).values_list('expmovement')[0][0]
-    if expmovement < 0:
-        pass
-    else:
-        expmovement = expmovement * mod
-    next_level_border = Rating.objects.filter(ratingid = int(currentlvl) + 1).values_list('rating_exp')[0][0]
-    final_exp_int = currentexp + expmovement
-    if final_exp_int >= next_level_border:
-        up = True
-    else:
-        up = False
-    return [up, final_exp_int]
-
-
 def lessonpage(request, courseid, lessonid):
     if request.user.is_authenticated == True: 
         # Need check the course existance
@@ -640,7 +649,7 @@ def lessonpage(request, courseid, lessonid):
                     notfinished_courses_set = set(notfinished_courses_list)
                     notfinished_courses_list = list(notfinished_courses_set)
                     # Calculate progress bar elements width
-                    progressbar_width = (100 - 1) / lesson_counter
+                    progressbar_width = (100 - 3) / lesson_counter
 
                     if AccountImage.objects.filter(mail=target_mail):
                         photo = AccountImage.objects.filter(mail=target_mail).values_list('file')[0][0]
@@ -755,6 +764,56 @@ def lessoncompleted(request, courseid, lessonid):
             return HttpResponse(status=404)
     else:
         return HttpResponse(status=404)
+
+
+
+def faq(request):
+    if request.user.is_authenticated == True:    
+        target_mail = request.user.username
+        userid = Feed.objects.filter(mail=target_mail).values_list('id')[0][0]
+        currenttime(userid)
+        #Got exp quantity
+        exp = Feed.objects.filter(mail=target_mail).values_list('rating_exp')[0][0]
+        i = 0 #Задали индекс счётчику
+        feed_data = Feed.objects.filter(mail=target_mail).values_list('accessid', 'first_name', 'last_name', 'country', 'city', 'lvl')
+        # Let's find our access title
+        access_name = AccessLevel.objects.filter(accessid=feed_data[0][0]).values_list('access')[0][0]
+        #Let's count our level
+        next_level = feed_data[0][5] + 1 #got next level id
+        next_level_exp = Rating.objects.filter(ratingid=next_level).values_list('rating_exp')[0][0] #got next level exp
+        current_level_info = Rating.objects.filter(ratingid=feed_data[0][5]).values_list('rating_name', 'rating_material', 'rating_exp', 'icon', 'ratingid') #got current level info
+        exp_between_lvl = next_level_exp - current_level_info[0][2]
+        current_exp_without_prev = exp - current_level_info[0][2]
+        percentage = int(current_exp_without_prev / exp_between_lvl * 100) #percantage was calculated
+        until_next = next_level_exp - exp
+        next_level_material = Rating.objects.filter(ratingid=next_level).values_list('rating_material')[0][0]
+        #
+        if AccountImage.objects.filter(mail=target_mail):
+            photo = AccountImage.objects.filter(mail=target_mail).values_list('file')[0][0]
+        else:
+            photo = "files/guys.jpeg"
+        begin_path = '/media/'
+
+        return render(request, 'faq/faq.html', {
+            'access': feed_data[0][0],
+            'access_name': access_name,
+            'name': feed_data[0][1],
+            'last_name': feed_data[0][2],
+            'country': feed_data[0][3],
+            'city': feed_data[0][4],
+            'photo': photo,
+            'begin_path': begin_path,
+            'levelbadge': current_level_info[0][3],
+            'ratingid': current_level_info[0][4],
+            'material': current_level_info[0][1],
+            'percantage': percentage,
+            'until_next': until_next,
+            'next_level_material': next_level_material,
+            'next_level': next_level,
+
+        })
+    else:
+        return HttpResponseRedirect('../login')
 
 
 

@@ -9,6 +9,7 @@ urlpatterns = [
     path("", views.feed, name="feed_page"),
     path('logout/', MainLogoutView.as_view(), name="logout"),
     path('settings/', upload_file, name="settings"),
+    path('faq/', views.faq, name="faq"),
     path('check/', views.mailcheck, name="mailcheck"),
     path('settings/photodraft/', views.photodraft, name="photodraft"),
     path('settings/savesettings/', views.savesettings, name="savesettings"),

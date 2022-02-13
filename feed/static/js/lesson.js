@@ -76,8 +76,13 @@ var i = setInterval(function() {
 		var obj = document.querySelector('video').duration;
         var minutes = parseInt(obj / 60, 10);
         var seconds = Math.round(obj % 60);
-        $('.minutes').text(minutes);
-        $('.seconds').text(seconds);
+        if (seconds < 10) {
+            $('.minutes').text(minutes);
+            $('.seconds').text(seconds);
+        } else {
+            $('.minutes').text(minutes);
+            $('.seconds').text(seconds);
+        }
         console.log(obj);
 
 		// (Put the minutes and seconds in the display)
