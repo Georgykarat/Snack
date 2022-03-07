@@ -97,7 +97,9 @@ main {
     min-width: 100%;
     max-width: 100%;
     flex-wrap: wrap;
-    justify-content: flex-start;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 40px;
 }
 h2 {
     font-family: 'Lemon Milk Regular';
@@ -112,37 +114,90 @@ h2 {
 .h1courses {
     font-size: 26px;
     color: #4F5665;
+    font-family: 'Lemon Milk Pro b';
+    width: 100%;
+}
+.h2courses {
+    font-size: 16px;
+    color: #979797;
+    font-family: 'Lemon Milk Pro';
+    width: 100%;
+}
+.main__cnt-flex-left {
+    width: 70%;
+    display: flex;
+    flex-wrap: wrap;
 }
 .faq__q_cnt {
     display: flex;
     width: 100%;
     padding: 30px 0;
-    border-bottom: 1px solid #E0E0E0;
     flex-wrap: wrap;
+}
+
+.faq__q_cntflex {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    align-items: flex-start;
+}
+.faq__item_num {
+    display: flex;
+    width: 20px;
+    color: #4F5665;
+    font-size: 18px;
+
 }
 .faq__q_cnt_header {
     display: flex;
-    width: 100%;
-    font-size: 20px;
-    color: #0B132A;
-    font-family: 'Lemon Milk Pro bb';
-    margin-bottom: 30px;
-    padding-right: 40px;
-    background-image: url('../png/arrowbottom.svg');
-    background-position: right;
-    background-size: 2%;
-    background-repeat: no-repeat;
-    cursor: pointer;
+    font-size: 18px;
+    color: #4F5665;
+    font-family: 'Lemon Milk Pro b';
+    margin-bottom: 20px;
 }
 .faq__q_cnt_desc {
     width: 100%;
-    font-size: 18px;
+    font-size: 16px;
+    flex-wrap: wrap;
     color: #4F5665;
     display: flex;
     height: unset;
+    font-family: 'Lemon Milk Pro';
+    padding-left: 2%;
+    line-height: 1.7;
+}
+.main__faq_contactus_btn {
+    display: flex;
+    height: 50px;
+    width: 180px;
+    border-radius: 10px;
+    border: 1px solid #26D07C;
+    color: #26D07C;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    background-color: transparent;
+    transition: .5s;
+}
+.main__faq_contactus_btn:hover {
+    background-color: #26D07C;
+    color: white;
+    transition: .5s;
 }
 
-
+.league_grass {
+    padding-left: 70px;
+    width: 100%;
+    background-image: url('../png/badge/l0.svg');
+    background-size: 5%;
+    background-position: left;
+    background-repeat: no-repeat;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    font-size: 16px;
+    color: #4F5665;
+    font-family: 'Lemon Milk Pro';
+}
 
 
 

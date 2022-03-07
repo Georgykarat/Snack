@@ -1,10 +1,11 @@
+from typing import Counter
 from django.http.response import JsonResponse
 from django.contrib.auth.models import User
 from django.contrib.auth.hashers import check_password
 from django.shortcuts import render, redirect
 from django.http import HttpResponse, HttpResponseRedirect
 from feed.models import Feed, AccountImage, AccessLevel, UserProgress
-from path.models import Rating, CourseBase, TagsBase, Course_Tags, LessonBase, ActionTypes
+from path.models import Rating, CourseBase, TagsBase, Course_Tags, LessonBase, ActionTypes, TempUserQuizDict, QuizBase, TempCurrentQuiz, UserQuizProgress
 from m2m.models import PersonalGoals
 from feed.forms import DocumentForm
 from django.contrib.auth.views import LogoutView, UserModel
@@ -12,6 +13,7 @@ from django.conf import UserSettingsHolder, settings
 from django.template.defaulttags import register
 import datetime 
 import os
+import random
 
 
 level_pics = [
@@ -30,6 +32,22 @@ def currenttime(id):
     Feed.objects.filter(id=id).update(lastactivity = nowtime)
 
 
+def getcurrenttime():
+    nowtime = datetime.datetime.now().strftime("%d-%m-%Y %H:%M")
+    return nowtime
+
+
+def gettodaydate(date):
+    todaydate = date[:10]
+    return todaydate
+
+
+def FindUserId(request):
+    target_mail = request.user.username
+    userid = Feed.objects.filter(mail=target_mail).values_list('id')[0][0]
+    return userid
+
+
 
 def xpmovement(actionid, mod, currentlvl, currentexp):
     expmovement = ActionTypes.objects.filter(actionid = int(actionid)).values_list('expmovement')[0][0]
@@ -44,6 +62,54 @@ def xpmovement(actionid, mod, currentlvl, currentexp):
     else:
         up = False
     return [up, final_exp_int]
+
+
+
+def xpmovementdirect(userid, exp):
+    user_data = Feed.objects.filter(id=userid).values_list('rating_exp', 'lvl', 'xpmodificator')[0]
+    if exp < 0:
+        prev_level_border = Rating.objects.filter(ratingid = int(user_data[1])).values_list('rating_exp')[0][0]
+        final_exp_int = user_data[0] + exp
+        if final_exp_int < prev_level_border:
+            change = True
+        else:
+            change = False
+        move = 'down'
+    elif exp >= 0:
+        next_level_border = Rating.objects.filter(ratingid = int(user_data[1]) + 1).values_list('rating_exp')[0][0]
+        final_exp_int = user_data[0] + (exp * int(user_data[2]))
+        if final_exp_int >= next_level_border:
+            change = True
+        else:
+            change = False
+        move = 'up'
+
+    if move == 'up':
+        if change == True:
+            if Rating.objects.filter(ratingid=int(user_data[1] + 1)).exists():
+                Feed.objects.filter(id = userid).update(rating_exp = int(final_exp_int), lvl = int(user_data[1] + 1))
+            else:
+                Feed.objects.filter(id = userid).update(rating_exp = next_level_border - 1, lvl = int(user_data[1]))
+        else:
+            Feed.objects.filter(id = userid).update(rating_exp = int(final_exp_int))
+    elif move == 'down':
+        if change == True:
+            if user_data[1] - 1 >= 0:
+                Feed.objects.filter(id = userid).update(rating_exp = int(final_exp_int), lvl = int(user_data[1] - 1))
+            else:
+                Feed.objects.filter(id = userid).update(rating_exp = 0, lvl = 0)
+        else:
+            Feed.objects.filter(id = userid).update(rating_exp = int(final_exp_int))
+        #return [change, move, final_exp_int]
+
+
+
+# if info_on_exp_movement[0]:
+#     level_up = True
+#     Feed.objects.filter(id = userid).update(rating_exp = int(info_on_exp_movement[1]), lvl = int(userinfo[1]) + 1)
+# else:
+#     level_up = False
+#     Feed.objects.filter(id = userid).update(rating_exp = int(info_on_exp_movement[1]))
 
 
 
@@ -443,7 +509,7 @@ def pathpage(request, courseid):
     if request.user.is_authenticated == True: 
         # Need check the course existance
         if CourseBase.objects.filter(courseid=int(courseid), avaliable=True).exists():
-            course_data = CourseBase.objects.filter(courseid=int(courseid)).values_list('course_name', 'icon', 'color', 'description', 'complexity', 'author', 'authorid', 'fontcolor', 'moto', 'reqs', 'benefits')[0]
+            course_data = CourseBase.objects.filter(courseid=int(courseid)).values_list('course_name', 'icon', 'color', 'description', 'complexity', 'author', 'authorid', 'fontcolor', 'moto', 'reqs', 'benefits', 'language')[0]
             # Page upload begins
             target_mail = request.user.username
             userid = Feed.objects.filter(mail=target_mail).values_list('id')[0][0]
@@ -518,7 +584,7 @@ def pathpage(request, courseid):
             else:
                 lessonid = ourlessonid
 
-
+            # Benefits finder - cycle
             benefits_list = course_data[10][1:-1]
             benefits_len = len(benefits_list.split('],['))
             benefits = []
@@ -534,6 +600,21 @@ def pathpage(request, courseid):
                 benefit_s_dict[benefit_d[0]] = benefit_d[1]
                 benefits.append(benefit_s_dict)
             
+            # language finder - cycle
+            benefits_list = course_data[11][1:-1]
+            benefits_len = len(benefits_list.split('],['))
+            languages = []
+            benefits_item = (benefits_list.split('],['))
+            for i in range(benefits_len):
+                benefit_s_dict = {}
+                benefits_item_current = benefits_item[i]
+                if i == 0:
+                    benefits_item_current = benefits_item_current[1:]
+                elif i == benefits_len - 1:
+                    benefits_item_current = benefits_item_current[:-1]
+                benefit_d = benefits_item_current.split(';')
+                benefit_s_dict[benefit_d[0]] = benefit_d[1]
+                languages.append(benefit_s_dict)
 
 
                 
@@ -558,6 +639,7 @@ def pathpage(request, courseid):
                 'moto': course_data[8],
                 'reqs': course_data[9],
                 'benefits': benefits,
+                'languages':languages,
                 'started_course': started_course,
                 'coursecomplexityfilled': coursecomplexity,
                 'coursenotfilled': coursenotfilled,
@@ -630,18 +712,18 @@ def lessonpage(request, courseid, lessonid):
                     # How many lessons in total the course has
                     alllessons = LessonBase.objects.filter(courseid=int(courseid)).all()
                     lesson_counter = len(alllessons)
-                    alllessonscompleted = UserProgress.objects.filter(courseid=int(courseid), finished=True).all()
+                    alllessonscompleted = UserProgress.objects.filter(courseid=int(courseid), finished=True, userid=userid).all()
                     lessons_completed_counter = len(alllessonscompleted)
                     alllessonsnotcompleted = range(len(alllessons) - len(alllessonscompleted))
-                    alllessonscompletedforlist = UserProgress.objects.filter(courseid=int(courseid), finished=True).values_list('lessonid')
+                    alllessonscompletedforlist = UserProgress.objects.filter(courseid=int(courseid), finished=True, userid=userid).values_list('lessonid')
                     finished_courses_list = []
                     for string in alllessonscompletedforlist:
                         ourlessonid = string[0]
                         finished_courses_list.append(ourlessonid)
                     finished_courses_set = set(finished_courses_list)
                     finished_courses_list = list(finished_courses_set)
-                    alllessonsnotcompletedforlist = UserProgress.objects.filter(courseid=int(courseid), finished=False).values_list('lessonid')
-                    finished_or_not = UserProgress.objects.filter(courseid=int(courseid), lessonid=int(lessonid)).values_list('finished', 'quizcompleted')[0]
+                    alllessonsnotcompletedforlist = UserProgress.objects.filter(courseid=int(courseid), finished=False, userid=userid).values_list('lessonid')
+                    finished_or_not = UserProgress.objects.filter(courseid=int(courseid), lessonid=int(lessonid), userid=userid).values_list('finished', 'quizcompleted', 'failed')[0]
                     notfinished_courses_list = []
                     for string in alllessonsnotcompletedforlist:
                         ourlessonid = string[0]
@@ -656,6 +738,27 @@ def lessonpage(request, courseid, lessonid):
                     else:
                         photo = "files/guys.jpeg"
                     begin_path = '/media/'
+
+                    # Unpack all docs/links (materials) and turn them into the list for html template
+
+                    if lesson_data[2] != "":
+                        benefits_list = lesson_data[2][1:-1]
+                        benefits_len = len(benefits_list.split('],['))
+                        benefits = []
+                        benefits_item = (benefits_list.split('],['))
+                        for i in range(benefits_len):
+                            benefit_s_dict = {}
+                            benefits_item_current = benefits_item[i]
+                            if i == 0:
+                                benefits_item_current = benefits_item_current[1:]
+                            elif i == benefits_len - 1:
+                                benefits_item_current = benefits_item_current[:-1]
+                            benefit_d = benefits_item_current.split(';')
+                            #benefit_s_dict[benefit_d[0]] = benefit_d[1]
+                            benefit_s_dict[benefit_d[0]] = {benefit_d[1]: benefit_d[2][:-1]}
+                            benefits.append(benefit_s_dict)
+                    else:
+                        benefits = False
 
                         
                     return render(request, 'lessons/lessons.html', {
@@ -688,6 +791,8 @@ def lessonpage(request, courseid, lessonid):
                         'notfinished_courses_list': notfinished_courses_list,
                         'course_finished': finished_or_not[0],
                         'quiz_finished': finished_or_not[1],
+                        'failed': finished_or_not[2],
+                        'benefits': benefits,
                     })
                 else:
                     return HttpResponse(status=404)
@@ -819,7 +924,160 @@ def faq(request):
 
 def quiz(request, courseid, lessonid):
     if request.user.is_authenticated:
+        target_mail = request.user.username
+        userid = Feed.objects.filter(mail=target_mail).values_list('id')[0][0]
+        if TempUserQuizDict.objects.filter(userid=userid).exists():
+            TempUserQuizDict.objects.filter(userid=userid).delete()
+        quiz_total = len(QuizBase.objects.filter(courseid=int(courseid), lessonid=int(lessonid)))
+        quiz_list = random.sample(range(quiz_total), 10)
+        for index in quiz_list:
+            quiz_data = QuizBase.objects.filter(courseid=int(courseid), lessonid=int(lessonid)).values_list('id')[index][0]
+            new_quiz_for_user = TempUserQuizDict(quizid=quiz_data, userid=userid)
+            new_quiz_for_user.save()
+        course_data = CourseBase.objects.filter(courseid=int(courseid)).values_list('course_name', 'color', 'fontcolor')[0]
+        lesson_data = LessonBase.objects.filter(courseid=int(courseid), lessonid=int(lessonid)).values_list('lesson_name', 'prerequesite')[0]
+        first_quiz_num = TempUserQuizDict.objects.filter(userid=userid).values_list('quizid')[0][0]
+        TempUserQuizDict.objects.filter(userid=userid, quizid=first_quiz_num).delete()
+        if TempCurrentQuiz.objects.filter(userid=userid).exists():
+            TempCurrentQuiz.objects.filter(userid=userid).delete()
+        if UserQuizProgress.objects.filter(userid=userid).exists():
+            if UserQuizProgress.objects.filter(userid=userid).values_list('exp')[0][0] < 0:
+                user_progress = UserQuizProgress.objects.filter(userid=userid).values_list('exp', 'counter', 'wrong')[0]
+                if user_progress[1] >= 5:
+                    # Отнять опыт если было 5 и более ответов с отрицательной суммой и квиз бросили
+                    wrong_exp = user_progress[2]
+                    if user_progress[0] < 0:
+                        xpmovementdirect(userid, user_progress[0])
+                UserQuizProgress.objects.filter(userid=userid).delete()
+            else:
+                UserQuizProgress.objects.filter(userid=userid).delete()
+        UserQuizProgress(userid=userid, counter=1, exp=0).save()
+        TempCurrentQuiz(quizid=first_quiz_num, userid=userid).save()
+        first_quiz_data = QuizBase.objects.filter(id=first_quiz_num).values_list('quiztype', 'question', 'option_1', 'option_2', 'option_3', 'option_4', 'answer', 'answer_explanation', 'complexity', 'id', 'code')[0]
+        #lessonid for html
+        if int(lessonid) < 10:
+            lessonid_html = '0' + str(lessonid)
+        else:
+            lessonid_html = str(lessonid)
+        pass
+        
+        return render(request, 'quiz/quiz.html', {
+                    'clessonid': int(lessonid),
+                    'coursename': course_data[0],
+                    'coursecolor': course_data[1],
+                    'fontcolor': course_data[2],
+                    'lessonid_html': lessonid_html,
+                    'lessonname': lesson_data[0],
+                    'question': first_quiz_data[1],
+                    'o1': first_quiz_data[2],
+                    'o2': first_quiz_data[3],
+                    'o3': first_quiz_data[4],
+                    'o4': first_quiz_data[5],
+                    'complexity': first_quiz_data[8],
+                    'id': first_quiz_data[9],
+                    'code': first_quiz_data[10],
+                })
+
+
+def quizcheck(request, courseid, lessonid):
+    if request.user.is_authenticated:
         if request.is_ajax():
+            option_id = request.GET.get('option_id')
+            qid = request.GET.get('qid')
+            if option_id == 'op1':
+                chosen_a = 1
+            elif option_id == 'op2':
+                chosen_a = 2
+            elif option_id == 'op3':
+                chosen_a = 3
+            elif option_id == 'op4':
+                chosen_a = 4
+            else:
+                chosen_a = None
             target_mail = request.user.username
             userid = Feed.objects.filter(mail=target_mail).values_list('id')[0][0]
-            pass
+            current_quiz_id = TempCurrentQuiz.objects.filter(userid=userid).values_list('quizid')[0][0]
+            TempCurrentQuiz.objects.filter(userid=userid).delete()
+            current_duiz_data = QuizBase.objects.filter(id=current_quiz_id).values_list('answer', 'complexity')[0]
+            right_answer = int(current_duiz_data[0])
+            counter_data = UserQuizProgress.objects.filter(userid=userid).values_list('counter', 'wrong', 'exp')[0]
+            counter = counter_data[0] + 1
+            if chosen_a == right_answer:
+                UserQuizProgress.objects.filter(userid=userid).update(counter=counter, exp=counter_data[2] + current_duiz_data[1])
+                # EXP for right a
+                return JsonResponse({'right_answer': right_answer}, status=200)
+            else:
+                UserQuizProgress.objects.filter(userid=userid).update(counter=counter, wrong=counter_data[1] + 1, exp=counter_data[2] - 1)
+                # EXP for wrong a
+                return JsonResponse({'right_answer': right_answer, 'chosen': chosen_a}, status=200)
+
+
+
+def nexttask(request, courseid, lessonid):
+    if request.user.is_authenticated:
+        if request.is_ajax():
+            counter = request.GET.get('counter') # We do not use the counter
+            userid = FindUserId(request)
+            counterdb = UserQuizProgress.objects.filter(userid=userid).values_list('counter')[0][0]
+            if int(counterdb) < 11:
+                course_data = CourseBase.objects.filter(courseid=int(courseid)).values_list('color', 'fontcolor')[0]
+                first_quiz_num = TempUserQuizDict.objects.filter(userid=userid).values_list('quizid')[0][0]
+                TempUserQuizDict.objects.filter(userid=userid, quizid=first_quiz_num).delete()
+                TempCurrentQuiz(userid=userid, quizid=first_quiz_num).save()
+                first_quiz_data = QuizBase.objects.filter(id=first_quiz_num).values_list('quiztype', 'question', 'option_1', 'option_2', 'option_3', 'option_4', 'code', 'id', 'complexity')[0]
+                return JsonResponse({'color': course_data[0],
+                                     'fontcolor': course_data[1],
+                                     'quiztype': first_quiz_data[0],
+                                     'question': first_quiz_data[1],
+                                     'o1': first_quiz_data[2],
+                                     'o2': first_quiz_data[3],
+                                     'o3': first_quiz_data[4],
+                                     'o4': first_quiz_data[5],
+                                     'code': first_quiz_data[6],
+                                     'id': first_quiz_data[7],
+                                     'complexity': first_quiz_data[8],
+                                     }, status=200)
+            else:
+                return redirect('../results/')
+
+
+
+def quizresults(request, courseid, lessonid):
+    if request.user.is_authenticated:
+        target_mail = request.user.username
+        userid = Feed.objects.filter(mail=target_mail).values_list('id')[0][0]
+        nowtime = getcurrenttime()
+        if UserQuizProgress.objects.filter(userid=userid, counter=11).exists():
+            if not TempUserQuizDict.objects.filter(userid=userid).exists():
+                #Save all data
+                user_quizdata = UserQuizProgress.objects.filter(userid=userid).values_list('counter', 'wrong', 'exp')[0]
+                right_a = user_quizdata[0] - 1 - user_quizdata[1]
+                right_percentage = int(right_a/(user_quizdata[0] - 1) * 100)
+                # Identify, is it a training, if yes, set current time to track training occurence
+                if Feed.objects.filter(id=userid).values_list('lasttraining')[0][0] != gettodaydate(nowtime) and UserProgress.objects.filter(userid=userid, courseid = courseid, lessonid = lessonid, finished = True, quizcompleted=True).exists():
+                    xpmovementdirect(userid, user_quizdata[2])
+                elif not UserProgress.objects.filter(userid=userid, courseid = courseid, lessonid = lessonid, finished = True, quizcompleted=True).exists():
+                    xpmovementdirect(userid, user_quizdata[2])
+                UserQuizProgress.objects.filter(userid=userid).delete()
+
+                if UserProgress.objects.filter(userid=userid, courseid = courseid, lessonid = lessonid, finished = True, quizcompleted=True):
+                    Feed.objects.filter(id=userid).update(lasttraining=gettodaydate(nowtime))
+
+                if right_percentage >= 75:
+                    UserProgress.objects.filter(userid = userid, courseid = courseid, lessonid = lessonid, finished = True).update(quizcompleted=True, failed=False)
+                else:
+                    # If quiz still was not succesfully completed 
+                    if not UserProgress.objects.filter(userid = userid, courseid = courseid, lessonid = lessonid, finished = True, quizcompleted=True).exists():
+                        UserProgress.objects.filter(userid = userid, courseid = courseid, lessonid = lessonid, finished = True).update(failed=True)
+                return render(request, 'quiz/quizresults.html', {
+                            'wrong': user_quizdata[1],
+                            'right': right_a,
+                            'percentage': right_percentage,
+                            'amount': user_quizdata[0] - 1,
+                        })
+            else:
+                return HttpResponse(status=404)
+        else:
+            return HttpResponse(status=404)
+    else:
+        return HttpResponse(status=404)

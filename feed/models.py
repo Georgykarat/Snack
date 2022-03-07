@@ -36,6 +36,7 @@ class Feed(models.Model):
     time = models.CharField(max_length = 3, default="0")
     xpmodificator = models.IntegerField(default=1)
     lastactivity = models.CharField(max_length=30, default="", blank=True)
+    lasttraining = models.CharField(max_length=30, default="", blank=True)
 
     def __str__(self):
         return self.mail
@@ -57,3 +58,4 @@ class UserProgress(models.Model):
     lessonid = models.IntegerField()
     finished = models.BooleanField(default=False)
     quizcompleted = models.BooleanField(default=False)
+    failed = models.BooleanField(default=False)

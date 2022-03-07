@@ -262,7 +262,6 @@ h2 {
     box-shadow: none;
 }
 .path__flag {
-    background-image: url('../flag/003-united-kingdom.svg');
     width: 20px;
     height: 20px;
     border-radius: 40px;
@@ -270,6 +269,9 @@ h2 {
     background-size: 150%;
     background-position: center;
     margin-left: 40px;
+}
+.path__flag-ru {
+    background-image: url('../flag/015-russia.svg');
 }
 .path__centtralcnt_flex {
     width: 100%;

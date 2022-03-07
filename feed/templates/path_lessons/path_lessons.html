@@ -212,8 +212,12 @@
                                             {% endif %}
                                         </div>
                                         <div class="main__path_course-general-information-lessonscnt">
-                                            <div class="path__flag"></div>
-                                            <div class="main__path_course-general-information-lessons" style="color: #{{fontcolor}}">English</div>
+                                            {% for i in languages %}
+                                            {% for x, y in i.items %}
+                                            <div class="path__flag path__flag-{{x}}"></div>
+                                            <div class="main__path_course-general-information-lessons" style="color: #{{fontcolor}}">{{y}}</div>
+                                            {% endfor %}
+                                            {% endfor %}
                                         </div>
                                     </div>
                                 </div>

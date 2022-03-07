@@ -1,0 +1,66 @@
+* {
+    font-family: "Lemon Milk Regular";
+	margin: 0;
+    padding: 0;
+    text-decoration: none;
+    list-style: none;
+}
+button, input, textarea, select {
+-webkit-appearance: none;
+}
+a {
+    text-decoration: none;
+    color: unset;
+}
+
+body, html {
+    margin: 0;
+    height: 0;
+    max-width: 100%;
+    width: 100%;
+}
+body {
+    background-color: rgb(255,255,255);
+}
+
+@font-face{
+  font-family: Lemon Milk Pro;
+  font-style: normal;
+  src: url('../png/Lemon Milk Pro Ultra Light.otf');
+}
+
+@font-face{
+  font-family: Lemon Milk Pro b;
+  font-style: bold;
+  src: url('../png/Lemon Milk Pro Medium.otf');
+}
+
+@font-face{
+  font-family: Lemon Milk Regular;
+  font-style: bold;
+  src: url('../png/Lemon Milk Pro Regular.otf');
+}
+@font-face{
+  font-family: Lemon Milk Pro bb;
+  font-style: bold;
+  src: url('../png/Lemon Milk Pro Bold.otf');
+}
+@font-face{
+    font-family: "Open Sans Regular";
+    font-style: normal;
+    src: url('../fonts/OpenSans-Regular.ttf');
+  }
+  @font-face{
+    font-family: "Ubuntu Mono";
+    font-style: normal;
+    src: url('../fonts/UbuntuMono-Regular.ttf');
+  }
+
+  .quizresults_complete-btn {
+      display: flex;
+      width: 200px;
+      border-radius: 20px;
+      height: 100px;
+      color: white;
+      background-color: yellowgreen;
+  }

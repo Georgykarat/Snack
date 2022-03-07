@@ -13,7 +13,7 @@
     <script src="{% static 'js/jQueryv3.6.0.min.js' %}"></script>
     <script src="{% static 'js/jquery-ui.min.js' %}"></script>
     <link rel="stylesheet" href="{% static 'js/jquery-ui.css' %}">
-    <script src="{% static 'js/courses.js' %}"></script>
+    <script src="{% static 'js/faq.js' %}"></script>
     <script src="{% static 'js/theme.js' %}"></script>
     <style>
         .header-image {
@@ -115,10 +115,10 @@
                                 <div class="workspace-btn noactive-btn btn-layout"></div>
                                 <div class="li-menu nonactive-text">My Workspace</div>
                             </li></a>
-                            <li class="left-menu-items">
+                            <a href="/feed/courses/"><li class="left-menu-items">
                                 <div class="courses-btn noactive-btn btn-layout"></div>
-                                <div class="li-menu noactive-text">Courses</div>
-                            </li>
+                                <div class="li-menu nonactive-text">Courses</div>
+                            </li></a>
                             <li class="left-menu-items opacity20">
                                 <div class="analytics-btn noactive-btn btn-layout"></div>
                                 <div class="li-menu nonactive-text">Performance</div>
@@ -158,11 +158,88 @@
             </div>
             <div class="main__central-cnt_right">
                 <div class="main__cnt_noflex">
-                    <div class="h1courses">Any Questions?</div>
-                    <div class="h1courses">See the most frequently ones.</div>
+                    <div class="main__cnt-flex">
+                        <div class="main__cnt-flex-left">
+                            <div class="h1courses">Frequently Asked Questions</div>
+                            <div class="h2courses">Don't worry if you got stuck on something or have no clue what's going on.</div>
+                            <div class="h2courses">Here we consider all necessary answers :)</div>
+                        </div>
+                        <div class="main__faq_contactus_btn">Contact Us&nbsp;&nbsp;&#8594;</div>
+                    </div>
                     <div class="faq__q_cnt">
-                        <div class="faq__q_cnt_header">Is Snack Free?</div>
-                        <div class="faq__q_cnt_desc">Yes, Snack is completely free. Snack is being funded via donates, VIP subscriptions and adds</div>
+                        <div class="faq__q_cntflex">
+                            <div class="faq__item_num">1.</div>
+                            <div class="faq__q_cnt_header">Is Snack Free?</div>
+                        </div>
+                            <div class="faq__q_cnt_desc">Yes, Snack is completely free.</div>
+                    </div>
+                    <div class="faq__q_cnt">
+                        <div class="faq__q_cntflex">
+                            <div class="faq__item_num">2.</div>
+                            <div class="faq__q_cnt_header">It will be free to use? For real?</div>
+                        </div>
+                            <div class="faq__q_cnt_desc">Yes, Snack is planned to become an open platform to share structured knowledge worldwide in interactive way for free as knowledge should be a free resource for everybody. Snack is being funded via donates, VIP subscriptions and ads.</div>
+                    </div>
+                    <div class="faq__q_cnt">
+                        <div class="faq__q_cntflex">
+                            <div class="faq__item_num">3.</div>
+                            <div class="faq__q_cnt_header">Can I spend more than 5 minutes a day on Snack?</div>
+                        </div>
+                            <div class="faq__q_cnt_desc">Yes, Snack provides an opportunity 'to consume' knowledge as quickly as you can. Just like a chocolate bar. But you can spend more time to learn quicker and more efficiently. There are no restrictions. Learn as much as you can!</div>
+                    </div>
+                    <div class="faq__q_cnt">
+                        <div class="faq__q_cntflex">
+                            <div class="faq__item_num">4.</div>
+                            <div class="faq__q_cnt_header">I noticed a bug/mistake. How can I reach out to you?</div>
+                        </div>
+                            <div class="faq__q_cnt_desc">You can contact us via the green button above. Describe a bug/mistake you found via the form. We wll be glad to fix it to improve our platform</div>
+                    </div>
+                    <div class="faq__q_cnt">
+                        <div class="faq__q_cntflex">
+                            <div class="faq__item_num">5.</div>
+                            <div class="faq__q_cnt_header">How my level is calculated?</div>
+                        </div>
+                            <div class="faq__q_cnt_desc">
+                            We have leveling system to engage Snackers to learn. You can earn and lose points. When you get enough points, you move to the next level. As just in games.<br><br>
+                            How to gain points:<br>
+                            1) Complete lesson (3 p.)<br>
+                            2) Right quiz answers (1-3 p.)<br>
+                            3) Trainings (one per day) (1-3 p. per right answer)<br><br>
+                            How to lose point:<br>
+                            1) Wrong quiz answers (-1 p.)<br>
+                            2) Abandon quiz (-5 - -1 p.)<br><br>
+                            We have several leagues and every league has 100 levels.<br><br>
+                            Currently we have the following leagues:<br><br>
+                            </div>
+                            <div class="league_grass">1) Grass</div>
+                    </div>
+                    <div class="faq__q_cnt">
+                        <div class="faq__q_cntflex">
+                            <div class="faq__item_num">6.</div>
+                            <div class="faq__q_cnt_header">When other courses will be available?</div>
+                        </div>
+                            <div class="faq__q_cnt_desc">We are planning to find experts willing to share knowledge with Snack community. Basicly, Snack Team is planning to add one new course per month using our own avaliable resources (after Beta-test). If we will have more resources, hope we will develop in faster pace.</div>
+                    </div>
+                    <div class="faq__q_cnt">
+                        <div class="faq__q_cntflex">
+                            <div class="faq__item_num">7.</div>
+                            <div class="faq__q_cnt_header">How I can support Snack?</div>
+                        </div>
+                            <div class="faq__q_cnt_desc">If you have knowledge to share it with Snack community, please, contact us via the form above. We will help you to transfer your knowledge to the Snack. If you have no knowledge to share, you can support us via donates, VIP subscriptions and ads. But we really sure you have knowledge to share as every person is unique.</div>
+                    </div>
+                    <div class="faq__q_cnt">
+                        <div class="faq__q_cntflex">
+                            <div class="faq__item_num">8.</div>
+                            <div class="faq__q_cnt_header">What knowledge I can share/will be avaliable on Snack?</div>
+                        </div>
+                            <div class="faq__q_cnt_desc">Any knowledge, from fishing to nuclear fusion theory. Snack is planned to have no borders for knowledge areas. You know a lot about cars, planes, mechanics or nature? You know how to play football or curling? You have knowledge in military science or how to play Magic? Please, contact us. We will help you to share your knowledge and will develop an interactive way to check and track users progress</div>
+                    </div>
+                    <div class="faq__q_cnt">
+                        <div class="faq__q_cntflex">
+                            <div class="faq__item_num">9.</div>
+                            <div class="faq__q_cnt_header">What's next?</div>
+                        </div>
+                            <div class="faq__q_cnt_desc">We are planning to add new functions: ratings, compatative games, currencies, personal webpages to expand Snack.</div>
                     </div>
                 </div>
             </div>

@@ -109,11 +109,35 @@ main {
     flex-wrap: wrap;
     justify-content: flex-start;
 }
+.left_pane-header_flex {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
 h2 {
     font-family: 'Lemon Milk Regular';
     color: #979797;
     font-size: 16px;
     margin-bottom: 40px;
+    margin-top: 5px;
+    display: flex;
+}
+.left_pane_slider-btn {
+    display: flex;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    border-radius: 30px;
+    background-color: lightgray;
+    margin-top: 0px;
+    margin-bottom: 30px;
+    margin-left: 5px;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: white;
+    position: relative;
+    /* top: -5px; */
 }
 .right-cnt-header {
     font-size: 28px;
@@ -414,9 +438,69 @@ h2 {
     border-radius: 5px;
     font-family: 'Ubuntu Mono';
 }
-
-
-
+.main__lesson_material-block {
+    width: 100%;
+    display: flex;
+    margin-top: 30px;
+    flex-wrap: wrap;
+}
+.main__lesson_materials-header {
+    font-size: 20px;
+    color: #4F5665;
+    width: 100%;
+}
+.main__lesson_materials-ul {
+    display: block;
+    margin-top: 20px;
+    width: 100%;
+}
+.main__lesson_materials-li {
+    display: block;
+    border: 1px solid #e2e2e2;
+    background-color: #f8f8f8;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    width: 100%;
+    cursor: pointer;
+}
+.main__lesson_materials-liflex {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    flex-wrap: nowrap;
+    height: 60px;
+}
+.main__lesson_materials-liicon {
+    min-width: 50px;
+    min-height: 50px;
+    background-position: center;
+    background-size: 80%;
+    background-repeat: no-repeat;
+}
+.main__lesson_materials_info {
+    color: #4F5665;
+    font-size: 12px;
+    width: 100%;
+}
+.main__lesson_materials_info-type {
+    color: #b8b8b8;
+    font-size: 10px;
+    width: 100%;
+}
+.main__lesson_materials_infoblock {
+    display: flex;
+    flex-wrap: wrap;
+}
+.icon-py_file {
+    display: flex;
+    background-image: url('../png/formats/py.svg');
+}
+.icon-txt_file {
+    background-image: url('../png//formats/026-txt.svg');
+}
+.icon-web_file {
+    background-image: url('../png//formats/web.svg');
+}
 
 
 .li-cnt {

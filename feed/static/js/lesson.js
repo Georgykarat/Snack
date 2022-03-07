@@ -12,6 +12,7 @@ var Video = $('.main__lesson_video-cnt');
 var QuizButton = $('.main__lesson_takequiz-btn');
 var LessonCompletedCounter = $('.lesson_completed_counter');
 var NotCompletedFirst = $('.main__progressbar_notcompleted').first();
+var Sliderbutton = $('.left_pane_slider-btn');
 
 
 MainInfoBtn.on('click', function(){
@@ -140,6 +141,46 @@ function VideoTimeChanched() {
     }
 
 }
+
+// Slider for left pane
+
+Sliderbutton.on('click', function(){
+    if ($('h2').css('display') != 'none') {
+        $('.li-menu').css('display', 'none');
+        $('.toggle-label').css('display', 'none');
+        $('h2').css('display', 'none');
+        $('.main__central-cnt_left').animate({
+            'width': '5%',
+            'min-width': '5%',
+            'max-width': '5%',
+        }, 400, function(){
+        });
+        $('.main__central-cnt_right').animate({
+            'width': '90%',
+            'min-width': '90%',
+            'max-width': '90%',
+        }, 400, function(){
+            // $('.left_pane_slider-btn').text('&#8593;')
+        });
+    } else {
+        $('.main__central-cnt_right').animate({
+            'width': '76%',
+            'min-width': '76%',
+            'max-width': '76%',
+        }, 400, function(){
+        });
+        $('.main__central-cnt_left').animate({
+            'width': '20%',
+            'min-width': '20%',
+            'max-width': '20%',
+        }, 400, function(){
+            $('.li-menu').css('display', 'flex');
+            $('h2').css('display', 'flex');
+            $('.toggle-label').css('display', 'flex');
+            // $('.left_pane_slider-btn').text('&#8594;')
+        });
+    }
+});
 
 
 /* Mobile options */

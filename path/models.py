@@ -22,6 +22,7 @@ class Rating(models.Model):
 class CourseBase(models.Model):
     courseid = models.IntegerField()
     course_name = models.CharField(max_length=50)
+    language = models.TextField(blank=True, max_length=5000, default="")
     icon = models.FileField(upload_to='lessonicons/', blank=True)
     color = models.CharField(blank=True, max_length=8)
     fontcolor = models.CharField(blank=True, max_length=8)
@@ -62,6 +63,7 @@ class QuizBase(models.Model):
     quiztype = models.IntegerField()
     question = models.CharField(max_length=5000)
     question_pic = models.FileField(upload_to='quizpics', blank=True)
+    code = models.TextField(blank=True, max_length=10000, default="")
     option_1 = models.CharField(max_length=5000, blank=True)
     option_2 = models.CharField(max_length=5000, blank=True)
     option_3 = models.CharField(max_length=5000, blank=True)
@@ -91,6 +93,23 @@ class ActionTypes(models.Model):
 
     def __str__(self):
         return str(self.actionid) + " " + self.action
+
+
+class TempUserQuizDict(models.Model):
+    userid = models.IntegerField()
+    quizid = models.IntegerField()
+
+
+class TempCurrentQuiz(models.Model):
+    userid = models.IntegerField()
+    quizid = models.IntegerField()
+
+
+class UserQuizProgress(models.Model):
+    userid = models.IntegerField()
+    counter = models.IntegerField()
+    exp = models.IntegerField()
+    wrong = models.IntegerField(default=0)
 
 '''
 class RequirmentsType(models.Model):

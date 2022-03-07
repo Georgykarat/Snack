@@ -103,7 +103,10 @@
             <div class="main__central-cnt_left">
                 <div class="main__cnt_noflex">
                     <div class="main__cnt-flex">
-                        <h2>Main Menu</h2>
+                        <div class="left_pane-header_flex">
+                            <h2>Main Menu</h2>
+                            <div class="left_pane_slider-btn">&#8594;</div>
+                        </div>
                         <ul class="left-menu">
                             {% if access == 2 %}
                             <a href="/admin_frontend/" style="width: 100%"><li class="left-menu-items">
@@ -179,7 +182,7 @@
                                 <ul class="main__course-general-info-flex">
                                     <li class="main__course-general-info-flex-li lesson__info_inactive lesson__info_active lessoninfo-btn">Lesson Info</li>
                                     <li class="main__course-general-info-flex-li lesson__info_inactive lessonscript-btn">Script</li>
-                                    <li class="main__course-general-info-flex-li lesson__info_inactive lessonmat-btn">Materials</li>
+                                    <!--<li class="main__course-general-info-flex-li lesson__info_inactive lessonmat-btn">Materials</li>-->
                                 </ul>
                                 <div class="main__lessons_options-tab-line">
                                     <div class="main__lessons_options-tab-line-itself"></div>
@@ -187,9 +190,10 @@
                                 <div class="main__lesson_info-maininfo">
                                     {{lessondesc|safe}}
                                 </div>
+                                <!--
                                 <div class="main__lesson_info-materials">
                                     {{lessonmat|safe}}
-                                </div>
+                                </div>-->
                                 <div class="main__lesson_info-script">
                                     {{script|safe}}
                                 </div>
@@ -198,10 +202,12 @@
                         <div class="main__cnt_lesson_right-cnt">
                             {% if course_finished == False %}
                             <button class="main__lesson_takequiz-btn" style="cursor: not-allowed;">Take Lesson Quiz&nbsp;&#8594;</button>
+                            {% elif failed and quiz_finished == False %}
+                            <a href="quiz/"><button class="main__lesson_takequiz-btn" style="background-color: #861111; cursor: pointer;">Try one more time&nbsp;&#8594;</button></a>
                             {% elif course_finished and quiz_finished == False %}
-                            <button class="main__lesson_takequiz-btn" style="background-color: #26D07C; cursor: pointer;">Take Lesson Quiz&nbsp;&#8594;</button>
-                            {% else %}
-                            <button class="main__lesson_takequiz-btn" style="background-color: gold; cursor: pointer;">Take Lesson Quiz&nbsp;&#8594;</button>
+                            <a href="quiz/"><button class="main__lesson_takequiz-btn" style="background-color: #26D07C; cursor: pointer;">Take Lesson Quiz&nbsp;&#8594;</button></a>
+                            {% elif course_finished and quiz_finished %}
+                            <a href="quiz/"><button class="main__lesson_takequiz-btn" style="background-color: gold; cursor: pointer;">Training&nbsp;&nbsp;&#8594;</button></a>
                             {% endif %}
                             <div class="main__lesson_course-progress-cnt">
                                 <div class="main__leson-progress-header">{{coursename}}</div>
@@ -254,6 +260,32 @@
                                     {% endfor %}
                                 </ul>
                                 <div class="main__lesson-duration" style="display: none;">Current:&nbsp;<span class="c-minutes" id="c-minutes"></span>:<span class="c-seconds" id="c-seconds"></span></div>
+                            </div>
+                            <div class="main__lesson_material-block">
+                                <div class="main__lesson_materials-header">Materials</div>
+                                <ul class="main__lesson_materials-ul">
+                                    {% if benefits != False %}
+                                    {% for i in benefits %}
+                                    {% for x, y in i.items %}
+                                    {% for type, link in y.items %}
+                                    {% if type == 'web' %}
+                                    <a href='{{link}}' target="_blank">
+                                    <li class="main__lesson_materials-li">
+                                        <div class="main__lesson_materials-liflex">
+                                            <div class="main__lesson_materials-liicon icon-{{type}}_file"></div>
+                                            <div class="main__lesson_materials_infoblock">
+                                                <div class="main__lesson_materials_info">{{x}}</div>
+                                                <div class="main__lesson_materials_info-type">Website link</div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    </a>
+                                    {% endif %}
+                                    {% endfor %}
+                                    {% endfor %}
+                                    {% endfor %}
+                                    {% endif %}
+                                </ul>
                             </div>
                         </div>
                     </div>
