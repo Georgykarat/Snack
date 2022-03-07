@@ -755,7 +755,7 @@ def lessonpage(request, courseid, lessonid):
                                 benefits_item_current = benefits_item_current[:-1]
                             benefit_d = benefits_item_current.split(';')
                             #benefit_s_dict[benefit_d[0]] = benefit_d[1]
-                            benefit_s_dict[benefit_d[0]] = {benefit_d[1]: benefit_d[2][:-1]}
+                            benefit_s_dict[benefit_d[0]] = {benefit_d[1]: benefit_d[2][:]}
                             benefits.append(benefit_s_dict)
                     else:
                         benefits = False
