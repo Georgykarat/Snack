@@ -111,6 +111,40 @@ class UserQuizProgress(models.Model):
     exp = models.IntegerField()
     wrong = models.IntegerField(default=0)
 
+
+# Model for Bugs and mistakes from Users
+class BugsMistakes(models.Model):
+    userid = models.IntegerField()
+    link = models.CharField(max_length=150)
+    description = models.TextField(blank=True, max_length=10000, default="")
+    time = models.CharField(max_length=25)
+    checked = models.BooleanField(default=False)
+    testers = models.BooleanField(default=False)
+
+
+# Model for Knowledge sharing from Users
+class KnowledgeShare(models.Model):
+    userid = models.IntegerField()
+    knowledge = models.CharField(max_length=150)
+    contact = models.CharField(max_length=150)
+    time = models.CharField(max_length=25)
+
+
+# Model for Idea sharing from Users
+class IdeaShare(models.Model):
+    userid = models.IntegerField()
+    idea = models.TextField(blank=True, max_length=5000)
+    contact = models.CharField(max_length=150)
+    time = models.CharField(max_length=25)
+
+
+# Model for Idea sharing from Users
+class FeedbackDB(models.Model):
+    userid = models.IntegerField()
+    est = models.IntegerField()
+    strength = models.TextField(blank=True, max_length=5000)
+    drawback = models.TextField(blank=True, max_length=5000)
+    time = models.CharField(max_length=25)
 '''
 class RequirmentsType(models.Model):
     reqid = models.IntegerField()

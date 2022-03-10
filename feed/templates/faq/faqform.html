@@ -1,0 +1,79 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Snack Courses</title>
+    <link rel="stylesheet" href="{% static 'css/faqform.css' %}">
+    <link rel="stylesheet" href="{% static 'css/lefttab.css' %}">
+    <link rel="stylesheet" href="{% static 'css/toggler.css' %}">
+    <script src="{% static 'js/jQueryv3.6.0.min.js' %}"></script>
+    <script src="{% static 'js/jquery-ui.min.js' %}"></script>
+    <link rel="stylesheet" href="{% static 'js/jquery-ui.css' %}">
+    <script src="{% static 'js/faqform.js' %}"></script>
+    <script src="{% static 'js/theme.js' %}"></script>
+    <style></style>
+</head>
+<body>
+    <div class="faqform__main_cnt">
+        <div class="faqform__cnt">
+            <div class="faqform_header">Contact Form</div>
+            <div class="faqform_field-block faqform_reasons">
+                <label class="faqform__label">Reason</label>
+                <select class="faqform__select">
+                    <option>None</option>
+                    <option>I found a bug/mistake</option>
+                    <option>I want to share knowledge</option>
+                    <option>I have an idea</option>
+                    <option>Feedback</option>
+                </select>
+            </div>
+            <div class="faqform_field-block field_block-linked-ilbm">
+                <label class="faqform__label">Input link to the page with a bug/mistake</label>
+                <input class="faqform__input" id="faqform_buglink">
+            </div>
+            <div class="faqform_field-block field_block-linked-dbm">
+                <label class="faqform__label">Describe your bug/mistake</label>
+                <textarea class="faqform__textarea" id="faqform_bugdesc"></textarea>
+            </div>
+            <div class="faqform_field-block field_block-linked-kkn">
+                <label class="faqform__label">Knowledge name</label>
+                <input class="faqform__input" id="faqform_know">
+            </div>
+            <div class="faqform_field-block field_block-linked-dyi">
+                <label class="faqform__label">Describe your idea</label>
+                <textarea class="faqform__textarea" id="faqform_idea"></textarea>
+            </div>
+            <div class="faqform_field-block field_block-linked-kyc">
+                <label class="faqform__label">Your contact</label>
+                <input class="faqform__input" id="faqform_contact">
+            </div>
+            <div class="faqform__stars-block">
+                <label class="faqform__label">Estimate Snack</label>
+                <div class="faqform__star star_1"></div>
+                <div class="faqform__star star_2"></div>
+                <div class="faqform__star star_3"></div>
+                <div class="faqform__star star_4"></div>
+                <div class="faqform__star star_5"></div>
+                <input class="faqform__input-est" id="faqform_est">
+            </div>
+            <div class="faqform_field-block field_block-linked-str">
+                <label class="faqform__label">Strengths</label>
+                <textarea class="faqform__textarea2" id="faqform_str"></textarea>
+            </div>
+            <div class="faqform_field-block field_block-linked-drw">
+                <label class="faqform__label">Drawbacks</label>
+                <textarea class="faqform__textarea2" id="faqform_draw"></textarea>
+            </div>
+            <div class="faqform_button-cnt">
+                <div class="faqform__abandon-btn">Back</div>
+                <div class="faqform__proceed-btn">Proceed</div>
+            </div>
+        </div>
+    </div>
+</body>
+<!--<link rel="stylesheet" href="{% static 'css/lesson__media.css' %}">-->
+</html>
+

@@ -221,6 +221,10 @@ h1 {
     background-image: url('../img/addcourse.svg');
     background-size: 40%;
 }
+.admin__panel_li-feedback {
+    background-image: url('../img/favourite.svg');
+    background-size: 40%;
+}
 .text-color-white {
     color: white;
 }

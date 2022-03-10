@@ -1,11 +1,13 @@
+from time import time
 from typing import Counter
+from urllib import response
 from django.http.response import JsonResponse
 from django.contrib.auth.models import User
 from django.contrib.auth.hashers import check_password
 from django.shortcuts import render, redirect
 from django.http import HttpResponse, HttpResponseRedirect
 from feed.models import Feed, AccountImage, AccessLevel, UserProgress
-from path.models import Rating, CourseBase, TagsBase, Course_Tags, LessonBase, ActionTypes, TempUserQuizDict, QuizBase, TempCurrentQuiz, UserQuizProgress
+from path.models import Rating, CourseBase, TagsBase, Course_Tags, LessonBase, ActionTypes, TempUserQuizDict, QuizBase, TempCurrentQuiz, UserQuizProgress, BugsMistakes, KnowledgeShare, IdeaShare, FeedbackDB
 from m2m.models import PersonalGoals
 from feed.forms import DocumentForm
 from django.contrib.auth.views import LogoutView, UserModel
@@ -919,6 +921,88 @@ def faq(request):
         })
     else:
         return HttpResponseRedirect('../login')
+
+
+
+def faqform(request):
+    if request.user.is_authenticated:
+        return render(request, 'faq/faqform.html', {
+                
+            })
+    else:
+        return HttpResponse(status=404)
+
+
+
+def faqformbugreport(request):
+    if request.user.is_authenticated == True:
+        if request.is_ajax():
+            userid = FindUserId(request)
+            nowtime = getcurrenttime()
+            if request.GET.get('requesttype') == 'I found a bug/mistake':
+                buglink = request.GET.get('link')
+                bugdesc = request.GET.get('bugdescription')
+                if bugdesc and buglink:
+                    if Feed.objects.filter(id=userid, accessid=3).exists() or Feed.objects.filter(id=userid, accessid=2).exists():
+                        tester = True
+                    else:
+                        tester = False
+                    if len(BugsMistakes.objects.filter(userid=userid, checked=False).all()) > 19:
+                        responsecode = 400
+                    else:
+                        if tester:
+                            BugsMistakes(userid=userid, link=buglink, description=bugdesc, time=nowtime, testers=True).save()
+                        else:
+                            BugsMistakes(userid=userid, link=buglink, description=bugdesc, time=nowtime).save()
+                        responsecode = 200
+                else:
+                    responsecode = 401
+                return JsonResponse({'responsecode': responsecode}, status=200)
+            elif request.GET.get('requesttype') == 'I want to share knowledge':
+                knowledge = request.GET.get('knowledge')
+                contact = request.GET.get('contact')
+                if knowledge and contact:
+                    if len(KnowledgeShare.objects.filter(userid=userid).all()) > 9:
+                        responsecode = 400
+                    else:
+                        KnowledgeShare(userid=userid, knowledge=knowledge, contact=contact, time=nowtime).save()
+                        responsecode = 200
+                else:
+                    responsecode = 401
+                return JsonResponse({'responsecode': responsecode}, status=200)
+            elif request.GET.get('requesttype') == 'I have an idea':
+                idea = request.GET.get('idea')
+                contact = request.GET.get('contact')
+                if idea and contact:
+                    if len(IdeaShare.objects.filter(userid=userid).all()) > 9:
+                        responsecode = 400
+                    else:
+                        IdeaShare(userid=userid, idea=idea, contact=contact, time=nowtime).save()
+                        responsecode = 200
+                else:
+                    responsecode = 401
+                return JsonResponse({'responsecode': responsecode}, status=200)
+            elif request.GET.get('requesttype') == 'Feedback':
+                estimate = request.GET.get('estimate')
+                strength = request.GET.get('strength')
+                drawback = request.GET.get('drawback')
+                if estimate and strength and drawback:
+                    if FeedbackDB.objects.filter(userid=userid).exists():
+                        FeedbackDB.objects.filter(userid=userid).update(est=estimate, strength=strength, drawback=drawback, time=nowtime)
+                        responsecode = 200
+                    else:
+                        FeedbackDB(userid=userid, est=estimate, strength=strength, drawback=drawback, time=nowtime).save()
+                        responsecode = 200
+                else:
+                    responsecode = 401
+                return JsonResponse({'responsecode': responsecode}, status=200)
+                pass #Here should be other options
+
+            
+        else:
+            return HttpResponse(status=404)
+    else:
+        return HttpResponse(status=404)
 
 
 

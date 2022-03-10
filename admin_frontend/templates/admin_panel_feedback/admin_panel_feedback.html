@@ -1,0 +1,45 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Snack Courses</title>
+    <link rel="stylesheet" href="{% static 'css/admin_general.css' %}">
+    <link rel="stylesheet" href="{% static 'css/admin_panel_feedback.css' %}">
+    <link rel="stylesheet" href="{% static 'css/lefttab.css' %}">
+    <link rel="stylesheet" href="{% static 'css/toggler.css' %}">
+    <script src="{% static 'js/jQueryv3.6.0.min.js' %}"></script>
+    <script src="{% static 'js/admin_general.js' %}"></script>
+    <script src="{% static 'js/theme.js' %}"></script>
+    
+
+</head>
+<body>
+    {% include "feed/header2.html" %}
+    <main>
+        <div class="main__central-cnt">
+            <div class="main__central-cnt_left">
+                <div class="main__cnt_noflex">
+                    <div class="main__cnt-flex">
+                        {% include "admin__left_pane/admin__left_pane.html" %}
+                    </div>
+                </div>
+            </div>
+            <div class="main__central-cnt_right">
+                <div class="main__cnt_noflex">
+                    <section class="admin-section-main">
+                        <div class="admin__header" style="margin-bottom: 20px;">Feedback</div>
+                        <div class="admin__header" style="margin-bottom: 20px;">Average:&nbsp;{{average_est}}</div>
+                        <div class="admin__header" style="margin-bottom: 20px;">Estimations amount:&nbsp;{{est_amount}}</div>
+                    </section>
+                </div>
+            </div>
+        </div>
+    </main>
+    {% include "home/footer.html" %}
+</body>
+<script src="{% static 'js/admin_general_addlevel.js' %}"></script>
+</html>
+
