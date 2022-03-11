@@ -25,7 +25,7 @@ SECRET_KEY = '(k=s+tj5zhjt*gpcdxr)&!*=b21=wj+dj)bhrwlb9(ixfxf*z-'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['localhost', '20.115.64.184', '127.0.0.1', 'snack.eastus.cloudapp.azure.com']
+ALLOWED_HOSTS = ['localhost', 'snack.pw', '51.250.24.181', '20.115.64.184', '127.0.0.1', 'snack.eastus.cloudapp.azure.com']
 
 
 # Application definition
@@ -160,7 +160,7 @@ MAX_UPLOAD_SIZE = "10485760"
 
 EMAIL_BACKEND = 'django_smtp_ssl.SSLEmailBackend'
 EMAIL_USE_TLS = True
-EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_PORT = 587
-EMAIL_HOST_USER = 'snackinfo80@gmail.com'
-EMAIL_HOST_PASSWORD = 'Snackorg!8080info'
+EMAIL_HOST = 'smtp.yandex.ru'
+EMAIL_PORT = 465
+EMAIL_HOST_USER = 'snack.support@snack.pw'
+EMAIL_HOST_PASSWORD = 'zesutimpgeqkpdte'

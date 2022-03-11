@@ -23,8 +23,8 @@ import random
 
 
 def send_email(addr_to, msg_subj, msg_text):
-    addr_from = "snackinfo80@gmail.com"
-    password = "Snackorg!8080info"
+    addr_from = "snack.support@snack.pw"
+    password = "zesutimpgeqkpdte"
 
     msg = MIMEMultipart()
     msg['From'] = addr_from
@@ -35,9 +35,9 @@ def send_email(addr_to, msg_subj, msg_text):
     msg.attach(MIMEText(body, 'plain'))
 
     #Mail provider settings
-    server = smtplib.SMTP('smtp.gmail.com', 587)
+    server = smtplib.SMTP_SSL('smtp.yandex.ru', 465)
     server.ehlo()
-    server.starttls()
+    #server.starttls()
     server.login(addr_from, password)
     server.send_message(msg)
     server.quit()

@@ -256,8 +256,8 @@ def admin_panel_feedback(request):
                 photo = "files/guys.jpeg"
             begin_path = '/media/'
             #Let's get our estimates from DB
-            all_estimates = FeedbackDB.objects.filter(userid = True).values_list('est')
-            est_amount = len(FeedbackDB.objects.filter(userid = True).values_list('est'))
+            all_estimates = FeedbackDB.objects.all().values_list('est')
+            est_amount = len(FeedbackDB.objects.all().values_list('est'))
             start_estimate = 0
             for estimate in all_estimates:
                 start_estimate += estimate[0]
