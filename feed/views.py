@@ -762,6 +762,13 @@ def lessonpage(request, courseid, lessonid):
                     else:
                         benefits = False
 
+                    # Do we have quiz?
+                    quiz_length = len(QuizBase.objects.filter(courseid=courseid, lessonid=lessonid).all())
+                    if quiz_length >= 10:
+                        quiz_exist = True
+                    else:
+                        quiz_exist = False
+
                         
                     return render(request, 'lessons/lessons.html', {
                         'access': feed_data[0][0],
@@ -795,6 +802,7 @@ def lessonpage(request, courseid, lessonid):
                         'quiz_finished': finished_or_not[1],
                         'failed': finished_or_not[2],
                         'benefits': benefits,
+                        'quiz_exist': quiz_exist,
                     })
                 else:
                     return HttpResponse(status=404)
@@ -1013,54 +1021,63 @@ def quiz(request, courseid, lessonid):
         if TempUserQuizDict.objects.filter(userid=userid).exists():
             TempUserQuizDict.objects.filter(userid=userid).delete()
         quiz_total = len(QuizBase.objects.filter(courseid=int(courseid), lessonid=int(lessonid)))
-        quiz_list = random.sample(range(quiz_total), 10)
-        for index in quiz_list:
-            quiz_data = QuizBase.objects.filter(courseid=int(courseid), lessonid=int(lessonid)).values_list('id')[index][0]
-            new_quiz_for_user = TempUserQuizDict(quizid=quiz_data, userid=userid)
-            new_quiz_for_user.save()
-        course_data = CourseBase.objects.filter(courseid=int(courseid)).values_list('course_name', 'color', 'fontcolor')[0]
-        lesson_data = LessonBase.objects.filter(courseid=int(courseid), lessonid=int(lessonid)).values_list('lesson_name', 'prerequesite')[0]
-        first_quiz_num = TempUserQuizDict.objects.filter(userid=userid).values_list('quizid')[0][0]
-        TempUserQuizDict.objects.filter(userid=userid, quizid=first_quiz_num).delete()
-        if TempCurrentQuiz.objects.filter(userid=userid).exists():
-            TempCurrentQuiz.objects.filter(userid=userid).delete()
-        if UserQuizProgress.objects.filter(userid=userid).exists():
-            if UserQuizProgress.objects.filter(userid=userid).values_list('exp')[0][0] < 0:
-                user_progress = UserQuizProgress.objects.filter(userid=userid).values_list('exp', 'counter', 'wrong')[0]
-                if user_progress[1] >= 5:
-                    # Отнять опыт если было 5 и более ответов с отрицательной суммой и квиз бросили
-                    wrong_exp = user_progress[2]
-                    if user_progress[0] < 0:
-                        xpmovementdirect(userid, user_progress[0])
-                UserQuizProgress.objects.filter(userid=userid).delete()
-            else:
-                UserQuizProgress.objects.filter(userid=userid).delete()
-        UserQuizProgress(userid=userid, counter=1, exp=0).save()
-        TempCurrentQuiz(quizid=first_quiz_num, userid=userid).save()
-        first_quiz_data = QuizBase.objects.filter(id=first_quiz_num).values_list('quiztype', 'question', 'option_1', 'option_2', 'option_3', 'option_4', 'answer', 'answer_explanation', 'complexity', 'id', 'code')[0]
-        #lessonid for html
-        if int(lessonid) < 10:
-            lessonid_html = '0' + str(lessonid)
-        else:
-            lessonid_html = str(lessonid)
-        pass
         
-        return render(request, 'quiz/quiz.html', {
-                    'clessonid': int(lessonid),
-                    'coursename': course_data[0],
-                    'coursecolor': course_data[1],
-                    'fontcolor': course_data[2],
-                    'lessonid_html': lessonid_html,
-                    'lessonname': lesson_data[0],
-                    'question': first_quiz_data[1],
-                    'o1': first_quiz_data[2],
-                    'o2': first_quiz_data[3],
-                    'o3': first_quiz_data[4],
-                    'o4': first_quiz_data[5],
-                    'complexity': first_quiz_data[8],
-                    'id': first_quiz_data[9],
-                    'code': first_quiz_data[10],
-                })
+        # Do we have quiz?
+        if quiz_total >= 10:
+            quiz_exist = True
+    
+
+            quiz_list = random.sample(range(quiz_total), 10)
+            for index in quiz_list:
+                quiz_data = QuizBase.objects.filter(courseid=int(courseid), lessonid=int(lessonid)).values_list('id')[index][0]
+                new_quiz_for_user = TempUserQuizDict(quizid=quiz_data, userid=userid)
+                new_quiz_for_user.save()
+            course_data = CourseBase.objects.filter(courseid=int(courseid)).values_list('course_name', 'color', 'fontcolor')[0]
+            lesson_data = LessonBase.objects.filter(courseid=int(courseid), lessonid=int(lessonid)).values_list('lesson_name', 'prerequesite')[0]
+            first_quiz_num = TempUserQuizDict.objects.filter(userid=userid).values_list('quizid')[0][0]
+            TempUserQuizDict.objects.filter(userid=userid, quizid=first_quiz_num).delete()
+            if TempCurrentQuiz.objects.filter(userid=userid).exists():
+                TempCurrentQuiz.objects.filter(userid=userid).delete()
+            if UserQuizProgress.objects.filter(userid=userid).exists():
+                if UserQuizProgress.objects.filter(userid=userid).values_list('exp')[0][0] < 0:
+                    user_progress = UserQuizProgress.objects.filter(userid=userid).values_list('exp', 'counter', 'wrong')[0]
+                    if user_progress[1] >= 5:
+                        # Отнять опыт если было 5 и более ответов с отрицательной суммой и квиз бросили
+                        wrong_exp = user_progress[2]
+                        if user_progress[0] < 0:
+                            xpmovementdirect(userid, user_progress[0])
+                    UserQuizProgress.objects.filter(userid=userid).delete()
+                else:
+                    UserQuizProgress.objects.filter(userid=userid).delete()
+            UserQuizProgress(userid=userid, counter=1, exp=0).save()
+            TempCurrentQuiz(quizid=first_quiz_num, userid=userid).save()
+            first_quiz_data = QuizBase.objects.filter(id=first_quiz_num).values_list('quiztype', 'question', 'option_1', 'option_2', 'option_3', 'option_4', 'answer', 'answer_explanation', 'complexity', 'id', 'code')[0]
+            #lessonid for html
+            if int(lessonid) < 10:
+                lessonid_html = '0' + str(lessonid)
+            else:
+                lessonid_html = str(lessonid)
+            pass
+            
+            return render(request, 'quiz/quiz.html', {
+                        'clessonid': int(lessonid),
+                        'coursename': course_data[0],
+                        'coursecolor': course_data[1],
+                        'fontcolor': course_data[2],
+                        'lessonid_html': lessonid_html,
+                        'lessonname': lesson_data[0],
+                        'question': first_quiz_data[1],
+                        'o1': first_quiz_data[2],
+                        'o2': first_quiz_data[3],
+                        'o3': first_quiz_data[4],
+                        'o4': first_quiz_data[5],
+                        'complexity': first_quiz_data[8],
+                        'id': first_quiz_data[9],
+                        'code': first_quiz_data[10],
+                    }) 
+        else:
+            quiz_exist = False
+            return HttpResponse(status=404)
 
 
 def quizcheck(request, courseid, lessonid):

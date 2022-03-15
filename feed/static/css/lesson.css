@@ -159,7 +159,7 @@ h2 {
 .main__path-black-active {
     color: black;
 }
-.main__lesson_name-header {
+.main__lesson_name-header, .clessonid {
     font-size: 40px;
     color: #4F5665;
     font-family: 'Lemon Milk Pro b';
@@ -198,9 +198,10 @@ h2 {
 }
 .main__cnt_lesson_left-cnt {
     width: 75%;
-    display: flex;
+    display: block;
     flex-wrap: wrap;
     justify-content: start;
+    align-items: start;
 }
 .main__cnt_lesson_right-cnt {
     width: 22%;
@@ -220,13 +221,24 @@ h2 {
     margin-top: 70px;
     font-size: 16px;
 }
+.main__lesson_takequiz-btn-noquiz {
+    padding: 10px 20px;
+    width: 90%;
+    height: 60px;
+    background-color: transparent;
+    color: lightgrey;
+    border: 1px solid lightgrey;
+    border-radius: 15px;
+    margin-top: 70px;
+    font-size: 16px;
+}
 .main__lesson_video-cnt {
     width: 100%;
     margin-top: 40px;
 }
 .main__lesson_course-progress-cnt {
     width: 100%;
-    display: flex;
+    display: block;
     flex-wrap: wrap;
     margin-top: 40px;
 }
@@ -500,6 +512,9 @@ h2 {
 }
 .icon-web_file {
     background-image: url('../png//formats/web.svg');
+}
+.icon-py_file {
+    background-image: url('../png//formats/py.svg');
 }
 
 

@@ -165,10 +165,10 @@
                         <div class="main__cnt_lesson_left-cnt">
                             {% if clessonid < 10 %}
                             <a href="/feed/courses/"><div class="main__path-path">Courses&nbsp;</a><span style="font-family: 'Times New Roman', Times, serif;">&#8594;</span>&nbsp;<a href="../">{{coursename}}</a>&nbsp;&#8594;&nbsp;<span class="main__path-black-active">0{{clessonid}}.&nbsp;{{lessonname}}</span></div>
-                            <div class="main__lesson_name-header">0{{clessonid}}.&nbsp;{{lessonname}}</div>
+                            <div class="main__lesson_name-header">0<span class="clessonid">{{clessonid}}</span>.&nbsp;{{lessonname}}</div>
                             {% else %}
                             <a href="/feed/courses/"><div class="main__path-path">Courses&nbsp;</a><span style="font-family: 'Times New Roman', Times, serif;">&#8594;</span>&nbsp;<a href="../">{{coursename}}</a>&nbsp;&#8594;&nbsp;<span class="main__path-black-active">{{clessonid}}.&nbsp;{{lessonname}}</span></div>
-                            <div class="main__lesson_name-header">{{clessonid}}.&nbsp;{{lessonname}}</div>
+                            <div class="main__lesson_name-header"><span class="clessonid">{{clessonid}}</span>.&nbsp;{{lessonname}}</div>
                             {% endif %}
                             <div class="lesson__course_name-time_cnt">
                                 <div class="main__lesson_course_name-header">{{coursename}}</div>
@@ -200,7 +200,9 @@
                             </div>
                         </div>
                         <div class="main__cnt_lesson_right-cnt">
-                            {% if course_finished == False %}
+                            {% if quiz_exist == False %}
+                            <button class="main__lesson_takequiz-btn-noquiz" style="cursor: not-allowed;">No Quiz yet&nbsp;&nbsp;&#128679;</button>
+                            {% elif course_finished == False %}
                             <button class="main__lesson_takequiz-btn" style="cursor: not-allowed;">Take Lesson Quiz&nbsp;&#8594;</button>
                             {% elif failed and quiz_finished == False %}
                             <a href="quiz/"><button class="main__lesson_takequiz-btn" style="background-color: #861111; cursor: pointer;">Try one more time&nbsp;&#8594;</button></a>
@@ -220,7 +222,7 @@
                                     <div class="main__progressbar_notcompleted" style="width: {{progressbar_width}}%;"></div>
                                     {% endfor %}
                                 </div>
-                                <ul class="main__course_progress-ul">
+                                <ul class="main__course_progress-ul" id="main__course_progress-ulid">
                                     
                                     {% for lesson in alllessons %}
                                         {% if lesson.lessonid in finished_courses_list and lesson.lessonid == clessonid%}
@@ -242,7 +244,7 @@
                                                 <div class="main__course_progress-li-title-prev">{{lesson.lesson_name}}</div>
                                             </li></a>
                                         {% elif lesson.lessonid == clessonid %}
-                                        <li class="main__course_progress-li">
+                                        <li class="main__course_progress-li" id="current__lesson_id">
                                             <div class="main__course_progress-li-counter-current active-lesson-ul">{{lesson.lessonid}}</div>
                                             <div class="main__course_progress-li-title-current active-lesson-ul">{{lesson.lesson_name}}</div>
                                         </li>
@@ -276,6 +278,18 @@
                                             <div class="main__lesson_materials_infoblock">
                                                 <div class="main__lesson_materials_info">{{x}}</div>
                                                 <div class="main__lesson_materials_info-type">Website link</div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    </a>
+                                    {% elif type == 'py' %}
+                                    <a href='{{link}}' download="">
+                                    <li class="main__lesson_materials-li">
+                                        <div class="main__lesson_materials-liflex">
+                                            <div class="main__lesson_materials-liicon icon-{{type}}_file"></div>
+                                            <div class="main__lesson_materials_infoblock">
+                                                <div class="main__lesson_materials_info">{{x}}</div>
+                                                <div class="main__lesson_materials_info-type">.py file</div>
                                             </div>
                                         </div>
                                     </li>

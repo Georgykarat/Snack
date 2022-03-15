@@ -9,6 +9,7 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.urls import reverse
 from registration.forms import UserForm
 from django.views import View
+
 from feed.models import Feed, Invites
 from registration.models import RegMailCode
 
@@ -17,7 +18,6 @@ from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 from email.mime.text import MIMEText
 from email import encoders
-
 from django.http import JsonResponse
 import random
 

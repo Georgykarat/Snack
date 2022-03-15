@@ -11,8 +11,29 @@ var MarBtn = $('.lessonmat-btn');
 var Video = $('.main__lesson_video-cnt');
 var QuizButton = $('.main__lesson_takequiz-btn');
 var LessonCompletedCounter = $('.lesson_completed_counter');
+var CLessonID = $('.clessonid').text()
 var NotCompletedFirst = $('.main__progressbar_notcompleted').first();
 var Sliderbutton = $('.left_pane_slider-btn');
+var VideoHeight = $('video').height();
+var ProgressHeaderHeight = $('.main__leson-progress-header').height() + $('.main__leson-progress-total').height() + $('.main__leson-progressbar-cnt').height()
+var ProgressHeight = VideoHeight - ProgressHeaderHeight
+$('.main__lesson_course-progress-cnt').height(ProgressHeight);
+if ((parseInt(CLessonID) - 2) * 50 > ProgressHeight - 300) {
+    var ScrollAmount = ProgressHeight - 50
+} else {
+    var ScrollAmount = (parseInt(CLessonID) - 2) * 50
+}
+
+//var ScrollAmount = (parseInt(CLessonID) - 2) * 50
+var Scroller = $("#main__course_progress-ulid");
+
+Scroller.scrollTop(ScrollAmount);
+console.log(parseInt((parseInt(CLessonID) - 2) * 50));
+console.log(parseInt(ProgressHeight - 300));
+
+// $('.main__course_progress-li-title-now').scrollTop(100);
+// console.log(ProgressHeaderHeight / 2);
+
 
 
 MainInfoBtn.on('click', function(){
