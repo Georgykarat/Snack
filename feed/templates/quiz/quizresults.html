@@ -20,8 +20,57 @@
     </style>
 </head>
 <body>
-    <div>Results: {{right}}/{{amount}} - {{percentage}}%</div>
-    <a href="../../" style="display: flex;"><div class="quizresults_complete-btn">COMPLETE</div></a>
+    <div class="quizresults__general-cnt">
+        <div class="quizresults__generalflex-cnt">
+            <div class="quiz__main_cnt">
+                <div class="quiz__main_header-cnt">
+                    <div class="quiz__main-course_header">{{coursename}}</div>
+                    <div class="quiz__main-course_subheader">{{lessonid_html}}.&nbsp;{{lessonname}}</div>
+                </div>
+            </div>
+            <div class="quiz__main_cnt">
+                <div class="quizres__main_cnt-top"></div>
+                <div class="quizres__main_cnt-bottom" style="background-color: #{{coursecolor}};"></div>
+                <div class="quizres__main_cnt-cenral">
+                    <div class="quiz__main-cnt-c-c">
+                        <div class="quiz__main-cnt-c-cf">
+                            <div class="quiz__main-cnt-c-cf-row">
+                                <div class="quiz__main-leftcnt">
+                                    {% if right > 7 %}
+                                    <div class="quiz__main-leftcnt-r">
+                                        <div class="quiz__main-left_hresult-cnt">
+                                            <div class="quiz__main-left_hresult">Congrats, You Snacker</div>
+                                            <div class="quiz__main-left_hresult-sm"></div>
+                                        </div>
+                                    </div>
+                                    <div class="quiz__main-left_hresult-text">You have completed the quiz successfully</div>
+                                    {% else %}
+                                    <div class="quiz__main-leftcnt-r">
+                                        <div class="quiz__main-left_hresult-cnt">
+                                            <div class="quiz__main-left_hresult">Oops... It's a fail!</div>
+                                            <div class="quiz__main-left_hresult-th"></div>
+                                        </div>
+                                    </div>
+                                    <div class="quiz__main-left_hresult-text">You have not scored enough to complete this quiz</div>
+                                    {% endif %}
+                                    <div class="quiz__main-left_hresult-text">Your result:&nbsp;{{right}}/10</div>
+                                    <div class="quiz__main-leftcnt-r">
+                                        <div class="quiz__main-left_hresult-cnt">
+                                            <a href="../../" class="quizres__back-to-quiz-a"><div class="quizres__back-to-quiz">Back to course&nbsp;&#8594;</div></a>
+                                            <div class="quizres__see-details">See details</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="quiz__main-rightcnt">
+                                    <span class="quiz__main_counter">{{right}}</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
 <!--<link rel="stylesheet" href="{% static 'css/lesson__media.css' %}">-->
 </html>

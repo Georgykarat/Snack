@@ -1170,11 +1170,22 @@ def quizresults(request, courseid, lessonid):
                     # If quiz still was not succesfully completed 
                     if not UserProgress.objects.filter(userid = userid, courseid = courseid, lessonid = lessonid, finished = True, quizcompleted=True).exists():
                         UserProgress.objects.filter(userid = userid, courseid = courseid, lessonid = lessonid, finished = True).update(failed=True)
+                
+                course_data = CourseBase.objects.filter(courseid=int(courseid)).values_list('course_name', 'color', 'fontcolor')[0]
+                lesson_data = LessonBase.objects.filter(courseid=int(courseid), lessonid=int(lessonid)).values_list('lesson_name', 'prerequesite')[0]
+                if int(lessonid) < 10:
+                    lessonid_html = '0' + str(lessonid)
+                else:
+                    lessonid_html = str(lessonid)
                 return render(request, 'quiz/quizresults.html', {
                             'wrong': user_quizdata[1],
                             'right': right_a,
                             'percentage': right_percentage,
                             'amount': user_quizdata[0] - 1,
+                            'coursename': course_data[0],
+                            'coursecolor': course_data[1],
+                            'lessonid_html': lessonid_html,
+                            'lessonname': lesson_data[0],
                         })
             else:
                 return HttpResponse(status=404)

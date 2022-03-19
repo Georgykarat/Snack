@@ -21,6 +21,7 @@ body, html {
 }
 body {
     background-color: rgb(255,255,255);
+    overflow: hidden;
 }
 
 @font-face{
@@ -55,12 +56,190 @@ body {
     font-style: normal;
     src: url('../fonts/UbuntuMono-Regular.ttf');
   }
+.quizresults__general-cnt {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  justify-content: center;
+  height: 100vh;
+}
+.quizresults__generalflex-cnt {
+  display: flex;
+  flex-wrap: wrap;
+  width: 95vw;
 
-  .quizresults_complete-btn {
-      display: flex;
-      width: 200px;
-      border-radius: 20px;
-      height: 100px;
-      color: white;
-      background-color: yellowgreen;
-  }
+}
+.quiz__main_cnt {
+  width: 100%;
+}
+.quiz__main_header-cnt {
+  display: flex;
+    width: 100%;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    height: 50px;
+    margin-top: 1vh;
+    margin-bottom: 6vh;
+}
+.quiz__main-course_header {
+  width: 100%;
+  text-align: left;
+  font-size: 32px;
+  font-family: 'Lemon Milk Pro bb';
+  color: #4F5665;
+}
+.quiz__main-course_subheader {
+  width: 100%;
+  text-align: left;
+  font-size: 16px;
+  font-family: 'Lemon Milk Pro';
+  color: #B2B2B2;
+}
+.quizres__main_cnt-top {
+  width: 100%;
+  height: 15vh;
+  background-color: #4F5665;
+  border: none;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  display: block;
+}
+.quizres__main_cnt-bottom {
+  width: 100%;
+  height: 50vh;
+  border: none;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+  display: block;
+}
+.quizres__main_cnt-cenral {
+  width: 97%;
+  height: 58vh;
+  background-color: white;
+  border: none;
+  border-radius: 20px;
+  display: block;
+  position: relative;
+  top: -61vh;
+  margin: 0 auto;
+}
+.quiz__main-cnt-c-c {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+}
+.quiz__main-cnt-c-cf {
+  display: flex;
+  width: 95%;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.quiz__main-cnt-c-cf-row {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: nowrap;
+}
+.quiz__main-leftcnt {
+  display: flex;
+  width: 50%;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  height: 100%;
+  padding-top: 2vh;
+  padding-bottom: 2vh;
+  align-items: center;
+}
+.quiz__main-leftcnt-r {
+  display: flex;
+  width: 100%;
+  flex-wrap: wrap;
+  align-items: center;
+}
+.quiz__main-left_hresult-cnt {
+  display: flex;
+  width: 100%;
+  flex-wrap: wrap;
+  align-items: center;
+  margin: 10px 0;
+}
+.quiz__main-left_hresult {
+  display: flex;
+  color: #4F5665;
+  font-family: 'Lemon Milk Pro b';
+  font-size: 30px;
+}
+.quiz__main-left_hresult-sm {
+  background-repeat: no-repeat;
+  background-size: 100%;
+  background-image: url('../png/smiling.svg');
+  background-position: center;
+  height: 40px;
+  width: 40px;
+  margin-left: 20px;
+}
+.quiz__main-left_hresult-th {
+  background-repeat: no-repeat;
+  background-size: 100%;
+  background-image: url('../png/thinking.svg');
+  background-position: center;
+  height: 40px;
+  width: 40px;
+  margin-left: 20px;
+}
+.quiz__main-left_hresult-text {
+  display: flex;
+  color: #4F5665;
+  font-family: 'Lemon Milk Pro';
+  font-size: 20px;
+  margin: 10px 0;
+  width: 100%;
+}
+.quiz__main-rightcnt {
+  display: flex;
+  width: 50%;
+  justify-content: flex-start;
+  height: 57vh;
+  background-image: url('../png/021-plate.svg');
+  background-position: center;
+  background-size: 100%;
+  background-repeat: no-repeat;
+  z-index: 10;
+}
+.quiz__main_counter {
+  color: #4F5665;
+  font-family: 'Lemon Milk Pro bb';
+  font-size: 15vh;
+  position: relative;
+  right: -45%;
+  bottom: -45%;
+}
+.quizres__back-to-quiz {
+  color: #4F5665;
+  cursor: pointer;
+  padding: 10px;
+  height: 50px;
+  font-size: 25px;
+  margin-right: 20px;
+}
+.quizres__back-to-quiz-a {
+  display: flex;
+  align-items: center;
+}
+.quizres__see-details {
+  color: white;
+  cursor: pointer;
+  padding: 10px 20px;
+  height: 35px;
+  font-size: 25px;
+  margin-right: 20px;
+  border: 1px solid #4F5665;
+  background-color: #4F5665;
+  display: flex;
+  justify-content: center;
+  border-radius: 20px;
+}
