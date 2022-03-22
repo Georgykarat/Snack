@@ -389,6 +389,8 @@ h2 {
     width: 80%;
     margin-left: 30px;
     flex-wrap: wrap;
+    /* height: 300px;
+    overflow-y: scroll; */
 
 }
 .path__centtralcnt_subheader {
@@ -404,6 +406,73 @@ h2 {
     flex-wrap: nowrap;
     align-items: center;
 }
+.path__li_title_quiz-completed {
+    display: flex;
+    min-height: 4px;
+    height: 4px;
+    min-width: 4px;
+    border: 2px solid #26D07C;
+    border-radius: 5px;
+    background-color: #26D07C;
+    position: relative;
+    left: -20px;
+}
+.path__li_title_quiz-failed {
+    display: flex;
+    min-height: 4px;
+    height: 4px;
+    min-width: 4px;
+    border: 2px solid #861111;
+    border-radius: 5px;
+    background-color: #861111;
+    position: relative;
+    left: -20px;
+}
+.path__li_title_quiz-exist {
+    display: flex;
+    min-height: 4px;
+    height: 4px;
+    min-width: 4px;
+    border: 2px solid #26D07C;
+    border-radius: 7px;
+    background-color: transparent;
+    position: relative;
+    left: -20px;
+}
+.path__li_title_quiz-training {
+    display: flex;
+    min-height: 4px;
+    height: 4px;
+    min-width: 4px;
+    border: 2px solid gold;
+    border-radius: 7px;
+    background-color: gold;
+    position: relative;
+    left: -20px;
+}
+
+.path__li_title_quiz-existq {
+    display: flex;
+    min-height: 4px;
+    height: 4px;
+    min-width: 4px;
+    border: 2px solid lightgrey;
+    border-radius: 7px;
+    background-color: lightgrey;
+    position: relative;
+    left: -20px;
+}
+.path__li_title_quiz-notexist {
+    display: flex;
+    min-height: 4px;
+    height: 4px;
+    min-width: 4px;
+    border: 2px solid transparent;
+    border-radius: 7px;
+    background-color: transparent;
+    position: relative;
+    left: -20px;
+}
 .path__li_number_item-active {
     min-width: 30px;
     min-height: 30px;
@@ -417,7 +486,7 @@ h2 {
 }
 .path__li_title_item-active {
     padding-left: 20px;
-    padding-right: 20px;
+    padding-right: 22px;
     color: #26D07C;
     font-size: 12px;
     width: 100%;
@@ -439,7 +508,7 @@ h2 {
 }
 .path__li_title_item-current {
     padding-left: 20px;
-    padding-right: 20px;
+    padding-right: 22px;
     color: #4F5665;
     font-size: 12px;
     width: 100%;
@@ -462,7 +531,7 @@ h2 {
 }
 .path__li_title_item-locked {
     padding-left: 20px;
-    padding-right: 20px;
+    padding-right: 22px;
     color: #979797;
     font-size: 12px;
     width: 100%;

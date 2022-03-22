@@ -105,6 +105,33 @@ def xpmovementdirect(userid, exp):
         #return [change, move, final_exp_int]
 
 
+def find_active_inactive_quiz_list(courseid):
+    '''
+    This function takes (course id) and returns a list: (active)
+    '''
+    course_length = len(LessonBase.objects.filter(courseid=courseid).all())
+    active = []
+    for i in range(course_length + 1):
+        quizes = len(QuizBase.objects.filter(courseid=int(courseid), lessonid=i+1).all())
+        if quizes >= 10:
+            active.append(i + 1)
+    return active
+
+
+def find_ffi_inactive_quiz_list(courseid, userid):
+    '''
+    This function takes (course id) and returns a list: (Training|Failed|Success)
+    '''
+    course_training = UserProgress.objects.filter(courseid=courseid, userid=userid, finished=True, quizcompleted=True).values_list('lessonid')
+    course_training_list = []
+    for course in course_training:
+        course_training_list.append(int(course[0]))
+    course_failed = UserProgress.objects.filter(courseid=courseid, userid=userid, finished=True, quizcompleted=False, failed=True).values_list('lessonid')
+    course_failed_list = []
+    for course in course_failed:
+        course_failed_list.append(int(course[0]))
+    
+    return (course_training_list, course_failed_list)
 
 # if info_on_exp_movement[0]:
 #     level_up = True
@@ -585,7 +612,10 @@ def pathpage(request, courseid):
                 lessonid = 1
             else:
                 lessonid = ourlessonid
-
+            # Let's find quiz status active/inactive
+            active_quiz_list = find_active_inactive_quiz_list(courseid)
+            # Let's find quiz status failed/finished/training
+            training_quiz_list = find_ffi_inactive_quiz_list(courseid, userid) 
             # Benefits finder - cycle
             benefits_list = course_data[10][1:-1]
             benefits_len = len(benefits_list.split('],['))
@@ -657,6 +687,9 @@ def pathpage(request, courseid):
                 'lesson_base': lesson_base,
                 'finished_courses_list': finished_courses_list,
                 'lessonid': lessonid,
+                'active_quiz_list': active_quiz_list,
+                'finished_list': training_quiz_list[0],
+                'failed_list': training_quiz_list[1],
             })
         else:
             return HttpResponse(status=404)

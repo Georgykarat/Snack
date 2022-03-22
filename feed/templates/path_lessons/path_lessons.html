@@ -285,16 +285,36 @@
                                         <a href="{{lesson.lessonid}}/" style="width: 100%;"><li class="path__li_courses"> 
                                             <div class="path__li_number_item-active">{{lesson.lessonid}}</div>
                                             <div class="path__li_title_item-active">{{lesson.lesson_name}}</div>
+                                            {% comment %} <div class="path__li_title_quiz-failed"></div> {% endcomment %}
+                                            {% if lesson.lessonid not in finished_courses_list %}
+                                                <div class="path__li_title_quiz-notexist"></div>
+                                            {% elif lesson.lessonid in finished_list %}
+                                                <div class="path__li_title_quiz-completed"></div>
+                                            {% elif lesson.lessonid in failed_list %}
+                                                <div class="path__li_title_quiz-failed"></div>
+                                            {% elif lesson.lessonid in finished_courses_list %}
+                                                <div class="path__li_title_quiz-exist"></div>
+                                            {% endif %}
                                         </li></a>
                                         {% elif lesson.lessonid == next_lesson_id %}
                                         <a href="{{lesson.lessonid}}/" style="width: 100%;"><li class="path__li_courses"> 
                                             <div class="path__li_number_item-current">{{lesson.lessonid}}</div>
                                             <div class="path__li_title_item-current">{{lesson.lesson_name}}</div>
+                                            {% if lesson.lessonid not in finished_courses_list %}
+                                                <div class="path__li_title_quiz-notexist"></div>
+                                            {% elif lesson.lessonid in finished_list %}
+                                                <div class="path__li_title_quiz-completed"></div>
+                                            {% elif lesson.lessonid in failed_list %}
+                                                <div class="path__li_title_quiz-failed"></div>
+                                            {% elif lesson.lessonid in finished_courses_list %}
+                                                <div class="path__li_title_quiz-exist"></div>
+                                            {% endif %}
                                         </li></a>
                                         {% elif lesson.lessonid not in finished_courses_list %}
                                         <li class="path__li_courses"> 
                                             <div class="path__li_number_item-locked">{{lesson.lessonid}}</div>
                                             <div class="path__li_title_item-locked">{{lesson.lesson_name}}</div>
+                                            <div class="path__li_title_quiz-notexist"></div>
                                         </li>
                                         {% endif %}
                                         {% endfor %}
