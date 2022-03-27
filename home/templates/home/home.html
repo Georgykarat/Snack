@@ -8,7 +8,7 @@
     <title>Snack Courses</title>
     <link rel="stylesheet" type="text/css" href="{% static 'css/home__styles.css' %}">
     <style type="text/css">
-          @font-face{
+          {% comment %} @font-face{
   font-family: Lemon Milk Pro;
   font-style: normal;
   src: url({% static 'css/Lemon Milk Pro Ultra Light.otf' %});
@@ -29,7 +29,7 @@
   font-family: Lemon Milk Pro bb;
   font-style: bold;
   src: url({% static 'css/Lemon Milk Pro Bold.otf' %});
-}
+} {% endcomment %}
     </style>
 </head>
 <body>
@@ -48,8 +48,8 @@
                 <li class="header-cnt_centre__menu-a inactive-currently blocked"><a href="#">Help</a></li>
             </ul>
             <div class="header-cnt_right__logo">
-                <a href="login/"><button class="header__sign-in-btn">Sign&nbsp;In</button></a>
-                <a href="registration/"><button class="header__sign-up-btn">Sign&nbsp;Up</button></a>
+                <a href="login/"><button class="header__sign-in-btn">Войти</button></a>
+                <a href="registration/"><button class="header__sign-up-btn">Регистрация</button></a>
             </div>
         </div>
     </div>
@@ -58,13 +58,13 @@
             <div class="main-cnt-blockwithitems">
                 <div class="main-cnt-leftblock">
                     <div class="h1">
-                        <h1>LOREM IPSUM DOLOR SIT AMET<span class="h1-dot">.</span></h1>
+                        <h1>ЭТО ВАШЕ БЕСПЛАТНОЕ ОБРАЗОВАНИЕ<span class="h1-dot">.</span></h1>
                     </div>
                     <div class="h2">
-                        Your free, fun and purposefull education is&nbsp;about to start just now.
+                        Качайте не только банки, но и уровни, клоуны!
                     </div>
                     <a href="registration/"><button class="readytogo-btn">
-                        READY TO GO
+                        ПОГНАЛИ НАХУЙ
                     </button></a>  
                 </div>
                 <div class="main-cnt-rightblock">
@@ -74,15 +74,15 @@
             <div class="main-cnt-blockwithitems-2">
                 <div class="main-2cnt-leftcnt">
                     <div class="left2-cnt">
-                        Don't miss anything out.<br> Subscribe to our e-mail.
+                        Слишком чистая почта?<br> Просто добавь спама!
                     </div>
                     <div class="left2-cnt-text">
-                        Make sure all actual Snack updates are in your inbox.
+                        Получай рекламу, вирусы и начни засорять почту прямо сейчас
                     </div>                    
                 </div>
                 <div class="main-2cnt-leftcnt">
                     <button class="sbsc-now">
-                        SUBSCRIBE NOW
+                        ПИЗДЕЦ ПОЧТЕ
                     </button>                   
                 </div>
             </div>

@@ -24,31 +24,36 @@ body {
 }
 
 @font-face{
-  font-family: Lemon Milk Pro;
-  font-style: normal;
-  src: url('../png/Lemon Milk Pro Ultra Light.otf');
-}
-
-@font-face{
-  font-family: Lemon Milk Pro b;
-  font-style: bold;
-  src: url('../png/Lemon Milk Pro Medium.otf');
-}
-
-@font-face{
-  font-family: Lemon Milk Regular;
-  font-style: bold;
-  src: url('../png/Lemon Milk Pro Regular.otf');
-}
-@font-face{
-  font-family: Lemon Milk Pro bb;
-  font-style: bold;
-  src: url('../png/Lemon Milk Pro Bold.otf');
-}
+    font-family: Lemon Milk Pro;
+    font-style: normal;
+    src: url('../fonts/static/Commissioner-ExtraLight.ttf');
+  }
+  
+  @font-face{
+    font-family: Lemon Milk Pro b;
+    font-style: bold;
+    src: url('../fonts/static/Commissioner-Medium.ttf');
+  }
+  
+  @font-face{
+    font-family: Lemon Milk Regular;
+    font-style: bold;
+    src: url('../fonts/static/Commissioner-Regular.ttf');
+  }
+  @font-face{
+    font-family: ComissionerMedium;
+    font-style: bold;
+    src: url('../fonts/static/Commissioner-Medium.ttf');
+  }
+  @font-face{
+    font-family: Lemon Milk Pro bb;
+    font-style: bold;
+    src: url('../fonts/static/Commissioner-Bold.ttf');
+  }
 @font-face{
     font-family: "Open Sans Regular";
     font-style: normal;
-    src: url('../fonts/OpenSans-Regular.ttf');
+    src: url('../fonts/static/Commissioner-Regular.ttf');
   }
   @font-face{
     font-family: "Ubuntu Mono";
@@ -162,7 +167,7 @@ h2 {
 .main__lesson_name-header, .clessonid {
     font-size: 40px;
     color: #4F5665;
-    font-family: 'Lemon Milk Pro b';
+    font-family: 'ComissionerMedium';
     margin-top: 30px;
     width: 100%;
 }
@@ -176,7 +181,7 @@ h2 {
 .main__lesson_course_name-header {
     font-size: 16px;
     color: #B2B2B2;
-    font-family: 'Lemon Milk Pro';
+    font-family: 'ComissionerMedium';
     margin-right: 20px;
 }
 .main__lesson_course_name-header-time {

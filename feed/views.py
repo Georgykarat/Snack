@@ -180,7 +180,7 @@ def feed(request, *args, **kwargs):
         started_courses_list = []
         for string in started_courses_info:
             courseid = string[0]
-            if UserProgress.objects.filter(userid=userid, courseid=courseid, finished=True).exists() and UserProgress.objects.filter(userid=userid, courseid=courseid, finished=False).exists() == False:
+            if UserProgress.objects.filter(userid=userid, courseid=courseid, finished=False).exists() == False:
                 pass
             else:
                 started_courses_list.append(courseid)

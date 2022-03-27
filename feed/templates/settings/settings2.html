@@ -113,16 +113,16 @@
                         <h2>Main Menu</h2>
                         <ul class="left-menu">
                             {% if access == 2 %}
-                            <a href="/admin_frontend/"><li class="left-menu-items">
+                            <a href="/admin_frontend/" class="mobile__menu_li-a"><li class="left-menu-items">
                                 <div class="admin-btn noactive-btn btn-layout"></div>
                                 <div class="li-menu nonactive-text">Admin</div>
                             </li></a>
                             {% endif %}
-                            <a href="/feed/"><li class="left-menu-items">
+                            <a href="/feed/" class="mobile__menu_li-a"><li class="left-menu-items">
                                 <div class="workspace-btn noactive-btn btn-layout"></div>
                                 <div class="li-menu nonactive-text">My Workspace</div>
                             </li></a>
-                            <a href="/feed/courses/"><li class="left-menu-items">
+                            <a href="/feed/courses/" class="mobile__menu_li-a"><li class="left-menu-items">
                                 <div class="courses-btn noactive-btn btn-layout"></div>
                                 <div class="li-menu nonactive-text">Courses</div>
                             </li></a>
@@ -153,10 +153,6 @@
                                 <div class="help-btn noactive-btn btn-layout"></div>
                                 <div class="li-menu nonactive-text">Need Help?</div>
                             </li>
-                            <a href="/feed/logout/"><li class="left-menu-items">
-                                <div class="exit-btn noactive-btn btn-layout"></div>
-                                <div class="li-menu nonactive-text">Exit</div>
-                            </li></a>
                         </ul>
                         <form id="toggles" method="post">
                             {% csrf_token %}

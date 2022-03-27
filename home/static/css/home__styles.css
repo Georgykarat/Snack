@@ -1,3 +1,31 @@
+@font-face{
+    font-family: Lemon Milk Pro;
+    font-style: normal;
+    src: url('../fonts/static/Commissioner-ExtraLight.ttf');
+  }
+  
+  @font-face{
+    font-family: Lemon Milk Pro b;
+    font-style: bold;
+    src: url('../fonts/static/Commissioner-Medium.ttf');
+  }
+  
+  @font-face{
+    font-family: Lemon Milk Regular;
+    font-style: bold;
+    src: url('../fonts/static/Commissioner-Regular.ttf');
+  }
+  @font-face{
+    font-family: Lemon Milk Pro bb;
+    font-style: bold;
+    src: url('../fonts/static/Commissioner-Bold.ttf');
+  }
+  @font-face{
+    font-family: ComissionerEB;
+    font-style: bold;
+    src: url('../fonts/static/Commissioner-ExtraBold.ttf');
+  }
+
 * {
     font-family: "Lemon Milk Regular";
 	margin: 0;
@@ -144,13 +172,13 @@ main {
 }
 .h1 {
     display: flex;
-    font-family: 'Lemon Milk Pro b';
+    font-family: 'ComissionerEB';
     font-size: 55px;
     color: black;
     display: block;
 }
 h1 {
-    font-family: 'Lemon Milk Pro b';
+    font-family: 'ComissionerEB';
     font-size: 55px;
     /*color: #0B132A;*/
     display: block;
@@ -158,7 +186,7 @@ h1 {
 }
 .h1-dot {
     font-size: 55px;
-    font-family: 'Lemon Milk Pro b';
+    font-family: 'ComissionerEB';
     color: #26D07C;
 
 }

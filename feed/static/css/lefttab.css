@@ -19,6 +19,15 @@
     flex-wrap: nowrap;
     cursor: pointer;
 }
+.left-menu-itemsa {
+    width: 100%;
+    min-width: 100%;
+    max-width: 100%;
+    display: flex;
+    align-items: center;
+    flex-wrap: nowrap;
+    cursor: pointer;
+}
 .li-menu {
     font-size: 14px;
 }

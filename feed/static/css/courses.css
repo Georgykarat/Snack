@@ -24,27 +24,27 @@ body {
 }
 
 @font-face{
-  font-family: Lemon Milk Pro;
-  font-style: normal;
-  src: url('../png/Lemon Milk Pro Ultra Light.otf');
-}
-
-@font-face{
-  font-family: Lemon Milk Pro b;
-  font-style: bold;
-  src: url('../png/Lemon Milk Pro Medium.otf');
-}
-
-@font-face{
-  font-family: Lemon Milk Regular;
-  font-style: bold;
-  src: url('../png/Lemon Milk Pro Regular.otf');
-}
-@font-face{
-  font-family: Lemon Milk Pro bb;
-  font-style: bold;
-  src: url('../png/Lemon Milk Pro Bold.otf');
-}
+    font-family: Lemon Milk Pro;
+    font-style: normal;
+    src: url('../fonts/static/Commissioner-ExtraLight.ttf');
+  }
+  
+  @font-face{
+    font-family: Lemon Milk Pro b;
+    font-style: bold;
+    src: url('../fonts/static/Commissioner-Medium.ttf');
+  }
+  
+  @font-face{
+    font-family: Lemon Milk Regular;
+    font-style: bold;
+    src: url('../fonts/static/Commissioner-Regular.ttf');
+  }
+  @font-face{
+    font-family: Lemon Milk Pro bb;
+    font-style: bold;
+    src: url('../fonts/static/Commissioner-Bold.ttf');
+  }
 
 
 main {
@@ -254,7 +254,7 @@ h3 {
 }
 .courses__description {
     font-size: 14px;
-    color: lightgrey;
+    color: white;
     font-family: 'Lemon Milk Pro';
     padding-right: 40px;
     margin-top: 20px;

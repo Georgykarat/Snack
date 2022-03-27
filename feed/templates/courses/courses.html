@@ -103,48 +103,48 @@
             <div class="main__central-cnt_left">
                 <div class="main__cnt_noflex">
                     <div class="main__cnt-flex">
-                        <h2>Main Menu</h2>
+                        <h2>Главное меню:</h2>
                         <ul class="left-menu">
                             {% if access == 2 %}
-                            <a href="/admin_frontend/"><li class="left-menu-items">
+                            <a href="/admin_frontend/" class="left-menu-itemsa"><li class="left-menu-items">
                                 <div class="admin-btn noactive-btn btn-layout"></div>
-                                <div class="li-menu nonactive-text">Admin</div>
+                                <div class="li-menu nonactive-text">Админка</div>
                             </li></a>
                             {% endif %}
-                            <a href="../"><li class="left-menu-items">
+                            <a href="../" class="left-menu-itemsa"><li class="left-menu-items">
                                 <div class="workspace-btn noactive-btn btn-layout"></div>
-                                <div class="li-menu nonactive-text">My Workspace</div>
+                                <div class="li-menu nonactive-text">Рабочее место</div>
                             </li></a>
                             <li class="left-menu-items">
                                 <div class="courses-btn active-btn btn-layout"></div>
-                                <div class="li-menu active-text">Courses</div>
+                                <div class="li-menu active-text">Курсы</div>
                             </li>
                             <li class="left-menu-items opacity20">
                                 <div class="analytics-btn noactive-btn btn-layout"></div>
-                                <div class="li-menu nonactive-text">Performance</div>
+                                <div class="li-menu nonactive-text">Результаты</div>
                             </li>
                             <li class="left-menu-items opacity20">
                                 <div class="friends-btn noactive-btn btn-layout"></div>
-                                <div class="li-menu nonactive-text">Friends</div>
+                                <div class="li-menu nonactive-text">Друзья</div>
                             </li>
                             <li class="left-menu-items opacity20">
                                 <div class="rating-btn noactive-btn btn-layout"></div>
-                                <div class="li-menu nonactive-text">Ratings</div>
+                                <div class="li-menu nonactive-text">Рейтинг</div>
                             </li>
                             <li class="left-menu-items opacity20">
                                 <div class="goals-btn noactive-btn btn-layout"></div>
-                                <div class="li-menu nonactive-text">Goals List</div>
+                                <div class="li-menu nonactive-text">Цели</div>
                             </li>
                         </ul>
-                        <h2>Settings</h2>
+                        <h2>Настройки:</h2>
                         <ul class="left-menu">
-                            <a href="/feed/settings/"><li class="left-menu-items">
+                            <a href="/feed/settings/" class="left-menu-itemsa"><li class="left-menu-items">
                                 <div class="profile-btn noactive-btn btn-layout"></div>
-                                <div class="li-menu nonactive-text">Edit Profile</div>
+                                <div class="li-menu nonactive-text">Найстройки</div>
                             </li></a>
-                            <a href="/feed/faq/"><li class="left-menu-items">
+                            <a href="/feed/faq/" class="left-menu-itemsa"><li class="left-menu-items">
                                 <div class="help-btn noactive-btn btn-layout"></div>
-                                <div class="li-menu nonactive-text">Need Help?</div>
+                                <div class="li-menu nonactive-text">Нужна помощь?</div>
                             </li></a>
                         </ul>
                         <div id="toggles">
@@ -159,14 +159,14 @@
             <div class="main__central-cnt_right">
                 <div class="main__cnt_noflex">
                     <div class="courses__header-cnt">   
-                        <h1 class="h1courses">Explore Courses</h1>
+                        <h1 class="h1courses">Курсы</h1>
                         <div class="courses__view_cnt">
                             <div class="courses__view_cnt_list">List</div>&nbsp;/&nbsp;
                             <div class="courses__view_cnt_list opacity20">Map</div>
                         </div>
                     </div> 
                     <div class="main__cnt_filters-pane">
-                        <input class="main__cnt_filter_search" placeholder="Find">
+                        <input class="main__cnt_filter_search" placeholder="Искать">
                         <select class="main__cnt_filter tags_filter">
                             <option value="">No Tag Filter:</option>
                             <option value="Current">Current</option>
@@ -175,7 +175,7 @@
                             {% endfor %}
                         </select>
                         <select class="main__cnt_filter complexity_filter">
-                            <option value="">Difficulty:</option>
+                            <option value="">Сложность:</option>
                             <option value="Easy-peasy">Easy-peasy</option>
                             <option value="Easy">Easy</option>
                             <option value="Medium">Medium</option>
@@ -230,7 +230,7 @@
                                                     {% elif key2 == 'current_lesson_id' %}
                                                     {% for x, y in value2 %}
                                                     <div class="courses_progress_currentlesson">
-                                                        <span>Continue from: {{x}}.{{y}}</span>
+                                                        <span>Продолжить: {{x}}.{{y}}</span>
                                                     </div>
                                                     {% endfor %}
                                                     {% endif %}
