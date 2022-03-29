@@ -55,7 +55,7 @@ def GetUserStyle(userid):
         leftmenu = UserInterfaceStyle.objects.filter(userid=userid).values_list('leftmenu')[0][0]
         return [leftmenu]
     else:
-        return None
+        return [None]
 
 
 
