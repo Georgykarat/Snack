@@ -141,11 +141,11 @@
                             </ul>
                             <h2>Settings</h2>
                             <ul class="left-menu">
-                                <a href="/feed/settings/"><li class="left-menu-items">
+                                <a href="/feed/settings/" class="left-menu-itemsa"><li class="left-menu-items">
                                     <div class="profile-btn noactive-btn btn-layout"></div>
                                     <div class="li-menu nonactive-text">Edit Profile</div>
                                 </li></a>
-                                <a href="/feed/faq/"><li class="left-menu-items">
+                                <a href="/feed/faq/" class="left-menu-itemsa"><li class="left-menu-items">
                                     <div class="help-btn noactive-btn btn-layout"></div>
                                     <div class="li-menu nonactive-text">Need Help?</div>
                                 </li></a>
@@ -244,9 +244,15 @@
                         </div>
                         {% endif %}
                         <!-- end of swiper -->
+                        {% if training == True %}
                         <div class="section__header opacity20">Training:</div>
+                        {% endif %}
+                        {% if achievements == True %}
                         <div class="section__header opacity20">Achievments:</div>
+                        {% endif %}
+                        {% if explore_more == True %}
                         <div class="section__header opacity20">Explore More:</div>
+                        {% endif %}
                     </div>
                 </div>
             </div>

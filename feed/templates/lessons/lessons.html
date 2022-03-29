@@ -106,6 +106,7 @@
                         <div class="left_pane-header_flex">
                             <h2>Main Menu</h2>
                             <div class="left_pane_slider-btn">&#8594;</div>
+                            <div style="display: none;" id="left-menu-flag">{{leftmenu}}</div>
                         </div>
                         <ul class="left-menu">
                             {% if access == 2 %}
@@ -203,7 +204,7 @@
                             {% if quiz_exist == False %}
                             <button class="main__lesson_takequiz-btn-noquiz" style="cursor: not-allowed;">No Quiz yet&nbsp;&nbsp;&#128679;</button>
                             {% elif course_finished == False %}
-                            <button class="main__lesson_takequiz-btn" style="cursor: not-allowed;">Take Lesson Quiz&nbsp;&#8594;</button>
+                            <a><button class="main__lesson_takequiz-btn" style="cursor: not-allowed;">Take Lesson Quiz&nbsp;&#8594;</button></a>
                             {% elif failed and quiz_finished == False %}
                             <a href="quiz/"><button class="main__lesson_takequiz-btn" style="background-color: #861111; cursor: pointer;">Try one more time&nbsp;&#8594;</button></a>
                             {% elif course_finished and quiz_finished == False %}

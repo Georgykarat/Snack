@@ -6,7 +6,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth.hashers import check_password
 from django.shortcuts import render, redirect
 from django.http import HttpResponse, HttpResponseRedirect
-from feed.models import Feed, AccountImage, AccessLevel, UserProgress
+from feed.models import Feed, AccountImage, AccessLevel, UserProgress, UserInterfaceStyle
 from path.models import Rating, CourseBase, TagsBase, Course_Tags, LessonBase, ActionTypes, TempUserQuizDict, QuizBase, TempCurrentQuiz, UserQuizProgress, BugsMistakes, KnowledgeShare, IdeaShare, FeedbackDB
 from m2m.models import PersonalGoals
 from feed.forms import DocumentForm
@@ -48,6 +48,11 @@ def FindUserId(request):
     target_mail = request.user.username
     userid = Feed.objects.filter(mail=target_mail).values_list('id')[0][0]
     return userid
+
+
+def GetUserStyle(userid):
+    leftmenu = UserInterfaceStyle.objects.filter(userid=userid).values_list('leftmenu')[0][0]
+    return [leftmenu]
 
 
 
@@ -246,6 +251,9 @@ def feed(request, *args, **kwargs):
             'lessons_amount_dict': lessons_amount_dict,
             'progress_tracker_dict': progress_tracker_dict,
             'colors_list': colors_list,
+            'training': None,
+            'achievements': None,
+            'explore_more': None,
         })
     else:
         return HttpResponseRedirect('../login')
@@ -598,7 +606,7 @@ def pathpage(request, courseid):
             author_mail = Feed.objects.filter(id = course_data[6]).values_list('mail')[0][0]
             author_photo = AccountImage.objects.filter(mail = author_mail).values_list('file')[0][0]
 
-            alllessonscompletedforlist = UserProgress.objects.filter(courseid=int(courseid), finished=True).values_list('lessonid')
+            alllessonscompletedforlist = UserProgress.objects.filter(userid=userid, courseid=int(courseid), finished=True).values_list('lessonid')
             finished_courses_list = []
             for string in alllessonscompletedforlist:
                 ourlessonid = string[0]
@@ -715,6 +723,24 @@ def coursestart(request, courseid):
         return HttpResponse(status=404)
 
 
+def lessonpage_leftmenu(request, courseid, lessonid):
+    if request.user.is_authenticated:
+        if request.is_ajax():
+            userid = FindUserId(request)
+            if UserInterfaceStyle.objects.filter(userid=userid).exists():
+                if UserInterfaceStyle.objects.filter(userid=userid).values_list('leftmenu')[0][0] == False:
+                    UserInterfaceStyle.objects.filter(userid=userid).update(leftmenu=True)
+                else:
+                    UserInterfaceStyle.objects.filter(userid=userid).update(leftmenu=False)
+            else:
+                UserInterfaceStyle(userid=userid).save()
+            return HttpResponse(status=200)
+        else:
+            return HttpResponse(status=404)
+    else:
+        return HttpResponse(status=404)
+
+
 
 def lessonpage(request, courseid, lessonid):
     if request.user.is_authenticated == True: 
@@ -766,7 +792,7 @@ def lessonpage(request, courseid, lessonid):
                     notfinished_courses_set = set(notfinished_courses_list)
                     notfinished_courses_list = list(notfinished_courses_set)
                     # Calculate progress bar elements width
-                    progressbar_width = (100 - 3) / lesson_counter
+                    progressbar_width = (100 - 10) / lesson_counter
 
                     if AccountImage.objects.filter(mail=target_mail):
                         photo = AccountImage.objects.filter(mail=target_mail).values_list('file')[0][0]
@@ -802,6 +828,10 @@ def lessonpage(request, courseid, lessonid):
                     else:
                         quiz_exist = False
 
+                    # Styles
+                    styles = GetUserStyle(userid)
+                    leftmenu = styles[0]
+
                         
                     return render(request, 'lessons/lessons.html', {
                         'access': feed_data[0][0],
@@ -836,6 +866,7 @@ def lessonpage(request, courseid, lessonid):
                         'failed': finished_or_not[2],
                         'benefits': benefits,
                         'quiz_exist': quiz_exist,
+                        'leftmenu': leftmenu,
                     })
                 else:
                     return HttpResponse(status=404)

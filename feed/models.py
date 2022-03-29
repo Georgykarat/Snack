@@ -59,3 +59,9 @@ class UserProgress(models.Model):
     finished = models.BooleanField(default=False)
     quizcompleted = models.BooleanField(default=False)
     failed = models.BooleanField(default=False)
+
+
+class UserInterfaceStyle(models.Model):
+    userid = models.IntegerField()
+    leftmenu = models.BooleanField(default=False)
+    

@@ -22,6 +22,7 @@ urlpatterns = [
     path('courses/<courseid>/', views.pathpage, name='pathpage'),
     path('courses/<courseid>/coursestart/', views.coursestart, name='pathpage'),
     path('courses/<courseid>/<lessonid>/', views.lessonpage, name='lessonpage'),
+    path('courses/<courseid>/<lessonid>/leftmenu/', views.lessonpage_leftmenu, name='lessonpage_leftmenu'),
     path('courses/<courseid>/<lessonid>/completed/', views.lessoncompleted, name='lessoncompleted'),
     path('courses/<courseid>/<lessonid>/quiz/', views.quiz, name='quiz'),
     path('courses/<courseid>/<lessonid>/quiz/quizcheck/', views.quizcheck, name='quizcheck'),

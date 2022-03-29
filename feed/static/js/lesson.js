@@ -1,3 +1,17 @@
+$(document).ready(function(){
+    if ($('#left-menu-flag').text() == 'False') {
+        $('.li-menu').css('display', 'none');
+        $('.toggle-label').css('display', 'none');
+        $('h2').css('display', 'none');
+        $('.main__central-cnt_left').css('width', '5%');
+        $('.main__central-cnt_left').css('min-width', '5%');
+        $('.main__central-cnt_left').css('max-width', '5%');
+        $('.main__central-cnt_right').css('width', '90%');
+        $('.main__central-cnt_right').css('min-width', '90%');
+        $('.main__central-cnt_right').css('max-width', '90%');
+    }
+});
+
 $(function(){
 
 
@@ -15,6 +29,7 @@ var CLessonID = $('.clessonid').text()
 var NotCompletedFirst = $('.main__progressbar_notcompleted').first();
 var Sliderbutton = $('.left_pane_slider-btn');
 var VideoHeight = $('video').height();
+
 var ProgressHeaderHeight = $('.main__leson-progress-header').height() + $('.main__leson-progress-total').height() + $('.main__leson-progressbar-cnt').height()
 var ProgressHeight = VideoHeight - ProgressHeaderHeight
 $('.main__lesson_course-progress-cnt').height(ProgressHeight);
@@ -134,10 +149,12 @@ var LessonCompleted = (function(){
                     $(lessonid).children('.main__course_progress-li-title').removeClass('main__course_progress-li-title').addClass('main__course_progress-li-title-prev');
                     QuizButton.css('background-color', '#26D07C');
                     QuizButton.css('cursor', 'pointer');
+                    QuizButton.parent().attr("href", "quiz/");
                     current_lesson_figure = LessonCompletedCounter.text();
                     current_lesson_figure = Number(current_lesson_figure) + 1;
                     LessonCompletedCounter.text(current_lesson_figure);
                     NotCompletedFirst.css('background-color', '#26D07C');
+                    
                 }
             });
             console.log('Pop should be activated');
@@ -201,6 +218,16 @@ Sliderbutton.on('click', function(){
             // $('.left_pane_slider-btn').text('&#8594;')
         });
     }
+    $.ajax({
+        type: 'get',
+        url: 'leftmenu/',
+        data: {
+            /*csrfmiddlewaretoken:$('input[name=csrfmiddlewaretoken]').val(),*/
+        },
+        success: function(response) {
+
+        }
+    });
 });
 
 
