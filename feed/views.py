@@ -51,8 +51,11 @@ def FindUserId(request):
 
 
 def GetUserStyle(userid):
-    leftmenu = UserInterfaceStyle.objects.filter(userid=userid).values_list('leftmenu')[0][0]
-    return [leftmenu]
+    if UserInterfaceStyle.objects.filter(userid=userid).exists():
+        leftmenu = UserInterfaceStyle.objects.filter(userid=userid).values_list('leftmenu')[0][0]
+        return [leftmenu]
+    else:
+        return None
 
 
 
