@@ -64,4 +64,10 @@ class UserProgress(models.Model):
 class UserInterfaceStyle(models.Model):
     userid = models.IntegerField()
     leftmenu = models.BooleanField(default=False)
-    
+
+
+class UserErrorsHistory(models.Model):
+    userid = models.IntegerField()
+    quizid = models.IntegerField()
+    time = models.CharField(max_length=30, default="", blank=True)
+

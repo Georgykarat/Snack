@@ -42,10 +42,10 @@
                 <div class="header-cnt2_left__logo">snack</div>
             </div>
             <ul class="header-cnt_centre__menu">
-                <li class="header-cnt_centre__menu-a inactive-currently blocked"><a href="#">About</a></li>
-                <li class="header-cnt_centre__menu-a inactive-currently blocked"><a href="#">Courses</a></li>
-                <li class="header-cnt_centre__menu-a inactive-currently blocked"><a href="#">Process</a></li>
-                <li class="header-cnt_centre__menu-a inactive-currently blocked"><a href="#">Help</a></li>
+                <li class="header-cnt_centre__menu-a"><a href="#section_platform">Платформа</a></li>
+                <li class="header-cnt_centre__menu-a inactive-currently blocked"><a href="#">Курсы</a></li>
+                <li class="header-cnt_centre__menu-a inactive-currently blocked"><a href="#">Прогресс</a></li>
+                <li class="header-cnt_centre__menu-a inactive-currently blocked"><a href="#">Что учить?</a></li>
             </ul>
             <div class="header-cnt_right__logo">
                 <a href="login/"><button class="header__sign-in-btn">Войти</button></a>
@@ -58,20 +58,35 @@
             <div class="main-cnt-blockwithitems">
                 <div class="main-cnt-leftblock">
                     <div class="h1">
-                        <h1>ЭТО ВАШЕ БЕСПЛАТНОЕ ОБРАЗОВАНИЕ<span class="h1-dot">.</span></h1>
+                        <h1>Вам остаётся только учиться<span class="h1-dot">.</span></h1>
                     </div>
                     <div class="h2">
-                        Качайте не только банки, но и уровни, клоуны!
+                        Тратьте на образование 5 минут в день. Качайте уровни, зарабатывайте награды и проверяйте себя. Бесплатно!
                     </div>
                     <a href="registration/"><button class="readytogo-btn">
-                        ПОГНАЛИ НАХУЙ
-                    </button></a>  
+                        Попробуем
+                    </button></a>
+                    <a href="login/"><button class="readytogo-btn-log">
+                        Уже есть аккаунт
+                    </button></a>    
                 </div>
                 <div class="main-cnt-rightblock">
                     <img class="lendpic" src="{% static 'css/lendpic.svg' %}">
                 </div>
             </div>
-            <div class="main-cnt-blockwithitems-2">
+            <section class="section__platform" id="section_platform">
+                <div class="platform__left-cnt"></div>
+                <div class="platform__right-cnt">
+                    <div class="platform__right-cnth">
+                        Образование за 5 минут в день?
+                        Easy as Snack!
+                    </div>
+                    <div class="platform__right-cntsh">
+                        Наша платформа - это бесплатный&nbsp;онлайн-университет, где не нужно зубрить теорию, а длина одного урока не превышает 10 минут.
+                    </div>
+                </div>
+            </section>
+            {% comment %} <div class="main-cnt-blockwithitems-2">
                 <div class="main-2cnt-leftcnt">
                     <div class="left2-cnt">
                         Слишком чистая почта?<br> Просто добавь спама!
@@ -85,7 +100,7 @@
                         ПИЗДЕЦ ПОЧТЕ
                     </button>                   
                 </div>
-            </div>
+            </div> {% endcomment %}
         </div>
     </main>
     {% include "home/footer.html" %}

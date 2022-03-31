@@ -14,7 +14,7 @@
             <div class="footer-left-cnt">
                 <div class="footer-cnt_left__logo">
                     <img src="{% static 'css/lg.png' %}" width="30" height="30">
-                    <div class="header-cnt2_left__logo">snack</div>
+                    <div class="header-cnt3_left__logo">snack</div>
                 </div>
                 <div class="footer__aboutsnack_text"><b>Snack</b> - это геймифицированная<br>бесплатная образовательная платформа.</div>
                 <ul class="contacts-socials_cnt">
@@ -24,35 +24,46 @@
                     <a href="https://facebook.com"><li class="li-fb"></li></a> {% endcomment %}
                     <a href="https://twitter.com"><li class="li-tw"></li></a>
                 </ul>
-                <div class="footer__snackyear">&#169 2022SnackLLC</div>
+                {% comment %} <div class="footer__snackyear">&#169 2022SnackLLC</div> {% endcomment %}
             </div>
             <div class="footer-left-cnt">
                 <ul class="footer-ul">
-                    <li class="footer-li black">Discover</li>
-                    {% if request.user.is_authenticated == False%}
+                    <li class="footer-li black">О нас:</li>
+                    {% comment %} {% if request.user.is_authenticated == False%}
                     <li class="footer-li grey-li"><a href="/registration/">Register</a></li>
-                    {% endif %}
-                    <li class="footer-li grey-li opacity20"><a href="#">Pricing</a></li>
-                    <li class="footer-li grey-li opacity20"><a href="#">Course List</a></li>
-                    <li class="footer-li grey-li opacity20"><a href="#">Subscription</a></li>
-                    <li class="footer-li grey-li opacity20"><a href="#">Languages</a></li>
+                    {% endif %} {% endcomment %}
+                    <li class="footer-li grey-li opacity20"><a href="#">Миссия</a></li>
+                    <li class="footer-li grey-li opacity20"><a href="#">План развития</a></li>
+                    <li class="footer-li grey-li opacity20"><a href="#">Команда</a></li>
+                    <li class="footer-li grey-li opacity20"><a href="#">Обратная связь</a></li>
                 </ul>
                 <ul class="footer-ul">
-                    <li class="footer-li black">Engage</li>
-                    <li class="footer-li grey-li opacity20"><a href="#">FAQ</a></li>
-                    <li class="footer-li grey-li opacity20"><a href="#">Feedback</a></li>
-                    <li class="footer-li grey-li opacity20"><a href="#">Privicy Policy</a></li>
-                    <li class="footer-li grey-li opacity20"><a href="#">Terms of Service</a></li>
+                    <li class="footer-li black">Еще кое-что:</li>
+                    <li class="footer-li grey-li opacity20"><a href="#">Условия пользования</a></li>
+                    <li class="footer-li grey-li opacity20"><a href="#">Конфиденциальность</a></li>
+                    <li class="footer-li grey-li opacity20"><a href="#">Инвесторам</a></li>
+                    <li class="footer-li grey-li opacity20"><a href="#">Карьера</a></li>
+                    <li class="footer-li grey-li opacity20"><a href="#">Техподдержка</a></li>
                 </ul>
-                <ul class="footer-ul">
+                {% comment %} <ul class="footer-ul">
                     <li class="footer-li black">Contribute</li>
                     <li class="footer-li grey-li opacity20"><a href="#">Founder Team</a></li>
                     <li class="footer-li grey-li opacity20"><a href="#">Career at Snack</a></li>
                     <li class="footer-li grey-li opacity20"><a href="#">Investors</a></li>
-                </ul>
+                </ul> {% endcomment %}
+            </div>
+            <div class="footer-left-cnt">
+                <div class="footer__updates-form">
+                    <div class="footer__updates-formh">Обновления</div>
+                    <input class="footer__updates-form-input" placeholder="E-mail">
+                    <div class="footer__close-btn">Подписаться</div>
+                </div>
             </div>
         </div>
     </footer>
+    <div class="footer2">
+        <div class="footer__snackyear">&#169 2022 SnackLLC.</div>
+    </div>
 </body>
 </html>
 

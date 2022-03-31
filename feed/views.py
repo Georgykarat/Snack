@@ -6,7 +6,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth.hashers import check_password
 from django.shortcuts import render, redirect
 from django.http import HttpResponse, HttpResponseRedirect
-from feed.models import Feed, AccountImage, AccessLevel, UserProgress, UserInterfaceStyle
+from feed.models import Feed, AccountImage, AccessLevel, UserProgress, UserInterfaceStyle, UserErrorsHistory
 from path.models import Rating, CourseBase, TagsBase, Course_Tags, LessonBase, ActionTypes, TempUserQuizDict, QuizBase, TempCurrentQuiz, UserQuizProgress, BugsMistakes, KnowledgeShare, IdeaShare, FeedbackDB
 from m2m.models import PersonalGoals
 from feed.forms import DocumentForm
@@ -1177,6 +1177,9 @@ def quizcheck(request, courseid, lessonid):
             else:
                 UserQuizProgress.objects.filter(userid=userid).update(counter=counter, wrong=counter_data[1] + 1, exp=counter_data[2] - 1)
                 # EXP for wrong a
+                # Save wrong answer in DB for analytics
+                nowtime = getcurrenttime()
+                UserErrorsHistory(userid=userid, quizid=current_quiz_id, time=nowtime).save()
                 return JsonResponse({'right_answer': right_answer, 'chosen': chosen_a}, status=200)
 
 

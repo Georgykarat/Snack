@@ -59,11 +59,12 @@ body {
     background-color: white;
     border-bottom-right-radius: 20px;
     border-bottom-left-radius: 20px;
-    height: 100px;
-    box-shadow: 0px 0px 100px #E5E5E5;
+    height: 90px;
+    /* box-shadow: 0px 0px 100px #E5E5E5; */
     display: flex;
     justify-content: center;
     align-items: center;
+    position: fixed;
 }
 .header-cnt-centre {
     width: 80%;
@@ -113,29 +114,29 @@ body {
 .header__sign-in-btn {
     font-size: 16px;
     padding: 10px 20px;
-    color: #0B132A;
+    color: #4F5665;
     background-color: transparent;
     border: none;
     cursor: pointer;
 }
 .header__sign-up-btn {
-    color: #26D07C;
+    color: white;
     font-size: 16px;
     box-shadow: none;
     border-color: #26D07C;
-    border-radius: 30px;
+    border-radius: 10px;
     border-width: 1px;
     cursor: pointer;
     padding: 10px 50px;
-    background-color: transparent;
+    background-color: #26D07C;
     border-style: solid;
     transition: 1s;
 }
 .header__sign-up-btn:hover {
-    color: white;
+    color: #26D07C;
     box-shadow: none;
     border-color: #26D07C;
-    background-color: #26D07C;
+    background-color: white;
     transition: 1s;
 }
 main {
@@ -144,12 +145,13 @@ main {
     align-items: center;
     width: 100%;
     background-color: transparent;
+    padding-top: 250px;
 }
 .main-cnt-centre {
     width: 80%;
     max-width: 80%;
     background-color: transparent;
-    height: 1000px;
+    height: auto;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -178,10 +180,11 @@ main {
     display: block;
 }
 h1 {
-    font-family: 'ComissionerEB';
-    font-size: 55px;
-    /*color: #0B132A;*/
+    font-family: 'Lemon Milk Pro bb';
+    font-size: 75px;
+    color: #2A3342;
     display: block;
+    line-height: 1;
 
 }
 .h1-dot {
@@ -205,20 +208,39 @@ h1 {
     font-size: 22px;
     padding-top: 20px;
     padding-bottom: 40px;
+    line-height: 1.5;
 }
 .readytogo-btn {
     background-color: #26D07C;
     padding: 15px 40px;
     color: white;
-    font-size: 16px;
+    font-size: 18px;
     font-family: 'Lemon Milk Pro b';
-    border: none;
+    border: 1px solid #26D07C;
     border-radius: 10px;
-    box-shadow: 0px 20px 50px #26D07C88;
+    /* box-shadow: 0px 20px 50px #26D07C88; */
     cursor: pointer;
     transition: 1s;
 }
 .readytogo-btn:hover {
+    background-color: #F8F8F8;
+    color: #26D07C;
+}
+.readytogo-btn-log {
+    background-color: transparent;
+    padding: 15px 40px;
+    color: #4F5665;
+    font-size: 18px;
+    font-family: 'Lemon Milk Pro b';
+    border: 1px solid #D5DAE1;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 1s;
+    position: relative;
+    left: -50%;
+    z-index: -1;
+}
+.readytogo-btn-log:hover {
     background-color: #F8F8F8;
     color: #26D07C;
 }
@@ -271,7 +293,53 @@ h1 {
     transition: 1s;
     cursor: not-allowed;
 }
-
+section {
+    width: 100%;
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-items: center;
+    margin: 370px auto;
+    background-color: transparent;
+}
+.platform__left-cnt {
+    display: flex;
+    width: 48%;
+    background-image: url(../css/Play-2.svg);
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 370px;
+    cursor: pointer;
+}
+.platform__right-cnt {
+    display: flex;
+    flex-wrap: wrap;
+    width: 48%;
+    height: 370px;
+    cursor: pointer;
+    align-items: center;
+}
+.platform__right-cnth {
+    display: flex;
+    min-width: 100%;
+    width: 100%;
+    font-family: 'Lemon Milk Pro bb';
+    padding-left: 40px;
+    font-size: 50px;
+    color: #2A3342;
+    justify-content: flex-start;
+}
+.platform__right-cntsh {
+    display: flex;
+    min-width: 100%;
+    width: 100%;
+    padding-left: 40px;
+    font-size: 22px;
+    line-height: 1.5;
+    color: #556987;
+    justify-content: flex-start;
+}
 .blocked {
     cursor: not-allowed;
 }
