@@ -296,7 +296,7 @@ h1 {
 section {
     width: 100%;
     display: flex;
-    flex-wrap: nowrap;
+    flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
     margin: 370px auto;
@@ -339,6 +339,52 @@ section {
     line-height: 1.5;
     color: #556987;
     justify-content: flex-start;
+}
+.section__platform_cnt {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: nowrap;
+}
+.section__platform_block {
+    display: flex;
+    width: 30%;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+}
+.section__platform_blockb {
+    display: block;
+    width: 100%;
+    margin-top: 100px;
+}
+.section__platform_number {
+    width: 50px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50px;
+    color: white;
+    background-color: #26D07C;
+    font-family: 'Lemon Milk Pro bb';
+    font-size: 30px;
+}
+.section__platform_desc {
+    width: 100%;
+    font-size: 30px;
+    color: #2A3342;
+    padding-top: 20px;
+    font-family: 'Lemon Milk Pro bb';
+    padding-bottom: 20px;
+
+}
+.section__platform_desc2 {
+    width: 100%;
+    font-size: 22px;
+    color: #556987;
+    line-height: 1.5;
+
+
 }
 .blocked {
     cursor: not-allowed;

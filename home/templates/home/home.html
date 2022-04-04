@@ -7,6 +7,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Snack Courses</title>
     <link rel="stylesheet" type="text/css" href="{% static 'css/home__styles.css' %}">
+    <script src="{% static 'js/jQueryv3.6.0.min.js' %}"></script>
+    <script src="{% static 'js/jquery-ui.min.js' %}"></script>
+    <script src="{% static 'js/homescript.js' %}"></script>
     <style type="text/css">
           {% comment %} @font-face{
   font-family: Lemon Milk Pro;
@@ -42,7 +45,7 @@
                 <div class="header-cnt2_left__logo">snack</div>
             </div>
             <ul class="header-cnt_centre__menu">
-                <li class="header-cnt_centre__menu-a"><a href="#section_platform">Платформа</a></li>
+                <li class="header-cnt_centre__menu-a platform-a-link" data-scroll="#section_platform"><a href="#">Платформа</a></li>
                 <li class="header-cnt_centre__menu-a inactive-currently blocked"><a href="#">Курсы</a></li>
                 <li class="header-cnt_centre__menu-a inactive-currently blocked"><a href="#">Прогресс</a></li>
                 <li class="header-cnt_centre__menu-a inactive-currently blocked"><a href="#">Что учить?</a></li>
@@ -75,14 +78,39 @@
                 </div>
             </div>
             <section class="section__platform" id="section_platform">
-                <div class="platform__left-cnt"></div>
-                <div class="platform__right-cnt">
-                    <div class="platform__right-cnth">
-                        Образование за 5 минут в день?
-                        Easy as Snack!
+                <div class="section__platform_cnt">
+                    <div class="platform__left-cnt"></div>
+                    <div class="platform__right-cnt">
+                        <div class="platform__right-cnth">
+                            Образование за 5 минут в день?
+                            Easy as Snack!
+                        </div>
+                        <div class="platform__right-cntsh">
+                            Наша платформа - это бесплатный&nbsp;онлайн-университет, где не нужно зубрить теорию, а длина одного урока не превышает 10 минут.
+                        </div>
                     </div>
-                    <div class="platform__right-cntsh">
-                        Наша платформа - это бесплатный&nbsp;онлайн-университет, где не нужно зубрить теорию, а длина одного урока не превышает 10 минут.
+                </div>
+                <div class="section__platform_cnt">
+                    <div class="section__platform_block">
+                        <div class="section__platform_blockb">
+                            <div class="section__platform_number">1</div>
+                            <div class="section__platform_desc">Маленькие порции</div>
+                            <div class="section__platform_desc2">Мы не грузим голову часовыми лекциями, потому что ценим время.</div>
+                        </div>
+                    </div>
+                    <div class="section__platform_block">
+                        <div class="section__platform_blockb">
+                            <div class="section__platform_number">2</div>
+                            <div class="section__platform_desc">Геймификация</div>
+                            <div class="section__platform_desc2">Проверяй знания в викторинах, а также качай ровник</div>
+                        </div>
+                    </div>
+                    <div class="section__platform_block">
+                        <div class="section__platform_blockb">
+                            <div class="section__platform_number">3</div>
+                            <div class="section__platform_desc">Бесплатно</div>
+                            <div class="section__platform_desc2">Мы верим: образование должно быть бесплатным для каждого, а потому у нас нет платных курсов.</div>
+                        </div>
                     </div>
                 </div>
             </section>

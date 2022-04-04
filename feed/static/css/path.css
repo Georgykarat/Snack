@@ -389,10 +389,28 @@ h2 {
     width: 80%;
     margin-left: 30px;
     flex-wrap: wrap;
-    /* height: 300px;
-    overflow-y: scroll; */
+    height: 450px;
+    overflow-y: scroll;
+    margin-bottom: 10px;
 
 }
+.path__ul_courses::-webkit-scrollbar {
+    width: 0;
+  }
+/* .path__ul_courses::-webkit-scrollbar {
+    width: 3px;
+    background-color: #f9f9fd;
+  }
+  .path__ul_courses::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background-color: #26D07C;
+    height: 20px;
+  }
+  .path__ul_courses::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.0);
+    border-radius: 10px;
+    background-color: #f9f9fd;
+  } */
 .path__centtralcnt_subheader {
     margin-bottom: 20px;
     color: #B2B2B2;

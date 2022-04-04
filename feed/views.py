@@ -541,7 +541,7 @@ def coursespage(request):
             'progress_tracker_dict': progress_tracker_dict,
         })
     else:
-        return HttpResponseRedirect('../login')
+        return HttpResponseRedirect('/login')
 
 
 
@@ -705,7 +705,7 @@ def pathpage(request, courseid):
         else:
             return HttpResponse(status=404)
     else:
-        return HttpResponseRedirect('../login')
+        return HttpResponseRedirect('/login')
 
 
 

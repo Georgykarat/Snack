@@ -33,11 +33,12 @@ var VideoHeight = $('video').height();
 var ProgressHeaderHeight = $('.main__leson-progress-header').height() + $('.main__leson-progress-total').height() + $('.main__leson-progressbar-cnt').height()
 var ProgressHeight = VideoHeight - ProgressHeaderHeight
 $('.main__lesson_course-progress-cnt').height(ProgressHeight);
-if ((parseInt(CLessonID) - 2) * 50 > ProgressHeight - 300) {
-    var ScrollAmount = ProgressHeight - 50
-} else {
-    var ScrollAmount = (parseInt(CLessonID) - 2) * 50
-}
+var ScrollAmount = (parseInt(CLessonID) - 2) * 50
+// if ((parseInt(CLessonID) - 2) * 50 > ProgressHeight - 300) {
+//     var ScrollAmount = ProgressHeight - 50
+// } else {
+//     var ScrollAmount = (parseInt(CLessonID) - 2) * 50
+// }
 
 //var ScrollAmount = (parseInt(CLessonID) - 2) * 50
 var Scroller = $("#main__course_progress-ulid");
