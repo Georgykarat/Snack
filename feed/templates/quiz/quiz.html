@@ -21,94 +21,97 @@
 </head>
 <body>
     <div class="quiz__main-flex-cnt">
-        <div class="quiz__main-central-cnt">
-            <div class="quiz__main_cnt">
-                <div class="quiz__main_header-cnt">
-                    <div class="quiz__main-course_header">{{coursename}}</div>
-                    <div class="quiz__main-course_subheader">{{lessonid_html}}.&nbsp;{{lessonname}}</div>
-                </div>
-                <a class="quiz__give-up_button_a"><div class="quiz__give-up_button">Give Up &#127987;</div></a>
-            </div>
-            <div class="quiz__window-header-block">
-                <div class="quiz__window-header">
-                    <div class="quiz__window-header-flex">
-                        <div class="quiz__window-header-leftcnt">
-                            <div class="quiz__window-header-leftcnt-qnum">Question&nbsp;<span class="qcounter">1</span>/10</div>
-                            <div class="quiz__window-header-leftcnt-progress-pane">
-                                <div class="progress-circle circle-current"></div>
-                                <div class="progress-circle circle-future"></div>
-                                <div class="progress-circle circle-future"></div>
-                                <div class="progress-circle circle-future"></div>
-                                <div class="progress-circle circle-future"></div>
-                                <div class="progress-circle circle-future"></div>
-                                <div class="progress-circle circle-future"></div>
-                                <div class="progress-circle circle-future"></div>
-                                <div class="progress-circle circle-future"></div>
-                                <div class="progress-circle circle-future"></div>
-                            </div>
-                        </div>
-                        <div class="quiz__window-header-rightcnt">
-                            Skip&nbsp;&#8594;
-                        </div>
+        <div class="quiz_colored-header">
+            <div class="quiz__main-precentral-cnt">
+                {% comment %} Здесь новый хэдер {% endcomment %}
+                <div class="quiz__main_cnt">
+                    <div class="quiz__main_header-cnt">
+                        <div class="quiz__main-course_header">{{coursename}}&nbsp;&#8594;&nbsp;</div>
+                        <div class="quiz__main-course_subheader">{{lessonid_html}}.&nbsp;{{lessonname}}</div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <div class="quiz__window-header-leftcnt-qnum">Вопрос&nbsp;<span class="qcounter">1</span>&nbsp;/&nbsp;10</div>
+                    </div>
+                    <div class="quiz__window-header-leftcnt-progress-pane">
+                        <div class="progress-circle circle-current"></div>
+                        <div class="progress-circle circle-future"></div>
+                        <div class="progress-circle circle-future"></div>
+                        <div class="progress-circle circle-future"></div>
+                        <div class="progress-circle circle-future"></div>
+                        <div class="progress-circle circle-future"></div>
+                        <div class="progress-circle circle-future"></div>
+                        <div class="progress-circle circle-future"></div>
+                        <div class="progress-circle circle-future"></div>
+                        <div class="progress-circle circle-future"></div>
                     </div>
                 </div>
             </div>
-            <div class="quiz__card_1">
-                <div class="quiz__window-qbody" style="background-color: #{{coursecolor}};" id="q1">
-                    <div class="quiz__window-qbody-centre">
-                        <div class="quiz__window_qbody-header">
-                            <div class="quiz__window_qbody-header-complexity">
-                                #{{id}}&nbsp;:&nbsp;
-                                {% if complexity == 1 %}
-                                    <div class="complexity_icon_low"></div>
-                                {% elif complexity == 2 %}
-                                    <div class="complexity_icon_m"></div>
-                                {% elif complexity == 3 %}
-                                    <div class="complexity_icon_high"></div>
-                                {% endif %}
-                            </div>
-                            <div class="quiz__window_qbody-header-opbar">
-                                {% if code != '' %}
-                                    <div class="quiz__op_code"></div>
-                                {% endif %}
-                            </div>
-                        </div>
-                        <div class="quiz__window_qbody-question" style="color: #{{fontcolor}};">
-                            {{question}} 
-                        </div>
-                        <div class="quiz__window_qbody-2section">
-                            <div class="quiz__window_qbody_hintblock">
-                                <div class="quiz__window_qbody_icon">
-                                    <!-- svg should be here -->
+        </div>
+        <div class="quiz__main-flex-cnt2">
+            <div class="quiz__main-central-cnt">
+                <div class="quiz__card_1">
+                    <div class="quiz__window-qbody" style="background-color: white;" id="q1">
+                        <div class="quiz__window-qbody-centre">
+                            <div class="quiz__window_qbody-header">
+                                <div class="quiz__window_qbody-header-complexity">
+                                    #{{id}}&nbsp;&nbsp;
+                                    {% comment %} {% if complexity == 1 %}
+                                        <div class="complexity_icon_low"></div>
+                                    {% elif complexity == 2 %}
+                                        <div class="complexity_icon_m"></div>
+                                    {% elif complexity == 3 %}
+                                        <div class="complexity_icon_high"></div>
+                                    {% endif %} {% endcomment %}
                                 </div>
-                                <div class="quiz__window_qbody_hint-cnt">
-                                    <div class="quiz__Window_qbody_hint_h" style="color: #{{fontcolor}};">&nbsp;</div>
-                                    <div class="quiz__Window_qbody_hint_desc" style="color: #{{fontcolor}};">
-                                        &nbsp;
+                                <div class="quiz__window_qbody-header-opbar">
+                                    <div class="quiz__giveup-btn"></div>
+                                </div>
+                            </div>
+                            <div class="quiz__window_qbody-question" style="color: #2A3342;">
+                                {{question}} 
+                            </div>
+                            <div class="quiz__window_qbody-2section">
+                                <div class="quiz__window_qbody_hintblock">
+                                    <div class="quiz__window_qbody_icon">
+                                        <!-- svg should be here -->
+                                    </div>
+                                    <div class="quiz__buttons_set">
+                                        {% if code != '' %}
+                                            <div class="quiz__op_code" title="Открыть код"></div>
+                                        {% endif %}
+                                        <div class="quiz__window_qbody_hint-cnt" title="Объяснение">
+                                            <div class="quiz__Window_qbody_hint_h" style="color: black;">&nbsp;Почему?</div>
+                                            <div class="quiz__Window_qbody_hint_desc" style="color: black;">
+                                                &nbsp;Тут будет объяснение
+                                            </div>
+                                        </div>
+                                        <div class="quiz_buttons_set__error" title="Сообщить об ошибке"></div>
+                                    </div>
+                                </div>
+                                <div class="answer_inactive-btn answer_btn_class">Answer</div>
+                                <div class="nextq_inactive-btn nextq_btn_class">Next Question&nbsp;&#8594;</div>
+                                <div class="results_inactive-btn">Results&nbsp;&#8594;</div>
+                            </div>
+                        </div>
+                        {% comment %} Code part {% endcomment %}
+                        {% if code != '' %}
+                            <div class="quiz__codepart">
+                                <div class="quiz__codepart_centralcnt">
+                                    <div class="quiz__window_qbody-header-opbar2">
+                                        <div class="quiz__op_code" styles="float: right;"></div>
+                                    </div>
+                                    <div class="quiz__code-body">
+                                        {{code|safe}}
+                                        <span class="quiz_code-here">|</span>
                                     </div>
                                 </div>
                             </div>
-                            <div class="answer_inactive-btn answer_btn_class">Answer</div>
-                            <div class="nextq_inactive-btn nextq_btn_class">Next Question&nbsp;&#8594;</div>
-                            <div class="results_inactive-btn">Results&nbsp;&#8594;</div>
-                        </div>
+                        {% endif %}
+                        {% comment %} End of the code part {% endcomment %}
                     </div>
-                    <!--Code part-->
-                    {% if code != '' %}
-                        <div class="quiz__codepart">
-                            <div class="quiz__codepart_centralcnt">
-                                <div class="quiz__window_qbody-header-opbar2">
-                                    <div class="quiz__op_code" styles="float: right;"></div>
-                                </div>
-                                <div class="quiz__code-body">
-                                    {{code|safe}}
-                                    <span class="quiz_code-here">|</span>
-                                </div>
-                            </div>
-                        </div>
-                    {% endif %}
-                    <!--End of the code part-->
                 </div>
+            </div>
+        </div>
+        <div class="quiz__main-flex-cnt3">
+            <div class="quiz__main-central-cnta">
                 <div class="quiz__window-abody">
                     <div class="quiz__window-abody_centre-cnt">
                         <div class="quiz__window-abody_option option_co4_o1" id="op1">
@@ -137,7 +140,8 @@
                         </div>
                     </div>
                 </div>
-            </div> 
+            {% comment %} </div>  {% endcomment %}
+            </div>
         </div>
     </div>
 </body>

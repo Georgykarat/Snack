@@ -8,7 +8,8 @@ var Option4 = $('.option_co4_o4');
 var AnswerBtn = $('.answer_btn_class');
 var NextButton = $('.nextq_inactive-btn');
 var ProgressCircle = $('.progress-circle');
-var QuizCard = $('.quiz__card_1')
+var QuizCard = $('.quiz__card_1');
+var QuizCard2ver = $('.quiz__main-flex-cnt');
 var QuizArea = $('.quiz__main-central-cnt');
 var ExitBtn = $('.quiz__give-up_button');
 var RightAud = new Audio();
@@ -22,13 +23,15 @@ function UpdateCard(qtype, question, color, fontcolor, o1, o2, o3, o4, complexit
     if (qtype == 0) {
         // Get code and create code flag
         if (code != "") {
-            codehave = '<div class="quiz__op_code"></div>';
+            codehave = '<div class="quiz__op_code" title="Открыть код"></div>';
             codeblockh = '<div class="quiz__codepart">\
             <div class="quiz__codepart_centralcnt">\
                 <div class="quiz__window_qbody-header-opbar2">\
                     <div class="quiz__op_code" styles="float: right;"></div>\
                 </div>\
-                <div class="quiz__code-body">' + code + '</div>\
+                <div class="quiz__code-body">' + code + '\
+                    <span class="quiz_code-here">|</span>\
+                </div>\
             </div>\
         </div>';
         } else {
@@ -36,66 +39,137 @@ function UpdateCard(qtype, question, color, fontcolor, o1, o2, o3, o4, complexit
             codeblockh = '';
         }
         // Get complexity and appropriate html code
-        if (complexity == 1) {
-            complexityh = '<div class="complexity_icon_low"></div>';
-        } else if (complexity == 2) {
-            complexityh = '<div class="complexity_icon_m"></div>';
-        } else if (complexity == 3) {
-            complexityh = '<div class="complexity_icon_high"></div>';
-        }
-        QuizCard.append('<div class="quiz__window-qbody" style="background-color: #' + color + ';" id="q1">  \
-        <div class="quiz__window-qbody-centre">  \
-        <div class="quiz__window_qbody-header"> \
-            <div class="quiz__window_qbody-header-complexity"> \
-                #' + id + '&nbsp;:\
-                &nbsp;' + complexityh + '</div> \
-            <div class="quiz__window_qbody-header-opbar">' + codehave + '</div> \
-        </div>\
-            <div class="quiz__window_qbody-question" style="color: #' + fontcolor + ';">' + question + '</div>\
-            <div class="quiz__window_qbody-2section">\
-                <div class="quiz__window_qbody_hintblock">\
-                    <div class="quiz__window_qbody_icon">\
-                    </div>\
-                    <div class="quiz__window_qbody_hint-cnt">\
-                        <div class="quiz__Window_qbody_hint_h" style="color: #' + fontcolor + ';">&nbsp;</div>\
-                        <div class="quiz__Window_qbody_hint_desc" style="color: #' + fontcolor + ';">\
-                        &nbsp;\
+        // if (complexity == 1) {
+        //     complexityh = '<div class="complexity_icon_low"></div>';
+        // } else if (complexity == 2) {
+        //     complexityh = '<div class="complexity_icon_m"></div>';
+        // } else if (complexity == 3) {
+        //     complexityh = '<div class="complexity_icon_high"></div>';
+        // }
+    //     QuizCard.append('<div class="quiz__window-qbody" style="background-color: #' + color + ';" id="q1">  \
+    //     <div class="quiz__window-qbody-centre">  \
+    //     <div class="quiz__window_qbody-header"> \
+    //         <div class="quiz__window_qbody-header-complexity"> \
+    //             #' + id + '&nbsp;:\
+    //             &nbsp;' + complexityh + '</div> \
+    //         <div class="quiz__window_qbody-header-opbar">' + codehave + '</div> \
+    //     </div>\
+    //         <div class="quiz__window_qbody-question" style="color: #' + fontcolor + ';">' + question + '</div>\
+    //         <div class="quiz__window_qbody-2section">\
+    //             <div class="quiz__window_qbody_hintblock">\
+    //                 <div class="quiz__window_qbody_icon">\
+    //                 </div>\
+    //                 <div class="quiz__window_qbody_hint-cnt">\
+    //                     <div class="quiz__Window_qbody_hint_h" style="color: #' + fontcolor + ';">&nbsp;</div>\
+    //                     <div class="quiz__Window_qbody_hint_desc" style="color: #' + fontcolor + ';">\
+    //                     &nbsp;\
+    //                     </div>\
+    //                 </div>\
+    //             </div>\
+    //             <div class="answer_inactive-btn answer_btn_class">Answer</div>\
+    //             <div class="nextq_inactive-btn nextq_btn_class">Next Question&nbsp;&#8594;</div>\
+    //             <a href="results/" styles="justify-content:right;" class="results_href"><div class="results_inactive-btn">Results&nbsp;&#8594;</div></a>\
+    //         </div>\
+    //     </div>' + codeblockh +'</div>\
+    // <div class="quiz__window-abody">\
+    //     <div class="quiz__window-abody_centre-cnt">\
+    //         <div class="quiz__window-abody_option option_co4_o1" id="op1">\
+    //             <div class="quiz__window-abody_option_num" style="color: #' + fontcolor + '; background-color: #' + color + '">1</div>\
+    //             <div class="quiz__window-abody_option_txt">\
+    //             ' + o1 + '\
+    //             </div>\
+    //         </div>\
+    //         <div class="quiz__window-abody_option option_co4_o2" id="op2">\
+    //             <div class="quiz__window-abody_option_num" style="color: #' + fontcolor + '; background-color: #' + color + '">2</div>\
+    //             <div class="quiz__window-abody_option_txt">\
+    //             ' + o2 + '\
+    //             </div>\
+    //         </div>\
+    //         <div class="quiz__window-abody_option option_co4_o3" id="op3">\
+    //             <div class="quiz__window-abody_option_num" style="color: #' + fontcolor + '; background-color: #' + color + '">3</div>\
+    //             <div class="quiz__window-abody_option_txt">\
+    //             ' + o3 + '\
+    //             </div>\
+    //         </div>\
+    //         <div class="quiz__window-abody_option option_co4_o4" id="op4">\
+    //             <div class="quiz__window-abody_option_num" style="color: #' + fontcolor + '; background-color: #' + color + '">4</div>\
+    //             <div class="quiz__window-abody_option_txt">\
+    //             ' + o4 + '\
+    //             </div>\
+    //         </div>\
+    //     </div>\
+    // </div>');
+    QuizCard2ver.append('<div class="quiz__main-flex-cnt2">\
+    <div class="quiz__main-central-cnt">\
+        <div class="quiz__card_1">\
+            <div class="quiz__window-qbody" style="background-color: white;" id="q1">\
+                <div class="quiz__window-qbody-centre">\
+                    <div class="quiz__window_qbody-header">\
+                        <div class="quiz__window_qbody-header-complexity">\
+                            #' + id + '&nbsp;&nbsp;\
+                        </div>\
+                        <div class="quiz__window_qbody-header-opbar">\
+                            <div class="quiz__giveup-btn"></div>\
                         </div>\
                     </div>\
-                </div>\
-                <div class="answer_inactive-btn answer_btn_class">Answer</div>\
-                <div class="nextq_inactive-btn nextq_btn_class">Next Question&nbsp;&#8594;</div>\
-                <a href="results/" styles="justify-content:right;" class="results_href"><div class="results_inactive-btn">Results&nbsp;&#8594;</div></a>\
+                    <div class="quiz__window_qbody-question" style="color: #2A3342;">' + question + '\
+                    </div>\
+                    <div class="quiz__window_qbody-2section">\
+                        <div class="quiz__window_qbody_hintblock">\
+                            <div class="quiz__window_qbody_icon">\
+                                <!-- svg should be here -->\
+                            </div>\
+                            <div class="quiz__buttons_set">' + codehave + '\
+                                <div class="quiz__window_qbody_hint-cnt" title="Объяснение">\
+                                    <div class="quiz__Window_qbody_hint_h" style="color: black;">&nbsp;Почему?</div>\
+                                    <div class="quiz__Window_qbody_hint_desc" style="color: black;">\
+                                        &nbsp;Тут будет объяснение\
+                                    </div>\
+                                </div>\
+                                <div class="quiz_buttons_set__error" title="Сообщить об ошибке"></div>\
+                            </div>\
+                        </div>\
+                        <div class="answer_inactive-btn answer_btn_class">Answer</div>\
+                        <div class="nextq_inactive-btn nextq_btn_class">Next Question&nbsp;&#8594;</div>\
+                        <a href="results/" styles="justify-content:right;" class="results_href"><div class="results_inactive-btn">Results&nbsp;&#8594;</div></a>\
+                    </div>\
+                </div>' + codeblockh + '\
             </div>\
-        </div>' + codeblockh +'</div>\
-    <div class="quiz__window-abody">\
-        <div class="quiz__window-abody_centre-cnt">\
-            <div class="quiz__window-abody_option option_co4_o1" id="op1">\
-                <div class="quiz__window-abody_option_num" style="color: #' + fontcolor + '; background-color: #' + color + '">1</div>\
-                <div class="quiz__window-abody_option_txt">\
-                ' + o1 + '\
+        </div>\
+    </div>\
+</div>\
+<div class="quiz__main-flex-cnt3">\
+    <div class="quiz__main-central-cnta">\
+        <div class="quiz__window-abody">\
+            <div class="quiz__window-abody_centre-cnt">\
+                <div class="quiz__window-abody_option option_co4_o1" id="op1">\
+                    <div class="quiz__window-abody_option_num" style="color: #' + fontcolor + '; background-color: #' + color + '">1</div>\
+                    <div class="quiz__window-abody_option_txt">\
+                        ' + o1 + '\
+                    </div>\
                 </div>\
-            </div>\
-            <div class="quiz__window-abody_option option_co4_o2" id="op2">\
-                <div class="quiz__window-abody_option_num" style="color: #' + fontcolor + '; background-color: #' + color + '">2</div>\
-                <div class="quiz__window-abody_option_txt">\
-                ' + o2 + '\
+                <div class="quiz__window-abody_option option_co4_o2" id="op2">\
+                    <div class="quiz__window-abody_option_num" style="color: #' + fontcolor + '; background-color: #' + color + '">2</div>\
+                    <div class="quiz__window-abody_option_txt">\
+                    ' + o2 + '\
+                    </div>\
                 </div>\
-            </div>\
-            <div class="quiz__window-abody_option option_co4_o3" id="op3">\
-                <div class="quiz__window-abody_option_num" style="color: #' + fontcolor + '; background-color: #' + color + '">3</div>\
-                <div class="quiz__window-abody_option_txt">\
-                ' + o3 + '\
+                <div class="quiz__window-abody_option option_co4_o3" id="op3">\
+                    <div class="quiz__window-abody_option_num" style="color: #' + fontcolor + '; background-color: #' + color + '">3</div>\
+                    <div class="quiz__window-abody_option_txt">\
+                    ' + o3 + '\
+                    </div>\
                 </div>\
-            </div>\
-            <div class="quiz__window-abody_option option_co4_o4" id="op4">\
-                <div class="quiz__window-abody_option_num" style="color: #' + fontcolor + '; background-color: #' + color + '">4</div>\
-                <div class="quiz__window-abody_option_txt">\
-                ' + o4 + '\
+                <div class="quiz__window-abody_option option_co4_o4" id="op4">\
+                    <div class="quiz__window-abody_option_num" style="color: #' + fontcolor + '; background-color: #' + color + '">4</div>\
+                    <div class="quiz__window-abody_option_txt">\
+                    ' + o4 + '\
+                    </div>\
                 </div>\
             </div>\
         </div>\
-    </div>');
+    </div>\
+</div>');
     }
     ActivateAnswer();
 };
@@ -299,11 +373,13 @@ $('body').on('keydown', function(event){
                                     rightanswer.css('background-color', '#26D07C50');
                                     rightanswer.addClass('option_right');
                                     rightanswer.children('.quiz__window-abody_option_num').css('background-color', '#26D07C');
+                                    rightanswer.children('.quiz__window-abody_option_txt').css('color', '#26D07C');
                                     wronganswer = $(wronganswer_class);
                                     wronganswer.removeClass('option_active');
                                     wronganswer.css('background-color', '#EC3D3D50');
                                     wronganswer.addClass('option_wrong');
                                     wronganswer.children('.quiz__window-abody_option_num').css('background-color', '#EC3D3D');
+                                    wronganswer.children('.quiz__window-abody_option_txt').css('color', '#EC3D3D');
                                     AnswerBtn.css('display', 'none');
                                     NextButton.css('display', 'flex');
                                     RightAud.src = WSoundPath;
@@ -318,6 +394,7 @@ $('body').on('keydown', function(event){
                                     rightanswer.css('background-color', '#26D07C50');
                                     rightanswer.addClass('option_right');
                                     rightanswer.children('.quiz__window-abody_option_num').css('background-color', '#26D07C');
+                                    rightanswer.children('.quiz__window-abody_option_txt').css('color', '#26D07C');
                                     AnswerBtn.css('display', 'none');
                                     NextButton.css('display', 'flex');
                                     RightAud.src = SSoundPath;
@@ -342,11 +419,13 @@ $('body').on('keydown', function(event){
                                     rightanswer.css('background-color', '#26D07C50');
                                     rightanswer.addClass('option_right');
                                     rightanswer.children('.quiz__window-abody_option_num').css('background-color', '#26D07C');
+                                    rightanswer.children('.quiz__window-abody_option_txt').css('color', '#26D07C');
                                     wronganswer = $(wronganswer_class);
                                     wronganswer.removeClass('option_active');
                                     wronganswer.css('background-color', '#EC3D3D50');
                                     wronganswer.addClass('option_wrong');
                                     wronganswer.children('.quiz__window-abody_option_num').css('background-color', '#EC3D3D');
+                                    wronganswer.children('.quiz__window-abody_option_txt').css('color', '#EC3D3D');
                                     AnswerBtn.css('display', 'none');
                                     $('.results_href').css('display', 'flex');
                                     $('.results_inactive-btn').css('display', 'flex');
@@ -360,6 +439,7 @@ $('body').on('keydown', function(event){
                                     rightanswer.css('background-color', '#26D07C50');
                                     rightanswer.addClass('option_right');
                                     rightanswer.children('.quiz__window-abody_option_num').css('background-color', '#26D07C');
+                                    rightanswer.children('.quiz__window-abody_option_txt').css('color', '#26D07C');
                                     AnswerBtn.css('display', 'none');
                                     $('.results_href').css('display', 'flex');
                                     $('.results_inactive-btn').css('display', 'flex');
@@ -404,8 +484,8 @@ $('body').on('click', '.nextq_inactive-btn', function(){
                 $('.qcounter').text(Counter);
                 ProgressCircle = $('.progress-circle');
                 ProgressCircle.eq(Counter - 1).removeClass('circle-future').addClass('circle-current');
-                $('.quiz__window-qbody').remove();
-                $('.quiz__window-abody').remove();
+                $('.quiz__main-flex-cnt2').remove();
+                $('.quiz__main-flex-cnt3').remove();
                 UpdateCard(qtype, q, color, fontcolor, o1, o2, o3, o4, complexity, id, code);
             }
         });
@@ -444,8 +524,8 @@ $('body').on('keydown', function(event){
                         $('.qcounter').text(Counter);
                         ProgressCircle = $('.progress-circle');
                         ProgressCircle.eq(Counter - 1).removeClass('circle-future').addClass('circle-current');
-                        $('.quiz__window-qbody').remove();
-                        $('.quiz__window-abody').remove();
+                        $('.quiz__main-flex-cnt2').remove();
+                        $('.quiz__main-flex-cnt3').remove();
                         UpdateCard(qtype, q, color, fontcolor, o1, o2, o3, o4, complexity, id, code);
                     }
                 });
@@ -457,24 +537,29 @@ $('body').on('keydown', function(event){
 });
 
 
-// Exit button
-// 1 option
-ExitBtn.on('click', function(){
-    if (ExitBtn.text() != 'Sure?') {
-        ExitBtn.text('Sure?');
-    } else {
-        $(location).attr('href','../');
-    }
-});
-// 2 option
-ExitBtn.on('keydown', function(event){
-    if (which.event == 27) {
-        if (ExitBtn.text() != 'Sure?') {
-            ExitBtn.text('Sure?');
-        } else {
-            $(location).attr('href','../');
-        }
-    }
+// // Exit button
+// // 1 option
+// ExitBtn.on('click', function(){
+//     if (ExitBtn.text() != 'Sure?') {
+//         ExitBtn.text('Sure?');
+//     } else {
+//         $(location).attr('href','../');
+//     }
+// });
+// // 2 option
+// ExitBtn.on('keydown', function(event){
+//     if (which.event == 27) {
+//         if (ExitBtn.text() != 'Sure?') {
+//             ExitBtn.text('Sure?');
+//         } else {
+//             $(location).attr('href','../');
+//         }
+//     }
+// });
+
+// Exit button 2 ver.
+$('body').on('click', '.quiz__giveup-btn', function(){
+    $(location).attr('href','../');
 });
 
 //Code option
